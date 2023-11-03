@@ -1,0 +1,10 @@
+package free.servpp.generator.checker;
+
+/**
+ * @author lidong@date 2023-11-02@version 1.0
+ */
+public interface IServiceBodyStatement {
+    public ServiceBaseBody getParent() ;
+
+    public void setParent(ServiceBaseBody parent) ;
+}

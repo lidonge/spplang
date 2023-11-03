@@ -1,0 +1,73 @@
+domain invoice;
+
+Reference Customer{
+    String id;
+    String name;
+    int age;
+    int sex;
+}
+
+Object Product{
+    String id;
+    String name;
+}
+
+Object Account{
+    String id;
+    double value;
+    double max;
+    double min;
+}
+Role Good{
+    String id;
+    Stock stock;
+    double price;
+}
+
+Object Stock{
+    String id;
+    double value;
+    double max;
+    double min;
+}
+Role SellerAccount{
+    String id;
+    double balance;
+}
+
+Object Invoice{
+    Buyer buyer;
+    Seller seller;
+    Good good;
+    int quantity;
+    double amount;
+    date signDate;
+}
+
+act Product as Good{
+    mapname;
+    takeall;
+}
+
+
+atomic Account queryAccount(String id);
+atomic double calculateAmount(int quantity, double price);
+atomic Account decAccount(Account account, double amount);
+atomic Account incSellerAccount(SellerAccount account, double amount);
+atomic Stock decStock(Stock stock, int quantity);
+atomic boolean checkStock(Stock stock);
+
+Scenario Invoice makeInvoice(Account buyer, SellerAccount seller, Good good, int quantity, date signDate){
+    //传统方式，需要传具体的参数，但因为是对象，所以不需要字段映射
+    query buyer from queryAccount(buyer.id);
+    //只传角色方式，不需要映射，对象结构和内容变化不影响场景调用
+    query seller from queryAccount(seller);
+    //简化模式，自动匹配相对应角色
+    check checkStock(good.stock);
+    calculate Invoice.amount from calculateAmount(quantity, good.price);
+    transaction{
+        update decAccount(buyer, Invoice.amount);
+        update incSellerAccount(seller, Invoice.amount);
+        update decStock(good.stock, quantity);
+    }
+}
