@@ -1,7 +1,7 @@
 package free.servpp.generator;
 
 import free.servpp.SppParser;
-import free.servpp.generator.checker.*;
+import free.servpp.generator.models.*;
 
 /**
  * @author lidong@date 2023-11-01@version 1.0

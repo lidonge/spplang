@@ -1,7 +1,7 @@
 package free.servpp.generator;
 
 import free.servpp.SppParser;
-import free.servpp.generator.checker.*;
+import free.servpp.generator.models.*;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 /**
@@ -39,12 +39,15 @@ public interface IScenarioGenerator extends IServiceDefinitionGenerator {
         ServiceBaseBody serviceBaseBody = getCurrentServiceBaseBody();
         SppService currentCLass = (SppService) checker.getCurrentClass();
         SppServiceCall sppServiceCall = createServiceCall(ctx);
-        SppClass callee = checker.getSppClass(serviceClassName);
+        SppClass callee = checker.getSppClass(CompilationUnitType.atomicservice,serviceClassName);
         if(callee instanceof SppService) {
             sppServiceCall.setCallee((SppService) callee);
             currentCLass.setCurrentCall(new CurrentCall(callee,0));
-        }else if(callee == null){
-            logSppError(ctx,"Callee:"+serviceClassName+" is not  exists!");
+        }else if(!callee.isReal()){
+            checker.addUnFoundClass(new ErrorContent(serviceClassName,
+                    ctx.getStart().getLine(),ctx.getStart().getCharPositionInLine(),
+                    "Callee:"+serviceClassName+" is not  exists!"));
+//            logSppError(ctx,"Callee:"+serviceClassName+" is not  exists!");
         }
         else
             logSppError(ctx,"Callee:"+serviceClassName+" is not a service!");

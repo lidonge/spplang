@@ -1,4 +1,4 @@
-package free.servpp.generator.checker;
+package free.servpp.generator.models;
 
 import free.servpp.generator.IConstance;
 
@@ -26,5 +26,12 @@ public class SppService extends SppClass{
 
     public void setServiceType(IConstance.ServiceType returnType) {
         this.serviceType = returnType;
+    }
+
+    public void copyFrom(SppClass cls) {
+        super.copyFrom(cls);
+        SppService sppService = (SppService) cls;
+        serviceType = sppService.serviceType;
+        funcName = sppService.funcName;
     }
 }

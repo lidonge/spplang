@@ -1,10 +1,8 @@
 package free.servpp.generator;
 
-import free.servpp.generator.checker.ClassChecker;
-import free.servpp.generator.checker.SppClass;
+import free.servpp.generator.models.ClassChecker;
 
 import java.io.File;
-import java.io.PrintStream;
 import java.util.Stack;
 
 /**

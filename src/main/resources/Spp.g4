@@ -67,9 +67,13 @@ mapBody
     ;
 
 mapDeclaration
-    : Identifier '=' Identifier ';'
+    : mapfield
     | takeall ';'
     | mapsame ';'
+    ;
+
+mapfield
+    : primitiveType Identifier '=' Identifier ';'
     ;
 
 takeall
@@ -77,7 +81,7 @@ takeall
     ;
 
 mapsame
-    : 'mapname'
+    : 'mapsame'
     ;
 
 scenario

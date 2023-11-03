@@ -1,20 +1,15 @@
 package free.servpp.generator;
 
-import free.servpp.SppListener;
 import free.servpp.SppParser;
-import free.servpp.generator.checker.ClassChecker;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
-
-import java.io.File;
-import java.util.Stack;
 
 /**
  * @author lidong@date 2023-11-01@version 1.0
  */
 public abstract class BaseGenerator implements
-        IEntityGenerator, IRoleGenerator, IAtomicServiceGenerator, IScenarioGenerator{
+        IEntityGenerator, IRoleGenerator, IAtomicServiceGenerator, IScenarioGenerator, IActasGenerator{
 
     @Override
     public void enterProgram(SppParser.ProgramContext ctx) {
@@ -121,55 +116,6 @@ public abstract class BaseGenerator implements
 
     }
 
-    @Override
-    public void enterActas(SppParser.ActasContext ctx) {
-
-    }
-
-    @Override
-    public void exitActas(SppParser.ActasContext ctx) {
-
-    }
-
-    @Override
-    public void enterMapBody(SppParser.MapBodyContext ctx) {
-
-    }
-
-    @Override
-    public void exitMapBody(SppParser.MapBodyContext ctx) {
-
-    }
-
-    @Override
-    public void enterMapDeclaration(SppParser.MapDeclarationContext ctx) {
-
-    }
-
-    @Override
-    public void exitMapDeclaration(SppParser.MapDeclarationContext ctx) {
-
-    }
-
-    @Override
-    public void enterTakeall(SppParser.TakeallContext ctx) {
-
-    }
-
-    @Override
-    public void exitTakeall(SppParser.TakeallContext ctx) {
-
-    }
-
-    @Override
-    public void enterMapsame(SppParser.MapsameContext ctx) {
-
-    }
-
-    @Override
-    public void exitMapsame(SppParser.MapsameContext ctx) {
-
-    }
 
     @Override
     public void enterObjecttype(SppParser.ObjecttypeContext ctx) {

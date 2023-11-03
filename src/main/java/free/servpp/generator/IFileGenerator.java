@@ -34,6 +34,9 @@ public interface IFileGenerator extends IConstance{
             case scenario -> {
                 ret = "class";
             }
+            case rolemapper -> {
+                ret = "class";
+            }
         }
         return ret;
     }
@@ -58,6 +61,9 @@ public interface IFileGenerator extends IConstance{
             }
             case scenario -> {
                 ret = compilationUnitPackage + ".Scenario";
+            }
+            case rolemapper -> {
+                ret = compilationUnitPackage + ".RoleMapper";
             }
         }
         return ret;

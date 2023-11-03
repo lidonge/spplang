@@ -1,4 +1,4 @@
-package free.servpp.generator.checker;
+package free.servpp.generator.models;
 
 /**
  * @author lidong@date 2023-11-01@version 1.0

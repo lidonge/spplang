@@ -35,8 +35,8 @@ Role Account{}
 act BaseAccount as Account{takeall;}
 act Stock as GoodsStock{takeall;}
 act Product as Goods{
-    mapname;
-    goodsId = id;
+    mapsame;
+    String goodsId = id;
     takeall;
 }
 Role Amount{

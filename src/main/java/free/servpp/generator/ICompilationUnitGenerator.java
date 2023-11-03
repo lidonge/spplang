@@ -1,7 +1,7 @@
 package free.servpp.generator;
 
 import free.servpp.SppListener;
-import free.servpp.generator.checker.*;
+import free.servpp.generator.models.*;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.io.File;
@@ -23,20 +23,24 @@ public interface ICompilationUnitGenerator extends SppListener,IConstance {
     int stackSize();
 //    Stack getStack();
     default String generateLocalVar(String ptype, String name) {
-        return _generateField(ptype,name,true);
+        SppVarMaker<SppClass, String> maker = (cls, s1) ->{return new SppLocalVar(cls,s1);};
+        return _generateField(ptype,name,true,maker);
     }
     default String generateField(String ptype, String name) {
-        return  _generateField(ptype,name,false);
+        SppVarMaker<SppClass, String> maker = (cls, s1) ->{return new SppField(cls,s1);};
+        return  _generateField(ptype,name,false,maker);
     }
-    private String _generateField(String ptype, String name, boolean bLocal) {
+    default String generateField(String ptype, String name, SppVarMaker<SppClass, String> maker) {
+        return  _generateField(ptype,name,false,maker);
+    }
+    private String _generateField(String ptype, String name, boolean bLocal,SppVarMaker<SppClass, String> maker) {
         ClassChecker checker = getClassChecker();
-        SppClass typeClass = checker.getSppClass(ptype);
-        if(typeClass == null)
-            typeClass = new SppClass(ptype);
+        SppClass typeClass = checker.getSppClass(CompilationUnitType.entity, ptype);
+        SppLocalVar var = maker.create(typeClass,name);
         if(bLocal)
-            return checker.getCurrentClass().addLocalVar(new SppLocalVar(typeClass, name));
+            return checker.getCurrentClass().addLocalVar(var);
         else
-            return checker.getCurrentClass().addField(new SppField(typeClass, name));
+            return checker.getCurrentClass().addField((SppField) var);
     }
 
     default SppService generateService(CompilationUnitType type, ParserRuleContext ctx, String objName, String methodName) {
@@ -52,7 +56,7 @@ public interface ICompilationUnitGenerator extends SppListener,IConstance {
         }
         SppClass cls = genObjectDecl(type, objName);
         cls.setType(type);
-        glbChecker.addClass(cls);
+        cls = glbChecker.addClass(cls);
         return cls;
     }
     default ClassChecker checkClass(ParserRuleContext ctx, String type) {
@@ -74,9 +78,7 @@ public interface ICompilationUnitGenerator extends SppListener,IConstance {
     }
 
     default SppClass genObjectDecl(CompilationUnitType type, String objName) {
-        if(type == CompilationUnitType.atomicservice | type == CompilationUnitType.scenario)
-            return new SppService(objName);
-        return new SppClass(objName);
+        return ClassChecker.genObjectDecl(type,objName);
     }
 
     default String createAParameter(String name) {

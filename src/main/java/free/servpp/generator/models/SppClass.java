@@ -1,4 +1,4 @@
-package free.servpp.generator.checker;
+package free.servpp.generator.models;
 
 import free.servpp.generator.IConstance;
 import free.servpp.generator.IScenarioGenerator;
@@ -17,6 +17,7 @@ public class SppClass {
     Map<String, SppField> sppFieldMap = new HashMap<>();
     List<SppField> sppFieldList = new ArrayList<>();
 
+    private boolean isReal = true;
     //There is only one method in a class, so not need
 //    Map<String, SppMethod> methodMap = new HashMap<>();
 
@@ -31,6 +32,14 @@ public class SppClass {
     public SppClass(String name, IConstance.CompilationUnitType type) {
         this.name = name;
         this.type = type;
+    }
+
+    public boolean isReal() {
+        return isReal;
+    }
+
+    public void setReal(boolean real) {
+        isReal = real;
     }
 
     public List<SppField> getSppFieldList() {
@@ -108,6 +117,18 @@ public class SppClass {
                 ", sppFieldList=" + sppFieldList +
                 ", bodyChecker=" + serviceBody +
                 '}';
+    }
+
+    public void copyFrom(SppClass cls) {
+        name = cls.name;
+        type = cls.type;
+        sppFieldMap = cls.sppFieldMap;
+        sppFieldList = cls.sppFieldList;
+
+        isReal = cls.isReal;
+        serviceBody = cls.serviceBody;
+
+        currentCall = cls.currentCall;
     }
 
 //    public String addMethod(SppMethod sppMethod){

@@ -2,7 +2,7 @@ package free.servpp.generator;
 
 import free.servpp.SppLexer;
 import free.servpp.SppParser;
-import free.servpp.generator.checker.ErrorContent;
+import free.servpp.generator.models.ErrorContent;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        String genPath = "/Users/lidong/MyProjects/spplang/target/gen/spp/";
-        String file = "/Users/lidong/MyProjects/spplang/src/main/resources/spps/invoice.spp";
+        String genPath = "/Users/lidong/gitspace/spplang/target/gen/spp/";
+        String file = "/Users/lidong/gitspace/spplang/src/main/resources/spps/invoice.spp";
         FileInputStream reader = new FileInputStream(file);
         byte[] bytes = reader.readAllBytes();
         reader.close();;

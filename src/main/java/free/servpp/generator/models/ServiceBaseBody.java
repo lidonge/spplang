@@ -1,4 +1,4 @@
-package free.servpp.generator.checker;
+package free.servpp.generator.models;
 
 import java.util.ArrayList;
 import java.util.List;

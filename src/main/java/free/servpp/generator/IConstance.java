@@ -9,7 +9,7 @@ public interface IConstance {
     public static String compilationUnitPackage = "free.servpp";
 
     public static enum CompilationUnitType {
-        entity, reference, role, actas, atomicservice, scenario
+        entity, reference, role, actas, atomicservice, scenario, rolemapper
     }
 
     public static enum ServiceType {

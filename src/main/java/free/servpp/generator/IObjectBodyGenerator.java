@@ -1,7 +1,7 @@
 package free.servpp.generator;
 
 import free.servpp.SppParser;
-import free.servpp.generator.checker.*;
+import free.servpp.generator.models.*;
 
 /**
  * @author lidong@date 2023-11-01@version 1.0
@@ -20,9 +20,10 @@ public interface IObjectBodyGenerator extends ICompilationUnitGenerator{
         String type = ctx.getChild(0).getText();
         String name = ctx.getChild(1).getText();
         ClassChecker classChecker = checkClass(ctx, type);
-        ServiceBody bodyChecker = classChecker.getCurrentClass().getServiceBody();
-        SppClass cls = bodyChecker.getRealm();
-        String err = generateField(type,name);
-        logSppError(ctx,err);
+
+        if(classChecker.getCurrentClass().getType() == CompilationUnitType.entity &&
+                classChecker.getSppClass(classChecker.getCurrentClass().getType(),type).getType() != null)
+            logSppError(ctx, "The field "+name+" of entity should be primary type!" );
+        logSppError(ctx,generateField(type,name));
     }
 }
