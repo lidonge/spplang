@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ANTLRGenerationPreferences">
     <option name="perGrammarGenerationSettings">
@@ -10,6 +11,26 @@
           <option name="encoding" value="" />
           <option name="pkg" value="free.servpp" />
           <option name="language" value="Java" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/lang/src/main/resources/Spp.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="target/antlr/src" />
+          <option name="libDir" value="" />
+          <option name="encoding" value="" />
+          <option name="pkg" value="free.servpp.lang.antlr" />
+          <option name="language" value="" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/lang/src/main/antlr4/Spp.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="target/antr/sc" />
+          <option name="libDir" value="" />
+          <option name="encoding" value="" />
+          <option name="pkg" value="free.servpp.lang.antlr" />
+          <option name="language" value="" />
           <option name="generateVisitor" value="true" />
         </PerGrammarGenerationSettings>
       </list>

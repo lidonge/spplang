@@ -1,0 +1,70 @@
+openapi: 3.0.0
+servers:
+  - url: 'http://petstore.swagger.io/v2'
+info:
+  description: >-
+    This is a sample server Petstore server. For this sample, you can use the api key
+    `special-key` to test the authorization filters.
+  version: 1.0.0
+  title: OpenAPI Petstore
+  license:
+    name: Apache-2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+{{#tags%Header=tags:\n}}
+  - name: {{name}}
+    description: {{description}}
+{{/tags%Header=tags:\n}}
+{{#paths%Header=paths:\n}}
+   /{{path}}:
+    {{#operations}}
+    {{method}}:
+      tags:
+      {{#tags}}
+        - {{.}}
+      {{/tags}}
+      summary: {{summary}}
+      description: {{description}}
+      operationId: {{operationId}}
+      {{#responses%Header=      responses:\n}}
+        {{code}}:
+          description: {{description}}
+          {{#content}}
+          content:
+            {{#encoding}}
+            {{contentType}}:
+              schema:
+                $ref: '{{{schema.$ref}}}'
+            {{/encoding}}
+          {{/content}}
+      {{/responses%Header=      responses:\n}}
+      {{#requestBody%Header=      requestBody:\n}}
+        $ref: '{{{$ref}}}'
+      {{/requestBody%Header=      requestBody:\n}}
+    {{/operations}}
+{{/paths%Header=paths:\n}}
+{{#components}}
+components:
+{{#requestBodies%Header=    requestBodies:\n}}
+        {{name}}:
+          {{#content}}
+          content:
+            {{#encoding}}
+            {{contentType}}:
+              schema:
+                $ref: '{{{schema.$ref}}}'
+            {{/encoding}}
+          description: {{description}}
+          required: {{required}}
+          {{/content}}
+{{/requestBodies%Header=    requestBodies:\n}}
+{{#schemas%Header=    schemas:\n}}
+     {{name}}:
+       title: {{title}}
+       description: {{description}}
+       type: {{type}}
+       {{#properties%Header=       properties:\n}}
+            {{name}}:
+                type: {{type}}{{#format%Header=\n                format:}} {{format}}{{/format%Header=\n                format:}}{{#$ref%Header=\n                $ref:}} {{{$ref}}}{{/$ref%Header=\n                $ref:}}
+       {{/properties%Header=       properties:\n}}
+{{/schemas%Header=    schemas:\n}}
+{{/components}}

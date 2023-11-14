@@ -1,0 +1,73 @@
+domain invoice;
+
+Reference Customer{
+    String id;
+    String name;
+    int age;
+    int sex;
+}
+
+Object Product{
+    String id;
+    String name;
+}
+
+Object BaseAccount{
+    String id;
+    double balance;
+    double max;
+    double min;
+}
+Object Stock{
+    String id;
+    int quantity;
+    int max;
+    int min;
+}
+
+Role Goods{
+    String goodsId;
+    GoodsStock stock;
+    double price;
+}
+Role GoodsStock{}
+Role Account{}
+act BaseAccount as Account{takeall;}
+act Stock as GoodsStock{takeall;}
+act Product as Goods{
+    mapsame;
+    String goodsId = id;
+    takeall;
+}
+Role Amount{
+    int quantity;
+    double amount;
+    date signDate;
+}
+Role Invoice{
+    Account buyer;
+    Account seller;
+    Goods goods;
+    Amount amount;
+}
+
+
+
+atomic query queryAccount(Account account);
+atomic calculate calculateAmount(Amount amount);
+atomic update decAccount(Account account, Amount amount);
+atomic update incAccount(Account account, Amount amount);
+atomic update decStock(GoodsStock stock, Amount amount);
+atomic check checkStock(GoodsStock stock);
+
+Scenario makeInvoice(Invoice invoice){
+    queryAccount(invoice.buyer);
+    queryAccount(invoice.seller);
+    checkStock(invoice.goods.stock);
+    calculateAmount(invoice.amount);
+    transaction{
+        decAccount(invoice.buyer, invoice.amount);
+        incAccount(invoice.seller, invoice.amount);
+        decStock(invoice.goods.stock, invoice.amount);
+    }
+}
