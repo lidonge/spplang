@@ -1,12 +1,12 @@
 package free.servpp.generator;
 
-import com.github.mustachejava.*;
-import com.github.mustachejava.codes.NotIterableCode;
+import com.samskivert.mustache.DefaultCollector;
+import com.samskivert.mustache.Escapers;
+import com.samskivert.mustache.Mustache;
+import com.samskivert.mustache.Template;
 import free.servpp.generator.general.GeneratorErrorListener;
 import free.servpp.generator.general.SppGeneralListener;
 import free.servpp.generator.models.ErrorContent;
-import free.servpp.generator.openapi.MapObjectHandler;
-import free.servpp.generator.openapi.MyIterableCode;
 import free.servpp.generator.openapi.OpenApiGenerator;
 import free.servpp.lang.antlr.SppLexer;
 import free.servpp.lang.antlr.SppParser;
@@ -19,6 +19,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.*;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -26,18 +27,16 @@ import java.util.List;
  */
 public class Compiler {
     static final String HEADER = "%Header=";
+
     public static void main(String[] args) throws IOException {
-        String genPath = "/Users/lidong/gitspace/spplang/lang/target/spp/";
-        String file = "/Users/lidong/gitspace/spplang/lang/src/main/resources/spps/invoice.spp";
-        if(args.length == 2){
-            genPath = args[0];
-            file = args[1];
-        }
-        compile(new File(file), new File(genPath));
+        InputStream inputStream = Compiler.class.getResourceAsStream("/spp.mustache");
+        Compiler.compile(inputStream, new File("/Users/lidong/gitspace/spplang/lang/src/main/resources/spps/invoice.spp"),
+                new File("/Users/lidong/gitspace/spplang/lang/target/gen"),
+                new File("/Users/lidong/gitspace/spplang/lang/target/gen/src/java"), "free.servpp.openapi");
     }
 
-    public static void compile(File file, File genPath) throws IOException {
-        FileInputStream reader = new FileInputStream(file);
+    public static void compile(InputStream mustache, File sppFile, File yamlOutPath, File javaSrc, String basePackage) throws IOException {
+        FileInputStream reader = new FileInputStream(sppFile);
         byte[] bytes = reader.readAllBytes();
         reader.close();
         ;
@@ -48,7 +47,7 @@ public class Compiler {
         SppParser parser1 = new SppParser(tokens1);
         parser1.getInterpreter().setPredictionMode(PredictionMode.SLL);
         parser1.removeErrorListeners();
-        parser1.addErrorListener(new GeneratorErrorListener(file));
+        parser1.addErrorListener(new GeneratorErrorListener(sppFile));
 
         ParseTree tree = null;
         try {
@@ -60,36 +59,32 @@ public class Compiler {
 
         ParseTreeWalker walker = new ParseTreeWalker();
 
-        SppGeneralListener listener = new SppGeneralListener(genPath);
-        listener.setSppFile(file);
+        SppGeneralListener listener = new SppGeneralListener(javaSrc,basePackage);
+        listener.setSppFile(sppFile);
 
         walker.walk(listener, tree);
         List<ErrorContent> undefClasses = listener.getClassChecker().checkAll();
         for(ErrorContent cont: undefClasses){
             listener.logSppError(cont.getLine(), cont.getCol(), cont.getMsg());
         }
-        openApi(listener,file,genPath);
+        openApi(listener,mustache, sppFile,yamlOutPath);
     }
 
-    private static void openApi(SppGeneralListener listener, File file, File genPath) throws IOException {
+    private static void openApi(SppGeneralListener listener, InputStream mustache, File sppFile, File yamlOutPath) throws IOException {
         OpenAPI openAPI = new OpenApiGenerator().generate(listener.getClassChecker(),
-                listener.getDomainPath(), listener.getJavaPackege());
-        DefaultMustacheFactory mf = new DefaultMustacheFactory(){
-            @Override
-            public MustacheVisitor createMustacheVisitor() {
-                return new DefaultMustacheVisitor(this){
-                    @Override public void iterable(TemplateContext templateContext, String variable, Mustache mustache){
-                        String[] vars = header(variable);
-                        list.add(new MyIterableCode(vars[1],templateContext, df, mustache, vars[0]));
-                    }
-                };
-            }
-
-        };
-        mf.setObjectHandler(new MapObjectHandler());
-        Mustache mustache = mf.compile("spp.mustache");
-        File outFile = new File(genPath, file.getName() + ".yaml");
-        mustache.execute(new PrintWriter(new FileOutputStream(outFile)),openAPI).flush();
+                listener.getDomainPath(), listener.getBasePackage(), listener.getJavaPackage());
+        Template template = Mustache.compiler().compile(new InputStreamReader(mustache));
+        if(!yamlOutPath.exists())
+            yamlOutPath.mkdirs();
+        File outFile = new File(yamlOutPath, sppFile.getName() + ".yaml");
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(new FileOutputStream(outFile));
+//            out = new PrintWriter(System.out);
+            out.println(template.execute(openAPI));
+        }finally {
+            out.close();
+        }
     }
     private static String[] header(String var){
         int idx = var.indexOf(HEADER);

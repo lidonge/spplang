@@ -1,0 +1,19 @@
+package {{packageName}};
+public class {{name}} {
+	public void roleToEntity({{role.name}} role, {{entity.name}} entity) {
+	{{#serviceBody.sppLocalVarList}}
+		entity.set{{upperName}} (role.get{{upperName}}());
+	{{/serviceBody.sppLocalVarList}}
+	{{#sppFieldList}}
+	    entity.set{{upperEntityName}} (role.get{{upperName}}());
+	{{/sppFieldList}}
+	}
+	public void entityToRole({{entity.name}} entity, {{role.name}} role) {
+	{{#serviceBody.sppLocalVarList}}
+		role.set{{upperName}} (entity.get{{upperName}}());
+	{{/serviceBody.sppLocalVarList}}
+	{{#sppFieldList}}
+		role.set{{upperName}} (entity.get{{upperEntityName}}());
+	{{/sppFieldList}}
+	}
+}

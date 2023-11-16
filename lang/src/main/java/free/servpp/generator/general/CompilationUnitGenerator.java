@@ -50,11 +50,6 @@ public class CompilationUnitGenerator extends BaseGenerator  {
         return stack.size();
     }
 
-//    @Override
-//    public Stack getStack() {
-//        return stack;
-//    }
-
     @Override
     public File getDomainPath() {
         return domainPath;

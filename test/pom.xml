@@ -16,8 +16,46 @@
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+        <springdoc.version>1.7.0</springdoc.version>
+        <default.package>free.servpp.openapi.invoice</default.package>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>3.1.5</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--SpringDoc dependencies -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+        <!-- @Nullable annotation -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>free.servpp</groupId>
+            <artifactId>scenario</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -25,12 +63,14 @@
                 <artifactId>lang</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <configuration>
-                    <sourceDirectory>
+                    <sppSourceDirectory>
                         ${basedir}/src/main/spp
-                    </sourceDirectory>
-                    <outputDirectory>
+                    </sppSourceDirectory>
+                    <yamlOutputDirectory>
                         ${basedir}/target/spp/src/main/resources
-                    </outputDirectory>
+                    </yamlOutputDirectory>
+                    <javaOutputDirectory>${basedir}/target/generated-sources/openapi/src/main/java</javaOutputDirectory>
+                    <basePackage>free.servpp.openapi</basePackage>
                 </configuration>
                 <executions>
                     <execution>
@@ -53,9 +93,11 @@
                         <configuration>
                             <inputSpec>${basedir}/target/spp/src/main/resources/invoice.spp.yaml</inputSpec>
                             <generatorName>spring</generatorName>
-                            <configOptions>
-                                <templateDirectory>src/main/resources/JavaSpring</templateDirectory>
-                            </configOptions>
+                            <packageName>free.servpp.openapi</packageName>
+                            <apiPackage>${default.package}.handler</apiPackage>
+                            <modelPackage>${default.package}.model</modelPackage>
+                            <invokerPackage>${default.package}.handler</invokerPackage>
+                            <templateDirectory>src/main/resources/JavaSpring</templateDirectory>
                         </configuration>
                     </execution>
                 </executions>

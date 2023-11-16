@@ -88,18 +88,10 @@ public interface ICompilationUnitGenerator extends SppListener, IConstance {
     default String createAParameter(String ptype, String name) {
 
         if (name == null) {
-            name = firstToLowerCase(ptype, true);
+            name = IConstance.firstToLowerCase(ptype, true);
         }
         return name;
     }
 
-    default String firstToLowerCase(String ptype, boolean toLower) {
-        String name;
-        char first = ptype.charAt(0);
-        first = toLower? Character.toLowerCase(first) : Character.toUpperCase(first);
-        StringBuffer sb = new StringBuffer();
-        name = sb.append(first).append(ptype.substring(1)).toString();
-        return name;
-    }
 
 }

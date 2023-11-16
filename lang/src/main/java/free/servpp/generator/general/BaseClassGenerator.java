@@ -1,4 +1,4 @@
-package free.servpp.generator.java;
+package free.servpp.generator.general;
 
 import free.servpp.generator.general.IConstance;
 import free.servpp.generator.models.*;

@@ -1,0 +1,20 @@
+package {{packageName}};
+import free.servpp.client.Scenario;
+{{#serviceBody.sppLocalVarList}}
+import {{type.packageName}}.{{type.name}};
+{{/serviceBody.sppLocalVarList}}
+public class {{name}} implements Scenario{
+	{{#sppFieldList}}
+	public {{type.name}} {{name}};
+	{{/sppFieldList}}
+	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/serviceBody.sppLocalVarList}}){
+    {{#serviceBody}}{{#sppServiceCallList}}
+	    {{#callee}}{{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{name}}{{/sppParameterList}});{{/callee}}
+        {{#transactionCall}}{{#-first}}{
+            String transaction_id = startTransaction();{{/-first}}
+            {{#callee}}{{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{name}}{{/sppParameterList}});{{/callee}}
+            {{#-last}}endTransaction(transaction_id);
+        }{{/-last}}{{/transactionCall}}
+    {{/sppServiceCallList}}{{/serviceBody}}
+	}
+}

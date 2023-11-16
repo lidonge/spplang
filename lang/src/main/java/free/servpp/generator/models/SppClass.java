@@ -12,6 +12,7 @@ import java.util.Map;
  * @author lidong@date 2023-11-01@version 1.0
  */
 public class SppClass {
+    private String packageName;
     String name;
     IConstance.CompilationUnitType type;
     Map<String, SppField> sppFieldMap = new HashMap<>();
@@ -32,6 +33,16 @@ public class SppClass {
     public SppClass(String name, IConstance.CompilationUnitType type) {
         this.name = name;
         this.type = type;
+        this.serviceBody = new ServiceBody(this);
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public SppClass packageName(String packageName) {
+        this.packageName = packageName;
+        return this;
     }
 
     public boolean isReal() {

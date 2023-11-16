@@ -19,4 +19,14 @@ public interface IConstance {
     public static enum ServiceType {
         query, check, calculate, update, unknown
     }
+
+
+    static String firstToLowerCase(String ptype, boolean toLower) {
+        String name;
+        char first = ptype.charAt(0);
+        first = toLower? Character.toLowerCase(first) : Character.toUpperCase(first);
+        StringBuffer sb = new StringBuffer();
+        name = sb.append(first).append(ptype.substring(1)).toString();
+        return name;
+    }
 }

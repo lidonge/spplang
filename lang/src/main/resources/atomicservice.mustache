@@ -1,0 +1,5 @@
+package {{packageName}};
+import free.servpp.client.AtomicService;
+public interface {{name}} extends AtomicService {
+	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/sppFieldList}});
+}

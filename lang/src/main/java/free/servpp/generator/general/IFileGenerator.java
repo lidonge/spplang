@@ -15,7 +15,10 @@ public interface IFileGenerator extends IConstance {
     int getBraceLevel();
 
     PrintStream getPrintStream();
+    void setPrintStream(PrintStream printStream);
+
     File getDomainPath();
+
     default String typeToString(CompilationUnitType type) {
         String ret = null;
         switch (type) {

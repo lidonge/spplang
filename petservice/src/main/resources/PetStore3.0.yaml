@@ -751,6 +751,22 @@ components:
             - sold
       xml:
         name: Pet
+    Cat: ## "Cat" will be used as the discriminator value
+      description: A representation of a cat
+      allOf:
+        - $ref: '#/components/schemas/Pet'
+        - type: object
+          properties:
+            huntingSkill:
+              type: string
+              description: The measured skill for hunting
+              enum:
+                - clueless
+                - lazy
+                - adventurous
+                - aggressive
+          required:
+            - huntingSkill
     ApiResponse:
       title: An uploaded response
       description: Describes the result of uploading an image resource

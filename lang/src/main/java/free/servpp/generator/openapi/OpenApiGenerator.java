@@ -2,7 +2,7 @@ package free.servpp.generator.openapi;
 
 import free.servpp.generator.general.IConstance;
 import free.servpp.generator.general.IFileGenerator;
-import free.servpp.generator.java.BaseClassGenerator;
+import free.servpp.generator.general.BaseClassGenerator;
 import free.servpp.generator.models.*;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -26,11 +26,11 @@ import java.util.Map;
  * @author lidong@date 2023-11-13@version 1.0
  */
 public class OpenApiGenerator extends BaseClassGenerator {
-    public OpenAPI generate(ClassChecker classChecker, File domainPath, String javaPackege) {
+    public OpenAPI generate(ClassChecker classChecker, File domainPath, String basePacakge, String javaPackage) {
         dealMaps(classChecker);
         OpenAPI openAPI = new OpenAPI();
         Map<String, SppClass> sppClassMap = classChecker.getMapsOfClass();
-        openAPI.addTagsItem(new Tag().name(javaPackege));
+        openAPI.addTagsItem(new Tag().name(javaPackage).description(""));
         for (SppClass sppClass : sppClassMap.values()) {
 //            if(sppClass.getType() == IConstance.CompilationUnitType.rolemapper)
 //                System.out.println(sppClass);
@@ -41,28 +41,21 @@ public class OpenApiGenerator extends BaseClassGenerator {
                 createASchema(sppClass, openAPI);
             } else if (type == IConstance.CompilationUnitType.atomicservice
                     || type == IConstance.CompilationUnitType.scenario) {
-                createAPath(javaPackege, sppClass, openAPI);
+                createAPath(javaPackage, sppClass, openAPI);
             }
+//            new OpenAPIClassWriter(domainPath,sppClass, basePacakge, javaPackage).generate();
+            new MustacheClassWriter(domainPath,sppClass, basePacakge, javaPackage).generate();
         }
         return openAPI;
     }
 
-    private static void createAPath(String javaPackege, SppClass sppClass, OpenAPI openAPI) {
+    private static void createAPath(String javaPackage, SppClass sppClass, OpenAPI openAPI) {
         SppService sppService = (SppService) sppClass;
         IConstance.ServiceType serviceType = sppService.getServiceType();
         PathItem pathItem = new PathItem() {
             public String getPath() {
-                return javaPackege +"/"+sppService.getFuncName();
+                return javaPackage +"/"+sppService.getFuncName();
             }
-
-//            public String getMethod() {
-//                return method;
-//            }
-//
-//            public String getTag() {
-//                return javaPackege;
-//            }
-
             public List<Operation> getOperations(){
                 List<Operation> ret = new ArrayList<>();
                 if(getGet()!= null)
@@ -85,7 +78,7 @@ public class OpenApiGenerator extends BaseClassGenerator {
                 return ret;
             }
         }.summary(sppService.getName()).description(sppService.getName());
-        Operation operation = findMethod(serviceType,sppService, pathItem).addTagsItem(javaPackege);
+        Operation operation = findMethod(serviceType,sppService, pathItem).addTagsItem(javaPackage);
         operation.setOperationId(sppService.getFuncName());
         addARequestBody(operation, sppService,openAPI);
         openAPI.path(sppClass.getName(), pathItem);
