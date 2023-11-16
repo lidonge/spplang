@@ -22,19 +22,17 @@ public class MustacheClassWriter extends ClassWriterConfig {
     public void generate() {
         try {
             IConstance.CompilationUnitType type = sppClass.getType();
+            if (type == IConstance.CompilationUnitType.rolemapper) {
+                takeAllMapFields();
+
+                genClassFile("model", "/rolemapper.mustache");
+            } else if (type == IConstance.CompilationUnitType.atomicservice) {
+                genClassFile("handler", "/atomicservice.mustache");
+
+            } else if (type == IConstance.CompilationUnitType.scenario) {
+                genClassFile("handler", "/scenario.mustache");
+            }
             if (type != null) {
-                if (type == IConstance.CompilationUnitType.role) {
-                    sppClass.packageName(getBasePackage()+"." + getJavaPackage() +"."+"model");
-                }else if (type == IConstance.CompilationUnitType.rolemapper) {
-                    takeAllMapFields();
-
-                    genClassFile("model", "/rolemapper.mustache");
-                } else if (type == IConstance.CompilationUnitType.atomicservice) {
-                    genClassFile("handler", "/atomicservice.mustache");
-
-                } else if (type == IConstance.CompilationUnitType.scenario) {
-                    genClassFile("handler", "/scenario.mustache");
-                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

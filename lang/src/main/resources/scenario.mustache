@@ -9,10 +9,10 @@ public class {{name}} implements Scenario{
 	{{/sppFieldList}}
 	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/serviceBody.sppLocalVarList}}){
     {{#serviceBody}}{{#sppServiceCallList}}
-	    {{#callee}}{{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{name}}{{/sppParameterList}});{{/callee}}
+	    {{#callee}}{{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{nameCall}}{{/sppParameterList}});{{/callee}}
         {{#transactionCall}}{{#-first}}{
             String transaction_id = startTransaction();{{/-first}}
-            {{#callee}}{{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{name}}{{/sppParameterList}});{{/callee}}
+            {{#callee}}{{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{nameCall}}{{/sppParameterList}});{{/callee}}
             {{#-last}}endTransaction(transaction_id);
         }{{/-last}}{{/transactionCall}}
     {{/sppServiceCallList}}{{/serviceBody}}

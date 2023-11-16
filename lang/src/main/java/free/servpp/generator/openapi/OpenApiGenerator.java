@@ -31,6 +31,7 @@ public class OpenApiGenerator extends BaseClassGenerator {
         OpenAPI openAPI = new OpenAPI();
         Map<String, SppClass> sppClassMap = classChecker.getMapsOfClass();
         openAPI.addTagsItem(new Tag().name(javaPackage).description(""));
+        setAdditionalPackage(basePacakge, javaPackage, sppClassMap);
         for (SppClass sppClass : sppClassMap.values()) {
 //            if(sppClass.getType() == IConstance.CompilationUnitType.rolemapper)
 //                System.out.println(sppClass);
@@ -47,6 +48,21 @@ public class OpenApiGenerator extends BaseClassGenerator {
             new MustacheClassWriter(domainPath,sppClass, basePacakge, javaPackage).generate();
         }
         return openAPI;
+    }
+
+    private static void setAdditionalPackage(String basePacakge, String javaPackage, Map<String, SppClass> sppClassMap) {
+        for (SppClass sppClass : sppClassMap.values()) {
+            String additional = null;
+            IConstance.CompilationUnitType type = sppClass.getType();
+            if (type == IConstance.CompilationUnitType.role || type == IConstance.CompilationUnitType.rolemapper ||
+                type == IConstance.CompilationUnitType.entity || type == IConstance.CompilationUnitType.reference) {
+                additional = "model";
+            }else if(type == IConstance.CompilationUnitType.scenario || type == IConstance.CompilationUnitType.atomicservice){
+                additional = "handler";
+            }
+            if(additional != null)
+                sppClass.packageName(basePacakge +"." + javaPackage +"."+"model");
+        }
     }
 
     private static void createAPath(String javaPackage, SppClass sppClass, OpenAPI openAPI) {
