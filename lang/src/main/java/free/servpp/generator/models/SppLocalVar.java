@@ -1,5 +1,7 @@
 package free.servpp.generator.models;
 
+import free.servpp.generator.general.NameUtil;
+
 /**
  * @author lidong@date 2023-11-01@version 1.0
  */
@@ -35,6 +37,10 @@ public class SppLocalVar {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUpperName(){
+        return NameUtil.firstToLowerCase(getName(),false);
     }
 
     @Override

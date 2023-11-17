@@ -30,12 +30,12 @@ public class Compiler {
 
     public static void main(String[] args) throws IOException {
         InputStream inputStream = Compiler.class.getResourceAsStream("/spp.mustache");
-        Compiler.compile(inputStream, new File("/Users/lidong/gitspace/spplang/lang/src/main/resources/spps/invoice.spp"),
+        Compiler.compile(inputStream, new File("/Users/lidong/gitspace/spplang/lang/src/main/spp/invoice.spp"),
                 new File("/Users/lidong/gitspace/spplang/lang/target/gen"),
                 new File("/Users/lidong/gitspace/spplang/lang/target/gen/src/java"), "free.servpp.openapi");
     }
 
-    public static void compile(InputStream mustache, File sppFile, File yamlOutPath, File javaSrc, String basePackage) throws IOException {
+    public static void compile(InputStream mustache, File sppFile, File yamlOutPath, File genRoot, String basePackage) throws IOException {
         FileInputStream reader = new FileInputStream(sppFile);
         byte[] bytes = reader.readAllBytes();
         reader.close();
@@ -59,7 +59,7 @@ public class Compiler {
 
         ParseTreeWalker walker = new ParseTreeWalker();
 
-        SppGeneralListener listener = new SppGeneralListener(javaSrc,basePackage);
+        SppGeneralListener listener = new SppGeneralListener(genRoot,basePackage);
         listener.setSppFile(sppFile);
 
         walker.walk(listener, tree);
@@ -71,7 +71,8 @@ public class Compiler {
     }
 
     private static void openApi(SppGeneralListener listener, InputStream mustache, File sppFile, File yamlOutPath) throws IOException {
-        OpenAPI openAPI = new OpenApiGenerator().generate(listener.getClassChecker(),
+        OpenApiGenerator openApiGenerator = new OpenApiGenerator();
+        OpenAPI openAPI = openApiGenerator.generate(listener.getClassChecker(),
                 listener.getDomainPath(), listener.getBasePackage(), listener.getJavaPackage());
         Template template = Mustache.compiler().compile(new InputStreamReader(mustache));
         if(!yamlOutPath.exists())
@@ -85,6 +86,8 @@ public class Compiler {
         }finally {
             out.close();
         }
+        openApiGenerator.createJavaSpringMustache(yamlOutPath);
+        openApiGenerator.createServicesProperties(listener.getGenRoot());
     }
     private static String[] header(String var){
         int idx = var.indexOf(HEADER);

@@ -62,17 +62,17 @@ public abstract class BaseGenerator implements
     }
 
     @Override
-    public void exitObject(SppParser.ObjectContext ctx) {
+    public void exitEntity(SppParser.EntityContext ctx) {
 
     }
 
     @Override
-    public void enterObjectBodyDeclaration(SppParser.ObjectBodyDeclarationContext ctx) {
+    public void enterEntityBodyDeclaration(SppParser.EntityBodyDeclarationContext ctx) {
 
     }
 
     @Override
-    public void exitObjectBodyDeclaration(SppParser.ObjectBodyDeclarationContext ctx) {
+    public void exitEntityBodyDeclaration(SppParser.EntityBodyDeclarationContext ctx) {
 
     }
 
@@ -118,12 +118,12 @@ public abstract class BaseGenerator implements
 
 
     @Override
-    public void enterObjecttype(SppParser.ObjecttypeContext ctx) {
+    public void enterEntitytype(SppParser.EntitytypeContext ctx) {
 
     }
 
     @Override
-    public void exitObjecttype(SppParser.ObjecttypeContext ctx) {
+    public void exitEntitytype(SppParser.EntitytypeContext ctx) {
 
     }
 

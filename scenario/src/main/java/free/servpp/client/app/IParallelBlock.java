@@ -46,8 +46,8 @@ public interface IParallelBlock extends IServiceExecutor {
                 IClient client = getClient();
                 client.callAsyncService(appMessage, new ICallbackListener() {
                     @Override
-                    public void serviceCallback(Role[] roles) {
-                        service.copyFrom(roles);
+                    public void serviceCallback(Object role) {
+                        service.copyFrom(role);
                         try {
                             executeNext(callbackAggregation);
                         } catch (AtomicExecuteException e) {

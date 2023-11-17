@@ -1,5 +1,7 @@
 package free.servpp.generator.openapi;
 
+import com.samskivert.mustache.Mustache;
+import com.samskivert.mustache.Template;
 import free.servpp.generator.general.IConstance;
 import free.servpp.generator.general.IFileGenerator;
 import free.servpp.generator.general.BaseClassGenerator;
@@ -17,7 +19,7 @@ import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
 import io.swagger.v3.oas.models.tags.Tag;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,7 @@ import java.util.Map;
  * @author lidong@date 2023-11-13@version 1.0
  */
 public class OpenApiGenerator extends BaseClassGenerator {
+    List<SppService> services = new ArrayList<>();
     public OpenAPI generate(ClassChecker classChecker, File domainPath, String basePacakge, String javaPackage) {
         dealMaps(classChecker);
         OpenAPI openAPI = new OpenAPI();
@@ -38,30 +41,84 @@ public class OpenApiGenerator extends BaseClassGenerator {
             IConstance.CompilationUnitType type = sppClass.getType();
             if (type == IConstance.CompilationUnitType.entity
                     || type == IConstance.CompilationUnitType.role
+                    || type == IConstance.CompilationUnitType.contract
                     || type == IConstance.CompilationUnitType.reference) {
                 createASchema(sppClass, openAPI);
             } else if (type == IConstance.CompilationUnitType.atomicservice
                     || type == IConstance.CompilationUnitType.scenario) {
                 createAPath(javaPackage, sppClass, openAPI);
+                services.add((SppService) sppClass);
             }
 //            new OpenAPIClassWriter(domainPath,sppClass, basePacakge, javaPackage).generate();
             new MustacheClassWriter(domainPath,sppClass, basePacakge, javaPackage).generate();
         }
+
         return openAPI;
+    }
+
+    public void createJavaSpringMustache(File yamlOutPath){
+        File dir = new File(yamlOutPath,"JavaSpring");
+        if(!dir.exists()){
+            dir.mkdirs();
+        }
+        InputStream in = OpenApiGenerator.class.getResourceAsStream("/JavaSpring/methodBody.mustache");
+        File mustache = new File(dir, "methodBody.mustache");
+
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(new FileOutputStream(mustache));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String line;
+            while((line = reader.readLine()) != null){
+                out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            out.close();
+        }
+    }
+    public void createServicesProperties(File genRoot) {
+        File resources = new File(genRoot.getParent(),"resources");
+        Template template = Mustache.compiler().compile(new InputStreamReader(OpenApiGenerator.class.getResourceAsStream("/servicesprop.mustache")));
+        if(!resources.exists()){
+            resources.mkdirs();
+        }
+        File servicesFile = new File(resources, "services.properties");
+
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(new FileOutputStream(servicesFile));
+//            out = new PrintWriter(System.out);
+            out.println(template.execute(new Object(){
+                List<SppService> getServices(){
+                    return services;
+                }
+            }));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            out.close();
+        }
     }
 
     private static void setAdditionalPackage(String basePacakge, String javaPackage, Map<String, SppClass> sppClassMap) {
         for (SppClass sppClass : sppClassMap.values()) {
             String additional = null;
             IConstance.CompilationUnitType type = sppClass.getType();
-            if (type == IConstance.CompilationUnitType.role || type == IConstance.CompilationUnitType.rolemapper ||
-                type == IConstance.CompilationUnitType.entity || type == IConstance.CompilationUnitType.reference) {
+            if (type == IConstance.CompilationUnitType.role ||
+                    type == IConstance.CompilationUnitType.rolemapper ||
+                    type == IConstance.CompilationUnitType.entity ||
+                    type == IConstance.CompilationUnitType.contract ||
+                    type == IConstance.CompilationUnitType.reference) {
                 additional = "model";
-            }else if(type == IConstance.CompilationUnitType.scenario || type == IConstance.CompilationUnitType.atomicservice){
+            }else if(type == IConstance.CompilationUnitType.scenario ||
+                    type == IConstance.CompilationUnitType.atomicservice){
                 additional = "handler";
             }
-            if(additional != null)
-                sppClass.packageName(basePacakge +"." + javaPackage +"."+"model");
+            sppClass.setBasePackage(basePacakge);
+            sppClass.setJavaPackage(javaPackage);
+            sppClass.setAdditionalPackage(additional);
         }
     }
 
@@ -105,7 +162,8 @@ public class OpenApiGenerator extends BaseClassGenerator {
                 sppService.getServiceBody().getSppLocalVarList()
                 : sppService.getSppFieldList();
         String schemaName = sppFieldList.get(0).getType().getName();
-        if (sppFieldList.size() > 1){
+//        if (sppFieldList.size() > 1)
+        {
             schemaName = sppService.getName() +"Args";
             SppClass cls = new SppClass(schemaName, IConstance.CompilationUnitType.role);
             for(SppLocalVar field:sppFieldList) {

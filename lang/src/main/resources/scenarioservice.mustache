@@ -1,0 +1,32 @@
+package {{basePackage}}.{{javaPackage}}.service;
+
+import free.servpp.service.DefaultServiceContainer;
+import {{basePackage}}.{{javaPackage}}.handler.{{name}};
+import {{basePackage}}.{{javaPackage}}.model.{{name}}Args;
+{{#sppFieldList}}
+import {{basePackage}}.{{javaPackage}}.handler.{{type.name}};
+{{/sppFieldList}}
+
+public class Simple{{name}} extends {{name}}{
+    public Simple{{name}}() {
+    	{{#sppFieldList}}
+            this.{{name}} = ({{type.name}})DefaultServiceContainer.getInstance().getService("{{name}}");
+    	{{/sppFieldList}}
+    }
+
+    @Override
+    public void execute(Object role) {
+        {{name}}Args args = ({{name}}Args) role;
+        {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}args.get{{upperName}}(){{/serviceBody.sppLocalVarList}});
+    }
+
+
+    @Override
+    public String startTransaction() {
+        return null;
+    }
+
+    @Override
+    public void endTransaction(String id) {
+    }
+}

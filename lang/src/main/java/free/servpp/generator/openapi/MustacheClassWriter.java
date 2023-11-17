@@ -25,12 +25,13 @@ public class MustacheClassWriter extends ClassWriterConfig {
             if (type == IConstance.CompilationUnitType.rolemapper) {
                 takeAllMapFields();
 
-                genClassFile("model", "/rolemapper.mustache");
+                genClassFile("model", "/rolemapper.mustache",sppClass, sppClass.getName());
             } else if (type == IConstance.CompilationUnitType.atomicservice) {
-                genClassFile("handler", "/atomicservice.mustache");
-
+                genClassFile("handler", "/atomicservice.mustache",sppClass, sppClass.getName());
+                genClassFile("service", "/service.mustache", sppClass, "Simple" + sppClass.getName());
             } else if (type == IConstance.CompilationUnitType.scenario) {
-                genClassFile("handler", "/scenario.mustache");
+                genClassFile("handler", "/scenario.mustache",sppClass, sppClass.getName());
+                genClassFile("service", "/scenarioservice.mustache",sppClass, "Simple" +sppClass.getName());
             }
             if (type != null) {
             }
@@ -56,29 +57,27 @@ public class MustacheClassWriter extends ClassWriterConfig {
         }
     }
 
-    private void genClassFile(String addtionalPackage, String mustacheFile) throws FileNotFoundException {
-        sppClass.packageName(getBasePackage()+"." + getJavaPackage() +"."+addtionalPackage);
+    private void genClassFile(String additionalPackage, String mustacheFile, SppClass cls, String fileName) throws FileNotFoundException {
+        cls.setAdditionalPackage(additionalPackage);
         Template template = Mustache.compiler().withLoader(new Mustache.TemplateLoader() {
             @Override
             public Reader getTemplate(String s) throws Exception {
                 return new InputStreamReader(MustacheClassWriter.class.getResourceAsStream(File.separator+s+".mustache"));
             }
         }).compile(new InputStreamReader(MustacheClassWriter.class.getResourceAsStream(mustacheFile)));
-        String objName = sppClass.getName();
-        File clsPath = new File(getDomainPath(), addtionalPackage);
+        File clsPath = new File(getDomainPath(), additionalPackage);
         if(!clsPath.exists()){
             clsPath.mkdirs();
         }
-        File objPath = new File(clsPath, objName + IConstance.SUFFIX);
+        File objPath = new File(clsPath, fileName + IConstance.SUFFIX);
 
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileOutputStream(objPath));
 //            out = new PrintWriter(System.out);
-            out.println(template.execute(sppClass));
+            out.println(template.execute(cls));
         }finally {
             out.close();
         }
     }
-
 }

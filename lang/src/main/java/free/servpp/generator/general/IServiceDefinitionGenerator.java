@@ -14,7 +14,7 @@ public interface IServiceDefinitionGenerator extends ICompilationUnitGenerator{
             serviceType = (ServiceType) pop();
         CompilationUnitType type = (CompilationUnitType) pop();
         String methodName = ctx.getChild(0).getText();
-        String clsName = IConstance.firstToLowerCase(methodName,false);
+        String clsName = NameUtil.firstToLowerCase(methodName,false);
         SppService sppService = generateService(type, ctx, clsName,methodName);
         sppService.setServiceType(serviceType);
     }

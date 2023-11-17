@@ -3,9 +3,9 @@ import free.servpp.client.Scenario;
 {{#serviceBody.sppLocalVarList}}
 import {{type.packageName}}.{{type.name}};
 {{/serviceBody.sppLocalVarList}}
-public class {{name}} implements Scenario{
+public abstract class {{name}} implements Scenario{
 	{{#sppFieldList}}
-	public {{type.name}} {{name}};
+	protected {{type.name}} {{name}};
 	{{/sppFieldList}}
 	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/serviceBody.sppLocalVarList}}){
     {{#serviceBody}}{{#sppServiceCallList}}

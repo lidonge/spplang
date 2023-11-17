@@ -9,7 +9,7 @@ public interface IConstance {
     public static String compilationUnitPackage = "free.servpp.client";
 
     public static enum CompilationUnitType {
-        entity, reference, role, actas, atomicservice, scenario, rolemapper
+        entity, reference, role, contract, atomicservice, scenario, rolemapper
     }
     static final String[] primaryTypes = new String[]{
             "boolean", "char", "String"
@@ -21,12 +21,4 @@ public interface IConstance {
     }
 
 
-    static String firstToLowerCase(String ptype, boolean toLower) {
-        String name;
-        char first = ptype.charAt(0);
-        first = toLower? Character.toLowerCase(first) : Character.toUpperCase(first);
-        StringBuffer sb = new StringBuffer();
-        name = sb.append(first).append(ptype.substring(1)).toString();
-        return name;
-    }
 }

@@ -16,6 +16,10 @@ public class SppGeneralListener extends CompilationUnitGenerator {
         this.basePackage = basePackage;
     }
 
+    public File getGenRoot() {
+        return genRoot;
+    }
+
     public String getJavaPackage() {
         return javaPackage;
     }

@@ -45,9 +45,9 @@ public interface IServiceExecutor {
         IAppMessage appMessage = appMessageBuilder.build(service);
         client.callAsyncService(appMessage, new ICallbackListener() {
             @Override
-            public void serviceCallback(Role[] roles) {
+            public void serviceCallback(Object role) {
                 try {
-                    service.copyFrom(roles);
+                    service.copyFrom(role);
                 }catch(Throwable ex){
                     callbackAggregation.asyncServiceFinishied(IServiceExecutor.this, ex);
                     return;

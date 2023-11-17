@@ -6,13 +6,13 @@ import free.servpp.lang.antlr.SppParser;
 /**
  * @author lidong@date 2023-11-01@version 1.0
  */
-public interface IObjectBodyGenerator extends ICompilationUnitGenerator{
+public interface IEntityBodyGenerator extends ICompilationUnitGenerator{
     @Override
-    default void enterObjectBody(SppParser.ObjectBodyContext ctx) {
+    default void enterEntityBody(SppParser.EntityBodyContext ctx) {
     }
 
     @Override
-    default void exitObjectBody(SppParser.ObjectBodyContext ctx) {
+    default void exitEntityBody(SppParser.EntityBodyContext ctx) {
     }
 
     @Override
@@ -20,9 +20,9 @@ public interface IObjectBodyGenerator extends ICompilationUnitGenerator{
         String type = ctx.getChild(0).getText();
         String name = ctx.getChild(1).getText();
         ClassChecker classChecker = checkClass(ctx, type);
-
-        if(classChecker.getCurrentClass().getType() == CompilationUnitType.entity &&
-                classChecker.getSppClass(classChecker.getCurrentClass().getType(),type).getType() != null)
+        CompilationUnitType clstype = classChecker.getCurrentClass().getType();
+        if( (clstype == CompilationUnitType.entity || clstype == CompilationUnitType.reference) &&
+                classChecker.getSppClass(clstype,type).getType() != null)
             logSppError(ctx, "The field "+name+" of entity should be primary type!" );
         logSppError(ctx,generateField(type,name));
     }

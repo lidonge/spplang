@@ -1,6 +1,0 @@
-        {{#transactionCall}}{{#-first}}
-        {
-            String transaction_id = startTransaction();{{/-first}}
-            {{#callee}}{{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{name}}{{/sppParameterList}});{{/callee}}
-            {{#-last}}endTransaction(transaction_id);
-        }{{/-last}}{{/transactionCall}}

@@ -34,7 +34,7 @@ public interface IScenarioGenerator extends IServiceDefinitionGenerator {
     @Override
     default void enterAtomiccall(SppParser.AtomiccallContext ctx) {
         String serviceName = ctx.getChild(0).getText();
-        String serviceClassName = IConstance.firstToLowerCase(serviceName,false);
+        String serviceClassName = NameUtil.firstToLowerCase(serviceName,false);
         ClassChecker checker = checkClass(ctx,serviceClassName);
         ServiceBaseBody serviceBaseBody = getCurrentServiceBaseBody();
         SppService currentCLass = (SppService) checker.getCurrentClass();

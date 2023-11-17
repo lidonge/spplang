@@ -18,28 +18,28 @@ compilationUnits
     ;
 
 compilationUnit
-    : object
+    : entity
     | role
     | actas
     | atomicservice
     | scenario
     ;
 
-object
-    : ('Object' | 'Reference') Identifier objectBody
+entity
+    : ('Entity' | 'Reference' ) Identifier entityBody
     ;
 
-objectBody
-    :   '{' objectBodyDeclaration* '}'
+entityBody
+    :   '{' entityBodyDeclaration* '}'
     ;
 
-objectBodyDeclaration
+entityBodyDeclaration
     : fieldDeclaration
     ;
 
 fieldDeclaration
     : type variableDeclaratorId ';'
-    | objecttype variableDeclaratorId ';'
+    | entitytype variableDeclaratorId ';'
     ;
 
 variableDeclaratorId
@@ -51,15 +51,15 @@ type
     ;
 
 role
-    : 'Role' Identifier roleBody
+    : ('Role' | 'Contract' ) Identifier roleBody
     ;
 
 roleBody
-    : objectBody
+    : entityBody
     ;
 
 actas
-    : 'act' Identifier 'as' Identifier mapBody
+    : 'take' Identifier 'as' Identifier mapBody
     ;
 
 mapBody
@@ -103,7 +103,7 @@ servicetype
     | 'update'
     ;
 
-objecttype
+entitytype
     : Identifier
     ;
 

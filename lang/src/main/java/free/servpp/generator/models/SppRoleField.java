@@ -1,6 +1,6 @@
 package free.servpp.generator.models;
 
-import free.servpp.generator.general.IConstance;
+import free.servpp.generator.general.NameUtil;
 
 /**
  * @author lidong@date 2023-11-03@version 1.0
@@ -16,7 +16,7 @@ public class SppRoleField extends SppField{
     }
 
     public String getUpperEntityName(){
-        return IConstance.firstToLowerCase(entityName,false);
+        return NameUtil.firstToLowerCase(entityName,false);
     }
 
     public void setEntityName(String entityName) {

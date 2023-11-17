@@ -1,6 +1,7 @@
 package free.servpp.generator.java;
 
 import free.servpp.generator.general.IConstance;
+import free.servpp.generator.general.NameUtil;
 import free.servpp.generator.models.*;
 
 import java.io.FileNotFoundException;
@@ -72,8 +73,8 @@ public interface IRoleMapperWriter extends IClassWriter {
     }
 
     private String genMapField(String bname1, String aname1, String  aname2, String bname2) {
-        return bname1 + "set" + IConstance.firstToLowerCase(bname2, false) + " (" +
-                aname1 + "get" + IConstance.firstToLowerCase(aname2, false) + "());";
+        return bname1 + "set" + NameUtil.firstToLowerCase(bname2, false) + " (" +
+                aname1 + "get" + NameUtil.firstToLowerCase(aname2, false) + "());";
     }
 
     private void genMapFunctionDef(SppClass a, SppClass b) {

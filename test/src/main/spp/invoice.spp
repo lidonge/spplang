@@ -7,18 +7,18 @@ Reference Customer{
     int sex;
 }
 
-Object Product{
+Reference Product{
     String id;
     String name;
 }
 
-Object BaseAccount{
+Entity BaseAccount{
     String id;
     double balance;
     double max;
     double min;
 }
-Object Stock{
+Reference Stock{
     String id;
     int quantity;
     int max;
@@ -32,9 +32,9 @@ Role Goods{
 }
 Role GoodsStock{}
 Role Account{}
-act BaseAccount as Account{takeall;}
-act Stock as GoodsStock{takeall;}
-act Product as Goods{
+take BaseAccount as Account{takeall;}
+take Stock as GoodsStock{takeall;}
+take Product as Goods{
     mapsame;
     String goodsId = id;
     takeall;
@@ -44,7 +44,8 @@ Role Amount{
     double amount;
     date signDate;
 }
-Role Invoice{
+Contract Invoice{
+    String id;
     Account buyer;
     Account seller;
     Goods goods;

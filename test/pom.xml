@@ -23,16 +23,8 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.7.14</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.1.5</version>
-            <scope>test</scope>
-        </dependency>
-
         <!--SpringDoc dependencies -->
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -54,6 +46,12 @@
             <groupId>free.servpp</groupId>
             <artifactId>scenario</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <build>
@@ -97,7 +95,7 @@
                             <apiPackage>${default.package}.handler</apiPackage>
                             <modelPackage>${default.package}.model</modelPackage>
                             <invokerPackage>${default.package}.handler</invokerPackage>
-                            <templateDirectory>src/main/resources/JavaSpring</templateDirectory>
+                            <templateDirectory>${basedir}/target/spp/src/main/resources/JavaSpring</templateDirectory>
                         </configuration>
                     </execution>
                 </executions>

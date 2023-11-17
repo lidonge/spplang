@@ -20,26 +20,11 @@ public interface IFileGenerator extends IConstance {
     File getDomainPath();
 
     default String typeToString(CompilationUnitType type) {
-        String ret = null;
+        String ret = "class";
         switch (type) {
-
-            case entity -> {
-                ret = "class";
-            }
-            case role -> {
-                ret = "class";
-            }
-            case actas -> {
-            }
-            case atomicservice -> {
+            case atomicservice:
                 ret = "interface";
-            }
-            case scenario -> {
-                ret = "class";
-            }
-            case rolemapper -> {
-                ret = "class";
-            }
+                break;
         }
         return ret;
     }
@@ -54,10 +39,11 @@ public interface IFileGenerator extends IConstance {
             case reference -> {
                 ret = compilationUnitPackage + ".Reference";
             }
+            case contract -> {
+                ret = compilationUnitPackage + ".Contract";
+            }
             case role -> {
                 ret = compilationUnitPackage + ".Role";
-            }
-            case actas -> {
             }
             case atomicservice -> {
                 ret = compilationUnitPackage + ".AtomicService";
