@@ -386,7 +386,7 @@ public class Mustache {
         return new Template(trim(accum.finish(), true), compiler);
     }
 
-    private Mustache () {} // no instantiateski
+    private Mustache() {} // no instantiateski
 
     protected static Template.Segment[] trim (Template.Segment[] segs, boolean top) {
         // now that we have all of our segments, we make a pass through them to trim whitespace
@@ -916,26 +916,57 @@ public class Mustache {
                 seg.execute(tmpl, ctx, out);
             }
         }
+        protected void executeSegs (Template tmpl, Template.Segment[] segs, Template.Context ctx, Writer out) {
+            for (Template.Segment seg : segs) {
+                seg.execute(tmpl, ctx, out);
+            }
+        }
 
         protected final Template.Segment[] _segs;
     }
 
     /** A segment that represents a section. */
     protected static class SectionSegment extends BlockSegment {
+        static List<SectionSegment> sections = new ArrayList<>();
         public SectionSegment (Compiler compiler, String name, Template.Segment[] segs, int line) {
             super(name, segs, line);
             _comp = compiler;
         }
         @Override public void execute (Template tmpl, Template.Context ctx, Writer out) {
+            sections.add(this);
             Object value = tmpl.getSectionValue(ctx, _name, _line); // won't return null
             Iterator<?> iter = _comp.collector.toIterator(value);
             if (iter != null) {
                 int index = 0;
-                while (iter.hasNext()) {
-                    Object elem = iter.next();
-                    boolean onFirst = (index == 0), onLast = !iter.hasNext();
-                    executeSegs(tmpl, ctx.nest(elem, ++index, onFirst, onLast), out);
+                if(iter.hasNext()){
+                    SectionSegment recursion = null;
+                    for(int i = sections.size() -2;i>=0;i--){
+                        SectionSegment prev = sections.get(i);
+                        if(prev._name.equals(_name)){
+                            //find recursion
+                            recursion = prev;
+                        }
+                    }
+                    Template.Segment[] segs = _segs;
+                    if(recursion != null) {
+                        int deepth = sections.size() - 1;
+                        segs = new Template.Segment[_segs.length*deepth+recursion._segs.length];
+                        for(int j = 0;j<deepth;j++) {
+                            for (int i = 0; i < _segs.length; i++) {
+                                segs[i+j* _segs.length] = _segs[i];
+                            }
+                        }
+                        for(int i = 0;i<recursion._segs.length;i++){
+                            segs[i+_segs.length*deepth] =recursion._segs[i];
+                        }
+                    }
+                    while (iter.hasNext()) {
+                        Object elem = iter.next();
+                        boolean onFirst = (index == 0), onLast = !iter.hasNext();
+                        executeSegs(tmpl, segs,ctx.nest(elem, ++index, onFirst, onLast), out);
+                    }
                 }
+
             } else if (value instanceof Boolean) {
                 if ((Boolean)value) {
                     executeSegs(tmpl, ctx, out);
@@ -951,6 +982,7 @@ public class Mustache {
             } else {
                 executeSegs(tmpl, ctx.nest(value), out);
             }
+            sections.remove(sections.size() -1);
         }
         @Override public void decompile (Delims delims, StringBuilder into) {
             delims.addTag('#', _name, into);
