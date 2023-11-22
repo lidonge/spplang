@@ -1,6 +1,6 @@
 package free.servpp.client.app;
 
-import free.servpp.client.AtomicService;
+import free.servpp.service.AtomicService;
 
 /**
  * @author lidong@date 2023-11-08@version 1.0

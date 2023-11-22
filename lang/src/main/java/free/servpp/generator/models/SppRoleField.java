@@ -22,4 +22,13 @@ public class SppRoleField extends SppField{
     public void setEntityName(String entityName) {
         this.entityName = entityName;
     }
+
+    @Override
+    public String toString() {
+        return "SppRoleField{" +
+                "entityName='" + entityName + '\'' +
+                ", type=" + type.getName() +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

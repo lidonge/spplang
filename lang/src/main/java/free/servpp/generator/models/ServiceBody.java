@@ -76,6 +76,9 @@ public class ServiceBody extends ServiceBaseBody{
     public SppLocalVar getLocalVar(String methodName){
         return sppLocalVarHashMap.get(methodName);
     }
+    public SppLocalVar getLocalVar(int index){
+        return sppLocalVarList.get(index);
+    }
 
     @Override
     public String toString() {

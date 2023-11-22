@@ -29,14 +29,14 @@ import java.util.Map;
  */
 public class OpenApiGenerator extends BaseClassGenerator {
     List<SppService> services = new ArrayList<>();
-    public OpenAPI generate(ClassChecker classChecker, File domainPath, String basePacakge, String javaPackage) {
-        dealMaps(classChecker);
+    public OpenAPI generate(SppDomain sppDomain, File domainPath, String basePacakge, String javaPackage) {
+        dealMaps(sppDomain);
         OpenAPI openAPI = new OpenAPI();
-        Map<String, SppClass> sppClassMap = classChecker.getMapsOfClass();
+        Map<String, SppClass> sppClassMap = sppDomain.getMapsOfClass();
         openAPI.addTagsItem(new Tag().name(javaPackage).description(""));
         setAdditionalPackage(basePacakge, javaPackage, sppClassMap);
         for (SppClass sppClass : sppClassMap.values()) {
-//            if(sppClass.getType() == IConstance.CompilationUnitType.rolemapper)
+//            if(sppClass.getType() == IConstance.CompilationUnitType.scenario)
 //                System.out.println(sppClass);
             IConstance.CompilationUnitType type = sppClass.getType();
             if (type == IConstance.CompilationUnitType.entity

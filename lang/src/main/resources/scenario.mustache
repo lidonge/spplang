@@ -1,5 +1,11 @@
 package {{packageName}};
-import free.servpp.client.Scenario;
+import free.servpp.service.Scenario;
+import free.servpp.service.Service;
+import free.servpp.service.scenario.IExecutor;
+import free.servpp.service.scenario.IParallelExecuteGroup;
+import free.servpp.service.scenario.IScenarioEngine;
+import free.servpp.service.scenario.ISerialExecuteGroup;
+import free.servpp.service.scenario.ITransactionGroup;
 {{#serviceBody.sppLocalVarList}}
 import {{type.packageName}}.{{type.name}};
 {{/serviceBody.sppLocalVarList}}
@@ -8,13 +14,70 @@ public abstract class {{name}} implements Scenario{
 	protected {{type.name}} {{name}};
 	{{/sppFieldList}}
 	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/serviceBody.sppLocalVarList}}){
-    {{#serviceBody}}{{#sppServiceCallList}}
-	    {{#callee}}{{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{nameCall}}{{/sppParameterList}});{{/callee}}
-        {{#transactionCall}}{{#-first}}{
-            String transaction_id = startTransaction();{{/-first}}
-            {{#callee}}{{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{nameCall}}{{/sppParameterList}});{{/callee}}
-            {{#-last}}endTransaction(transaction_id);
-        }{{/-last}}{{/transactionCall}}
-    {{/sppServiceCallList}}{{/serviceBody}}
-	}
+    {{#serviceBody}}
+        {{#sppServiceCallList}}
+        {{#executeCall}}
+            {{#-first}}
+        new I{{upperType}}ExecuteGroup() {
+            @Override
+            public IExecutor[] getServices() {
+                return new IExecutor[]{
+            {{/-first}}
+            {{^-first}},{{/-first}}
+	    {{#callee}}
+                    new IExecutor() {
+                        @Override
+                        public Service getService() {
+                            return {{funcName}};
+                        }
+
+                        @Override
+                        public void execute() {
+                            {{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{nameCall}}{{/sppParameterList}});
+                        }
+                    }
+	    {{/callee}}
+	    {{^callee}}{{#executeCall}}{{/executeCall}}{{/callee}}
+        {{#-last}}
+            };
+        }
+    }
+    {{/-last}}
+    {{/executeCall}}
+    {{#executeCall}}
+    {{#-first}}
+    .execute();{{/-first}}
+    {{/executeCall}}
+    {{#transactionCall}}
+    {{#-first}}
+    new ITransactionGroup() {
+        @Override
+        public IExecutor[] getServices() {
+            return new IExecutor[]{
+    {{/-first}}
+    {{^-first}},{{/-first}}
+    {{#callee}}
+                new IExecutor() {
+                    @Override
+                    public Service getService() {
+                        return {{funcName}};
+                    }
+
+                    @Override
+                    public void execute() {
+                        {{funcName}}.{{funcName}}({{#sppParameterList}}{{^-first}},{{/-first}}{{nameCall}}{{/sppParameterList}});
+                    }
+                }
+    {{/callee}}
+    {{#-last}}
+                };
+            }
+        }
+    {{/-last}}
+    {{/transactionCall}}
+    {{#-last}}
+    .execute();{{/-last}}
+    {{/sppServiceCallList}}
+    {{/serviceBody}}
+    }
 }

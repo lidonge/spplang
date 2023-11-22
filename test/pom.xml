@@ -44,7 +44,7 @@
         </dependency>
         <dependency>
             <groupId>free.servpp</groupId>
-            <artifactId>scenario</artifactId>
+            <artifactId>lang</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

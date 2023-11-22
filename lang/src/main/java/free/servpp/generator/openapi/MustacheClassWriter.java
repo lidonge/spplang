@@ -35,7 +35,7 @@ public class MustacheClassWriter extends ClassWriterConfig {
             }
             if (type != null) {
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -57,7 +57,7 @@ public class MustacheClassWriter extends ClassWriterConfig {
         }
     }
 
-    private void genClassFile(String additionalPackage, String mustacheFile, SppClass cls, String fileName) throws FileNotFoundException {
+    private void genClassFile(String additionalPackage, String mustacheFile, SppClass cls, String fileName) throws IOException {
         cls.setAdditionalPackage(additionalPackage);
         Template template = Mustache.compiler().withLoader(new Mustache.TemplateLoader() {
             @Override
@@ -74,10 +74,25 @@ public class MustacheClassWriter extends ClassWriterConfig {
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileOutputStream(objPath));
+            String text = template.execute(cls);
 //            out = new PrintWriter(System.out);
-            out.println(template.execute(cls));
+            out.println(formatCode(text));
         }finally {
             out.close();
         }
+    }
+
+    private String formatCode(String code) throws IOException {
+        BufferedReader reader = new BufferedReader(new StringReader(code));
+        StringBuffer sb = new StringBuffer();
+        String line;
+        while((line = reader.readLine()) != null){
+            if(line.trim().length() == 0){
+
+            }else{
+                sb.append(line).append("\n");
+            }
+        }
+        return sb.toString();
     }
 }

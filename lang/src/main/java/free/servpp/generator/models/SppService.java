@@ -6,10 +6,32 @@ import free.servpp.generator.general.IConstance;
  * @author lidong@date 2023-11-02@version 1.0
  */
 public class SppService extends SppClass{
-    private IConstance.ServiceType serviceType;
-    private String funcName;
+    protected IConstance.ServiceType serviceType;
+    protected String funcName;
+
+    protected ServiceBody serviceBody;
+
     public SppService(String name) {
         super(name);
+        this.serviceBody = new ServiceBody(this);
+    }
+    public SppService(String name, IConstance.CompilationUnitType type) {
+        super(name,type);
+        this.serviceBody = new ServiceBody(this);
+    }
+
+    public ServiceBody getServiceBody() {
+        return serviceBody;
+    }
+    public String addLocalVar(SppLocalVar sppLocalVar){
+        return serviceBody.addLocalVar(sppLocalVar);
+    }
+
+    public SppLocalVar getLocalVar(String varName){
+        return serviceBody.getLocalVar(varName);
+    }
+    public SppLocalVar getLocalVar(int index){
+        return serviceBody.getLocalVar(index);
     }
 
     public String getFuncName() {
@@ -31,7 +53,21 @@ public class SppService extends SppClass{
     public void copyFrom(SppClass cls) {
         super.copyFrom(cls);
         SppService sppService = (SppService) cls;
+        serviceBody = sppService.serviceBody;
         serviceType = sppService.serviceType;
         funcName = sppService.funcName;
+    }
+
+    @Override
+    public String toString() {
+        return "SppService{" +
+                "serviceType=" + serviceType +
+                ", funcName='" + funcName + '\'' +
+                ", serviceBody=" + serviceBody +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", sppFieldMap=" + sppFieldMap +
+                ", sppFieldList=" + sppFieldList +
+                '}';
     }
 }

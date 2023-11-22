@@ -1,7 +1,7 @@
 package free.servpp.generator.models;
 
 import free.servpp.generator.general.IConstance;
-import free.servpp.generator.general.IScenarioGenerator;
+import free.servpp.generator.general.IScenarioHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,18 +25,14 @@ public class SppClass {
     //There is only one method in a class, so not need
 //    Map<String, SppMethod> methodMap = new HashMap<>();
 
-    private ServiceBody serviceBody;
-
-    private IScenarioGenerator.CurrentCall currentCall;
+    private IScenarioHandler.CurrentCall currentCall;
     public SppClass(String name) {
         this.name = name;
-        this.serviceBody = new ServiceBody(this);
     }
 
     public SppClass(String name, IConstance.CompilationUnitType type) {
         this.name = name;
         this.type = type;
-        this.serviceBody = new ServiceBody(this);
     }
 
     public String getBasePackage() {
@@ -82,11 +78,11 @@ public class SppClass {
         return sppFieldList;
     }
 
-    public IScenarioGenerator.CurrentCall getCurrentCall() {
+    public IScenarioHandler.CurrentCall getCurrentCall() {
         return currentCall;
     }
 
-    public void setCurrentCall(IScenarioGenerator.CurrentCall currentCall) {
+    public void setCurrentCall(IScenarioHandler.CurrentCall currentCall) {
         this.currentCall = currentCall;
     }
 
@@ -100,10 +96,6 @@ public class SppClass {
 
     public Map<String, SppField> getSppFieldMap() {
         return sppFieldMap;
-    }
-
-    public ServiceBody getServiceBody() {
-        return serviceBody;
     }
 
     public String getName() {
@@ -137,13 +129,6 @@ public class SppClass {
     public SppField getField(int index) {
         return sppFieldList.get(index);
     }
-    public String addLocalVar(SppLocalVar sppLocalVar){
-        return serviceBody.addLocalVar(sppLocalVar);
-    }
-
-    public SppLocalVar getLocalVar(String varName){
-        return serviceBody.getLocalVar(varName);
-    }
 
     @Override
     public String toString() {
@@ -151,8 +136,19 @@ public class SppClass {
                 "name='" + name + '\'' +
                 ", type=" + type +
                 ", sppFieldList=" + sppFieldList +
-                ", bodyChecker=" + serviceBody +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean ret = super.equals(obj);
+
+        if (obj instanceof SppClass){
+            SppClass cls = (SppClass) obj;
+
+            ret |= getName().equals(cls.getName());
+        }
+        return ret;
     }
 
     public void copyFrom(SppClass cls) {
@@ -162,7 +158,6 @@ public class SppClass {
         sppFieldList = cls.sppFieldList;
 
         isReal = cls.isReal;
-        serviceBody = cls.serviceBody;
 
         currentCall = cls.currentCall;
     }

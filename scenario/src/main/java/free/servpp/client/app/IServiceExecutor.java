@@ -1,7 +1,7 @@
 package free.servpp.client.app;
 
-import free.servpp.client.AtomicService;
-import free.servpp.client.Role;
+import free.servpp.service.AtomicService;
+import free.servpp.service.Role;
 import free.servpp.service.scenario.AtomicExecuteException;
 
 /**

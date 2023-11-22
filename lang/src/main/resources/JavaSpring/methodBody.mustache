@@ -1,7 +1,7 @@
 getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    free.servpp.service.DefaultServiceContainer.getInstance().getService("{{operationId}}").execute({{#allParams}}{{^-first}},{{/-first}}{{paramName}}{{/allParams}});
+                    free.servpp.service.server.DefaultServiceContainer.getInstance().getService("{{operationId}}").execute({{#allParams}}{{^-first}},{{/-first}}{{paramName}}{{/allParams}});
                     com.fasterxml.jackson.databind.ObjectWriter ow = new com.fasterxml.jackson.databind.ObjectMapper().
                     registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule()).writer().withDefaultPrettyPrinter();
                     try {

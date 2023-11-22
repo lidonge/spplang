@@ -11,6 +11,7 @@ public interface IConstance {
     public static enum CompilationUnitType {
         entity, reference, role, contract, atomicservice, scenario, rolemapper
     }
+
     static final String[] primaryTypes = new String[]{
             "boolean", "char", "String"
             , "short", "int", "long"
@@ -21,4 +22,11 @@ public interface IConstance {
     }
 
 
+    public enum ScenarioType {
+        Auto, serial, parallel
+    }
+
+    public enum TransactionType {
+        tcc, saga, db
+    }
 }

@@ -1,5 +1,7 @@
 package free.servpp.generator;
 
+import free.servpp.generator.models.SppProject;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -28,21 +30,35 @@ public class SppPlugin extends AbstractMojo {
     @Parameter(defaultValue = "free.servpp.openapi")
     private String basePackage;
 
+    static interface IAntlrCompiler{
+        ParseTreeListener parse(File sppFile, SppProject sppProject) throws IOException;
+    }
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
+        SppProject project = new SppProject();
+        compileAntlr(project, ".spp", (sppFile, sppProject) -> {
+            return new SppCompiler(sppFile, sppProject).compile();
+        });
+        compileAntlr(project, ".app", (sppFile, sppProject) -> {
+            return new AppCompiler(sppFile, sppProject).compile();
+        });
+    }
+
+    private void compileAntlr(SppProject sppProject, String suffix,IAntlrCompiler antlrCompiler) {
         File[] files = sppSourceDirectory.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
-                return pathname.getName().endsWith(".spp");
+                return pathname.getName().endsWith(suffix);
             }
         });
-        for (File file: files){
+        for (File sppFile: files){
             try {
                 InputStream inputStream = SppPlugin.class.getResourceAsStream("/spp.mustache");
-                Compiler.compile(inputStream, file, yamlOutputDirectory,javaOutputDirectory, basePackage);
+                ParseTreeListener sppGeneralListener = antlrCompiler.parse(sppFile, sppProject);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
 }

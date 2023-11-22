@@ -5,7 +5,7 @@ import free.servpp.generator.general.IConstance;
 /**
  * @author lidong@date 2023-11-03@version 1.0
  */
-public class SppRoleMapper extends SppClass{
+public class SppRoleMapper extends SppService{
     SppClass role;
     SppClass entity;
     boolean isMapSame = true;
@@ -50,13 +50,16 @@ public class SppRoleMapper extends SppClass{
     @Override
     public String toString() {
         return "SppRoleMapper{" +
-                "role=" + role.getName() +
-                ", entity=" + entity.getName() +
+                "role=" + role +
+                ", entity=" + entity +
                 ", isMapSame=" + isMapSame +
                 ", isTakeAll=" + isTakeAll +
+                ", serviceType=" + serviceType +
+                ", funcName='" + funcName + '\'' +
+                ", serviceBody=" + serviceBody +
                 ", name='" + name + '\'' +
                 ", type=" + type +
-                ", sppFieldList=" + sppFieldList +
+                ", sppFieldMap=" + sppFieldMap +
                 '}';
     }
 }

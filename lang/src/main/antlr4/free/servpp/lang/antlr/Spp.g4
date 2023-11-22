@@ -85,7 +85,12 @@ mapsame
     ;
 
 scenario
-    :  'Scenario' serviceDefinition '{' scenarioDeclaration* '}'
+    :  'Scenario' autosort? serviceDefinition '{' scenarioDeclaration '}'
+    ;
+
+autosort
+    : 'serial'
+    | 'parallel'
     ;
 
 atomicservice
@@ -121,16 +126,24 @@ roletype
     : Identifier
     ;
 scenarioDeclaration
-    : atomiccall ';'
-    | transactionStatements
+    : executegroup transactionStatements?
+    ;
+executegroup
+    : atomiccall* (serialgroup* | parallelgroup*)
+    ;
+serialgroup
+    : 'serial' '{' atomiccall* parallelgroup* '}'
+    ;
+parallelgroup
+    : 'parallel' '{' atomiccall* serialgroup* '}'
     ;
 
 transactionStatements
-    : 'transaction' '{' scenarioDeclaration+ '}'
+    : 'transaction' '{' atomiccall* '}'
     ;
 
 atomiccall
-    : Identifier '(' parameters ')'
+    : Identifier '(' parameters ')' ';'
     ;
 
 parameters
@@ -156,7 +169,7 @@ primitiveType
     |   'double'
     |	'date'
     ;
-            
+
 Identifier
     :   Letter (Letter|JavaIDDigit)*
     ;

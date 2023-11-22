@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="650f37dc-c229-441b-9ac1-87feca6769a4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/restkit/RESTKit_Environment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lang/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/free/petclient/codegen/GenPetClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../petservice/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../petservice/src/main/java/GenPetService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../petservice/src/main/resources/PetStore3.0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/docs/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/ILogable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/AsynServiceKeeper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/IAppHeaders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/IAppMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/IAppMessageBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/IAppScenario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/ICallbackAggregation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/ICallbackListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/IClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/ILocalServiceContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/IParallelBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/IServiceExecutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/app/ITransactionBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/callback/ICallbackService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/AtomicExecuteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/IApplicationHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/IAsynApplicationHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/IAtomicServiceListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/IRealParallelExecutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/ITransactionManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/application/IAtomicService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/application/IDependencyGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/application/IScenarioContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/application/IScenarioResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/application/ITransactionExecutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/technology/ILocalService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/technology/IPhysicalScenario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/technology/IProxyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/technology/IRemoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/technology/IService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/service/scenario/technology/IServiceContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/AtomicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/AtomicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/Reference.java" beforeDir="false" afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/Reference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/Scenario.java" beforeDir="false" afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/Scenario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/AllClassGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/AllClassGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/BaseGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/BaseGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/ClassWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/ClassWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/CompilationUnitGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/CompilationUnitGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/GeneratorErrorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/GeneratorErrorListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/IActasGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/IActasGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/IAtomicServiceGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/IAtomicServiceGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/ICompilationUnitGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/ICompilationUnitGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/IConstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/../scenario/src/main/java/free/servpp/client/IConstance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/IEntityGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/IEntityGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/IFileGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/IFileGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/IObjectBodyGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/IObjectBodyGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/IRoleGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/IRoleGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/IScenarioGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/IScenarioGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/IServiceDefinitionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/IServiceDefinitionGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/Spp2JavaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/Spp2JavaListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/ClassChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/ClassChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/ErrorContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/ErrorContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/IServiceBodyStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/IServiceBodyStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/ServiceBaseBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/ServiceBaseBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/ServiceBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/ServiceBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/SppClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/SppClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/SppField.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/SppField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/SppLocalVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/SppLocalVar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/SppParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/SppParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/SppRoleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/SppRoleField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/SppRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/SppRoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/SppService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/SppService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/SppServiceCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/SppServiceCall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/SppVarMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/SppVarMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/free/servpp/generator/models/TransactionBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/java/free/servpp/generator/models/TransactionBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/Spp.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/resources/Spp.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/spps/invoice.spp" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/resources/spps/invoice.spp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/spps/invoice1.spp" beforeDir="false" afterPath="$PROJECT_DIR$/../lang/src/main/resources/spps/invoice1.spp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2Xxr1DLU5AS9kIYvA3789WTGv2e" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/lidong/gitspace/spplang/petclient",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="650f37dc-c229-441b-9ac1-87feca6769a4" name="Changes" comment="" />
+      <created>1699581355315</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699581355315</updated>
+      <workItem from="1699581356510" duration="11000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

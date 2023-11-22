@@ -939,17 +939,10 @@ public class Mustache {
             if (iter != null) {
                 int index = 0;
                 if(iter.hasNext()){
-                    SectionSegment recursion = null;
-                    for(int i = sections.size() -2;i>=0;i--){
-                        SectionSegment prev = sections.get(i);
-                        if(prev._name.equals(_name)){
-                            //find recursion
-                            recursion = prev;
-                        }
-                    }
+                    SectionSegment recursion = checkRecursion();
                     Template.Segment[] segs = _segs;
                     if(recursion != null) {
-                        int deepth = sections.size() - 1;
+                        int deepth = getDeepth();
                         segs = new Template.Segment[_segs.length*deepth+recursion._segs.length];
                         for(int j = 0;j<deepth;j++) {
                             for (int i = 0; i < _segs.length; i++) {
@@ -984,6 +977,31 @@ public class Mustache {
             }
             sections.remove(sections.size() -1);
         }
+
+        private int getDeepth() {
+            int deepth = -1;
+            for(int i = 0;i<sections.size();i++) {
+                SectionSegment prev = sections.get(i);
+                if (prev._name.equals(_name)) {
+                    deepth++;
+                }
+            }
+            return deepth;
+        }
+
+        private SectionSegment checkRecursion() {
+            SectionSegment recursion = null;
+            for(int i = sections.size() -2;i>=0;i--){
+                SectionSegment prev = sections.get(i);
+                if(prev._name.equals(_name)){
+                    //find recursion
+                    recursion = prev;
+                    break;
+                }
+            }
+            return recursion;
+        }
+
         @Override public void decompile (Delims delims, StringBuilder into) {
             delims.addTag('#', _name, into);
             for (Template.Segment seg : _segs) seg.decompile(delims, into);

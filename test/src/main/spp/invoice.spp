@@ -61,11 +61,13 @@ atomic update incAccount(Account account, Amount amount);
 atomic update decStock(GoodsStock stock, Amount amount);
 atomic check checkStock(GoodsStock stock);
 
-Scenario makeInvoice(Invoice invoice){
+Scenario serial makeInvoice(Invoice invoice){
     queryAccount(invoice.buyer);
     queryAccount(invoice.seller);
-    checkStock(invoice.goods.stock);
-    calculateAmount(invoice.amount);
+    parallel{
+        checkStock(invoice.goods.stock);
+        calculateAmount(invoice.amount);
+    }
     transaction{
         decAccount(invoice.buyer, invoice.amount);
         incAccount(invoice.seller, invoice.amount);
