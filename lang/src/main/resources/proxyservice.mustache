@@ -1,0 +1,21 @@
+package {{basePackage}}.{{javaPackage}}.service;
+
+import {{basePackage}}.{{javaPackage}}.handler.{{name}};
+{{#sppFieldList}}
+import {{basePackage}}.{{javaPackage}}.model.{{type.name}};
+{{/sppFieldList}}
+
+public class Simple{{name}} implements {{name}} {
+    @Override
+	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/sppFieldList}}){
+
+	}
+
+    @Override
+    public void execute(Object role) {
+    }
+
+    @Override
+    public void copyFrom(Object role) {
+    }
+}

@@ -5,9 +5,9 @@ import free.servpp.generator.general.NameUtil;
 import free.servpp.generator.models.SppClass;
 import free.servpp.generator.models.SppService;
 import free.servpp.generator.models.app.AppHeader;
+import free.servpp.generator.models.app.ScopeDefine;
 import free.servpp.generator.models.app.ScopeItem;
 import free.servpp.generator.models.app.RuleBlock;
-import free.servpp.generator.models.app.ScopeBody;
 import free.servpp.lang.antlr.AppParser;
 
 /**
@@ -20,43 +20,43 @@ public interface IScopeHandler extends IApplicationHandler {
 
     @Override
     default void enterLocalBody(AppParser.LocalBodyContext ctx){
-        getCurrentRuleBlock().getAppScope()._addLocalScope(new ScopeBody());
+        getCurrentRuleBlock().getAppScope()._addLocalScope(new ScopeDefine());
     }
     @Override
     default void enterRemoteBody(AppParser.RemoteBodyContext ctx){
-        getCurrentRuleBlock().getAppScope()._addRemoteScope(new ScopeBody());
+        getCurrentRuleBlock().getAppScope()._addRemoteScope(new ScopeDefine());
     }
 
     @Override
     default void enterInParameter(AppParser.InParameterContext ctx){
-        String headerName = ctx.getChild(0).getText();
+        String headerName = ctx.getChild(1).getText();
         RuleBlock ruleBlock = getCurrentRuleBlock();
         AppHeader appHeader = ruleBlock.newOrExistAppHeader(headerName);
-        ScopeBody scopeBody = getLastElement(ruleBlock.getAppScope().getScopelist());
-        scopeBody.setIn(appHeader);
+        ScopeDefine scopeDefine = getLastElement(ruleBlock.getAppScope().getScopelist());
+        scopeDefine.setIn(appHeader);
     }
 
     @Override
     default void enterOutParameter(AppParser.OutParameterContext ctx){
-        String headerName = ctx.getChild(0).getText();
+        String headerName = ctx.getChild(1).getText();
         RuleBlock ruleBlock = getCurrentRuleBlock();
         AppHeader appHeader = ruleBlock.newOrExistAppHeader(headerName);
-        ScopeBody scopeBody = getLastElement(ruleBlock.getAppScope().getScopelist());
-        scopeBody.setOut(appHeader);
+        ScopeDefine scopeDefine = getLastElement(ruleBlock.getAppScope().getScopelist());
+        scopeDefine.setOut(appHeader);
     }
 
     @Override
     default void enterScopeItem(AppParser.ScopeItemContext ctx){
         RuleBlock ruleBlock = getCurrentRuleBlock();
-        ScopeBody scopeBody = getLastElement(ruleBlock.getAppScope().getScopelist());
-        scopeBody.addScopeItem(new ScopeItem());
+        ScopeDefine scopeDefine = getLastElement(ruleBlock.getAppScope().getScopelist());
+        scopeDefine.addScopeItem(new ScopeItem());
     }
 
     @Override
     default void enterAsycnModifier(AppParser.AsycnModifierContext ctx){
         RuleBlock ruleBlock = getCurrentRuleBlock();
-        ScopeBody scopeBody = getLastElement(ruleBlock.getAppScope().getScopelist());
-        ScopeItem scopeItem = getLastElement(scopeBody.getScopeItems());
+        ScopeDefine scopeDefine = getLastElement(ruleBlock.getAppScope().getScopelist());
+        ScopeItem scopeItem = getLastElement(scopeDefine.getScopeItems());
         scopeItem.setAsync(true);
     }
 
@@ -64,8 +64,8 @@ public interface IScopeHandler extends IApplicationHandler {
     default void enterTransModifier(AppParser.TransModifierContext ctx){
         TransactionType type = IConstance.TransactionType.valueOf(ctx.getChild(0).getText());
         RuleBlock ruleBlock = getCurrentRuleBlock();
-        ScopeBody scopeBody = getLastElement(ruleBlock.getAppScope().getScopelist());
-        ScopeItem scopeItem = getLastElement(scopeBody.getScopeItems());
+        ScopeDefine scopeDefine = getLastElement(ruleBlock.getAppScope().getScopelist());
+        ScopeItem scopeItem = getLastElement(scopeDefine.getScopeItems());
         scopeItem.setTransactionType(type);
     }
 
@@ -75,8 +75,8 @@ public interface IScopeHandler extends IApplicationHandler {
         SppClass sppClass = getSppDomian().getSppClass(NameUtil.firstToLowerCase(clsName,false));
         if(sppClass instanceof SppService){
             RuleBlock ruleBlock = getCurrentRuleBlock();
-            ScopeBody scopeBody = getLastElement(ruleBlock.getAppScope().getScopelist());
-            ScopeItem scopeItem = getLastElement(scopeBody.getScopeItems());
+            ScopeDefine scopeDefine = getLastElement(ruleBlock.getAppScope().getScopelist());
+            ScopeItem scopeItem = getLastElement(scopeDefine.getScopeItems());
             scopeItem.setService((SppService) sppClass);
         }else{
             logSppError(ctx, clsName +" should be a service.");

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author lidong@date 2023-11-21@version 1.0
  */
-public class ScopeBody {
+public class ScopeDefine {
     boolean isLocal;
     AppHeader in;
     AppHeader out;
@@ -20,8 +20,9 @@ public class ScopeBody {
         isLocal = local;
     }
 
-    public void addScopeItem(ScopeItem atomicExtends){
-        scopeItems.add(atomicExtends);
+    public void addScopeItem(ScopeItem scopeItem){
+        scopeItem.setScopeDefine(this);
+        scopeItems.add(scopeItem);
     }
     public List<ScopeItem> getScopeItems() {
         return scopeItems;

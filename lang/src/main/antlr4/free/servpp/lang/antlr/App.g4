@@ -33,7 +33,7 @@ primaryQualified
     : qualified
     ;
 scope
-    : 'scope' '{' scopeBody '}'
+    : 'scope' '{' scopeDefine '}'
     ;
 
 map
@@ -105,7 +105,7 @@ defaultValueliteral
 override
     : '=' Identifier
     ;
-scopeBody
+scopeDefine
     : localBody* remoteBody*
     ;
 

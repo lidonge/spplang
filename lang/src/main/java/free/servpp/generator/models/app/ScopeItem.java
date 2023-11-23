@@ -9,7 +9,21 @@ import free.servpp.generator.models.SppService;
 public class ScopeItem {
     SppService service;
     boolean isAsync;
+
+    ScopeDefine scopeDefine;
     IConstance.TransactionType transactionType = IConstance.TransactionType.db;
+
+    public ScopeDefine getScopeDefine() {
+        return scopeDefine;
+    }
+
+    public void setScopeDefine(ScopeDefine scopeDefine) {
+        this.scopeDefine = scopeDefine;
+    }
+
+    public boolean isLocal() {
+        return scopeDefine.isLocal();
+    }
 
     public SppService getService() {
         return service;
@@ -17,6 +31,7 @@ public class ScopeItem {
 
     public void setService(SppService service) {
         this.service = service;
+        service.setScopeItem(this);
     }
 
     public boolean isAsync() {

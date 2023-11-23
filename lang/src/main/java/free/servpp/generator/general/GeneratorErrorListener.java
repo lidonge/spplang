@@ -22,22 +22,22 @@ public class GeneratorErrorListener implements ANTLRErrorListener, ILogable {
 
     @Override
     public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
-        getLogger().error(file + ":" + line + ":" + (charPositionInLine + 1));
-        getLogger().error(msg);
+//        getLogger().error(file + ":" + line + ":" + (charPositionInLine + 1));
+        getLogger().error("{}:{}:{} {}",file , line , (charPositionInLine + 1), msg);
     }
 
     @Override
     public void reportAmbiguity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, boolean exact, BitSet ambigAlts, ATNConfigSet configs) {
-        getLogger().error("reportAmbiguity " + startIndex + ":" + stopIndex + " " + exact);
+        getLogger().error("reportAmbiguity {}:{} {}", startIndex, stopIndex , exact);
     }
 
     @Override
     public void reportAttemptingFullContext(Parser recognizer, DFA dfa, int startIndex, int stopIndex, BitSet conflictingAlts, ATNConfigSet configs) {
-        System.err.println("reportAttemptingFullContext " + startIndex + ":" + stopIndex );
+        getLogger().error("reportAttemptingFullContext {}:{}",startIndex , stopIndex );
     }
 
     @Override
     public void reportContextSensitivity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, int prediction, ATNConfigSet configs) {
-        System.err.println("reportContextSensitivity " + startIndex + ":" + stopIndex + " " + prediction);
+        getLogger().error("reportContextSensitivity {}:{} {}",startIndex, stopIndex,prediction);
     }
 }

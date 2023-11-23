@@ -22,18 +22,23 @@ public class MustacheClassWriter extends ClassWriterConfig {
     public void generate() {
         try {
             IConstance.CompilationUnitType type = sppClass.getType();
-            if (type == IConstance.CompilationUnitType.rolemapper) {
-                takeAllMapFields();
-
-                genClassFile("model", "/rolemapper.mustache",sppClass, sppClass.getName());
-            } else if (type == IConstance.CompilationUnitType.atomicservice) {
-                genClassFile("handler", "/atomicservice.mustache",sppClass, sppClass.getName());
-                genClassFile("service", "/service.mustache", sppClass, "Simple" + sppClass.getName());
-            } else if (type == IConstance.CompilationUnitType.scenario) {
-                genClassFile("handler", "/scenario.mustache",sppClass, sppClass.getName());
-                genClassFile("service", "/scenarioservice.mustache",sppClass, "Simple" +sppClass.getName());
-            }
             if (type != null) {
+                if (type == IConstance.CompilationUnitType.rolemapper) {
+                    takeAllMapFields();
+
+                    genClassFile("model", "/rolemapper.mustache", sppClass, sppClass.getName());
+                } else if (type == IConstance.CompilationUnitType.atomicservice) {
+                    SppService sppService = (SppService) sppClass;
+                    if(!sppService.getScopeItem().isLocal()){
+                        genClassFile("service", "/proxyservice.mustache", sppClass, "Simple" + sppClass.getName());
+                    }else {
+                        genClassFile("service", "/service.mustache", sppClass, "Simple" + sppClass.getName());
+                    }
+                    genClassFile("handler", "/atomicservice.mustache", sppClass, sppClass.getName());
+                } else if (type == IConstance.CompilationUnitType.scenario) {
+                    genClassFile("handler", "/scenario.mustache", sppClass, sppClass.getName());
+                    genClassFile("service", "/scenarioservice.mustache", sppClass, "Simple" + sppClass.getName());
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,12 +66,12 @@ public class MustacheClassWriter extends ClassWriterConfig {
         cls.setAdditionalPackage(additionalPackage);
         Template template = Mustache.compiler().withLoader(new Mustache.TemplateLoader() {
             @Override
-            public Reader getTemplate(String s) throws Exception {
-                return new InputStreamReader(MustacheClassWriter.class.getResourceAsStream(File.separator+s+".mustache"));
+            public Reader getTemplate(String s) throws Exception {//for import mustache
+                return new InputStreamReader(MustacheClassWriter.class.getResourceAsStream(File.separator + s + ".mustache"));
             }
         }).compile(new InputStreamReader(MustacheClassWriter.class.getResourceAsStream(mustacheFile)));
         File clsPath = new File(getDomainPath(), additionalPackage);
-        if(!clsPath.exists()){
+        if (!clsPath.exists()) {
             clsPath.mkdirs();
         }
         File objPath = new File(clsPath, fileName + IConstance.SUFFIX);
@@ -76,23 +81,10 @@ public class MustacheClassWriter extends ClassWriterConfig {
             out = new PrintWriter(new FileOutputStream(objPath));
             String text = template.execute(cls);
 //            out = new PrintWriter(System.out);
-            out.println(formatCode(text));
-        }finally {
+            out.println(CodeFormator.formatCode(text));
+        } finally {
             out.close();
         }
     }
 
-    private String formatCode(String code) throws IOException {
-        BufferedReader reader = new BufferedReader(new StringReader(code));
-        StringBuffer sb = new StringBuffer();
-        String line;
-        while((line = reader.readLine()) != null){
-            if(line.trim().length() == 0){
-
-            }else{
-                sb.append(line).append("\n");
-            }
-        }
-        return sb.toString();
-    }
 }

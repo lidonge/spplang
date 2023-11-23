@@ -172,12 +172,12 @@ public abstract class BaseHandler implements IHeaderHandler, IPrimaryHandler, IM
     }
 
     @Override
-    public void enterScopeBody(AppParser.ScopeBodyContext ctx) {
+    public void enterScopeDefine(AppParser.ScopeDefineContext ctx) {
 
     }
 
     @Override
-    public void exitScopeBody(AppParser.ScopeBodyContext ctx) {
+    public void exitScopeDefine(AppParser.ScopeDefineContext ctx) {
 
     }
 
