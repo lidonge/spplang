@@ -27,6 +27,7 @@ public class GeneratorUtil {
         SppGeneralHandler sppGeneralHandler = (SppGeneralHandler) new SppCompiler(sppFile,sppProject).compile();
 
         SppDomain sppDomain = sppGeneralHandler.getSppDomain();
+        sppDomain.dealMaps();
         AppGeneralHandler appGeneralHandler = (AppGeneralHandler) new AppCompiler(appFile,sppProject).compile();
         openApi(sppDomain,mustache, sppFile,yamlOutPath, genRoot, basePackage);
     }

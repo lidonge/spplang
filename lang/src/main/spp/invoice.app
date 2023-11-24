@@ -43,3 +43,9 @@ scope{
         checkStock;
     }
 }
+
+services{
+    decAccount{
+        account.balance -= amount.amount;
+    }
+}

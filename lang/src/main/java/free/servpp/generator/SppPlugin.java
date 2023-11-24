@@ -41,7 +41,9 @@ public class SppPlugin extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         SppProject project = new SppProject();
         List<ParseTreeListener> sppTreeListeners = compileAntlr(project, ".spp", (sppFile, sppProject) -> {
-            return new SppCompiler(sppFile, sppProject).compile();
+            SppGeneralHandler sppGeneralHandler = (SppGeneralHandler) new SppCompiler(sppFile, sppProject).compile();
+            sppGeneralHandler.getSppDomain().dealMaps();
+            return sppGeneralHandler;
         });
         List<ParseTreeListener> appTreeListeners = compileAntlr(project, ".app", (sppFile, sppProject) -> {
             return new AppCompiler(sppFile, sppProject).compile();

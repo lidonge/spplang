@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class AllClassGenerator extends BaseClassGenerator {
     public void generate(SppDomain sppDomain, File domainPath, String basePackage, String javaPackege){
-        dealMaps(sppDomain);
+//        dealMaps(sppDomain);
         Map<String, SppClass> sppClassMap = sppDomain.getMapsOfClass();
         for(SppClass sppClass: sppClassMap.values()){
 //            if(sppClass.getType() == IConstance.CompilationUnitType.rolemapper)

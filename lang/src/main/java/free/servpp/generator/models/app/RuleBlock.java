@@ -11,6 +11,11 @@ public class RuleBlock {
     List<AppMapper> appMappers = new ArrayList<>();
     PrimaryKeys primaryKeys = new PrimaryKeys();
     AppScope appScope = new AppScope();
+    AppServices appServices = new AppServices();
+
+    public AppServices getAppServices() {
+        return appServices;
+    }
 
     public List<AppMapper> getAppMappers() {
         return appMappers;

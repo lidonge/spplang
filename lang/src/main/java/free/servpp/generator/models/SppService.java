@@ -2,6 +2,10 @@ package free.servpp.generator.models;
 
 import free.servpp.generator.general.IConstance;
 import free.servpp.generator.models.app.ScopeItem;
+import free.servpp.generator.models.app.expr.IExpression;
+import free.servpp.generator.models.app.expr.IOperationExpression;
+
+import java.util.List;
 
 /**
  * @author lidong@date 2023-11-02@version 1.0
@@ -13,6 +17,9 @@ public class SppService extends SppClass{
     protected ServiceBody serviceBody;
 
     private ScopeItem scopeItem;
+
+    private List<IOperationExpression> expressions;
+
     public SppService(String name) {
         super(name);
         this.serviceBody = new ServiceBody(this);
@@ -20,6 +27,14 @@ public class SppService extends SppClass{
     public SppService(String name, IConstance.CompilationUnitType type) {
         super(name,type);
         this.serviceBody = new ServiceBody(this);
+    }
+
+    public List<IOperationExpression> getExpressions() {
+        return expressions;
+    }
+
+    public void setExpressions(List<IOperationExpression> expressions) {
+        this.expressions = expressions;
     }
 
     public ScopeItem getScopeItem() {

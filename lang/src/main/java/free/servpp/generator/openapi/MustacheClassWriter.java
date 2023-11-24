@@ -29,10 +29,10 @@ public class MustacheClassWriter extends ClassWriterConfig {
                     genClassFile("model", "/rolemapper.mustache", sppClass, sppClass.getName());
                 } else if (type == IConstance.CompilationUnitType.atomicservice) {
                     SppService sppService = (SppService) sppClass;
-                    if(!sppService.getScopeItem().isLocal()){
-                        genClassFile("service", "/proxyservice.mustache", sppClass, "Simple" + sppClass.getName());
-                    }else {
+                    if(sppService.getScopeItem().isLocal()){
                         genClassFile("service", "/service.mustache", sppClass, "Simple" + sppClass.getName());
+                    }else {
+                        genClassFile("service", "/proxyservice.mustache", sppClass, "Simple" + sppClass.getName());
                     }
                     genClassFile("handler", "/atomicservice.mustache", sppClass, sppClass.getName());
                 } else if (type == IConstance.CompilationUnitType.scenario) {
@@ -64,7 +64,7 @@ public class MustacheClassWriter extends ClassWriterConfig {
 
     private void genClassFile(String additionalPackage, String mustacheFile, SppClass cls, String fileName) throws IOException {
         cls.setAdditionalPackage(additionalPackage);
-        Template template = Mustache.compiler().withLoader(new Mustache.TemplateLoader() {
+        Template template = Mustache.compiler().escapeHTML(false).withLoader(new Mustache.TemplateLoader() {
             @Override
             public Reader getTemplate(String s) throws Exception {//for import mustache
                 return new InputStreamReader(MustacheClassWriter.class.getResourceAsStream(File.separator + s + ".mustache"));

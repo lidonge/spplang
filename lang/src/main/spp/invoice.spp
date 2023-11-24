@@ -55,7 +55,7 @@ Contract Invoice{
 
 
 atomic query queryAccount(Account account);
-atomic calculate calculateAmount(Amount amount);
+atomic calculate calculateAmount(Goods goods, Amount amount);
 atomic update decAccount(Account account, Amount amount);
 atomic update incAccount(Account account, Amount amount);
 atomic update decStock(GoodsStock stock, Amount amount);
@@ -66,7 +66,7 @@ Scenario parallel makeInvoice(Invoice invoice){
     queryAccount(invoice.seller);
     serial{
         checkStock(invoice.goods.stock);
-        calculateAmount(invoice.amount);
+        calculateAmount(invoice.goods, invoice.amount);
     }
     transaction{
         decAccount(invoice.buyer, invoice.amount);

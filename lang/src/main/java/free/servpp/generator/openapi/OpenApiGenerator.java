@@ -37,7 +37,7 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
 
     public OpenAPI generate(SppDomain sppDomain, File domainPath, String basePackage) {
         String domainName = sppDomain.getName();
-        dealMaps(sppDomain);
+//        dealMaps(sppDomain);
         OpenAPI openAPI = new OpenAPI();
         Map<String, SppClass> sppClassMap = sppDomain.getMapsOfClass();
         openAPI.addTagsItem(new Tag().name(domainName).description(""));
@@ -106,7 +106,7 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
 
     public void createServicesProperties(File genRoot) {
         File resources = new File(genRoot.getParent(), "resources");
-        Template template = Mustache.compiler().compile(new InputStreamReader(OpenApiGenerator.class.getResourceAsStream("/servicesprop.mustache")));
+        Template template = Mustache.compiler().escapeHTML(false).compile(new InputStreamReader(OpenApiGenerator.class.getResourceAsStream("/servicesprop.mustache")));
         if (!resources.exists()) {
             resources.mkdirs();
         }

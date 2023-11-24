@@ -9,7 +9,7 @@ import java.util.Map;
  * @author lidong@date 2023-11-13@version 1.0
  */
 public class BaseClassGenerator {
-    public void dealMaps(SppDomain sppDomain) {
+    private void dealMaps(SppDomain sppDomain) {
         Map<String, SppClass> sppClassMap = sppDomain.getMapsOfClass();
         for (SppClass sppClass : sppClassMap.values()) {
             if (sppClass.getType() == IConstance.CompilationUnitType.rolemapper) {

@@ -10,7 +10,9 @@ public class Simple{{name}} implements {{name}} {
     private {{name}}Args arg;
     @Override
 	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/sppFieldList}}){
-
+        {{#expressions}}
+        {{expr}};
+        {{/expressions}}
 	}
 
     @Override

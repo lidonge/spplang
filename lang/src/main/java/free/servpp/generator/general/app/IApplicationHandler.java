@@ -4,20 +4,18 @@ import free.servpp.generator.general.IConstance;
 import free.servpp.generator.general.ISppErrorLogger;
 import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppClass;
-import free.servpp.generator.models.SppField;
+import free.servpp.generator.models.app.IQualifiedNameUtil;
 import free.servpp.generator.models.app.RuleBlock;
 import free.servpp.generator.models.app.SppFieldDefine;
 import free.servpp.lang.antlr.AppListener;
 import org.antlr.v4.runtime.ParserRuleContext;
 
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * @author lidong@date 2023-11-21@version 1.0
  */
-public interface IApplicationHandler extends AppListener, IConstance, ISppErrorLogger {
+public interface IApplicationHandler extends AppListener, IConstance, ISppErrorLogger, IQualifiedNameUtil {
 
     RuleBlock getCurrentRuleBlock();
 
@@ -30,34 +28,11 @@ public interface IApplicationHandler extends AppListener, IConstance, ISppErrorL
         return elements.remove(elements.size()-1);
     }
     default SppFieldDefine getQualifiedField(ParserRuleContext ctx, SppClass mapEntity, String qualifiedName) {
-        SppField sppField = null;
-        SppFieldDefine fieldDefine = null;
-        String[] path = qualifiedName.split("\\.");
-        if(path.length == 1){
-            if(mapEntity == null){
-                logSppError(ctx, qualifiedName + " is not a qualified name.");
-            }else {
-                sppField = mapEntity.getField(path[0]);
-                fieldDefine = new SppFieldDefine(mapEntity,sppField);
-            }
-        }else {
-            SppDomain sppDomian = getSppDomian();
-            Iterator<String> iterator = Arrays.stream(path).iterator();
-            SppClass sppClass = sppDomian.getSppClass(iterator.next());
-            if (sppClass == null) {
-                logSppError(ctx, "Entity " + path[0] + " not defined!");
-            } else {
-                while (iterator.hasNext()) {
-                    sppField = sppClass.getField(iterator.next());
-                    if (sppField == null) {
-                        fieldDefine = null;
-                        break;
-                    }
-                    fieldDefine = new SppFieldDefine(sppClass,sppField);
-                    sppClass = sppField.getType();
-                }
-            }
+        try {
+            return getQualifiedField(getSppDomian(),mapEntity,qualifiedName);
+        } catch (SemanticException e) {
+            logSppError(ctx,e.getMessage());
         }
-        return fieldDefine;
+        return null;
     }
 }

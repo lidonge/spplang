@@ -105,4 +105,31 @@ public class SppDomain {
             return new SppRoleMapper(objName);
         return new SppClass(objName);
     }
+
+    public void dealMaps() {
+        Map<String, SppClass> sppClassMap = getMapsOfClass();
+        for (SppClass sppClass : sppClassMap.values()) {
+            if (sppClass.getType() == IConstance.CompilationUnitType.rolemapper) {
+//                System.out.println(sppClass);
+                Map<String, String> entityToRole = new HashMap<>();
+                SppRoleMapper sppRoleMapper = (SppRoleMapper) sppClass;
+                for (SppLocalVar var : sppRoleMapper.getSppFieldList()) {
+                    SppRoleField roleField = (SppRoleField) var;
+                    entityToRole.put(roleField.getEntityName(), roleField.getName());
+                }
+                takeAll(sppRoleMapper, entityToRole);
+            }
+        }
+    }
+
+    private void takeAll(SppRoleMapper sppRoleMapper, Map<String, String> entityToRole) {
+        if (sppRoleMapper.isTakeAll()) {
+            SppClass entity = sppRoleMapper.getEntity();
+            SppClass role = sppRoleMapper.getRole();
+            for (SppLocalVar var : entity.getSppFieldList()) {
+                if (entityToRole.get(var.getName()) == null)
+                    role.addField((SppField) var);
+            }
+        }
+    }
 }

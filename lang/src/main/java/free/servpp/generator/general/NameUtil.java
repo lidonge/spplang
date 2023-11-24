@@ -16,6 +16,9 @@ public class NameUtil {
     }
 
     public static String getNameCall(String name){
+        return getNameCall(name,false);
+    }
+    public static String getNameCall(String name, boolean isSet){
         int idx = -1;
         String rest = name;
         String ret = name;
@@ -27,12 +30,22 @@ public class NameUtil {
                 ret += ".";
             }
             if(idx == -1 ){
-                if(count !=0 )
-                    ret += "get"+ NameUtil.firstToLowerCase(rest,false)+"()";
+                if(count !=0 ) {
+                    if(isSet){
+                        ret += "set" + NameUtil.firstToLowerCase(rest, false);
+                    }else {
+                        ret += "get" + NameUtil.firstToLowerCase(rest, false) + "()";
+                    }
+                }
                 break;
             }else{
-                if(count !=0 )
-                    ret += "get"+ NameUtil.firstToLowerCase(rest.substring(0,idx),false)+"()";
+                if(count !=0 ) {
+                    if(isSet){
+                        ret += "set" + NameUtil.firstToLowerCase(rest.substring(0, idx), false);
+                    }else {
+                        ret += "get" + NameUtil.firstToLowerCase(rest.substring(0, idx), false) + "()";
+                    }
+                }
                 else
                     ret = rest.substring(0,idx);
                 rest = rest.substring(idx+1);
