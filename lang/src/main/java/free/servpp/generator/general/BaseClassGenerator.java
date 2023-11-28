@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class BaseClassGenerator {
     private void dealMaps(SppDomain sppDomain) {
-        Map<String, SppClass> sppClassMap = sppDomain.getMapsOfClass();
-        for (SppClass sppClass : sppClassMap.values()) {
+        Map<String, SppCompilationUnit> sppClassMap = sppDomain.getMapsOfClass();
+        for (SppCompilationUnit sppClass : sppClassMap.values()) {
             if (sppClass.getType() == IConstance.CompilationUnitType.rolemapper) {
 //                System.out.println(sppClass);
                 Map<String, String> entityToRole = new HashMap<>();

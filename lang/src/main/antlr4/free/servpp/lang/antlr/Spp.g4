@@ -19,10 +19,22 @@ compilationUnits
 
 compilationUnit
     : entity
+    | enumeration
     | role
     | actas
     | atomicservice
     | scenario
+    ;
+enumeration
+    : 'Enum' Identifier '{' enumBody '}'
+    ;
+
+enumBody
+    : enumBodyIdentifier (',' enumBodyIdentifier)*
+    ;
+
+enumBodyIdentifier
+    : Identifier
     ;
 
 entity

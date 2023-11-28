@@ -22,13 +22,13 @@ public interface IQualifiedNameUtil {
         SppLocalVar inst = sppLocalVarHashMap.get(parts[0]);
         if(inst == null)
             return null;
-        SppClass cls = inst.getType();
+        SppClass cls = (SppClass) inst.getType();
         for(int i = 1;i<parts.length;i++){
             SppField field = cls.getField(parts[i]);
             if(field == null){
                 return null;
             }
-            cls = field.getType();
+            cls = (SppClass) field.getType();
         }
         return cls;
 
@@ -47,7 +47,7 @@ public interface IQualifiedNameUtil {
             }
         }else {
             Iterator<String> iterator = Arrays.stream(path).iterator();
-            SppClass sppClass = sppDomain.getSppClass(iterator.next());
+            SppClass sppClass = (SppClass) sppDomain.getSppClass(iterator.next());
             if (sppClass == null) {
                 throw new SemanticException("Entity " + path[0] + " not defined!");
             } else {
@@ -58,7 +58,7 @@ public interface IQualifiedNameUtil {
                         break;
                     }
                     fieldDefine = new SppFieldDefine(sppClass,sppField);
-                    sppClass = sppField.getType();
+                    sppClass = (SppClass) sppField.getType();
                 }
             }
         }

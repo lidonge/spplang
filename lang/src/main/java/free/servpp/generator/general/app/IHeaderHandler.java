@@ -1,6 +1,7 @@
 package free.servpp.generator.general.app;
 
 import free.servpp.generator.models.SppClass;
+import free.servpp.generator.models.SppCompilationUnit;
 import free.servpp.generator.models.app.AppHeader;
 import free.servpp.generator.models.app.RuleBlock;
 import free.servpp.generator.models.app.SppExtendField;
@@ -58,7 +59,7 @@ public interface IHeaderHandler extends IApplicationHandler {
     @Override
     default void enterHeaderFieldDefinePrimitiveType(AppParser.HeaderFieldDefinePrimitiveTypeContext ctx){
         String text = ctx.getChild(0).getText();
-        SppClass type = getSppDomian().getSppClass(null,text);
+        SppCompilationUnit type = getSppDomian().getSppClass(null,text);
         AppHeader appHeader = getLastElement(getCurrentRuleBlock().getHeaders());
         SppExtendField sppExtendField = getLastElement(appHeader.getSppExtendFields());
         sppExtendField.setType(type);

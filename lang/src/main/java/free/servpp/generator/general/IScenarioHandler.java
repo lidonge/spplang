@@ -88,7 +88,7 @@ public interface IScenarioHandler extends IServiceDefinitionHandler {
         SppServiceCall sppServiceCall = createServiceCall(ctx);
         getCurrentServiceBaseBody().addServiceCall(sppServiceCall);
 
-        SppClass callee = checker.getSppClass(CompilationUnitType.atomicservice,serviceClassName);
+        SppClass callee = (SppClass) checker.getSppClass(CompilationUnitType.atomicservice,serviceClassName);
         if(callee instanceof SppService) {
             sppServiceCall.setCallee((SppService) callee);
             currentCLass.setCurrentCall(new CurrentCall((SppService) callee,0));
@@ -123,7 +123,7 @@ public interface IScenarioHandler extends IServiceDefinitionHandler {
         //checkQualifiedName
         String err = serviceBaseBody.checkQualifiedName(paramName);
         logSppError(ctx,err);
-        SppClass currentCLass = getSppDomain().getCurrentClass();
+        SppClass currentCLass = (SppClass) getSppDomain().getCurrentClass();
         //check call parameter type and position
         CurrentCall currentCall = currentCLass.getCurrentCall();
         //callee's n parameter

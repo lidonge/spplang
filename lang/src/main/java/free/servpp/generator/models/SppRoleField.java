@@ -7,7 +7,7 @@ import free.servpp.generator.general.NameUtil;
  */
 public class SppRoleField extends SppField{
     String entityName;
-    public SppRoleField(SppClass cls, String name) {
+    public SppRoleField(SppCompilationUnit cls, String name) {
         super(cls, name);
     }
 

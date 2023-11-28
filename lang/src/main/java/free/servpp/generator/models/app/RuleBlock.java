@@ -1,5 +1,8 @@
 package free.servpp.generator.models.app;
 
+import free.servpp.generator.models.IComponent;
+import free.servpp.generator.models.IContainer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +15,37 @@ public class RuleBlock {
     PrimaryKeys primaryKeys = new PrimaryKeys();
     AppScope appScope = new AppScope();
     AppServices appServices = new AppServices();
+
+    IContainer appAnnotations = new IContainer() {
+        @Override
+        public void _add(IComponent component) {
+            appAnnotationList.add((AppAnnotation) component);
+        }
+
+        @Override
+        public boolean isContains(IComponent component) {
+            return appAnnotationList.contains(component);
+        }
+
+        @Override
+        public IContainer getParent() {
+            return null;
+        }
+
+        @Override
+        public void setParent(IContainer iContainer) {
+
+        }
+    };
+    List<AppAnnotation> appAnnotationList = new ArrayList<>();
+
+    public List<AppAnnotation> getAppAnnotationList() {
+        return appAnnotationList;
+    }
+
+    public IContainer getAppAnnotations() {
+        return appAnnotations;
+    }
 
     public AppServices getAppServices() {
         return appServices;

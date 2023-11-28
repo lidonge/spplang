@@ -4,6 +4,8 @@ import free.servpp.generator.models.*;
 import free.servpp.lang.antlr.SppListener;
 import org.antlr.v4.runtime.ParserRuleContext;
 
+import java.util.List;
+
 /**
  * @author lidong@date 2023-11-01@version 1.0
  */
@@ -16,7 +18,12 @@ public interface ICompilationUnitHandler extends SppListener, IConstance, ISppEr
     Object peek();
 
     int stackSize();
-//    Stack getStack();
+    default <T> T getLastElement(List<T> elements){
+        return elements.get(elements.size()-1);
+    }
+    default <T> T removeLastElement(List<T> elements){
+        return elements.remove(elements.size()-1);
+    }
     default String generateLocalVar(String ptype, String name) {
         SppVarMaker<SppClass, String> maker = (cls, s1) ->{return new SppLocalVar(cls,s1);};
         return _generateField(ptype,name,true,maker);
@@ -30,12 +37,12 @@ public interface ICompilationUnitHandler extends SppListener, IConstance, ISppEr
     }
     private String _generateField(String ptype, String name, boolean bLocal,SppVarMaker<SppClass, String> maker) {
         SppDomain checker = getSppDomain();
-        SppClass typeClass = checker.getSppClass(CompilationUnitType.entity, ptype);
+        SppCompilationUnit typeClass =  checker.getSppClass(CompilationUnitType.entity, ptype);
         SppLocalVar var = maker.create(typeClass,name);
         if(bLocal)
             return ((SppService)checker.getCurrentClass()).addLocalVar(var);
         else
-            return checker.getCurrentClass().addField((SppField) var);
+            return ((SppClass)checker.getCurrentClass()).addField((SppField) var);
     }
 
     default SppService generateService(CompilationUnitType type, ParserRuleContext ctx, String objName, String methodName) {
@@ -51,7 +58,7 @@ public interface ICompilationUnitHandler extends SppListener, IConstance, ISppEr
         }
         SppClass cls = genObjectDecl(type, objName);
         cls.setType(type);
-        cls = glbChecker.addClass(cls);
+        cls = (SppClass) glbChecker.addClass(cls);
         return cls;
     }
     default SppDomain checkClass(ParserRuleContext ctx, String type) {

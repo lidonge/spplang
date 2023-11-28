@@ -21,8 +21,9 @@ public interface IEntityBodyHandler extends ICompilationUnitHandler {
         String name = ctx.getChild(1).getText();
         SppDomain sppDomain = checkClass(ctx, type);
         CompilationUnitType clstype = sppDomain.getCurrentClass().getType();
+        SppCompilationUnit sppType = sppDomain.getSppClass(clstype, type);
         if( (clstype == CompilationUnitType.entity || clstype == CompilationUnitType.reference) &&
-                sppDomain.getSppClass(clstype,type).getType() != null)
+                (sppType.getType() != null && sppType.getType() != CompilationUnitType.Enum) )
             logSppError(ctx, "The field "+name+" of entity should be primary type!" );
         logSppError(ctx,generateField(type,name));
     }

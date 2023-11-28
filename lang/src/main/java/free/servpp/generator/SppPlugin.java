@@ -48,10 +48,12 @@ public class SppPlugin extends AbstractMojo {
         List<ParseTreeListener> appTreeListeners = compileAntlr(project, ".app", (sppFile, sppProject) -> {
             return new AppCompiler(sppFile, sppProject).compile();
         });
+
         InputStream mustache = SppPlugin.class.getResourceAsStream("/spp.mustache");
         for(ParseTreeListener parseTreeListener: sppTreeListeners){
             SppGeneralHandler sppGeneralHandler = (SppGeneralHandler) parseTreeListener;
             SppDomain sppDomain = sppGeneralHandler.getSppDomain();
+            sppDomain.dealAnnotations(sppDomain.getRuleBlock().getAppAnnotationList());
             try {
                 GeneratorUtil.openApi(sppDomain,mustache,sppGeneralHandler.getAntlrFile(),yamlOutputDirectory,javaOutputDirectory,basePackage);
             } catch (IOException e) {
@@ -70,7 +72,6 @@ public class SppPlugin extends AbstractMojo {
         List<ParseTreeListener> list = new ArrayList<>();
         for (File sppFile: files){
             try {
-                InputStream inputStream = SppPlugin.class.getResourceAsStream("/spp.mustache");
                 ParseTreeListener parseTreeListener = antlrCompiler.parse(sppFile, sppProject);
                 list.add(parseTreeListener);
             } catch (IOException e) {

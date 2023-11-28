@@ -1,10 +1,12 @@
 domain invoice;
-
+Enum Sex{
+    Male,Female
+}
 Reference Customer{
     String id;
     String name;
     int age;
-    int sex;
+    Sex sex;
 }
 
 Reference Product{

@@ -1,10 +1,10 @@
-package {{basePackage}}.{{javaPackage}}.service;
+package {{basePackage}}.{{domainName}}.service;
 
 import free.servpp.service.server.DefaultServiceContainer;
-import {{basePackage}}.{{javaPackage}}.handler.{{name}};
-import {{basePackage}}.{{javaPackage}}.model.{{name}}Args;
+import {{basePackage}}.{{domainName}}.handler.{{name}};
+import {{basePackage}}.{{domainName}}.model.{{name}}Args;
 {{#sppFieldList}}
-import {{basePackage}}.{{javaPackage}}.handler.{{type.name}};
+import {{basePackage}}.{{domainName}}.handler.{{type.name}};
 {{/sppFieldList}}
 
 public class Simple{{name}} extends {{name}}{
@@ -15,8 +15,8 @@ public class Simple{{name}} extends {{name}}{
     }
 
     @Override
-    public void execute(Object role) {
-        {{name}}Args args = ({{name}}Args) role;
+    public void execute(Object... params) {
+        {{name}}Args args = ({{name}}Args) params[params.length -1];
         {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}args.get{{upperName}}(){{/serviceBody.sppLocalVarList}});
     }
 

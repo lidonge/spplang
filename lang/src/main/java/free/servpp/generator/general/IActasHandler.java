@@ -16,8 +16,8 @@ public interface IActasHandler extends ICompilationUnitHandler {
         String roleName = ctx.getToken(SppParser.Identifier,1).getText();
 //        System.out.println("entity : " + entityName + ", role:"+roleName);
         SppRoleMapper sppRoleMapper = (SppRoleMapper) generateClass(CompilationUnitType.rolemapper,ctx,"Mapper"+entityName+"To"+roleName);
-        sppRoleMapper.setRole(getSppDomain().getSppClass(CompilationUnitType.role,roleName));
-        sppRoleMapper.setEntity(getSppDomain().getSppClass(CompilationUnitType.entity,entityName));
+        sppRoleMapper.setRole((SppClass) getSppDomain().getSppClass(CompilationUnitType.role,roleName));
+        sppRoleMapper.setEntity((SppClass) getSppDomain().getSppClass(CompilationUnitType.entity,entityName));
     }
     @Override
     default void exitActas(SppParser.ActasContext ctx){

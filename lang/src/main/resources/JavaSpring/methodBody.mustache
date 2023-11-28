@@ -5,7 +5,7 @@ getRequest().ifPresent(request -> {
                     com.fasterxml.jackson.databind.ObjectWriter ow = new com.fasterxml.jackson.databind.ObjectMapper().
                     registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule()).writer().withDefaultPrettyPrinter();
                     try {
-                        String json = ow.writeValueAsString({{#allParams}}{{^-first}},{{/-first}}{{paramName}}{{/allParams}});
+                        String json = ow.writeValueAsString({{#allParams}}{{#-last}}{{paramName}}{{/-last}}{{/allParams}});
                         ApiUtil.setExampleResponse(request,"application/json",json);
                     } catch (com.fasterxml.jackson.core.JsonProcessingException e) {
                         e.printStackTrace();

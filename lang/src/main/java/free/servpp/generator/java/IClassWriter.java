@@ -13,7 +13,7 @@ import java.io.PrintStream;
  * @author lidong@date 2023-11-15@version 1.0
  */
 public interface IClassWriter extends IFileGenerator {
-    String getJavaPackage();
+    String getDomainName();
     String getBasePackage();
     default void genClassDefine(SppClass sppClass) throws FileNotFoundException {
         genClassDefine(sppClass,null);
@@ -30,7 +30,7 @@ public interface IClassWriter extends IFileGenerator {
         FileOutputStream fout = new FileOutputStream(objPath);
         setPrintStream( new PrintStream(fout));
 //            PrintStream out = System.out;
-        println("package " + getBasePackage() + "."+getJavaPackage() + (addtionalPackage == null ? "" : "." +addtionalPackage)+";");
+        println("package " + getBasePackage() + "."+ getDomainName() + (addtionalPackage == null ? "" : "." +addtionalPackage)+";");
         IConstance.CompilationUnitType type = sppClass.getType();
         print("public " + typeToString(type) + " " + objName);
         printlnFromBeg((type == IConstance.CompilationUnitType.atomicservice ? " extends " : " implements ") + typeToExtendString(type) + " {");

@@ -6,11 +6,11 @@ import free.servpp.generator.general.NameUtil;
  * @author lidong@date 2023-11-01@version 1.0
  */
 public class SppLocalVar {
-    SppClass type;
+    SppCompilationUnit type;
     String name;
     int index;
 
-    public SppLocalVar(SppClass cls, String name) {
+    public SppLocalVar(SppCompilationUnit cls, String name) {
         this.type = cls;
         this.name = name;
     }
@@ -23,11 +23,11 @@ public class SppLocalVar {
         this.index = index;
     }
 
-    public SppClass getType() {
+    public SppCompilationUnit getType() {
         return type;
     }
 
-    public void setType(SppClass type) {
+    public void setType(SppCompilationUnit type) {
         this.type = type;
     }
 

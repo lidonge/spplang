@@ -49,3 +49,15 @@ services{
         account.balance -=amount.amount;
     }
 }
+
+
+@parameter(path="{accountno}/queryAccount",mapper="accountno:Account.id"){queryAccount;}
+
+@Bian{
+    Customer;
+    @CR{Invoice;}
+    @BQ{
+        Stock;
+        Amount;
+    }
+}

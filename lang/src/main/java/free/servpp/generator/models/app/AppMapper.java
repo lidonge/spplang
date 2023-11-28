@@ -1,6 +1,7 @@
 package free.servpp.generator.models.app;
 
 import free.servpp.generator.models.SppClass;
+import free.servpp.generator.models.SppCompilationUnit;
 import free.servpp.generator.models.SppField;
 
 import java.util.ArrayList;
@@ -10,12 +11,12 @@ import java.util.List;
  * @author lidong@date 2023-11-22@version 1.0
  */
 public class AppMapper implements INamedObject{
-    SppClass sppClass;
+    SppCompilationUnit sppClass;
 
     List<String> mapParameters = new ArrayList<>();
     List<MapperItem> mapperItemList = new ArrayList<>();
 
-    public AppMapper(SppClass sppClass) {
+    public AppMapper(SppCompilationUnit sppClass) {
         this.sppClass = sppClass;
     }
 
@@ -23,7 +24,7 @@ public class AppMapper implements INamedObject{
         return sppClass.getName();
     }
 
-    public SppClass getSppClass() {
+    public SppCompilationUnit getSppClass() {
         return sppClass;
     }
 

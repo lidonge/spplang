@@ -1,30 +1,29 @@
 package free.servpp.generator.java;
 
-import free.servpp.generator.models.SppClass;
+import free.servpp.generator.models.SppCompilationUnit;
 
 import java.io.File;
-import java.io.PrintStream;
 
 /**
  * @author lidong@date 2023-11-15@version 1.0
  */
 public class ClassWriterConfig {
     protected File domainPath;
-    protected SppClass sppClass;
-    protected String javaPackage;
+    protected SppCompilationUnit sppCompilationUnit;
+    protected String domainName;
     private String basePackage;
-    public ClassWriterConfig(File domainPath, SppClass sppClass, String basePackage, String javaPackage) {
+    public ClassWriterConfig(File domainPath, SppCompilationUnit sppCompilationUnit, String basePackage, String domainName) {
         this.domainPath = domainPath;
-        this.sppClass = sppClass;
+        this.sppCompilationUnit = sppCompilationUnit;
         this.basePackage =basePackage;
-        this.javaPackage = javaPackage;
+        this.domainName = domainName;
     }
     public File getDomainPath() {
         return domainPath;
     }
 
-    public String getJavaPackage() {
-        return javaPackage;
+    public String getDomainName() {
+        return domainName;
     }
 
     public String getBasePackage() {

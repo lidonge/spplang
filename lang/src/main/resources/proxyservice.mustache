@@ -1,8 +1,8 @@
-package {{basePackage}}.{{javaPackage}}.service;
+package {{basePackage}}.{{domainName}}.service;
 
-import {{basePackage}}.{{javaPackage}}.handler.{{name}};
+import {{basePackage}}.{{domainName}}.handler.{{name}};
 {{#sppFieldList}}
-import {{basePackage}}.{{javaPackage}}.model.{{type.name}};
+import {{basePackage}}.{{domainName}}.model.{{type.name}};
 {{/sppFieldList}}
 
 public class Simple{{name}} implements {{name}} {
@@ -12,7 +12,7 @@ public class Simple{{name}} implements {{name}} {
 	}
 
     @Override
-    public void execute(Object role) {
+    public void execute(Object... params) {
     }
 
     @Override

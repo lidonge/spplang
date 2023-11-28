@@ -1,9 +1,9 @@
-package {{basePackage}}.{{javaPackage}}.service;
+package {{basePackage}}.{{domainName}}.service;
 
-import {{basePackage}}.{{javaPackage}}.handler.{{name}};
-import {{basePackage}}.{{javaPackage}}.model.{{name}}Args;
+import {{basePackage}}.{{domainName}}.handler.{{name}};
+import {{basePackage}}.{{domainName}}.model.{{name}}Args;
 {{#sppFieldList}}
-import {{basePackage}}.{{javaPackage}}.model.{{type.name}};
+import {{basePackage}}.{{domainName}}.model.{{type.name}};
 {{/sppFieldList}}
 
 public class Simple{{name}} implements {{name}} {
@@ -16,8 +16,8 @@ public class Simple{{name}} implements {{name}} {
 	}
 
     @Override
-    public void execute(Object role) {
-        arg = ({{name}}Args) role;
+    public void execute(Object... params) {
+        arg = ({{name}}Args) params[params.length - 1];
         {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{/sppFieldList}});
     }
 

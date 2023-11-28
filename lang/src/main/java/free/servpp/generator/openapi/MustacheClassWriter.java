@@ -3,7 +3,6 @@ package free.servpp.generator.openapi;
 import com.samskivert.mustache.Mustache;
 import com.samskivert.mustache.Template;
 import free.servpp.generator.general.IConstance;
-import free.servpp.generator.java.BaseClassWriter;
 import free.servpp.generator.java.ClassWriterConfig;
 import free.servpp.generator.models.*;
 
@@ -15,29 +14,30 @@ import java.util.Map;
  * @author lidong@date 2023-11-15@version 1.0
  */
 public class MustacheClassWriter extends ClassWriterConfig {
-    public MustacheClassWriter(File domainPath, SppClass sppClass, String basePackage, String javaPackage) {
-        super(domainPath, sppClass, basePackage, javaPackage);
+    public MustacheClassWriter(File domainPath, SppClass sppClass, String basePackage, String domainName) {
+        super(domainPath, sppClass, basePackage, domainName);
     }
 
     public void generate() {
         try {
-            IConstance.CompilationUnitType type = sppClass.getType();
+            SppClass sppclass = (SppClass) sppCompilationUnit;
+            IConstance.CompilationUnitType type = sppclass.getType();
             if (type != null) {
                 if (type == IConstance.CompilationUnitType.rolemapper) {
                     takeAllMapFields();
 
-                    genClassFile("model", "/rolemapper.mustache", sppClass, sppClass.getName());
+                    genClassFile("model", "/rolemapper.mustache", sppclass, sppclass.getName());
                 } else if (type == IConstance.CompilationUnitType.atomicservice) {
-                    SppService sppService = (SppService) sppClass;
+                    SppService sppService = (SppService) sppclass;
                     if(sppService.getScopeItem().isLocal()){
-                        genClassFile("service", "/service.mustache", sppClass, "Simple" + sppClass.getName());
+                        genClassFile("service", "/service.mustache", sppclass, "Simple" + sppclass.getName());
                     }else {
-                        genClassFile("service", "/proxyservice.mustache", sppClass, "Simple" + sppClass.getName());
+                        genClassFile("service", "/proxyservice.mustache", sppclass, "Simple" + sppclass.getName());
                     }
-                    genClassFile("handler", "/atomicservice.mustache", sppClass, sppClass.getName());
+                    genClassFile("handler", "/atomicservice.mustache", sppclass, sppclass.getName());
                 } else if (type == IConstance.CompilationUnitType.scenario) {
-                    genClassFile("handler", "/scenario.mustache", sppClass, sppClass.getName());
-                    genClassFile("service", "/scenarioservice.mustache", sppClass, "Simple" + sppClass.getName());
+                    genClassFile("handler", "/scenario.mustache", sppclass, sppclass.getName());
+                    genClassFile("service", "/scenarioservice.mustache", sppclass, "Simple" + sppclass.getName());
                 }
             }
         } catch (IOException e) {
@@ -46,7 +46,7 @@ public class MustacheClassWriter extends ClassWriterConfig {
     }
 
     private void takeAllMapFields() {
-        SppRoleMapper sppRoleMapper = (SppRoleMapper) sppClass;
+        SppRoleMapper sppRoleMapper = (SppRoleMapper) sppCompilationUnit;
         if (sppRoleMapper.isTakeAll()) {
             Map<String, SppField> nameToEntitys = new HashMap<>();
             for (SppField var : sppRoleMapper.getSppFieldList()) {

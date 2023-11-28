@@ -11,67 +11,19 @@ import java.util.Map;
 /**
  * @author lidong@date 2023-11-01@version 1.0
  */
-public class SppClass {
-    private String basePackage;
-    private String javaPackage;
+public class SppClass extends SppCompilationUnit {
 
-    private String additionalPackage;
-    String name;
-    IConstance.CompilationUnitType type;
     Map<String, SppField> sppFieldMap = new HashMap<>();
     List<SppField> sppFieldList = new ArrayList<>();
 
-    private boolean isReal = true;
-    //There is only one method in a class, so not need
-//    Map<String, SppMethod> methodMap = new HashMap<>();
-
     private IScenarioHandler.CurrentCall currentCall;
     public SppClass(String name) {
-        this.name = name;
+        super(name);
     }
 
     public SppClass(String name, IConstance.CompilationUnitType type) {
-        this.name = name;
+        super(name);
         this.type = type;
-    }
-
-    public String getBasePackage() {
-        return basePackage;
-    }
-
-    public void setBasePackage(String basePackage) {
-        this.basePackage = basePackage;
-    }
-
-    public String getJavaPackage() {
-        return javaPackage;
-    }
-
-    public void setJavaPackage(String javaPackage) {
-        this.javaPackage = javaPackage;
-    }
-
-    public String getAdditionalPackage() {
-        return additionalPackage;
-    }
-
-    public void setAdditionalPackage(String additionalPackage) {
-        this.additionalPackage = additionalPackage;
-    }
-
-    public String getPackageName() {
-        if(additionalPackage != null)
-            return basePackage +"." + javaPackage +"."+additionalPackage;
-        else
-            return basePackage +"." + javaPackage;
-    }
-
-    public boolean isReal() {
-        return isReal;
-    }
-
-    public void setReal(boolean real) {
-        isReal = real;
     }
 
     public List<SppField> getSppFieldList() {
@@ -86,24 +38,8 @@ public class SppClass {
         this.currentCall = currentCall;
     }
 
-    public IConstance.CompilationUnitType getType() {
-        return type;
-    }
-
-    public void setType(IConstance.CompilationUnitType type) {
-        this.type = type;
-    }
-
     public Map<String, SppField> getSppFieldMap() {
         return sppFieldMap;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String addField(SppField field){
@@ -115,7 +51,7 @@ public class SppClass {
             if(type == IConstance.CompilationUnitType.scenario && theField.getType() == field.getType()){
                 return null;
             }else
-                return "Duplicate Field " + fieldName + " in class " + name;
+                return "Duplicate Field " + fieldName + " in class " + getName();
         }
         field.setIndex(sppFieldMap.size());
         sppFieldMap.put(fieldName,field);
@@ -133,7 +69,7 @@ public class SppClass {
     @Override
     public String toString() {
         return "SppClass{" +
-                "name='" + name + '\'' +
+                "name='" + getName() + '\'' +
                 ", type=" + type +
                 ", sppFieldList=" + sppFieldList +
                 '}';
@@ -151,14 +87,11 @@ public class SppClass {
         return ret;
     }
 
-    public void copyFrom(SppClass cls) {
-        name = cls.name;
-        type = cls.type;
+    public void copyFrom(SppCompilationUnit sppCompilationUnit) {
+        super.copyFrom(sppCompilationUnit);
+        SppClass cls = (SppClass) sppCompilationUnit;
         sppFieldMap = cls.sppFieldMap;
         sppFieldList = cls.sppFieldList;
-
-        isReal = cls.isReal;
-
         currentCall = cls.currentCall;
     }
 

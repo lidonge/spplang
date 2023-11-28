@@ -20,6 +20,7 @@ public class OpenAPIDirectClassWriter extends BaseClassWriter implements IAtomic
 
     public void generate() {
         try {
+            SppClass sppClass = (SppClass) sppCompilationUnit;
             CompilationUnitType type = sppClass.getType();
             if (type != null) {
                 if (type == CompilationUnitType.rolemapper) {

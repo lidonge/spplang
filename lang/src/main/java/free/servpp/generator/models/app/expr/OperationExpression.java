@@ -1,6 +1,7 @@
 package free.servpp.generator.models.app.expr;
 
 import free.servpp.generator.general.app.SemanticException;
+import free.servpp.generator.models.IComponent;
 import free.servpp.generator.models.SppClass;
 import free.servpp.generator.models.SppDomain;
 
@@ -60,5 +61,10 @@ public class OperationExpression extends Expression implements IOperationExpress
 
     public void setOperation(IOperation operation) {
         this.operation = operation;
+    }
+
+    @Override
+    public boolean isContains(IComponent component) {
+        return left == component || right == component;
     }
 }

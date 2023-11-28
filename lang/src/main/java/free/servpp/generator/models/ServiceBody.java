@@ -45,13 +45,13 @@ public class ServiceBody extends ServiceBaseBody implements IQualifiedNameUtil {
         SppLocalVar inst = sppLocalVarHashMap.get(parts[0]);
         if(inst == null)
             return "Var " + parts[0] + " not found!";
-        SppClass cls = inst.getType();
+        SppClass cls = (SppClass) inst.getType();
         for(int i = 1;i<parts.length;i++){
             SppField field = cls.getField(parts[i]);
             if(field == null){
                 return "Field " + parts[i] + " not found!";
             }
-            cls = field.getType();
+            cls = (SppClass) field.getType();
         }
         return null;
     }

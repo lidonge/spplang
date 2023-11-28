@@ -1,6 +1,7 @@
 package free.servpp.generator.models;
 
 import free.servpp.generator.general.IConstance;
+import free.servpp.generator.models.app.AppAnnotation;
 import free.servpp.generator.models.app.RuleBlock;
 
 import java.util.*;
@@ -9,9 +10,9 @@ import java.util.*;
  * @author lidong@date 2023-11-01@version 1.0
  */
 public class SppDomain {
-    Map<String, SppClass> mapsOfClass = new HashMap<>();
+    Map<String, SppCompilationUnit> mapsOfClass = new HashMap<>();
     List<ErrorContent> unFoundClass = new ArrayList<>();
-    private SppClass currentClass = null;
+    private SppCompilationUnit currentClass = null;
 
     private String name;
     private RuleBlock ruleBlock = new RuleBlock();
@@ -34,31 +35,31 @@ public class SppDomain {
         this.name = name;
     }
 
-    public Map<String, SppClass> getMapsOfClass() {
+    public Map<String, SppCompilationUnit> getMapsOfClass() {
         return mapsOfClass;
     }
 
-    public SppClass getCurrentClass() {
+    public SppCompilationUnit getCurrentClass() {
         return currentClass;
     }
 
     public String checkClass(String clsName) {
-        SppClass sppClass = mapsOfClass.get(clsName);
+        SppCompilationUnit sppClass = mapsOfClass.get(clsName);
         if (sppClass == null || !sppClass.isReal())
             return "Class " + clsName + " not found!";
         return null;
     }
 
     public String checkDupClass(String clsName) {
-        SppClass sppClass = mapsOfClass.get(clsName);
+        SppCompilationUnit sppClass = mapsOfClass.get(clsName);
         if ( sppClass != null && sppClass.isReal())
             return "Class " + clsName + " duplicated!";
         return null;
     }
 
-    public SppClass addClass(SppClass cls) {
+    public SppCompilationUnit addClass(SppCompilationUnit cls) {
         String name = cls.getName();
-        SppClass sppClass = mapsOfClass.get(name);
+        SppCompilationUnit sppClass = mapsOfClass.get(name);
         if ( sppClass != null) {
             sppClass.copyFrom(cls);
         }else {
@@ -69,11 +70,11 @@ public class SppDomain {
         return sppClass;
     }
 
-    public SppClass getSppClass(String clsName) {
+    public SppCompilationUnit getSppClass(String clsName) {
         return  mapsOfClass.get(clsName);
     }
-    public SppClass getSppClass(IConstance.CompilationUnitType type,String clsName) {
-        SppClass sppClass = mapsOfClass.get(clsName);
+    public SppCompilationUnit getSppClass(IConstance.CompilationUnitType type,String clsName) {
+        SppCompilationUnit sppClass = mapsOfClass.get(clsName);
         if(sppClass == null){
             sppClass = genObjectDecl(type,clsName);
             sppClass.setReal(false);
@@ -89,7 +90,7 @@ public class SppDomain {
     public List<ErrorContent> checkAll(){
         ArrayList<ErrorContent> ret = new ArrayList<>();
         for(ErrorContent cont: unFoundClass){
-            SppClass sppClass = mapsOfClass.get(cont.getName());
+            SppCompilationUnit sppClass = mapsOfClass.get(cont.getName());
             if(sppClass == null || !sppClass.isReal()){
                 ret.add(cont);
             }
@@ -107,8 +108,8 @@ public class SppDomain {
     }
 
     public void dealMaps() {
-        Map<String, SppClass> sppClassMap = getMapsOfClass();
-        for (SppClass sppClass : sppClassMap.values()) {
+        Map<String, SppCompilationUnit> sppClassMap = getMapsOfClass();
+        for (SppCompilationUnit sppClass : sppClassMap.values()) {
             if (sppClass.getType() == IConstance.CompilationUnitType.rolemapper) {
 //                System.out.println(sppClass);
                 Map<String, String> entityToRole = new HashMap<>();
@@ -119,6 +120,16 @@ public class SppDomain {
                 }
                 takeAll(sppRoleMapper, entityToRole);
             }
+        }
+    }
+
+    public void dealAnnotations(List<? extends  IComponent> annotations){
+        for(IComponent component:annotations){
+            AppAnnotation annotation = (AppAnnotation) component;
+            for(SppCompilationUnit unit : annotation.getUnits()){
+                unit.getAnnotations().add(annotation);
+            }
+            dealAnnotations(annotation.getChildren());
         }
     }
 

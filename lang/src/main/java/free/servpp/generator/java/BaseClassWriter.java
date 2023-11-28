@@ -13,8 +13,8 @@ public class BaseClassWriter  extends ClassWriterConfig implements IFileGenerato
     private int braceLevel = 0;
     protected PrintStream out;
 
-    public BaseClassWriter(File domainPath, SppClass sppClass, String basePackage, String javaPackage) {
-        super(domainPath, sppClass, basePackage, javaPackage);
+    public BaseClassWriter(File domainPath, SppClass sppClass, String basePackage, String domainName) {
+        super(domainPath, sppClass, basePackage, domainName);
     }
 
     @Override

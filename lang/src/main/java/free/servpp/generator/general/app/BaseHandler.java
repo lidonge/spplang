@@ -13,7 +13,8 @@ import java.io.File;
 /**
  * @author lidong@date 2023-11-22@version 1.0
  */
-public abstract class BaseHandler implements IHeaderHandler, IPrimaryHandler, IMapperHandler, IScopeHandler, IServicesHandler {
+public abstract class BaseHandler implements IHeaderHandler, IPrimaryHandler,
+        IMapperHandler, IScopeHandler, IServicesHandler, IAnnotateHandler {
 
     @Override
     public void exitMapParameterIdentifier(AppParser.MapParameterIdentifierContext ctx) {

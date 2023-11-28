@@ -3,6 +3,7 @@ package free.servpp.generator.general.app;
 import free.servpp.generator.general.IConstance;
 import free.servpp.generator.general.NameUtil;
 import free.servpp.generator.models.SppClass;
+import free.servpp.generator.models.SppCompilationUnit;
 import free.servpp.generator.models.SppService;
 import free.servpp.generator.models.app.AppHeader;
 import free.servpp.generator.models.app.ScopeDefine;
@@ -72,7 +73,7 @@ public interface IScopeHandler extends IApplicationHandler {
     @Override
     default void enterScopeItemIdentifier(AppParser.ScopeItemIdentifierContext ctx){
         String clsName = ctx.getChild(0).getText();
-        SppClass sppClass = getSppDomian().getSppClass(NameUtil.firstToLowerCase(clsName,false));
+        SppCompilationUnit sppClass = getSppDomian().getSppClass(NameUtil.firstToLowerCase(clsName,false));
         if(sppClass instanceof SppService){
             RuleBlock ruleBlock = getCurrentRuleBlock();
             ScopeDefine scopeDefine = getLastElement(ruleBlock.getAppScope().getScopelist());

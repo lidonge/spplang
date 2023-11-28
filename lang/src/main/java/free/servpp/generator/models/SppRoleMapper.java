@@ -57,7 +57,7 @@ public class SppRoleMapper extends SppService{
                 ", serviceType=" + serviceType +
                 ", funcName='" + funcName + '\'' +
                 ", serviceBody=" + serviceBody +
-                ", name='" + name + '\'' +
+                ", name='" + getName() + '\'' +
                 ", type=" + type +
                 ", sppFieldMap=" + sppFieldMap +
                 '}';

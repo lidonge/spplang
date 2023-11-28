@@ -19,6 +19,7 @@
         <module>petservice</module>
         <module>petclient</module>
         <module>test</module>
+        <module>oas2spp</module>
     </modules>
 
     <properties>

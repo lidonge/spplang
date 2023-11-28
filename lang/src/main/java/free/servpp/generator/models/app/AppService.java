@@ -1,5 +1,7 @@
 package free.servpp.generator.models.app;
 
+import free.servpp.generator.models.IComponent;
+import free.servpp.generator.models.IContainer;
 import free.servpp.generator.models.SppService;
 import free.servpp.generator.models.app.expr.IExpression;
 import free.servpp.generator.models.app.expr.IOperationExpression;
@@ -10,21 +12,11 @@ import java.util.List;
 /**
  * @author lidong@date 2023-11-23@version 1.0
  */
-public class AppService  implements INamedObject{
+public class AppService  implements INamedObject, IContainer {
     private String name;
     private SppService sppService;
 
     private List<IOperationExpression> expressions = new ArrayList<>();
-
-    private IOperationExpression currentExpression;
-
-    public IOperationExpression getCurrentExpression() {
-        return currentExpression;
-    }
-
-    public void setCurrentExpression(IOperationExpression currentExpression) {
-        this.currentExpression = currentExpression;
-    }
 
     @Override
     public String getName() {
@@ -35,7 +27,7 @@ public class AppService  implements INamedObject{
         this.name = name;
     }
 
-    public void addExpression(IOperationExpression expression){
+    private void addExpression(IOperationExpression expression){
         expressions.add(expression);
     }
 
@@ -49,5 +41,25 @@ public class AppService  implements INamedObject{
 
     public void setSppService(SppService sppService) {
         this.sppService = sppService;
+    }
+
+    @Override
+    public IContainer getParent() {
+        return null;
+    }
+
+    @Override
+    public void setParent(IContainer iContainer) {
+
+    }
+
+    @Override
+    public void _add(IComponent component) {
+        addExpression((IOperationExpression) component);
+    }
+
+    @Override
+    public boolean isContains(IComponent component) {
+        return expressions.contains(component);
     }
 }

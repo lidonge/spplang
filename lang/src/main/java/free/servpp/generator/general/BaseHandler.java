@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * @author lidong@date 2023-11-01@version 1.0
  */
 public abstract class BaseHandler implements
-        IEntityHandler, IRoleHandler, IAtomicServiceHandler, IScenarioHandler, IActasHandler {
+        IEntityHandler, IRoleHandler, IAtomicServiceHandler, IScenarioHandler, IActasHandler,IEnumHandler {
 
     @Override
     public void exitRole(SppParser.RoleContext ctx) {

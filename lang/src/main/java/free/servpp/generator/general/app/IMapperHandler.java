@@ -1,6 +1,7 @@
 package free.servpp.generator.general.app;
 
 import free.servpp.generator.models.SppClass;
+import free.servpp.generator.models.SppCompilationUnit;
 import free.servpp.generator.models.SppField;
 import free.servpp.generator.models.app.AppMapper;
 import free.servpp.generator.models.app.MapperItem;
@@ -15,7 +16,7 @@ public interface IMapperHandler extends IApplicationHandler {
     @Override
     default void enterMap(AppParser.MapContext ctx){
         String clsName = ctx.getChild(1).getText();
-        SppClass sppClass = getSppDomian().getSppClass(clsName);
+        SppCompilationUnit sppClass = getSppDomian().getSppClass(clsName);
         if(sppClass == null){
             logSppError(ctx, "Identifier " + clsName + " not defined.");
         }else {
@@ -35,7 +36,7 @@ public interface IMapperHandler extends IApplicationHandler {
         String qualifiedName = ctx.getChild(0).getText();
         RuleBlock ruleBlock = getCurrentRuleBlock();
         AppMapper appMapper = getLastElement(ruleBlock.getAppMappers());
-        SppFieldDefine sppField = getQualifiedField(ctx, appMapper.getSppClass(), qualifiedName);
+        SppFieldDefine sppField = getQualifiedField(ctx, (SppClass) appMapper.getSppClass(), qualifiedName);
         if(sppField == null){
             logSppError(ctx, "Field " + qualifiedName + " not defined");
         }else{

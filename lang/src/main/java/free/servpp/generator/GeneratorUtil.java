@@ -1,5 +1,8 @@
 package free.servpp.generator;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.samskivert.mustache.Mustache;
 import com.samskivert.mustache.Template;
 import free.servpp.generator.general.SppGeneralHandler;
@@ -8,6 +11,7 @@ import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppProject;
 import free.servpp.generator.openapi.CodeFormator;
 import free.servpp.generator.openapi.OpenApiGenerator;
+import io.swagger.v3.core.util.Yaml;
 import io.swagger.v3.oas.models.OpenAPI;
 
 import java.io.*;
@@ -29,6 +33,7 @@ public class GeneratorUtil {
         SppDomain sppDomain = sppGeneralHandler.getSppDomain();
         sppDomain.dealMaps();
         AppGeneralHandler appGeneralHandler = (AppGeneralHandler) new AppCompiler(appFile,sppProject).compile();
+        sppDomain.dealAnnotations(sppDomain.getRuleBlock().getAppAnnotationList());
         openApi(sppDomain,mustache, sppFile,yamlOutPath, genRoot, basePackage);
     }
     public static void openApi(SppDomain sppDomain, InputStream mustache, File sppFile, File yamlOutPath,
@@ -40,15 +45,23 @@ public class GeneratorUtil {
         OpenApiGenerator openApiGenerator = new OpenApiGenerator();
         OpenAPI openAPI = openApiGenerator.generate(sppDomain,
                 domainPath, basePackage);
-        Template template = Mustache.compiler().compile(new InputStreamReader(mustache));
+//        Template template = Mustache.compiler().compile(new InputStreamReader(mustache));
         if(!yamlOutPath.exists())
             yamlOutPath.mkdirs();
         File outFile = new File(yamlOutPath, sppFile.getName() + ".yaml");
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileOutputStream(outFile));
-//            out = new PrintWriter(System.out);
-            out.println(CodeFormator.formatCode(template.execute(openAPI)));
+            String yamlText = Yaml.pretty().writeValueAsString(openAPI);
+            out.println(yamlText);
+//            ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+//            mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+//
+//// Write object as YAML file
+//            mapper.writeValue(outFile, openAPI);
+
+            //            out = new PrintWriter(System.out);
+//            out.println(CodeFormator.formatCode(template.execute(openAPI)));
         }finally {
             out.close();
         }

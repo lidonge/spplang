@@ -1,0 +1,11 @@
+domain {{domain}};
+
+{{#openApi.components.schemas}}
+{{^value._enum}}
+{{value.sppType}} {{key}}{
+{{#value.properties}}
+    {{#value.type}}{{value.type}}{{/value.type}}{{^value.type}}{{value.$ref}}{{/value.type}} {{key}};
+{{/value.properties}}
+}
+{{/value._enum}}
+{{/openApi.components.schemas}}

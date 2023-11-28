@@ -17,8 +17,29 @@ ruleBlock
     | scope
     | map
     | services
+    | annotate
     ;
 
+annotate
+    : '@' Identifier annotateParameterDefine? '{' annotateBody* '}'
+    ;
+
+annotateParameterDefine
+    : '(' (annotateParameter (',' annotateParameter)*)? ')'
+    ;
+
+annotateParameter
+    : Identifier '=' StringLiteral
+    ;
+
+annotateBody
+    : annotateBodyIdentifier ';'
+    | annotate
+    ;
+
+annotateBodyIdentifier
+    : Identifier
+    ;
 header
     : 'header' Identifier ('extends' extendsHeaders)? '{' (headerFieldDefine ';')* '}'
     ;
@@ -153,7 +174,7 @@ services
     ;
 
 service
-    : Identifier '{' serviceBody? '}'
+    : Identifier '{' serviceBody '}'
     ;
 
 serviceBody
