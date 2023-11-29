@@ -19,12 +19,15 @@ public interface IEntityBodyHandler extends ICompilationUnitHandler {
     default void enterFieldDeclaration(SppParser.FieldDeclarationContext ctx) {
         String type = ctx.getChild(0).getText();
         String name = ctx.getChild(1).getText();
-        SppDomain sppDomain = checkClass(ctx, type);
+        String[] sdims = type.split("\\[");
+
+        SppDomain sppDomain = checkClass(ctx, sdims[0]);
         CompilationUnitType clstype = sppDomain.getCurrentClass().getType();
-        SppCompilationUnit sppType = sppDomain.getSppClass(clstype, type);
-        if( (clstype == CompilationUnitType.entity || clstype == CompilationUnitType.reference) &&
-                (sppType.getType() != null && sppType.getType() != CompilationUnitType.Enum) )
-            logSppError(ctx, "The field "+name+" of entity should be primary type!" );
-        logSppError(ctx,generateField(type,name));
+        SppCompilationUnit sppType = sppDomain.getSppClass(clstype, sdims[0]);
+        int dim = sdims.length -1;
+//        if( (clstype == CompilationUnitType.entity || clstype == CompilationUnitType.reference) &&
+//                (sppType.getType() != null && sppType.getType() != CompilationUnitType.Enum) )
+//            logSppError(ctx, "The field "+name+" of entity should be primary type!" );
+        logSppError(ctx,generateField(sdims[0],dim,name));
     }
 }

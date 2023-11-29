@@ -1,6 +1,5 @@
 package free.servpp.generator.models;
 
-import free.servpp.generator.general.app.SemanticException;
 import free.servpp.generator.models.app.IQualifiedNameUtil;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class ServiceBody extends ServiceBaseBody implements IQualifiedNameUtil {
         this.realm = realm;
     }
 
-    public SppClass getQualifieField(String qualifiedName){
+    public SppLocalVar getQualifieField(String qualifiedName){
         return getQualifieField(qualifiedName,sppLocalVarHashMap);
     }
 

@@ -4,5 +4,5 @@ import free.servpp.service.AtomicService;
 import {{type.packageName}}.{{type.name}};
 {{/sppFieldList}}
 public interface {{name}} extends AtomicService {
-	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/sppFieldList}});
+	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/sppFieldList}});
 }

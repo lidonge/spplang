@@ -7,15 +7,13 @@ import free.servpp.generator.general.IConstance;
 import free.servpp.generator.general.IFileGenerator;
 import free.servpp.generator.general.BaseClassGenerator;
 import free.servpp.generator.models.*;
-import free.servpp.generator.models.app.AppAnnotation;
-import free.servpp.generator.models.app.AppHeader;
-import free.servpp.generator.models.app.RuleBlock;
-import free.servpp.generator.models.app.SppExtendField;
+import free.servpp.generator.models.app.*;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.PathItem;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.media.ArraySchema;
 import io.swagger.v3.oas.models.media.Content;
 import io.swagger.v3.oas.models.media.MediaType;
 import io.swagger.v3.oas.models.media.Schema;
@@ -157,8 +155,8 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
 
     private void createAPath(String domainName, SppClass sppClass, OpenAPI openAPI) {
         SppService sppService = (SppService) sppClass;
-        AppAnnotation param = null;
-        for(AppAnnotation annotation : sppService.getAnnotations()){
+        AnnotationDefine param = null;
+        for(AnnotationDefine annotation : sppService.getAnnotations()){
             if("parameter".equals(annotation.getName())){
                 param = annotation;
                 break;
@@ -204,14 +202,16 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
             getLogger().warn("Service {}'s scope is not defined!",sppService.getName());
         }else {
             AppHeader inHeader = sppService.getScopeItem().getScopeDefine().getIn();
-            SppClass headerCls = new SppClass(inHeader.getName(), IConstance.CompilationUnitType.role);
-            for(SppExtendField sppExtendField: inHeader.getSppExtendFields()){
-                headerCls.addField(new SppField(sppExtendField.getType(), sppExtendField.getName()));
+            if(inHeader != null) {
+                SppClass headerCls = new SppClass(inHeader.getName(), IConstance.CompilationUnitType.role);
+                for (SppExtendField sppExtendField : inHeader.getSppExtendFields()) {
+                    headerCls.addField(new SppField(sppExtendField.getType(), sppExtendField.getName()));
+                }
+                cls.addField(new SppField(headerCls, "AppHeader"));
             }
-            cls.addField(new SppField(headerCls, "AppHeader"));
         }
         for (SppLocalVar field : sppFieldList) {
-            cls.addField(new SppField(field.getType(), field.getName()));
+            cls.addField((SppField) new SppField(field.getType(), field.getName()).setArrayDimension(field.getArrayDimension()));
         }
         createASchema(cls, openAPI);
         operation.requestBody(new RequestBody().$ref(schemaName));
@@ -278,15 +278,21 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
     }
 
     private void createSchemaField(SppField field, Schema schema) {
-        Schema prop = new Schema();
+        boolean isArray = field.getArrayDimension() != 0;
+        Schema prop = isArray ? new ArraySchema() : new Schema();
         prop.setName(field.getName());
         SppCompilationUnit type = field.getType();
-        if (type.getType() == null) {
-            prop.setType(IFileGenerator.toOpenAPIPrimaryType(type.getName()));
-            prop.setFormat(IFileGenerator.toOpenAPITypeFormat(type.getName()));
-        } else {
-            prop.setType("object");
-            prop.set$ref("#/components/schemas/" + type.getName() );
+        if(isArray){
+            ArraySchema arraySchema = (ArraySchema) prop;
+            arraySchema.setItems(new Schema<>().$ref("#/components/schemas/" + type.getName()));
+        }else {
+            if (type.getType() == null) {
+                prop.setType(IFileGenerator.toOpenAPIPrimaryType(type.getName()));
+                prop.setFormat(IFileGenerator.toOpenAPITypeFormat(type.getName()));
+            } else {
+                prop.setType("object");
+                prop.set$ref("#/components/schemas/" + type.getName());
+            }
         }
         schema.addProperty(field.getName(), prop);
     }

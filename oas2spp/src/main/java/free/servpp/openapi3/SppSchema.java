@@ -15,4 +15,5 @@ public class SppSchema extends ObjectSchema {
     public void setSppType(String sppType) {
         this.sppType = sppType;
     }
+
 }

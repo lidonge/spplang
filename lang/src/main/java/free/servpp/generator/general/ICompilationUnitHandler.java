@@ -24,21 +24,22 @@ public interface ICompilationUnitHandler extends SppListener, IConstance, ISppEr
     default <T> T removeLastElement(List<T> elements){
         return elements.remove(elements.size()-1);
     }
-    default String generateLocalVar(String ptype, String name) {
+    default String generateLocalVar(String ptype,int dimension, String name) {
         SppVarMaker<SppClass, String> maker = (cls, s1) ->{return new SppLocalVar(cls,s1);};
-        return _generateField(ptype,name,true,maker);
+        return _generateField(ptype,dimension, name,true,maker);
     }
-    default String generateField(String ptype, String name) {
+    default String generateField(String ptype, int dimension, String name) {
         SppVarMaker<SppClass, String> maker = (cls, s1) ->{return new SppField(cls,s1);};
-        return  _generateField(ptype,name,false,maker);
+        return  _generateField(ptype,dimension,name,false,maker);
     }
     default String generateField(String ptype, String name, SppVarMaker<SppClass, String> maker) {
-        return  _generateField(ptype,name,false,maker);
+        return  _generateField(ptype,0, name,false,maker);
     }
-    private String _generateField(String ptype, String name, boolean bLocal,SppVarMaker<SppClass, String> maker) {
+    private String _generateField(String ptype, int dimension, String name, boolean bLocal,SppVarMaker<SppClass, String> maker) {
         SppDomain checker = getSppDomain();
         SppCompilationUnit typeClass =  checker.getSppClass(CompilationUnitType.entity, ptype);
         SppLocalVar var = maker.create(typeClass,name);
+        var.setArrayDimension(dimension);
         if(bLocal)
             return ((SppService)checker.getCurrentClass()).addLocalVar(var);
         else

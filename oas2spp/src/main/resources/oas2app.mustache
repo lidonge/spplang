@@ -1,0 +1,13 @@
+domain {{domain}};
+
+scope{
+    local {
+    {{#path.sppPathItems}}
+        {{operationId}};
+    {{/path.sppPathItems}}
+    }
+}
+{{#path.sppPathItems}}
+@parameter(path="{{relativePath}}"){ {{operationId}};}
+{{/path.sppPathItems}}
+

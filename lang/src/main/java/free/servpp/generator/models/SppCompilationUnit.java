@@ -1,6 +1,7 @@
 package free.servpp.generator.models;
 
 import free.servpp.generator.general.IConstance;
+import free.servpp.generator.models.app.AnnotationDefine;
 import free.servpp.generator.models.app.AppAnnotation;
 
 import java.util.ArrayList;
@@ -14,12 +15,13 @@ public class SppCompilationUnit {
     private String domainName;
     private String additionalPackage;
     private String name;
+
     private boolean isReal = true;
     protected IConstance.CompilationUnitType type;
 
-    protected List<AppAnnotation> annotations = new ArrayList<>();
+    protected List<AnnotationDefine> annotations = new ArrayList<>();
 
-    public List<AppAnnotation> getAnnotations() {
+    public List<AnnotationDefine> getAnnotations() {
         return annotations;
     }
 

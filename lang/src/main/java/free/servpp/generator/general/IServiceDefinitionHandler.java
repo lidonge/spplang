@@ -45,11 +45,15 @@ public interface IServiceDefinitionHandler extends ICompilationUnitHandler {
         String ptype = ctx.getChild(0).getText();
         String name = count == 1 ? null : ctx.getChild(1).getText();
 
-        String paramName = createAParameter(ptype, name);
-        SppDomain checker = checkClass(ctx,ptype);
+        String[] sdims = ptype.split("\\[");
+        String paramName = createAParameter(sdims[0], name);
+        SppDomain checker = checkClass(ctx,sdims[0]);
 //        String err = checker.getCurrentClass().addLocalVar(new SppLocalVar(checker.getSppClass(ptype),paramName));
         CompilationUnitType unitType = checker.getCurrentClass().getType();
-        String err = unitType == CompilationUnitType.scenario? generateLocalVar(ptype, paramName) : generateField(ptype,paramName);
+        int dim = sdims.length -1;
+        String err = unitType == CompilationUnitType.scenario?
+                generateLocalVar(sdims[0],dim, paramName) :
+                generateField(sdims[0],dim,paramName);
         logSppError(ctx,err);
 
     }

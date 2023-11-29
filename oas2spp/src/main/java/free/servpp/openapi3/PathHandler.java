@@ -34,7 +34,6 @@ public class PathHandler extends BaseHandler{
             dealOperation(entry.getKey(),pathItem.getOptions());
             dealOperation(entry.getKey(),pathItem.getPut());
             dealOperation(entry.getKey(),pathItem.getTrace());
-            dealOperation(entry.getKey(),pathItem.getPost());
         }
 //        paths
     }
@@ -48,6 +47,7 @@ public class PathHandler extends BaseHandler{
             }
             SppPathItem sppPathItem = new SppPathItem();
             sppPathItem.setOperationId(operation.getOperationId());
+            sppPathItem.setPath(path);
             RequestBody requestBody = operation.getRequestBody();
             String ref = null;
             if(requestBody != null){

@@ -19,6 +19,7 @@ Entity BaseAccount{
     double balance;
     double max;
     double min;
+    Stock[] stocks;
 }
 Reference Stock{
     String id;
@@ -44,7 +45,6 @@ take Product as Goods{
 Role Amount{
     int quantity;
     double amount;
-    date signDate;
 }
 Contract Invoice{
     String id;
@@ -62,6 +62,7 @@ atomic update decAccount(Account account, Amount amount);
 atomic update incAccount(Account account, Amount amount);
 atomic update decStock(GoodsStock stock, Amount amount);
 atomic check checkStock(GoodsStock stock);
+atomic update updateStocks(GoodsStock[] stock);
 
 Scenario parallel makeInvoice(Invoice invoice){
     queryAccount(invoice.buyer);

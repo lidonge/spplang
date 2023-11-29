@@ -21,7 +21,7 @@ public class ServiceBaseBody{
     public List<IServiceBodyStatement> getSppServiceCallList() {
         return sppServiceCallList;
     }
-    public SppClass getQualifieField(String qualifiedName){
+    public SppLocalVar getQualifieField(String qualifiedName){
         return parent.getQualifieField(qualifiedName);
     }
 

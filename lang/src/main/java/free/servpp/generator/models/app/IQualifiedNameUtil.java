@@ -17,20 +17,21 @@ import java.util.Map;
  * @author lidong@date 2023-11-23@version 1.0
  */
 public interface IQualifiedNameUtil {
-    default SppClass getQualifieField(String qualifiedName, Map<String, ? extends SppLocalVar> sppLocalVarHashMap){
+    default SppLocalVar getQualifieField(String qualifiedName, Map<String, ? extends SppLocalVar> sppLocalVarHashMap){
         String[] parts = qualifiedName.split("\\.");
         SppLocalVar inst = sppLocalVarHashMap.get(parts[0]);
         if(inst == null)
             return null;
         SppClass cls = (SppClass) inst.getType();
         for(int i = 1;i<parts.length;i++){
-            SppField field = cls.getField(parts[i]);
-            if(field == null){
+            inst = cls.getField(parts[i]);
+
+            if(inst == null){
                 return null;
             }
-            cls = (SppClass) field.getType();
+            cls = (SppClass) inst.getType();
         }
-        return cls;
+        return inst;
 
     }
 

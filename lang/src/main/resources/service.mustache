@@ -9,7 +9,7 @@ import {{basePackage}}.{{domainName}}.model.{{type.name}};
 public class Simple{{name}} implements {{name}} {
     private {{name}}Args arg;
     @Override
-	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/sppFieldList}}){
+	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/sppFieldList}}){
         {{#expressions}}
         {{expr}};
         {{/expressions}}
@@ -18,7 +18,7 @@ public class Simple{{name}} implements {{name}} {
     @Override
     public void execute(Object... params) {
         arg = ({{name}}Args) params[params.length - 1];
-        {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{/sppFieldList}});
+        {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/sppFieldList}});
     }
 
     @Override

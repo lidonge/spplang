@@ -13,7 +13,7 @@ public abstract class {{name}} implements Scenario{
 	{{#sppFieldList}}
 	protected {{type.name}} {{name}};
 	{{/sppFieldList}}
-	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}} {{name}}{{/serviceBody.sppLocalVarList}}){
+	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}}){
     {{#serviceBody}}
         {{#sppServiceCallList}}
         {{#executeCall}}

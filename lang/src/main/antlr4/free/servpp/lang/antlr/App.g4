@@ -21,7 +21,11 @@ ruleBlock
     ;
 
 annotate
-    : '@' Identifier annotateParameterDefine? '{' annotateBody* '}'
+    : annotateDefine+ '{' annotateBody* '}'
+    ;
+
+annotateDefine
+    : '@' Identifier annotateParameterDefine?
     ;
 
 annotateParameterDefine
@@ -132,11 +136,11 @@ scopeDefine
     ;
 
 localBody
-    : 'local' scopeParameter '{' scopeItem* '}'
+    : 'local' scopeParameter? '{' scopeItem* '}'
     ;
 
 remoteBody
-    : 'remote' scopeParameter '{' scopeItem* '}'
+    : 'remote' scopeParameter? '{' scopeItem* '}'
     ;
 scopeParameter
     : '(' inParameter ',' outParameter ')'

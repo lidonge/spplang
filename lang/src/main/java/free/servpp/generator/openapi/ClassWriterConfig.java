@@ -1,4 +1,4 @@
-package free.servpp.generator.java;
+package free.servpp.generator.openapi;
 
 import free.servpp.generator.models.SppCompilationUnit;
 

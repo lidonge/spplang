@@ -10,6 +10,10 @@ import java.util.Map;
  */
 public class SppServiceCall implements IServiceBodyStatement{
     SppService callee;
+
+    /**
+     * For generate call parameter in mustache
+     */
     Map<String, SppParameter> sppParameterHashMap = new HashMap<>();
     List<SppParameter> sppParameterList = new ArrayList<>();
     private ServiceBaseBody parent;

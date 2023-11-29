@@ -121,7 +121,7 @@ servicetype
     ;
 
 entitytype
-    : Identifier
+    : Identifier  ('[' ']')*
     ;
 
 parameterDeclarations
@@ -135,7 +135,7 @@ parameterDeclaration
     ;
 
 roletype
-    : Identifier
+    : Identifier ('[' ']')*
     ;
 scenarioDeclaration
     : executegroup transactionStatements?
@@ -179,7 +179,6 @@ primitiveType
     |   'long'
     |   'float'
     |   'double'
-    |	'date'
     ;
 
 Identifier

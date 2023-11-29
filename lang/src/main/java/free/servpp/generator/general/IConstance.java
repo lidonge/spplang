@@ -15,7 +15,7 @@ public interface IConstance {
     static final String[] primaryTypes = new String[]{
             "boolean", "char", "String"
             , "short", "int", "long"
-            , "float", "double", "date"};
+            , "float", "double"};
 
     public static enum ServiceType {
         query, check, calculate, update, unknown

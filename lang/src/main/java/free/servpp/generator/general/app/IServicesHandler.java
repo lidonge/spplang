@@ -60,10 +60,10 @@ public interface IServicesHandler extends IApplicationHandler,IRecursionProcess 
         Reference reference = new Reference();
         reference.setValue(text);
         AppService appService = getTheAppService();
-        SppClass sppClass = getQualifieField(text, appService.getSppService().getSppFieldMap());
-        if (sppClass == null)
+        SppLocalVar sppLocalVar = getQualifieField(text, appService.getSppService().getSppFieldMap());
+        if (sppLocalVar == null)
             logSppError(ctx, text + " not defined");
-        reference.setReturnType(sppClass);
+        reference.setReturnType((SppClass) sppLocalVar.getType());
         addRecursionComponent(reference);
     }
 

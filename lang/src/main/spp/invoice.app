@@ -34,6 +34,7 @@ scope{
         decAccount;
         incAccount;
         makeInvoice;
+        updateStocks;
     }
     remote (in baseIn, out baseOut){
         calculateAmount;

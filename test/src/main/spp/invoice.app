@@ -33,6 +33,7 @@ scope{
         queryAccount;
         decAccount;
         incAccount;
+        updateStocks;
         makeInvoice;
     }
     remote (in baseIn, out baseOut){

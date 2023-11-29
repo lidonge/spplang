@@ -17,7 +17,7 @@ public class Simple{{name}} extends {{name}}{
     @Override
     public void execute(Object... params) {
         {{name}}Args args = ({{name}}Args) params[params.length -1];
-        {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}args.get{{upperName}}(){{/serviceBody.sppLocalVarList}});
+        {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}args.get{{upperName}}(){{toArrayString}}{{/serviceBody.sppLocalVarList}});
     }
 
 

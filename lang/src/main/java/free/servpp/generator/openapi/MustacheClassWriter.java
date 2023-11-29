@@ -3,7 +3,6 @@ package free.servpp.generator.openapi;
 import com.samskivert.mustache.Mustache;
 import com.samskivert.mustache.Template;
 import free.servpp.generator.general.IConstance;
-import free.servpp.generator.java.ClassWriterConfig;
 import free.servpp.generator.models.*;
 
 import java.io.*;

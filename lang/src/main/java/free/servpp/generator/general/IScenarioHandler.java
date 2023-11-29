@@ -100,7 +100,7 @@ public interface IScenarioHandler extends IServiceDefinitionHandler {
         }
         else
             logSppError(ctx,"Callee:"+serviceClassName+" is not a service!");
-        String err = generateField(serviceClassName,serviceName);
+        String err = generateField(serviceClassName,0,serviceName);
         logSppError(ctx,err);
     }
 
@@ -130,15 +130,22 @@ public interface IScenarioHandler extends IServiceDefinitionHandler {
 //        System.out.println("Callee "+currentCall.callee().getName() +" get parameter " + currentCall.paramIndex);
         SppLocalVar indexVar = currentCall.callee().getField(currentCall.paramIndex());
         //local var type
-        SppClass nameVar = serviceBaseBody.getQualifieField(paramName);
+        SppLocalVar nameVar = serviceBaseBody.getQualifieField(paramName);
         SppServiceCall sppServiceCall = (SppServiceCall) serviceBaseBody.getLastServiceCall();
-        sppServiceCall.addParameter( new SppParameter(nameVar == null ? null: nameVar,paramName));
+        sppServiceCall.addParameter( new SppParameter(nameVar == null ? null: nameVar.getType(),paramName)
+                .setArrayDimension(nameVar.getArrayDimension()));
         if(nameVar == null ){
             logSppError(ctx, "Parameter " + name +" is  null ");
-        }else if(!indexVar.getType().getName().equals(nameVar.getName())){
-            logSppError(ctx, "Parameter " + name +" is  excepted " +indexVar.getType().getName());
+        }else if(!isSameTypeWithParameter(indexVar, nameVar)){
+            logSppError(ctx, "Parameter " + name +" is  excepted " +indexVar.getType().getName() +(indexVar.getArrayString()));
         }
         currentCLass.setCurrentCall(new CurrentCall(currentCall.callee,currentCall.paramIndex+1));
+    }
+
+    private static boolean isSameTypeWithParameter(SppLocalVar indexVar, SppLocalVar nameVar) {
+        boolean isSame = indexVar.getType().getName().equals(nameVar.getType().getName());
+        isSame = isSame && indexVar.getArrayDimension() == nameVar.getArrayDimension();
+        return isSame;
     }
 
     @Override

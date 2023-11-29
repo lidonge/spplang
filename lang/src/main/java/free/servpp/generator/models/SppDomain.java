@@ -1,6 +1,7 @@
 package free.servpp.generator.models;
 
 import free.servpp.generator.general.IConstance;
+import free.servpp.generator.models.app.AnnotationDefine;
 import free.servpp.generator.models.app.AppAnnotation;
 import free.servpp.generator.models.app.RuleBlock;
 
@@ -127,7 +128,9 @@ public class SppDomain {
         for(IComponent component:annotations){
             AppAnnotation annotation = (AppAnnotation) component;
             for(SppCompilationUnit unit : annotation.getUnits()){
-                unit.getAnnotations().add(annotation);
+                for(AnnotationDefine annotationDefine:annotation.getAnnotationDefineList()) {
+                    unit.getAnnotations().add(annotationDefine);
+                }
             }
             dealAnnotations(annotation.getChildren());
         }
