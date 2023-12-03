@@ -5,6 +5,7 @@ import free.servpp.generator.models.app.ScopeItem;
 import free.servpp.generator.models.app.expr.IExpression;
 import free.servpp.generator.models.app.expr.IOperationExpression;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +21,10 @@ public class SppService extends SppClass{
 
     private List<IOperationExpression> expressions;
 
+    private String requestSuffix = "Request";
+
+    private ServiceBody returns = new ServiceBody(this);
+
     public SppService(String name) {
         super(name);
         this.serviceBody = new ServiceBody(this);
@@ -27,6 +32,18 @@ public class SppService extends SppClass{
     public SppService(String name, IConstance.CompilationUnitType type) {
         super(name,type);
         this.serviceBody = new ServiceBody(this);
+    }
+
+    public ServiceBody getReturns() {
+        return returns;
+    }
+
+    public String getRequestSuffix() {
+        return requestSuffix;
+    }
+
+    public void setRequestSuffix(String requestSuffix) {
+        this.requestSuffix = requestSuffix;
     }
 
     public List<IOperationExpression> getExpressions() {

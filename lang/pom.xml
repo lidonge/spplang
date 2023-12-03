@@ -102,6 +102,7 @@
                     <outputDirectory>
                         ${basedir}/target/main/java/antlr4
                     </outputDirectory>
+                    <libDirectory>${basedir}/src/main/antlr4/free/servpp/lang/antlr</libDirectory>
                 </configuration>
                 <executions>
                     <execution>

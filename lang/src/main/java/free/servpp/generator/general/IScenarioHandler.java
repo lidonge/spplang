@@ -11,22 +11,27 @@ import org.antlr.v4.runtime.misc.NotNull;
 public interface IScenarioHandler extends IServiceDefinitionHandler {
     @Override
     default void enterScenario(SppParser.ScenarioContext ctx) {
-        push(CompilationUnitType.scenario);
-        push(ScenarioType.parallel);
+//        push(CompilationUnitType.scenario);
+//        push(ScenarioType.parallel);
+        SppScenario currentClass = new SppScenario("");
+        currentClass.setType(CompilationUnitType.scenario);
+        currentClass.setScenarioType(ScenarioType.parallel);
+        getSppDomain().setCurrentClass(currentClass);
     }
 
     @Override
     default void exitScenario(SppParser.ScenarioContext ctx) {
+        getSppDomain().setCurrentClass(null);
     }
     @Override
     default void enterAutosort(SppParser.AutosortContext ctx) {
+        String st = ctx.getChild(0).getText();
+        IConstance.ScenarioType scenarioType = ScenarioType.valueOf(st);
+        SppScenario sppScenario = (SppScenario) getSppDomain().getCurrentClass();
+        sppScenario.setScenarioType(scenarioType);
     }
     @Override
     default void exitAutosort(SppParser.AutosortContext ctx) {
-        String st = ctx.getChild(0).getText();
-        IConstance.ScenarioType scenarioType = ScenarioType.valueOf(st);
-        ScenarioType old = (ScenarioType) pop();
-        push(scenarioType);
     }
 
     @Override
@@ -85,7 +90,7 @@ public interface IScenarioHandler extends IServiceDefinitionHandler {
         String serviceClassName = NameUtil.firstToLowerCase(serviceName,false);
         SppDomain checker = checkClass(ctx,serviceClassName);
         SppService currentCLass = (SppService) checker.getCurrentClass();
-        SppServiceCall sppServiceCall = createServiceCall(ctx);
+        SppServiceCall sppServiceCall = new SppServiceCall();
         getCurrentServiceBaseBody().addServiceCall(sppServiceCall);
 
         SppClass callee = (SppClass) checker.getSppClass(CompilationUnitType.atomicservice,serviceClassName);
@@ -128,7 +133,7 @@ public interface IScenarioHandler extends IServiceDefinitionHandler {
         CurrentCall currentCall = currentCLass.getCurrentCall();
         //callee's n parameter
 //        System.out.println("Callee "+currentCall.callee().getName() +" get parameter " + currentCall.paramIndex);
-        SppLocalVar indexVar = currentCall.callee().getField(currentCall.paramIndex());
+        SppLocalVar indexVar = currentCall.callee().getServiceBody().getLocalVar(currentCall.paramIndex());
         //local var type
         SppLocalVar nameVar = serviceBaseBody.getQualifieField(paramName);
         SppServiceCall sppServiceCall = (SppServiceCall) serviceBaseBody.getLastServiceCall();
@@ -159,11 +164,6 @@ public interface IScenarioHandler extends IServiceDefinitionHandler {
     record CurrentCall(SppService callee, int paramIndex){
 
     }
-    private SppServiceCall createServiceCall(ParserRuleContext ctx) {
-        SppServiceCall sppServiceCall = new SppServiceCall();
-        return sppServiceCall;
-    }
-
     private ServiceBaseBody getCurrentServiceBaseBody() {
         SppScenario currentCLass = (SppScenario) getSppDomain().getCurrentClass();
         ServiceBaseBody serviceBaseBody = currentCLass.getServiceBody();

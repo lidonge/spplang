@@ -17,12 +17,12 @@ public abstract class BaseHandler implements
     }
 
     @Override
-    public void enterQualifiedname(SppParser.QualifiednameContext ctx) {
+    public void enterQualifiedName(SppParser.QualifiedNameContext ctx) {
 
     }
 
     @Override
-    public void exitQualifiedname(SppParser.QualifiednameContext ctx) {
+    public void exitQualifiedName(SppParser.QualifiedNameContext ctx) {
 
     }
 

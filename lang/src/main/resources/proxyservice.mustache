@@ -1,13 +1,13 @@
 package {{basePackage}}.{{domainName}}.service;
 
 import {{basePackage}}.{{domainName}}.handler.{{name}};
-{{#sppFieldList}}
+{{#serviceBody.sppLocalVarList}}
 import {{basePackage}}.{{domainName}}.model.{{type.name}};
-{{/sppFieldList}}
+{{/serviceBody.sppLocalVarList}}
 
 public class Simple{{name}} implements {{name}} {
     @Override
-	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/sppFieldList}}){
+	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}}){
 
 	}
 

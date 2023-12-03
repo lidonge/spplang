@@ -68,8 +68,8 @@ Scenario parallel makeInvoice(Invoice invoice){
     queryAccount(invoice.buyer);
     queryAccount(invoice.seller);
     serial{
-        checkStock(invoice.goods.stock);
         calculateAmount(invoice.goods, invoice.amount);
+        checkStock(invoice.goods.stock);
     }
     transaction{
         decAccount(invoice.buyer, invoice.amount);

@@ -4,6 +4,7 @@ import io.swagger.oas.models.OpenAPI;
 import io.swagger.oas.models.media.Schema;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -64,12 +65,32 @@ public class DomainHandler {
         for (SchemaInfo schemaInfo : infoMap.values()) {
             Schema schema = allSchemas.get(schemaInfo.getName());
             schemaInfo.setSchema(schema);
+            List<String> enmu = schema.getEnum();
             if (schema != null && schema.getEnum() != null) {
                 schemaInfo.setType(SchemaInfo.Type.Enum);
                 enums.put(schemaInfo.getName(), schemaInfo.getSchema());
+                for(int i =0;i<enmu.size();i++){
+                    String orig = enmu.get(i);
+                    String s = orig;
+                    s = replaceChar(s, ".");
+                    s = replaceChar(s, "-");
+                    s = replaceChar(s, "(");
+                    s = replaceChar(s, ")");
+                    if(s != orig){
+                        enmu.set(i, s + "(\"" + orig+"\")");
+                    }
+                }
             }
         }
     }
+
+    private String replaceChar(String s, String str) {
+        if (s.indexOf(str) != -1) {
+            s = s.replace(str, "_");
+        }
+        return s;
+    }
+
     private void setSppType( ) {
         for (Map.Entry<String, Schema> entry : openAPI.getComponents().getSchemas().entrySet()) {
             SchemaInfo schemaInfo = infoMap.get(entry.getKey());

@@ -9,18 +9,15 @@ import java.util.List;
  * @author lidong@date 2023-11-28@version 1.0
  */
 public class SppEnum extends SppCompilationUnit{
-    List<String> items = new ArrayList<>();
+    List<SppEnumItem> items = new ArrayList<>();
 
     public SppEnum(String name) {
         super(name);
         setType(IConstance.CompilationUnitType.Enum);
     }
 
-    public List<String> getItems() {
+    public List<SppEnumItem> getItems() {
         return items;
     }
 
-    public void setItems(List<String> items) {
-        this.items = items;
-    }
 }

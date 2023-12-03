@@ -69,8 +69,8 @@ public class Test {
                     String domain = domainName;
                     Map<String, Schema> allEnums = domainHandler.getEnums();
                 }, "/enums.mustache");
-                s = s.replace(".","").replace("-","_").
-                        replace("(","_").replace(")","");
+//                s = s.replace(".","").replace("-","_").
+//                        replace("(","_").replace(")","");
 
                 enumsOut.println(s);
 

@@ -1,15 +1,15 @@
 package {{basePackage}}.{{domainName}}.service;
 
 import {{basePackage}}.{{domainName}}.handler.{{name}};
-import {{basePackage}}.{{domainName}}.model.{{name}}Args;
-{{#sppFieldList}}
+{{#requestSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{requestSuffix}};{{/requestSuffix}}
+{{#serviceBody.sppLocalVarList}}
 import {{basePackage}}.{{domainName}}.model.{{type.name}};
-{{/sppFieldList}}
+{{/serviceBody.sppLocalVarList}}
 
 public class Simple{{name}} implements {{name}} {
-    private {{name}}Args arg;
+    private {{name}}{{#requestSuffix}}{{requestSuffix}}{{/requestSuffix}} arg;
     @Override
-	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/sppFieldList}}){
+	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}}){
         {{#expressions}}
         {{expr}};
         {{/expressions}}
@@ -17,12 +17,13 @@ public class Simple{{name}} implements {{name}} {
 
     @Override
     public void execute(Object... params) {
-        arg = ({{name}}Args) params[params.length - 1];
-        {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/sppFieldList}});
+        arg = ({{name}}{{#requestSuffix}}{{requestSuffix}}{{/requestSuffix}}) params[params.length - 1];
+        {{#requestSuffix}}{{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
+        {{^requestSuffix}}{{funcName}}({{#serviceBody.sppLocalVarList}}({{type.name}}{{toArrayString}})arg{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
     }
 
     @Override
     public void copyFrom(Object role) {
-        arg = ({{name}}Args)role;
+        arg = ({{name}}{{#requestSuffix}}{{requestSuffix}}{{/requestSuffix}})role;
     }
 }

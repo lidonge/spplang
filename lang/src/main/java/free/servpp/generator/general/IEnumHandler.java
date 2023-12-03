@@ -1,6 +1,7 @@
 package free.servpp.generator.general;
 
 import free.servpp.generator.models.SppEnum;
+import free.servpp.generator.models.SppEnumItem;
 import free.servpp.lang.antlr.SppParser;
 
 /**
@@ -33,7 +34,14 @@ public interface IEnumHandler extends ICompilationUnitHandler{
     @Override
     default void enterEnumBodyIdentifier(SppParser.EnumBodyIdentifierContext ctx){
         SppEnum sppEnum = (SppEnum) getSppDomain().getCurrentClass();
-        sppEnum.getItems().add(ctx.getChild(0).getText());
+        SppEnumItem item = new SppEnumItem();
+        item.setName(ctx.getChild(0).getText());
+        sppEnum.getItems().add(item);
+        if(ctx.getChildCount() == 4){
+            String value = ctx.getChild(2).getText();
+            value = value.substring(1,value.length() -1);
+            item.setValue(value);
+        }
     }
 
     @Override

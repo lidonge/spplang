@@ -1,8 +1,8 @@
 package {{packageName}};
 import free.servpp.service.AtomicService;
-{{#sppFieldList}}
+{{#serviceBody.sppLocalVarList}}
 import {{type.packageName}}.{{type.name}};
-{{/sppFieldList}}
+{{/serviceBody.sppLocalVarList}}
 public interface {{name}} extends AtomicService {
-	public void {{funcName}}({{#sppFieldList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/sppFieldList}});
+	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}});
 }

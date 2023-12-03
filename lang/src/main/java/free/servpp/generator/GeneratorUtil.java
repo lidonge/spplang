@@ -1,15 +1,9 @@
 package free.servpp.generator;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.samskivert.mustache.Mustache;
-import com.samskivert.mustache.Template;
 import free.servpp.generator.general.SppGeneralHandler;
 import free.servpp.generator.general.app.AppGeneralHandler;
 import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppProject;
-import free.servpp.generator.openapi.CodeFormator;
 import free.servpp.generator.openapi.OpenApiGenerator;
 import io.swagger.v3.core.util.Yaml;
 import io.swagger.v3.oas.models.OpenAPI;

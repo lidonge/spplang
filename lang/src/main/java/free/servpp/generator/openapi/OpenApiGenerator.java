@@ -163,7 +163,7 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
             }
         }
         IConstance.ServiceType serviceType = sppService.getServiceType();
-        PathItem pathItem = new PathItem().summary(sppService.getName()).description(sppService.getName());
+        PathItem pathItem = new PathItem();
         Operation operation = findMethod(serviceType, sppService, pathItem).addTagsItem(domainName);
         operation.setOperationId(sppService.getFuncName());
         addARequestBody(operation, sppService, openAPI);
@@ -192,11 +192,8 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
     }
 
     private void addARequestBody(Operation operation, SppService sppService, OpenAPI openAPI) {
-        List<? extends SppLocalVar> sppFieldList = sppService.getType() == IConstance.CompilationUnitType.scenario ?
-                sppService.getServiceBody().getSppLocalVarList()
-                : sppService.getSppFieldList();
-        String schemaName = sppFieldList.get(0).getType().getName();
-        schemaName = sppService.getName() + "Args";
+        List<? extends SppLocalVar> sppFieldList = sppService.getServiceBody().getSppLocalVarList();
+        String schemaName = sppService.getName() + sppService.getRequestSuffix();
         SppClass cls = new SppClass(schemaName, IConstance.CompilationUnitType.role);
         if(sppService.getScopeItem() == null){
             getLogger().warn("Service {}'s scope is not defined!",sppService.getName());
@@ -213,22 +210,29 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
         for (SppLocalVar field : sppFieldList) {
             cls.addField((SppField) new SppField(field.getType(), field.getName()).setArrayDimension(field.getArrayDimension()));
         }
-        createASchema(cls, openAPI);
+        if(cls.getSppFieldList().size() == 1){
+            schemaName = sppFieldList.get(0).getType().getName();
+            sppService.setRequestSuffix(null);
+            cls.setName(schemaName);
+        }else {
+            createASchema(cls, openAPI);
+        }
         operation.requestBody(new RequestBody().$ref(schemaName));
-        createResponses(operation, schemaName);
         if (openAPI.getComponents() == null)
             openAPI.components(new Components());
         final String scName = schemaName;
         openAPI.getComponents().addRequestBodies(schemaName, new RequestBody().content(
                 new Content().addMediaType("application/json",
-                new MediaType().schema(new Schema().$ref(schemaName)))).required(true).description("Request for " + schemaName));
+                new MediaType().schema(new Schema().$ref(schemaName)))).required(true));
+        createResponses(openAPI,operation, schemaName);
     }
 
-    private void createResponses(Operation operation, String schemaName) {
-        ApiResponse apiResponse = new ApiResponse().description("successful operation").content(
+    private void createResponses(OpenAPI openAPI, Operation operation, String schemaName) {
+        operation.responses(new ApiResponses().addApiResponse("200",new ApiResponse().$ref(schemaName)));
+        ApiResponse apiResponse = new ApiResponse().description(schemaName).content(
                 new Content().addMediaType("application/json",
                 new MediaType().schema(new Schema<>().$ref(schemaName))));
-        operation.responses(new ApiResponses().addApiResponse("200", apiResponse));
+        openAPI.getComponents().addResponses(schemaName, apiResponse);
     }
 
     private Operation findMethod(IConstance.ServiceType serviceType, SppService sppService, PathItem pathItem) {
@@ -258,9 +262,12 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
         schema.setName(sppEnum.getName());
         schema.setTitle(sppEnum.getName());
         schema.setType("string");
-        List<String> fields = sppEnum.getItems();
-        for (String field : fields) {
-            schema.addEnumItemObject(field);
+        List<SppEnumItem> fields = sppEnum.getItems();
+        for (SppEnumItem field : fields) {
+            if(field.getValue() != null)
+                schema.addEnumItemObject(field.getValue());
+            else
+                schema.addEnumItemObject(field.getName());
         }
         openAPI.schema(sppEnum.getName(), schema);
     }
@@ -268,7 +275,6 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
     private void createASchema(SppClass sppClass, OpenAPI openAPI) {
         Schema schema = new Schema();
         schema.setName(sppClass.getName());
-        schema.setTitle(sppClass.getType().name());
         schema.setType("object");
         List<SppField> fields = sppClass.getSppFieldList();
         for (SppField field : fields) {

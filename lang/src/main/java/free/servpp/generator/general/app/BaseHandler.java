@@ -22,12 +22,12 @@ public abstract class BaseHandler implements IHeaderHandler, IPrimaryHandler,
     }
 
     @Override
-    public void enterQualified(AppParser.QualifiedContext ctx) {
+    public void enterQualifiedName(AppParser.QualifiedNameContext ctx) {
 
     }
 
     @Override
-    public void exitQualified(AppParser.QualifiedContext ctx) {
+    public void exitQualifiedName(AppParser.QualifiedNameContext ctx) {
 
     }
 

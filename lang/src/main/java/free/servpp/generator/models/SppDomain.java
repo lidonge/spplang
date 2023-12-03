@@ -44,6 +44,10 @@ public class SppDomain {
         return currentClass;
     }
 
+    public void setCurrentClass(SppCompilationUnit currentClass) {
+        this.currentClass = currentClass;
+    }
+
     public String checkClass(String clsName) {
         SppCompilationUnit sppClass = mapsOfClass.get(clsName);
         if (sppClass == null || !sppClass.isReal())

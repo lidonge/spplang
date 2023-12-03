@@ -1,0 +1,6 @@
+1. Args in service mustache =>OK
+2. Enum re-generate =>OK
+3. Bian some request not required(and composite keys)
+4. Bian response
+5. Bian summary and desc generate
+6. Spp support annotation for desc
