@@ -1,0 +1,105 @@
+domain petstore;
+
+Entity Account{
+	String status;
+	ContactInfo contact;
+//	Profile profile;
+}
+
+Entity Profile{
+	String favouriteCategory;
+	String languagePreference;
+	boolean listOption;
+	boolean bannerOption;
+	String bannerName;
+}
+
+Entity ContactInfo{
+	String firstName;
+	String lastName;
+	String email;
+	String address1;
+	String address2;
+	String city;
+	String state;
+	String zip;
+	String country;
+	String phone;
+}
+
+Entity Supplier{
+    String name;
+    ContactInfo contact;
+}
+
+
+Entity Category{
+	String name;
+	String description;
+}
+
+Entity Item {
+	Product product;
+	double listPrice;
+	double unitCost;
+	int quantity;
+	int supplierId;
+	String status;
+	String attribute1;
+	String attribute2;
+	String attribute3;
+	String attribute4;
+	String attribute5;
+}
+
+Entity OrderLines{
+    MyOrder order;
+    Item item;
+    int quantity;
+    double unitPrice;
+}
+
+
+Entity Product {
+	Category category;
+	String name;
+	String description;
+}
+
+Role CreditCard{
+	String creditCard;
+	String expiryDate;
+	String cardType;
+}
+
+Role OrderInfo{
+	DateTime orderDate;
+	String courier;
+	double totalPrice;
+	String locale;
+	String status;
+}
+
+
+Contract MyOrder {
+	Account account;
+	ContactInfo ship;
+	ContactInfo bill;
+	CreditCard payment;
+	OrderInfo info;
+	OrderLines[] lines;
+}
+//atomic update createAccount(Account account);
+//atomic update updateAccount(Account account, String newPassword);
+//atomic query <Category> getCategory();
+//atomic query <Product> getProduct();
+//atomic query <Product[]> searchProductList(Product product);
+//atomic query <Item[]> getItemListByProduct(Product product);
+//atomic query <Item> getItem();
+//atomic query <Order> getOrder();
+//atomic query <Order[]> getOrdersByAccount(Account account);
+
+Scenario parallel makeOrder(MyOrder order){
+    createAccount(order.account);
+//    getProduct();
+}

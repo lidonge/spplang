@@ -37,16 +37,12 @@ public abstract class {{name}} implements Scenario{
                         }
                     }
 	    {{/callee}}
-	    {{^callee}}{{#executeCall}}{{/executeCall}}{{/callee}}
-        {{#-last}}
-            };
-        }
-    }
+            {{^callee}}{{#executeCall}}{{/executeCall}}{{/callee}}
+            {{#-last}}
+                };
+            }
+        }.execute();
     {{/-last}}
-    {{/executeCall}}
-    {{#executeCall}}
-    {{#-first}}
-    .execute();{{/-first}}
     {{/executeCall}}
     {{#transactionCall}}
     {{#-first}}
@@ -72,11 +68,9 @@ public abstract class {{name}} implements Scenario{
     {{#-last}}
                 };
             }
-        }
+        }.execute();
     {{/-last}}
     {{/transactionCall}}
-    {{#-last}}
-    .execute();{{/-last}}
     {{/sppServiceCallList}}
     {{/serviceBody}}
     }

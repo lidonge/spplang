@@ -1,5 +1,7 @@
 package free.servpp.generator.models;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,7 @@ import java.util.List;
  */
 public class ServiceBaseBody{
     private ServiceBaseBody parent;
-    protected List<IServiceBodyStatement> sppServiceCallList = new ArrayList<>();
+    protected List<IServiceBodyStatement> sppServiceCallList;
 
     public ServiceBaseBody getParent() {
         return parent;
@@ -30,6 +32,8 @@ public class ServiceBaseBody{
     }
 
     public void addServiceCall(IServiceBodyStatement sppServiceCall) {
+        if(sppServiceCallList == null)
+            sppServiceCallList = new ArrayList<>();
         sppServiceCallList.add(sppServiceCall);
         sppServiceCall.setParent(this);
     }

@@ -1,0 +1,15 @@
+public class EsbAppHeader{
+{{#fields}}
+    private {{type}} {{name}};
+{{/fields}}
+
+{{#fields}}
+    public {{type}} get{{upper}}(){
+        return {{name}};
+    }
+    public void set{{upper}}({{type}} value){
+        {{name}} = value;
+    }
+
+{{/fields}}
+}

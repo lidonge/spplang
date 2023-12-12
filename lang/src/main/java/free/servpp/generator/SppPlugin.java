@@ -1,5 +1,8 @@
 package free.servpp.generator;
 
+import com.samskivert.mustache.Mustache;
+import com.samskivert.mustache.Template;
+import free.servpp.generator.db.DDLGenerator;
 import free.servpp.generator.general.SppGeneralHandler;
 import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppProject;
@@ -11,10 +14,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,22 +44,44 @@ public class SppPlugin extends AbstractMojo {
             SppGeneralHandler sppGeneralHandler = (SppGeneralHandler) new SppCompiler(sppFile, sppProject).compile();
             return sppGeneralHandler;
         });
+
         sppTreeListeners = compileAntlr(project, ".spp", (sppFile, sppProject) -> {
             SppGeneralHandler sppGeneralHandler = (SppGeneralHandler) new SppCompiler(sppFile, sppProject).compile();
-            sppGeneralHandler.getSppDomain().dealMaps();
+            sppGeneralHandler.getSppDomain().dealEntityToRoleMaps();
+            sppGeneralHandler.getSppDomain().generateDefaultServices(sppGeneralHandler);
             return sppGeneralHandler;
         });
         List<ParseTreeListener> appTreeListeners = compileAntlr(project, ".app", (sppFile, sppProject) -> {
             return new AppCompiler(sppFile, sppProject).compile();
         });
 
-        InputStream mustache = SppPlugin.class.getResourceAsStream("/spp.mustache");
+        appTreeListeners = compileAntlr(project, ".rdb", (sppFile, sppProject) -> {
+            return new AppCompiler(sppFile, sppProject).compile();
+        });
+
+        InputStream ddlMustache = SppPlugin.class.getResourceAsStream("/ddl.mustache");
         for(ParseTreeListener parseTreeListener: sppTreeListeners){
             SppGeneralHandler sppGeneralHandler = (SppGeneralHandler) parseTreeListener;
             SppDomain sppDomain = sppGeneralHandler.getSppDomain();
             sppDomain.dealAnnotations(sppDomain.getRuleBlock().getAppAnnotationList());
+            sppDomain.checkSemanticFinally(sppGeneralHandler);
+            DDLGenerator ddlGenerator = new DDLGenerator(sppDomain);
+            Template template = Mustache.compiler().compile(new InputStreamReader(ddlMustache));
+            String string  = template.execute(ddlGenerator);
+            PrintWriter out = null;
             try {
-                GeneratorUtil.openApi(sppDomain,mustache,sppGeneralHandler.getAntlrFile(),yamlOutputDirectory,javaOutputDirectory,basePackage);
+                File ddlFile = new File(yamlOutputDirectory,"sql/ddl.sql");
+                ddlFile.getParentFile().mkdirs();
+                out = new PrintWriter(new FileOutputStream(ddlFile));
+                out.println(string);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }finally {
+                out.close();
+            }
+
+            try {
+                GeneratorUtil.openApi(sppDomain,sppGeneralHandler.getAntlrFile(),yamlOutputDirectory,javaOutputDirectory,basePackage);
             } catch (IOException e) {
                 e.printStackTrace();
             }

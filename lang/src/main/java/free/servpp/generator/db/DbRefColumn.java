@@ -1,0 +1,23 @@
+package free.servpp.generator.db;
+
+import java.sql.JDBCType;
+
+/**
+ * @author lidong@date 2023-12-12@version 1.0
+ */
+public class DbRefColumn extends DbColumn{
+    private String refName;
+
+    public DbRefColumn(DbColumn dbColumn) {
+        super(dbColumn.getName(), dbColumn.getJdbcType(), dbColumn.getPrecision(), dbColumn.getScale(), dbColumn.isNullable());
+    }
+
+    public String getRefName() {
+        return refName;
+    }
+
+    public DbRefColumn setRefName(String refName) {
+        this.refName = refName;
+        return this;
+    }
+}

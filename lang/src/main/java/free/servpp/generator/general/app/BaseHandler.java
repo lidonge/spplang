@@ -14,7 +14,7 @@ import java.io.File;
  * @author lidong@date 2023-11-22@version 1.0
  */
 public abstract class BaseHandler implements IHeaderHandler, IPrimaryHandler,
-        IMapperHandler, IScopeHandler, IServicesHandler, IAnnotateHandler {
+        IMapperHandler, IScopeHandler, IServicesHandler, IAnnotateHandler,ITablesHandler {
 
     @Override
     public void exitMapParameterIdentifier(AppParser.MapParameterIdentifierContext ctx) {
@@ -278,16 +278,6 @@ public abstract class BaseHandler implements IHeaderHandler, IPrimaryHandler,
 
     @Override
     public void exitDefaultValueliteral(AppParser.DefaultValueliteralContext ctx) {
-
-    }
-
-    @Override
-    public void enterServices(AppParser.ServicesContext ctx) {
-
-    }
-
-    @Override
-    public void exitServices(AppParser.ServicesContext ctx) {
 
     }
 

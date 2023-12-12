@@ -1,9 +1,11 @@
 package free.servpp.generator.models;
 
+import free.servpp.ILogable;
 import free.servpp.generator.general.IConstance;
-import free.servpp.generator.models.app.AnnotationDefine;
-import free.servpp.generator.models.app.AppAnnotation;
-import free.servpp.generator.models.app.RuleBlock;
+import free.servpp.generator.general.ISppErrorLogger;
+import free.servpp.generator.general.NameUtil;
+import free.servpp.generator.models.app.*;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.util.*;
 
@@ -13,6 +15,7 @@ import java.util.*;
 public class SppDomain {
     Map<String, SppCompilationUnit> mapsOfClass = new HashMap<>();
     List<ErrorContent> unFoundClass = new ArrayList<>();
+    List<Object[]> unknownServiceCall = new ArrayList<>();
     private SppCompilationUnit currentClass = null;
 
     private String name;
@@ -22,6 +25,10 @@ public class SppDomain {
         for(String primary: IConstance.primaryTypes)
             addClass(new SppClass(primary));
         this.name = name;
+    }
+
+    public List<Object[]> getUnknownServiceCall() {
+        return unknownServiceCall;
     }
 
     public RuleBlock getRuleBlock() {
@@ -92,7 +99,36 @@ public class SppDomain {
         unFoundClass.add(errorContent);
     }
 
-    public List<ErrorContent> checkAll(){
+    public void checkSemanticFinally(ISppErrorLogger listener){
+        checkUnfoundClass(listener);
+        checkUnknowServiceCall(listener);
+    }
+
+    private void checkUnknowServiceCall(ISppErrorLogger listener) {
+        for(Object[] parameterChecker : unknownServiceCall){
+            ParserRuleContext ctx = (ParserRuleContext) parameterChecker[0];
+            SppClass currentCLass = (SppClass) parameterChecker[1];
+            SppLocalVar localVar = (SppLocalVar) parameterChecker[2];
+            SppService callee = (SppService) parameterChecker[3];
+            int paramIndex = (int) parameterChecker[4];
+            if(callee.getServiceBody().getSppLocalVarList().size() <= paramIndex){
+                listener.logSppError(ctx,"Scenario " + currentCLass.getName() + ": Parameter " +
+                        paramIndex + " not exist in service " + callee.getName());
+            }else {
+                SppLocalVar indexVar = callee.getServiceBody().getLocalVar(paramIndex);
+                if (!isSameTypeWithParameter(indexVar, localVar))
+                    listener.logSppError(ctx, "Parameter " + name + " is  excepted " + indexVar.getType().getName() + (indexVar.getArrayString()));
+            }
+        }
+    }
+
+    public boolean isSameTypeWithParameter(SppLocalVar indexVar, SppLocalVar nameVar) {
+        boolean isSame = indexVar.getType().getName().equals(nameVar.getType().getName());
+        isSame = isSame && indexVar.getArrayDimension() == nameVar.getArrayDimension();
+        return isSame;
+    }
+
+    private void checkUnfoundClass(ISppErrorLogger listener) {
         ArrayList<ErrorContent> ret = new ArrayList<>();
         for(ErrorContent cont: unFoundClass){
             SppCompilationUnit sppClass = mapsOfClass.get(cont.getName());
@@ -100,8 +136,11 @@ public class SppDomain {
                 ret.add(cont);
             }
         }
-        return ret;
+        for(ErrorContent cont: ret){
+            listener.logSppError(cont.getLine(), cont.getCol(), cont.getMsg());
+        }
     }
+
     public static SppClass genObjectDecl(IConstance.CompilationUnitType type, String objName) {
         if(type == IConstance.CompilationUnitType.atomicservice)
             return new SppService(objName);
@@ -112,7 +151,7 @@ public class SppDomain {
         return new SppClass(objName);
     }
 
-    public void dealMaps() {
+    public void dealEntityToRoleMaps() {
         Map<String, SppCompilationUnit> sppClassMap = getMapsOfClass();
         for (SppCompilationUnit sppClass : sppClassMap.values()) {
             if (sppClass.getType() == IConstance.CompilationUnitType.rolemapper) {
@@ -126,6 +165,50 @@ public class SppDomain {
                 takeAll(sppRoleMapper, entityToRole);
             }
         }
+    }
+
+    public void generateDefaultServices(ILogable logger){
+        Map<String, SppCompilationUnit> sppClassMap = getMapsOfClass();
+        for (SppCompilationUnit sppClass : sppClassMap.values().toArray(new SppCompilationUnit[sppClassMap.size()])) {
+            if (sppClass.getType() == IConstance.CompilationUnitType.entity) {
+                SppService sppService = genDefaultService(logger, sppClass, sppClassMap,"Create", IConstance.ServiceType.update);
+
+                sppService =genDefaultService(logger, sppClass, sppClassMap,"Get", IConstance.ServiceType.query);
+                sppService.getReturns().addLocalVar(new SppLocalVar(sppClass,NameUtil.firstToLowerCase(sppClass.getName(),true)));
+
+                sppService =genDefaultService(logger, sppClass, sppClassMap,"Search", IConstance.ServiceType.query);
+                SppLocalVar sppLocalVar = new SppLocalVar(sppClass, NameUtil.firstToLowerCase(sppClass.getName(), true));
+                sppLocalVar.setArrayDimension(1);
+                sppService.getReturns().addLocalVar(sppLocalVar);
+            }
+        }
+    }
+
+    private SppService genDefaultService(ILogable logger, SppCompilationUnit sppClass, Map<String, SppCompilationUnit> sppClassMap,
+                                          String prefix, IConstance.ServiceType serviceType) {
+        String serviceName = prefix + sppClass.getName();
+        SppCompilationUnit sppCompilationUnit = sppClassMap.get(serviceName);
+        if(sppCompilationUnit == null) {
+            sppCompilationUnit = new SppService(serviceName);
+            addClass(sppCompilationUnit);
+        }
+        if(sppCompilationUnit instanceof SppService){
+            sppCompilationUnit.setReal(true);
+            SppService sppService = (SppService) sppCompilationUnit;
+            sppService.setFuncName(NameUtil.firstToLowerCase(prefix,true) + sppClass.getName());
+            sppService.setType(IConstance.CompilationUnitType.atomicservice);
+            ScopeItem scopeItem = new ScopeItem();
+            ScopeDefine scopeDefine = new ScopeDefine();
+            scopeDefine.setLocal(true);
+            scopeItem.setScopeDefine(scopeDefine);
+            scopeItem.setService(sppService);
+            sppService.setServiceType(serviceType);
+            sppService.addLocalVar(new SppLocalVar(sppClass,NameUtil.firstToLowerCase(sppClass.getName(),true)));
+            return sppService;
+        }else{
+            logger.getLogger().error("The unit {} conflict with default service of entity {}.", serviceName, sppClass.getName());
+        }
+        return null;
     }
 
     public void dealAnnotations(List<? extends  IComponent> annotations){

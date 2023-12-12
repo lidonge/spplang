@@ -1,16 +1,11 @@
 package free.servpp.generator.models;
 
 import free.servpp.generator.general.IConstance;
-import free.servpp.generator.models.app.AnnotationDefine;
-import free.servpp.generator.models.app.AppAnnotation;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author lidong@date 2023-11-28@version 1.0
  */
-public class SppCompilationUnit {
+public class SppCompilationUnit extends Annotation {
     private String basePackage;
     private String domainName;
     private String additionalPackage;
@@ -19,11 +14,6 @@ public class SppCompilationUnit {
     private boolean isReal = true;
     protected IConstance.CompilationUnitType type;
 
-    protected List<AnnotationDefine> annotations = new ArrayList<>();
-
-    public List<AnnotationDefine> getAnnotations() {
-        return annotations;
-    }
 
     public SppCompilationUnit(String name) {
         this.name = name;

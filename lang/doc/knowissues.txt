@@ -1,6 +1,9 @@
 1. Args in service mustache =>OK
 2. Enum re-generate =>OK
 3. Bian some request not required(and composite keys)
+    parameter of request merge to service parameters? Not needed
 4. Bian response
+    merge to service parameters? Return to API
 5. Bian summary and desc generate
 6. Spp support annotation for desc
+7. Order use array

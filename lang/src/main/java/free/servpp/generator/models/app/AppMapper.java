@@ -1,5 +1,6 @@
 package free.servpp.generator.models.app;
 
+import free.servpp.generator.models.Annotation;
 import free.servpp.generator.models.SppClass;
 import free.servpp.generator.models.SppCompilationUnit;
 import free.servpp.generator.models.SppField;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * @author lidong@date 2023-11-22@version 1.0
  */
-public class AppMapper implements INamedObject{
+public class AppMapper extends Annotation implements INamedObject{
     SppCompilationUnit sppClass;
 
     List<String> mapParameters = new ArrayList<>();

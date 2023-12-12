@@ -22,6 +22,7 @@ public class SppService extends SppClass{
     private List<IOperationExpression> expressions;
 
     private String requestSuffix = "Request";
+    private String responseSuffix = "Response";
 
     private ServiceBody returns = new ServiceBody(this);
 
@@ -44,6 +45,14 @@ public class SppService extends SppClass{
 
     public void setRequestSuffix(String requestSuffix) {
         this.requestSuffix = requestSuffix;
+    }
+
+    public String getResponseSuffix() {
+        return responseSuffix;
+    }
+
+    public void setResponseSuffix(String responseSuffix) {
+        this.responseSuffix = responseSuffix;
     }
 
     public List<IOperationExpression> getExpressions() {

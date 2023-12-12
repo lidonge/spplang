@@ -18,6 +18,7 @@ public interface IHeaderHandler extends IApplicationHandler {
         String name = ctx.getChild(1).getText();
         appHeader.setName(name);
         String err = getCurrentRuleBlock().addAppHeader(appHeader);
+        getCurrentRuleBlock().setCurrentAnnotatable(appHeader);
         if(err != null){
             logSppError(ctx.getStart().getLine(), ctx.getStart().getCharPositionInLine(),err);
         }

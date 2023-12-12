@@ -1,5 +1,6 @@
 package free.servpp.generator.models.app;
 
+import free.servpp.generator.models.Annotation;
 import free.servpp.generator.models.SppService;
 
 import java.util.*;
@@ -7,7 +8,7 @@ import java.util.*;
 /**
  * @author lidong@date 2023-11-21@version 1.0
  */
-public class AppScope {
+public class AppScope extends Annotation {
     List<ScopeDefine> scopelist = new ArrayList<>();
 
     Map<String, SppService> serviceMap = new HashMap<>();

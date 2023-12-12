@@ -119,7 +119,7 @@ returnType
     : parameterDeclaration
     ;
 serviceDefinition
-    : Identifier '(' parameterDeclarations')'
+    : Identifier '(' parameterDeclarations*')'
     ;
 
 servicetype

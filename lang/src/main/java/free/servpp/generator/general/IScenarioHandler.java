@@ -1,5 +1,6 @@
 package free.servpp.generator.general;
 
+import free.servpp.generator.general.app.SemanticException;
 import free.servpp.generator.models.*;
 import free.servpp.lang.antlr.SppParser;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -133,7 +134,11 @@ public interface IScenarioHandler extends IServiceDefinitionHandler {
         CurrentCall currentCall = currentCLass.getCurrentCall();
         //callee's n parameter
 //        System.out.println("Callee "+currentCall.callee().getName() +" get parameter " + currentCall.paramIndex);
-        SppLocalVar indexVar = currentCall.callee().getServiceBody().getLocalVar(currentCall.paramIndex());
+        if(currentCall.callee().getServiceBody().getSppLocalVarList().size() <= currentCall.paramIndex()) {
+            if(currentCall.callee.isReal())
+                throw new RuntimeException("Scenario " + currentCLass.getName() + ": Parameter " +
+                        currentCall.paramIndex() + " not exist in service " + currentCall.callee().getName());
+        }
         //local var type
         SppLocalVar nameVar = serviceBaseBody.getQualifieField(paramName);
         SppServiceCall sppServiceCall = (SppServiceCall) serviceBaseBody.getLastServiceCall();
@@ -141,16 +146,20 @@ public interface IScenarioHandler extends IServiceDefinitionHandler {
                 .setArrayDimension(nameVar.getArrayDimension()));
         if(nameVar == null ){
             logSppError(ctx, "Parameter " + name +" is  null ");
-        }else if(!isSameTypeWithParameter(indexVar, nameVar)){
-            logSppError(ctx, "Parameter " + name +" is  excepted " +indexVar.getType().getName() +(indexVar.getArrayString()));
+        }else {
+            if(currentCall.callee().isReal()) {
+                SppLocalVar indexVar = currentCall.callee().getServiceBody().getLocalVar(currentCall.paramIndex());
+                if (!getSppDomain().isSameTypeWithParameter(indexVar, nameVar))
+                    logSppError(ctx, "Parameter " + name + " is  excepted " + indexVar.getType().getName() + (indexVar.getArrayString()));
+            }
+        }
+        if(!currentCall.callee().isReal()){
+            Object[] checker = new Object[]{
+                ctx, currentCLass, nameVar, currentCall.callee(), currentCall.paramIndex()
+            };
+            getSppDomain().getUnknownServiceCall().add(checker);
         }
         currentCLass.setCurrentCall(new CurrentCall(currentCall.callee,currentCall.paramIndex+1));
-    }
-
-    private static boolean isSameTypeWithParameter(SppLocalVar indexVar, SppLocalVar nameVar) {
-        boolean isSame = indexVar.getType().getName().equals(nameVar.getType().getName());
-        isSame = isSame && indexVar.getArrayDimension() == nameVar.getArrayDimension();
-        return isSame;
     }
 
     @Override

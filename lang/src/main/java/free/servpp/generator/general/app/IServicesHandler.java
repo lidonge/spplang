@@ -5,6 +5,7 @@ import free.servpp.generator.general.expr.IJavaExprHandler;
 import free.servpp.generator.models.*;
 import free.servpp.generator.models.app.AppService;
 import free.servpp.generator.models.app.AppServices;
+import free.servpp.generator.models.app.RuleBlock;
 import free.servpp.generator.models.app.expr.*;
 import free.servpp.lang.antlr.AppParser;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -16,6 +17,17 @@ import java.util.Map;
  * @author lidong@date 2023-11-23@version 1.0
  */
 public interface IServicesHandler extends IApplicationHandler, IJavaExprHandler {
+
+    @Override
+    default void enterServices(AppParser.ServicesContext ctx) {
+        RuleBlock currentRuleBlock = getCurrentRuleBlock();
+        currentRuleBlock.setCurrentAnnotatable(currentRuleBlock.getAppServices());
+    }
+
+    @Override
+    public default void exitServices(AppParser.ServicesContext ctx) {
+
+    }
 
     @Override
     default void enterService(AppParser.ServiceContext ctx) {

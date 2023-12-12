@@ -2,6 +2,7 @@ package free.servpp.generator.models;
 
 import free.servpp.generator.general.IConstance;
 import free.servpp.generator.general.IScenarioHandler;
+import free.servpp.generator.models.app.INamedObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +12,7 @@ import java.util.Map;
 /**
  * @author lidong@date 2023-11-01@version 1.0
  */
-public class SppClass extends SppCompilationUnit {
+public class SppClass extends SppCompilationUnit implements INamedObject {
 
     Map<String, SppField> sppFieldMap = new HashMap<>();
     List<SppField> sppFieldList = new ArrayList<>();

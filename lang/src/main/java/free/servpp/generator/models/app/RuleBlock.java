@@ -1,5 +1,6 @@
 package free.servpp.generator.models.app;
 
+import free.servpp.generator.models.IAnnotation;
 import free.servpp.generator.models.IComponent;
 import free.servpp.generator.models.IContainer;
 
@@ -12,10 +13,12 @@ import java.util.List;
 public class RuleBlock {
     List<AppHeader> headers = new ArrayList<>();
     List<AppMapper> appMappers = new ArrayList<>();
-    PrimaryKeys primaryKeys = new PrimaryKeys();
+    AppPrimaryKeys appPrimaryKeys = new AppPrimaryKeys();
     AppScope appScope = new AppScope();
     AppServices appServices = new AppServices();
-
+    List<AppTables> appTables = new ArrayList<>();
+    List<AnnotationDefine> currentLineAnns;
+    IAnnotation currentAnnotatable;
     IContainer appAnnotations = new IContainer() {
         @Override
         public void _add(IComponent component) {
@@ -33,11 +36,37 @@ public class RuleBlock {
         }
 
         @Override
-        public void setParent(IContainer iContainer) {
+        public void setParent(IContainer parent) {
 
         }
     };
     List<AppAnnotation> appAnnotationList = new ArrayList<>();
+
+    public IAnnotation getCurrentAnnotatable() {
+        return currentAnnotatable;
+    }
+
+    public void setCurrentAnnotatable(IAnnotation currentAnnotatable) {
+        this.currentAnnotatable = currentAnnotatable;
+    }
+
+    public void addLineAnn(AnnotationDefine lineAnn) {
+        if(currentLineAnns == null)
+            currentLineAnns = new ArrayList<>();
+        currentLineAnns.add(lineAnn);
+    }
+
+    public void clearLineAnn(){
+        currentLineAnns = null;
+    }
+
+    public List<AnnotationDefine> getCurrentLineAnns() {
+        return currentLineAnns;
+    }
+
+    public List<AppTables> getAppTables() {
+        return appTables;
+    }
 
     public List<AppAnnotation> getAppAnnotationList() {
         return appAnnotationList;
@@ -87,14 +116,14 @@ public class RuleBlock {
     }
 
     public String addPrimaryKey(String qualifiedName, SppFieldDefine key){
-        return primaryKeys.addKey(qualifiedName,key);
+        return appPrimaryKeys.addKey(qualifiedName,key);
     }
     public List<AppHeader> getHeaders() {
         return headers;
     }
 
-    public PrimaryKeys getPrimaryKeys() {
-        return primaryKeys;
+    public AppPrimaryKeys getPrimaryKeys() {
+        return appPrimaryKeys;
     }
 
     public AppScope getAppScope() {
@@ -106,7 +135,7 @@ public class RuleBlock {
         return "RuleBlock{" +
                 "headers=" + headers +
                 ", appMappers=" + appMappers +
-                ", primaryKeys=" + primaryKeys +
+                ", primaryKeys=" + appPrimaryKeys +
                 ", appScope=" + appScope +
                 '}';
     }

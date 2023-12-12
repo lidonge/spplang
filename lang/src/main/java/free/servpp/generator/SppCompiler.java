@@ -45,10 +45,6 @@ public class SppCompiler extends AntlrCompiler {
         listener.setSppFile(antlrFile);
 
         parseFile(sppParser, ()->{return sppParser.program();},listener);
-        List<ErrorContent> undefClasses = listener.getSppDomain().checkAll();
-        for(ErrorContent cont: undefClasses){
-            listener.logSppError(cont.getLine(), cont.getCol(), cont.getMsg());
-        }
         return listener;
     }
 }

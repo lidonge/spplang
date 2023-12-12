@@ -42,21 +42,23 @@ public interface IServiceDefinitionHandler extends ICompilationUnitHandler {
     @Override
     default void enterParameterDeclaration(SppParser.ParameterDeclarationContext ctx) {
         int count = ctx.getChildCount();
-        String ptype = ctx.getChild(0).getText();
-        String name = count == 1 ? null : ctx.getChild(1).getText();
+        if(count != 0) {
+            String ptype = ctx.getChild(0).getText();
+            String name = count == 1 ? null : ctx.getChild(1).getText();
 
-        String[] sdims = ptype.split("\\[");
-        String paramName = createAParameter(sdims[0], name);
-        SppDomain checker = checkClass(ctx,sdims[0]);
+            String[] sdims = ptype.split("\\[");
+            String paramName = createAParameter(sdims[0], name);
+            SppDomain checker = checkClass(ctx, sdims[0]);
 //        String err = checker.getCurrentClass().addLocalVar(new SppLocalVar(checker.getSppClass(ptype),paramName));
-        CompilationUnitType unitType = checker.getCurrentClass().getType();
-        int dim = sdims.length -1;
-        SppLocalVar sppLocalVar = generateLocalVar(sdims[0],dim, paramName);
-        Object container = peek();
-        if(container instanceof ServiceBody){
-            ServiceBody serviceBody = (ServiceBody) container;
-            String err = serviceBody.addLocalVar(sppLocalVar);
-            logSppError(ctx,err);
+            CompilationUnitType unitType = checker.getCurrentClass().getType();
+            int dim = sdims.length - 1;
+            SppLocalVar sppLocalVar = generateLocalVar(sdims[0], dim, paramName);
+            Object container = peek();
+            if (container instanceof ServiceBody) {
+                ServiceBody serviceBody = (ServiceBody) container;
+                String err = serviceBody.addLocalVar(sppLocalVar);
+                logSppError(ctx, err);
+            }
         }
 
     }

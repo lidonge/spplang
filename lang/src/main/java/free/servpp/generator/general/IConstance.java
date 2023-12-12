@@ -1,5 +1,7 @@
 package free.servpp.generator.general;
 
+import java.sql.JDBCType;
+
 /**
  * @author lidong@date 2023-11-02@version 1.0
  */
@@ -15,7 +17,12 @@ public interface IConstance {
     static final String[] primaryTypes = new String[]{
             "boolean", "char", "String"
             , "short", "int", "long"
-            , "float", "double"};
+            , "float", "double","decimal","DateTime"};
+
+    static final JDBCType[] jdbcTypes = new JDBCType[]{
+            JDBCType.BOOLEAN, JDBCType.CHAR, JDBCType.VARCHAR
+            , JDBCType.SMALLINT, JDBCType.INTEGER, JDBCType.BIGINT
+            , JDBCType.FLOAT, JDBCType.DOUBLE,JDBCType.DECIMAL,JDBCType.TIMESTAMP};
 
     public static enum ServiceType {
         query, check, calculate, update, unknown

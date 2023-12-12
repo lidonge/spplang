@@ -18,10 +18,7 @@ public interface IAnnotateHandler extends IApplicationHandler,IRecursionProcess{
         RuleBlock ruleBlock = getCurrentRuleBlock();
         AppAnnotation appAnnotation = new AppAnnotation();
         List<AppAnnotation> appAnnotationList = ruleBlock.getAppAnnotationList();
-        if(appAnnotationList.size() == 0){
-            ruleBlock.getAppAnnotations().addComponent(appAnnotation);
-            setCurrentContainer(appAnnotation);
-        }else{
+        if(ctx.getParent() instanceof AppParser.AnnotateBodyContext){
             addRecursionComponent(appAnnotation);
         }
     }
@@ -35,10 +32,14 @@ public interface IAnnotateHandler extends IApplicationHandler,IRecursionProcess{
     default void enterAnnotateDefine(AppParser.AnnotateDefineContext ctx) {
         String text = ctx.getChild(1).getText();
         AnnotationDefine annotationDefine = new AnnotationDefine(text);
-        AppAnnotation annotation =(AppAnnotation)getCurrentContainer();
-        annotationDefine = annotation.addAnnotationDefine(annotationDefine);
-        if(annotationDefine == null ){
-            logSppError(ctx,"Duplicate  annotation " +text);
+        AppAnnotation annotation = (AppAnnotation) getCurrentContainer();
+        if(annotation == null){
+            getCurrentRuleBlock().addLineAnn(annotationDefine);
+        }else {
+            annotationDefine = annotation.addAnnotationDefine(annotationDefine);
+            if (annotationDefine == null) {
+                logSppError(ctx, "Duplicate  annotation " + text);
+            }
         }
     }
 
@@ -48,12 +49,30 @@ public interface IAnnotateHandler extends IApplicationHandler,IRecursionProcess{
     }
 
     @Override
+    default void enterAnnotatableRule(AppParser.AnnotatableRuleContext ctx) {
+
+    }
+
+    @Override
+    default void exitAnnotatableRule(AppParser.AnnotatableRuleContext ctx) {
+        RuleBlock currentRuleBlock = getCurrentRuleBlock();
+        List<AnnotationDefine> currentLineAnns = currentRuleBlock.getCurrentLineAnns();
+        currentRuleBlock.getCurrentAnnotatable().setAnnotations(currentLineAnns);
+        currentRuleBlock.clearLineAnn();
+    }
+
+    @Override
     default void enterAnnotateParameter(AppParser.AnnotateParameterContext ctx){
         String name = ctx.getChild(0).getText();
         String value = ctx.getChild(2).getText();
         value = value.substring(1,value.length() -1);
         AppAnnotation annotation = (AppAnnotation) getCurrentContainer();
-        AnnotationDefine annotationDefine = getLastElement(annotation.getAnnotationDefineList());
+        AnnotationDefine annotationDefine = null;
+        if(annotation == null){
+            annotationDefine = getLastElement(getCurrentRuleBlock().getCurrentLineAnns());
+        }else {
+            annotationDefine =getLastElement(annotation.getAnnotationDefineList());
+        }
         annotationDefine.addParameter(name,value);
     }
 
@@ -63,7 +82,18 @@ public interface IAnnotateHandler extends IApplicationHandler,IRecursionProcess{
     }
 
     @Override
-    default void enterAnnotateBody(AppParser.AnnotateBodyContext ctx){}
+    default void enterAnnotateBody(AppParser.AnnotateBodyContext ctx){
+        RuleBlock ruleBlock = getCurrentRuleBlock();
+        List<AppAnnotation> appAnnotationList = ruleBlock.getAppAnnotationList();
+        if(appAnnotationList.size() == 0){
+            AppAnnotation appAnnotation = new AppAnnotation();
+            ruleBlock.getAppAnnotations().addComponent(appAnnotation);
+            setCurrentContainer(appAnnotation);
+            for(AnnotationDefine annotationDefine: ruleBlock.getCurrentLineAnns())
+                appAnnotation.addAnnotationDefine(annotationDefine);
+            ruleBlock.clearLineAnn();
+        }
+    }
 
     @Override
     default void exitAnnotateBody(AppParser.AnnotateBodyContext ctx){}

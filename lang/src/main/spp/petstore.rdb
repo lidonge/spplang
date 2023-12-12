@@ -1,0 +1,48 @@
+domain petstore;
+
+@column(varchar_precision="80",nullable="true",
+    decimal_precision="19",decimal_scale="2",
+    type_boolean="INTEGER",type_String="VARCHAR")
+@insideEntity(namingType="snake_case")
+tables entities{
+    table CATEGORY (Category){
+        primarykey String(20) id;
+    }
+
+    table PROFILE(Profile){
+        primarykey String(20) userid;
+    }
+
+    table PRODUCT (Product){
+        primarykey String(20) id;
+        foreignkey( Product.category );
+    }
+
+    table ACCOUNT (Account){
+        primarykey String(20) userid;//default not null
+    }
+
+    table SUPPLIER (Supplier){
+        primarykey int suppid;
+    }
+
+    table ITEM (Item){
+        primarykey String(20) id;
+        foreignkey( Item.product );
+    }
+
+    table ORDERLINES(OrderLines){
+        notnull primarykey int linenum;
+        primarykey(OrderLines.order);
+        foreignkey( OrderLines.item );
+        foreignkey( OrderLines.order );
+    }
+
+    table MYORDER(MyOrder){
+        primarykey int orderid;
+        foreignkey (MyOrder.account);
+    }
+}
+map Supplier(snake_case){
+    suppname=notnull String(80) name;
+}

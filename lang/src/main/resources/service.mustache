@@ -2,12 +2,16 @@ package {{basePackage}}.{{domainName}}.service;
 
 import {{basePackage}}.{{domainName}}.handler.{{name}};
 {{#requestSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{requestSuffix}};{{/requestSuffix}}
+{{#responseSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{responseSuffix}};{{/responseSuffix}}
 {{#serviceBody.sppLocalVarList}}
 import {{basePackage}}.{{domainName}}.model.{{type.name}};
 {{/serviceBody.sppLocalVarList}}
 
 public class Simple{{name}} implements {{name}} {
-    private {{name}}{{#requestSuffix}}{{requestSuffix}}{{/requestSuffix}} arg;
+    {{#requestSuffix}}private {{name}}{{requestSuffix}} arg;{{/requestSuffix}}
+    {{^requestSuffix}}{{#serviceBody.sppLocalVarList}}private {{type.name}}{{toArrayString}} arg;{{/serviceBody.sppLocalVarList}}{{/requestSuffix}}
+    {{#responseSuffix}}private {{name}}{{responseSuffix}} ret;{{/responseSuffix}}
+    {{^responseSuffix}}{{#returns.sppLocalVarList}}private {{type.name}}{{toArrayString}} ret;{{/returns.sppLocalVarList}}{{/responseSuffix}}
     @Override
 	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}}){
         {{#expressions}}
@@ -16,14 +20,17 @@ public class Simple{{name}} implements {{name}} {
 	}
 
     @Override
-    public void execute(Object... params) {
-        arg = ({{name}}{{#requestSuffix}}{{requestSuffix}}{{/requestSuffix}}) params[params.length - 1];
-        {{#requestSuffix}}{{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
-        {{^requestSuffix}}{{funcName}}({{#serviceBody.sppLocalVarList}}({{type.name}}{{toArrayString}})arg{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
+    public Object execute(Object... params) {
+        {{#requestSuffix}}arg = ({{name}}{{requestSuffix}}) params[params.length - 1];
+        {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
+        {{^requestSuffix}}{{#serviceBody.sppLocalVarList}}arg = ({{type.name}}{{toArrayString}}) params[params.length - 1];
+        {{funcName}}(arg);{{/serviceBody.sppLocalVarList}}{{/requestSuffix}}
+        return ret;
     }
 
     @Override
     public void copyFrom(Object role) {
-        arg = ({{name}}{{#requestSuffix}}{{requestSuffix}}{{/requestSuffix}})role;
+        {{#requestSuffix}}arg = ({{name}}{{requestSuffix}})role;{{/requestSuffix}}
+        {{^requestSuffix}}{{#serviceBody.sppLocalVarList}}arg = ({{type.name}}{{toArrayString}})role;{{/serviceBody.sppLocalVarList}}{{/requestSuffix}}
     }
 }

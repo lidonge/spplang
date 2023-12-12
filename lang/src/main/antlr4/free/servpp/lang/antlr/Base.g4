@@ -17,6 +17,8 @@ primitiveType
     |   'long'
     |   'float'
     |   'double'
+    |   'decimal'
+    |   'DateTime'
     ;
 
 // §3.10.1 Integer Literals

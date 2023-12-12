@@ -1,5 +1,6 @@
 package free.servpp.generator.models.app;
 
+import free.servpp.generator.models.Annotation;
 import free.servpp.generator.models.SppClass;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * @author lidong@date 2023-11-21@version 1.0
  */
-public class AppHeader implements INamedObject{
+public class AppHeader extends Annotation implements INamedObject{
     private String name;
     private boolean isTemp;
     private List<AppHeader> extendsHeaders = new ArrayList<>();

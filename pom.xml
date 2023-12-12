@@ -16,10 +16,10 @@
     <modules>
         <module>scenario</module>
         <module>lang</module>
-        <module>petservice</module>
         <module>petclient</module>
-        <module>test</module>
+        <module>invoice</module>
         <module>oas2spp</module>
+        <module>petstore</module>
     </modules>
 
     <properties>

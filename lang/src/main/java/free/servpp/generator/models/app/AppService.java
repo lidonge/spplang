@@ -49,7 +49,7 @@ public class AppService  implements INamedObject, IContainer {
     }
 
     @Override
-    public void setParent(IContainer iContainer) {
+    public void setParent(IContainer parent) {
 
     }
 

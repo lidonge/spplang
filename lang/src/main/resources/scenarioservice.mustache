@@ -3,11 +3,15 @@ package {{basePackage}}.{{domainName}}.service;
 import free.servpp.service.server.DefaultServiceContainer;
 import {{basePackage}}.{{domainName}}.handler.{{name}};
 {{#requestSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{requestSuffix}}{{/requestSuffix}};
+{{#responseSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{responseSuffix}};{{/responseSuffix}}
+{{^requestSuffix}}{{#serviceBody.sppLocalVarList}}import {{basePackage}}.{{domainName}}.model.{{type.name}}{{/serviceBody.sppLocalVarList}}{{/requestSuffix}};
 {{#sppFieldList}}
 import {{basePackage}}.{{domainName}}.handler.{{type.name}};
 {{/sppFieldList}}
 
 public class Simple{{name}} extends {{name}}{
+    {{#responseSuffix}}private {{name}}{{responseSuffix}} ret;{{/responseSuffix}}
+    {{^responseSuffix}}{{#returns.sppLocalVarList}}private {{type.name}}{{toArrayString}} ret;{{/returns.sppLocalVarList}}{{/responseSuffix}}
     public Simple{{name}}() {
     	{{#sppFieldList}}
             this.{{name}} = ({{type.name}})DefaultServiceContainer.getInstance().getService("{{name}}");
@@ -15,10 +19,12 @@ public class Simple{{name}} extends {{name}}{
     }
 
     @Override
-    public void execute(Object... params) {
-        {{name}}{{#requestSuffix}}{{requestSuffix}}{{/requestSuffix}} arg = ({{name}}{{#requestSuffix}}{{requestSuffix}}{{/requestSuffix}}) params[params.length -1];
-        {{#requestSuffix}}{{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
-        {{^requestSuffix}}{{funcName}}({{#serviceBody.sppLocalVarList}}({{type.name}}{{toArrayString}})arg{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
+    public Object execute(Object... params) {
+        {{#requestSuffix}}{{name}}{{requestSuffix}} arg = ({{name}}{{requestSuffix}}) params[params.length -1];
+        {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
+        {{^requestSuffix}}{{#serviceBody.sppLocalVarList}}{{type.name}}{{toArrayString}} arg = ({{type.name}}{{toArrayString}}) params[params.length -1];
+        {{funcName}}(arg);{{/serviceBody.sppLocalVarList}}{{/requestSuffix}}
+        return ret;
     }
 
 

@@ -17,6 +17,8 @@ import free.servpp.lang.antlr.AppParser;
 public interface IScopeHandler extends IApplicationHandler {
     @Override
     default void enterScope(AppParser.ScopeContext ctx){
+        RuleBlock currentRuleBlock = getCurrentRuleBlock();
+        currentRuleBlock.setCurrentAnnotatable(currentRuleBlock.getAppScope());
     }
 
     @Override
@@ -73,14 +75,27 @@ public interface IScopeHandler extends IApplicationHandler {
     @Override
     default void enterScopeItemIdentifier(AppParser.ScopeItemIdentifierContext ctx){
         String clsName = ctx.getChild(0).getText();
-        SppCompilationUnit sppClass = getSppDomian().getSppClass(NameUtil.firstToLowerCase(clsName,false));
-        if(sppClass instanceof SppService){
-            RuleBlock ruleBlock = getCurrentRuleBlock();
-            ScopeDefine scopeDefine = getLastElement(ruleBlock.getAppScope().getScopelist());
-            ScopeItem scopeItem = getLastElement(scopeDefine.getScopeItems());
-            scopeItem.setService((SppService) sppClass);
-        }else{
-            logSppError(ctx, clsName +" should be a service.");
+        RuleBlock ruleBlock = getCurrentRuleBlock();
+        ScopeDefine scopeDefine = getLastElement(ruleBlock.getAppScope().getScopelist());
+        ScopeItem scopeItem = getLastElement(scopeDefine.getScopeItems());
+        if("_default".equals(clsName)){
+            for(SppCompilationUnit sppClass:getSppDomian().getMapsOfClass().values()){
+                if(sppClass instanceof SppService && ((SppService) sppClass).getScopeItem() != null){
+                    ScopeItem theItem = ((SppService) sppClass).getScopeItem();
+                    if(theItem.isLocal() &&
+                            theItem.getScopeDefine().getIn() == null &&
+                            theItem.getScopeDefine().getOut() == null){//default entity services
+                        scopeItem.setService((SppService) sppClass);
+                    }
+                }
+            }
+        }else {
+            SppCompilationUnit sppClass = getSppDomian().getSppClass(NameUtil.firstToLowerCase(clsName, false));
+            if (sppClass instanceof SppService) {
+                scopeItem.setService((SppService) sppClass);
+            } else {
+                logSppError(ctx, clsName + " should be a service.");
+            }
         }
     }
 }

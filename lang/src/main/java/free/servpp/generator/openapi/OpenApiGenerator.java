@@ -167,6 +167,8 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
         Operation operation = findMethod(serviceType, sppService, pathItem).addTagsItem(domainName);
         operation.setOperationId(sppService.getFuncName());
         addARequestBody(operation, sppService, openAPI);
+        addResponsesBody(openAPI,sppService, operation);
+
         String path = null;
         if(param != null && (path =param.getParameters().get("path") )!= null){
             String[] params = path.split("\\{");
@@ -194,14 +196,63 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
     private void addARequestBody(Operation operation, SppService sppService, OpenAPI openAPI) {
         List<? extends SppLocalVar> sppFieldList = sppService.getServiceBody().getSppLocalVarList();
         String schemaName = sppService.getName() + sppService.getRequestSuffix();
+        SppClass cls = getRequestResponseClass(sppService, schemaName, sppFieldList, true);
+        schemaName = createRequestResponseSchema(sppService, openAPI, sppFieldList, schemaName, cls, true);
+        if(cls.getSppFieldList().size() >=1) {
+            operation.requestBody(new RequestBody().$ref(schemaName));
+            if (openAPI.getComponents() == null)
+                openAPI.components(new Components());
+            openAPI.getComponents().addRequestBodies(schemaName, new RequestBody().content(
+                    new Content().addMediaType("application/json",
+                            new MediaType().schema(new Schema().$ref(schemaName)))).required(true));
+        }
+    }
+
+    private void addResponsesBody(OpenAPI openAPI, SppService sppService, Operation operation) {
+        List<? extends SppLocalVar> sppFieldList = sppService.getReturns().getSppLocalVarList();
+
+        String schemaName = sppService.getName() + sppService.getResponseSuffix();
+        SppClass cls = getRequestResponseClass(sppService, schemaName, sppFieldList,false);
+        schemaName = createRequestResponseSchema(sppService, openAPI, sppFieldList, schemaName, cls, false);
+        if(cls.getSppFieldList().size() >=1) {
+            operation.responses(new ApiResponses().addApiResponse("200", new ApiResponse().$ref(schemaName)));
+            if (openAPI.getComponents() == null)
+                openAPI.components(new Components());
+            ApiResponse apiResponse = new ApiResponse().description(schemaName).content(
+                    new Content().addMediaType("application/json",
+                            new MediaType().schema(new Schema<>().$ref(schemaName))));
+            openAPI.getComponents().addResponses(schemaName, apiResponse);
+        }
+    }
+
+    private String createRequestResponseSchema(SppService sppService, OpenAPI openAPI, List<? extends SppLocalVar> sppFieldList,
+                                               String schemaName, SppClass cls, boolean isRequest) {
+        boolean notNeedCompositeRequest = true;
+        notNeedCompositeRequest &= sppFieldList.size() == cls.getSppFieldList().size();//no header
+        notNeedCompositeRequest &= sppFieldList.size() == 1 && sppFieldList.get(0).getArrayDimension() == 0;//only one parameter,and not array
+        if(notNeedCompositeRequest){
+            schemaName = sppFieldList.get(0).getType().getName();
+            if(isRequest)
+                sppService.setRequestSuffix(null);
+            else
+                sppService.setResponseSuffix(null);
+            cls.setName(schemaName);
+        }else {
+            createASchema(cls, openAPI);
+        }
+        return schemaName;
+    }
+
+    private SppClass getRequestResponseClass(SppService sppService, String schemaName, List<? extends SppLocalVar> sppFieldList, boolean isRequest) {
         SppClass cls = new SppClass(schemaName, IConstance.CompilationUnitType.role);
         if(sppService.getScopeItem() == null){
-            getLogger().warn("Service {}'s scope is not defined!",sppService.getName());
+            getLogger().warn("Service {}'s scope is not defined!", sppService.getName());
         }else {
-            AppHeader inHeader = sppService.getScopeItem().getScopeDefine().getIn();
-            if(inHeader != null) {
-                SppClass headerCls = new SppClass(inHeader.getName(), IConstance.CompilationUnitType.role);
-                for (SppExtendField sppExtendField : inHeader.getSppExtendFields()) {
+            AppHeader appHeader = isRequest ? sppService.getScopeItem().getScopeDefine().getIn()
+                    : sppService.getScopeItem().getScopeDefine().getOut();
+            if(appHeader != null) {
+                SppClass headerCls = new SppClass(appHeader.getName(), IConstance.CompilationUnitType.role);
+                for (SppExtendField sppExtendField : appHeader.getSppExtendFields()) {
                     headerCls.addField(new SppField(sppExtendField.getType(), sppExtendField.getName()));
                 }
                 cls.addField(new SppField(headerCls, "AppHeader"));
@@ -210,29 +261,7 @@ public class OpenApiGenerator extends BaseClassGenerator implements ILogable {
         for (SppLocalVar field : sppFieldList) {
             cls.addField((SppField) new SppField(field.getType(), field.getName()).setArrayDimension(field.getArrayDimension()));
         }
-        if(cls.getSppFieldList().size() == 1){
-            schemaName = sppFieldList.get(0).getType().getName();
-            sppService.setRequestSuffix(null);
-            cls.setName(schemaName);
-        }else {
-            createASchema(cls, openAPI);
-        }
-        operation.requestBody(new RequestBody().$ref(schemaName));
-        if (openAPI.getComponents() == null)
-            openAPI.components(new Components());
-        final String scName = schemaName;
-        openAPI.getComponents().addRequestBodies(schemaName, new RequestBody().content(
-                new Content().addMediaType("application/json",
-                new MediaType().schema(new Schema().$ref(schemaName)))).required(true));
-        createResponses(openAPI,operation, schemaName);
-    }
-
-    private void createResponses(OpenAPI openAPI, Operation operation, String schemaName) {
-        operation.responses(new ApiResponses().addApiResponse("200",new ApiResponse().$ref(schemaName)));
-        ApiResponse apiResponse = new ApiResponse().description(schemaName).content(
-                new Content().addMediaType("application/json",
-                new MediaType().schema(new Schema<>().$ref(schemaName))));
-        openAPI.getComponents().addResponses(schemaName, apiResponse);
+        return cls;
     }
 
     private Operation findMethod(IConstance.ServiceType serviceType, SppService sppService, PathItem pathItem) {

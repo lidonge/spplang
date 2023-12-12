@@ -20,7 +20,10 @@ public interface IMapperHandler extends IApplicationHandler {
         if(sppClass == null){
             logSppError(ctx, "Identifier " + clsName + " not defined.");
         }else {
-            getCurrentRuleBlock().addMapper(new AppMapper(sppClass));
+            AppMapper appMapper = new AppMapper(sppClass);
+            RuleBlock currentRuleBlock = getCurrentRuleBlock();
+            currentRuleBlock.addMapper(appMapper);
+            currentRuleBlock.setCurrentAnnotatable(appMapper);
         }
     }
 

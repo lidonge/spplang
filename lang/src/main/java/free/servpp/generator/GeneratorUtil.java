@@ -1,5 +1,8 @@
 package free.servpp.generator;
 
+import com.samskivert.mustache.Mustache;
+import com.samskivert.mustache.Template;
+import free.servpp.generator.db.DDLGenerator;
 import free.servpp.generator.general.SppGeneralHandler;
 import free.servpp.generator.general.app.AppGeneralHandler;
 import free.servpp.generator.models.SppDomain;
@@ -15,22 +18,38 @@ import java.io.*;
  */
 public class GeneratorUtil {
     public static void main(String[] args) throws IOException {
-        InputStream mustache = GeneratorUtil.class.getResourceAsStream("/spp.mustache");
+        InputStream mustache = GeneratorUtil.class.getResourceAsStream("/ddl.mustache");
         SppProject sppProject = new SppProject();
-        File sppFile = new File("/Users/lidong/gitspace/spplang/lang/src/main/spp/invoice.spp");
-        File appFile = new File("/Users/lidong/gitspace/spplang/lang/src/main/spp/invoice.app");
+        File sppFile = new File("/Users/lidong/gitspace/spplang/lang/src/main/spp/petstore.spp");
+        File appFile = new File("/Users/lidong/gitspace/spplang/lang/src/main/spp/petstore.rdb");
+        File appFile1 = new File("/Users/lidong/gitspace/spplang/lang/src/main/spp/petstore.app");
         File yamlOutPath = new File("/Users/lidong/gitspace/spplang/lang/target/gen");
         File genRoot = new File("/Users/lidong/gitspace/spplang/lang/target/gen/src/java");
         String basePackage = "free.servpp.openapi";
         SppGeneralHandler sppGeneralHandler = (SppGeneralHandler) new SppCompiler(sppFile,sppProject).compile();
 
         SppDomain sppDomain = sppGeneralHandler.getSppDomain();
-        sppDomain.dealMaps();
+        sppDomain.dealEntityToRoleMaps();
+        sppDomain.generateDefaultServices(sppGeneralHandler);
         AppGeneralHandler appGeneralHandler = (AppGeneralHandler) new AppCompiler(appFile,sppProject).compile();
+        appGeneralHandler = (AppGeneralHandler) new AppCompiler(appFile1,sppProject).compile();
         sppDomain.dealAnnotations(sppDomain.getRuleBlock().getAppAnnotationList());
-        openApi(sppDomain,mustache, sppFile,yamlOutPath, genRoot, basePackage);
+        sppDomain.checkSemanticFinally(sppGeneralHandler);
+        DDLGenerator ddlGenerator = new DDLGenerator(sppDomain);
+        Template template = Mustache.compiler().compile(new InputStreamReader(mustache));
+        String string  = template.execute(ddlGenerator);
+        PrintWriter out = null;
+        try {
+            File ddlFile = new File(yamlOutPath,"src/resources/sql/ddl.sql");
+            ddlFile.getParentFile().mkdirs();
+            out = new PrintWriter(new FileOutputStream(ddlFile));
+            out.println(string);
+        }finally {
+            out.close();
+        }
+        openApi(sppDomain,sppFile,yamlOutPath, genRoot, basePackage);
     }
-    public static void openApi(SppDomain sppDomain, InputStream mustache, File sppFile, File yamlOutPath,
+    public static void openApi(SppDomain sppDomain, File sppFile, File yamlOutPath,
                                 File javaGenRoot, String basePackage) throws IOException {
         String domainName = sppDomain.getName();
         File domainPath = new File(new File(javaGenRoot, basePackage.replaceAll("\\.",File.separator)), domainName);
