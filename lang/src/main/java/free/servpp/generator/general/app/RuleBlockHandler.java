@@ -7,6 +7,7 @@ import free.servpp.generator.models.app.RuleBlock;
 import free.servpp.generator.models.app.expr.IOperationExpression;
 
 import java.io.File;
+import java.util.Stack;
 
 /**
  * @author lidong@date 2023-11-22@version 1.0
@@ -15,6 +16,23 @@ public class RuleBlockHandler extends BaseHandler {
     File antlrFile;
     SppDomain sppDomain;
     IContainer currentContainer;
+    private Stack stack = new Stack();
+
+    @Override
+    public void push(Object obj) {
+        stack.push(obj);
+    }
+
+    @Override
+    public Object pop() {
+        return stack.pop();
+    }
+
+    @Override
+    public Object peek() {
+        return stack.peek();
+    }
+
     @Override
     public IContainer getCurrentContainer(){
         return currentContainer;

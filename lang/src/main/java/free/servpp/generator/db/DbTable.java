@@ -54,6 +54,8 @@ public class DbTable implements IContainer, INamedObject {
     public boolean addPrimaryKey(DbColumn key){
         if(primaryKeys == null)
             primaryKeys = new NamedArray<>();
+        key.setNullable(false);
+
         return addPKey(primaryKeys,key);
     }
 

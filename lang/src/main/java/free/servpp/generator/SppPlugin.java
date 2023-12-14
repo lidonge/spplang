@@ -6,6 +6,7 @@ import free.servpp.generator.db.DDLGenerator;
 import free.servpp.generator.general.SppGeneralHandler;
 import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppProject;
+import free.servpp.generator.openapi.CodeFormator;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -73,6 +74,7 @@ public class SppPlugin extends AbstractMojo {
                 File ddlFile = new File(yamlOutputDirectory,"sql/ddl.sql");
                 ddlFile.getParentFile().mkdirs();
                 out = new PrintWriter(new FileOutputStream(ddlFile));
+                string = CodeFormator.formatCode(string);
                 out.println(string);
             }catch (IOException e) {
                 e.printStackTrace();

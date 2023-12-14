@@ -45,12 +45,10 @@ public interface IAnnotateHandler extends IApplicationHandler,IRecursionProcess{
 
     @Override
     default void exitAnnotateDefine(AppParser.AnnotateDefineContext ctx) {
-
     }
 
     @Override
     default void enterAnnotatableRule(AppParser.AnnotatableRuleContext ctx) {
-
     }
 
     @Override

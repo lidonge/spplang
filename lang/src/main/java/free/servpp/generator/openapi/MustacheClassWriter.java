@@ -52,10 +52,14 @@ public class MustacheClassWriter extends ClassWriterConfig {
                 SppRoleField roleField = (SppRoleField) var;
                 nameToEntitys.put(roleField.getEntityName(), var);
             }
-            for (SppField var : sppRoleMapper.getEntity().getSppFieldList()) {
-                SppField entVar = nameToEntitys.get(var.getName());
-                if (entVar == null) {
-                    sppRoleMapper.addLocalVar(var);
+            for(SppClass sppClass:sppRoleMapper.getEntities()) {
+                for (SppField var : sppClass.getSppFieldList()) {
+                    SppField entVar = nameToEntitys.get(var.getName());
+                    if (entVar == null) {
+                        SppRoleField sppRoleField = new SppRoleField(var.getType(), var.getName());
+                        sppRoleField.setEntityName(sppClass.getName());
+                        sppRoleMapper.addLocalVar(sppRoleField);
+                    }
                 }
             }
         }

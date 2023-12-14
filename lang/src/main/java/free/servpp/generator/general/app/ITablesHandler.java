@@ -1,10 +1,14 @@
 package free.servpp.generator.general.app;
 
+import free.servpp.generator.models.IAnnotation;
 import free.servpp.generator.models.SppClass;
 import free.servpp.generator.models.SppCompilationUnit;
 import free.servpp.generator.models.app.*;
 import free.servpp.lang.antlr.AppParser;
 import org.antlr.v4.runtime.ParserRuleContext;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author lidong@date 2023-12-05@version 1.0
@@ -24,11 +28,37 @@ public interface ITablesHandler extends IApplicationHandler {
     }
 
     @Override
+    default void enterAnnotateTableDefine(AppParser.AnnotateTableDefineContext ctx) {
+        AppTable appTable = new AppTable();
+        RuleBlock currentRuleBlock = getCurrentRuleBlock();
+        push(currentRuleBlock.getCurrentLineAnns());
+        push(currentRuleBlock.getCurrentAnnotatable());
+        currentRuleBlock.setCurrentAnnotatable(appTable);
+        currentRuleBlock.setCurrentLineAnns(null);
+    }
+
+    @Override
+    default void exitAnnotateTableDefine(AppParser.AnnotateTableDefineContext ctx) {
+        RuleBlock currentRuleBlock = getCurrentRuleBlock();
+        List<AnnotationDefine> currentLineAnns = currentRuleBlock.getCurrentLineAnns();
+        currentRuleBlock.getCurrentAnnotatable().setAnnotations(currentLineAnns);
+        currentRuleBlock.setCurrentAnnotatable((IAnnotation) pop());
+        currentRuleBlock.setCurrentLineAnns((List<AnnotationDefine>) pop());
+    }
+
+    @Override
     default void enterTableDefine(AppParser.TableDefineContext ctx) {
         String name = ctx.getChild(1).getText();
-        AppTable appTable = new AppTable(name);
-        AppTables appTables = getLastElement(getCurrentRuleBlock().getAppTables());
-        appTable.addToList(appTables.getAppTableList(), appTable);
+        RuleBlock currentRuleBlock = getCurrentRuleBlock();
+        AppTable appTable = (AppTable) currentRuleBlock.getCurrentAnnotatable();
+        appTable.setName(name);
+        AppTables appTables = getLastElement(currentRuleBlock.getAppTables());
+        if(currentRuleBlock.getAllTables().get(name) != null){
+            logSppError(ctx, "Duplicate table " + name);
+        }else {
+            appTables.getAppTableList().add(appTable);
+            currentRuleBlock.getAllTables().put(name,appTable);
+        }
     }
 
     @Override

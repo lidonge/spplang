@@ -1,38 +1,30 @@
 package free.servpp.generator.models.app;
 
-import free.servpp.generator.models.SppField;
+import org.antlr.v4.runtime.ParserRuleContext;
 
 /**
  * @author lidong@date 2023-11-22@version 1.0
  */
 public class MapperItem implements INamedObject{
 
-    String qualifiedName;
+    private ParserRuleContext ctx;
+    String name;
 
-    SppFieldDefine field;
 
     SQlType sqlType = new SQlType();
     String mapName;
 
-    public MapperItem(String qualifiedName, SppFieldDefine field) {
-        this.qualifiedName = qualifiedName;
-        this.field = field;
+    public MapperItem(String name, ParserRuleContext ctx) {
+        this.name = name;
+        this.ctx = ctx;
     }
 
-    public String getQualifiedName() {
-        return qualifiedName;
+    public ParserRuleContext getCtx() {
+        return ctx;
     }
 
-    public void setQualifiedName(String qualifiedName) {
-        this.qualifiedName = qualifiedName;
-    }
-
-    public SppFieldDefine getField() {
-        return field;
-    }
-
-    public void setField(SppFieldDefine field) {
-        this.field = field;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public SQlType getSqlType() {
@@ -53,14 +45,13 @@ public class MapperItem implements INamedObject{
 
     @Override
     public String getName() {
-        return qualifiedName;
+        return name;
     }
 
     @Override
     public String toString() {
         return "MapperItem{" +
-                "qualifiedName='" + qualifiedName + '\'' +
-                ", field=" + field +
+                "qualifiedName='" + name + '\'' +
                 ", sqlType=" + sqlType +
                 ", mapName='" + mapName + '\'' +
                 '}';

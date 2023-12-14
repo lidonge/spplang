@@ -223,13 +223,14 @@ public class SppDomain {
         }
     }
 
-    private void takeAll(SppRoleMapper sppRoleMapper, Map<String, String> entityToRole) {
+    public static void takeAll(SppRoleMapper sppRoleMapper, Map<String, String> entityToRole) {
         if (sppRoleMapper.isTakeAll()) {
-            SppClass entity = sppRoleMapper.getEntity();
-            SppClass role = sppRoleMapper.getRole();
-            for (SppLocalVar var : entity.getSppFieldList()) {
-                if (entityToRole.get(var.getName()) == null)
-                    role.addField((SppField) var);
+            for(SppClass entity : sppRoleMapper.getEntities()) {
+                SppClass role = sppRoleMapper.getRole();
+                for (SppLocalVar var : entity.getSppFieldList()) {
+                    if (entityToRole.get(var.getName()) == null)
+                        role.addField((SppField) var);
+                }
             }
         }
     }

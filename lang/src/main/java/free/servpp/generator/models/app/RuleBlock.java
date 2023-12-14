@@ -5,7 +5,9 @@ import free.servpp.generator.models.IComponent;
 import free.servpp.generator.models.IContainer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lidong@date 2023-11-21@version 1.0
@@ -17,6 +19,8 @@ public class RuleBlock {
     AppScope appScope = new AppScope();
     AppServices appServices = new AppServices();
     List<AppTables> appTables = new ArrayList<>();
+    Map<String, AppTable> allTables = new HashMap();
+
     List<AnnotationDefine> currentLineAnns;
     IAnnotation currentAnnotatable;
     IContainer appAnnotations = new IContainer() {
@@ -42,6 +46,14 @@ public class RuleBlock {
     };
     List<AppAnnotation> appAnnotationList = new ArrayList<>();
 
+    public Map<String, AppTable> getAllTables() {
+        return allTables;
+    }
+
+    public void setAllTables(Map<String, AppTable> allTables) {
+        this.allTables = allTables;
+    }
+
     public IAnnotation getCurrentAnnotatable() {
         return currentAnnotatable;
     }
@@ -62,6 +74,10 @@ public class RuleBlock {
 
     public List<AnnotationDefine> getCurrentLineAnns() {
         return currentLineAnns;
+    }
+
+    public void setCurrentLineAnns(List<AnnotationDefine> currentLineAnns) {
+        this.currentLineAnns = currentLineAnns;
     }
 
     public List<AppTables> getAppTables() {

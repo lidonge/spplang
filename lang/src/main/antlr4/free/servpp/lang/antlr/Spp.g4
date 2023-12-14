@@ -73,7 +73,7 @@ roleBody
     ;
 
 actas
-    : 'take' Identifier 'as' Identifier mapBody
+    : 'take' Identifier (',' Identifier)* 'as' Identifier mapBody
     ;
 
 mapBody

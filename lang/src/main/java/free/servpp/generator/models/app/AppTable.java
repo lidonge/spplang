@@ -1,5 +1,6 @@
 package free.servpp.generator.models.app;
 
+import free.servpp.generator.models.Annotation;
 import free.servpp.generator.models.SppClass;
 import free.servpp.generator.models.SppCompilationUnit;
 import free.servpp.generator.util.NamedArray;
@@ -10,15 +11,14 @@ import java.util.List;
 /**
  * @author lidong@date 2023-12-05@version 1.0
  */
-public class AppTable implements INamedObject{
+public class AppTable extends Annotation implements INamedObject{
     private String name;
     private NamedArray<SppClass> entities = new NamedArray<SppClass>();
     private List<AppColumn> appColumns = new ArrayList<>();
     private  List<SppFieldDefine> primaryKeys = new ArrayList<>();
     private  List<AppForeign> foreignKeys = new ArrayList<>();
 
-    public AppTable(String name) {
-        this.name = name;
+    public AppTable() {
     }
 
     public String getName() {

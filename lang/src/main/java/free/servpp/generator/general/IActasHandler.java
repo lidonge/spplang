@@ -5,6 +5,9 @@ import free.servpp.generator.models.SppRoleField;
 import free.servpp.generator.models.SppRoleMapper;
 import free.servpp.generator.models.SppVarMaker;
 import free.servpp.lang.antlr.SppParser;
+import org.antlr.v4.runtime.tree.TerminalNode;
+
+import java.util.List;
 
 /**
  * @author lidong@date 2023-11-03@version 1.0
@@ -12,12 +15,20 @@ import free.servpp.lang.antlr.SppParser;
 public interface IActasHandler extends ICompilationUnitHandler {
     @Override
     default void enterActas(SppParser.ActasContext ctx){
-        String entityName = ctx.getToken(SppParser.Identifier,0).getText();
-        String roleName = ctx.getToken(SppParser.Identifier,1).getText();
+        List<TerminalNode> tokens = ctx.getTokens(SppParser.Identifier);
+        String entityName = "";
+        String roleName = getLastElement(tokens).getText();
 //        System.out.println("entity : " + entityName + ", role:"+roleName);
-        SppRoleMapper sppRoleMapper = (SppRoleMapper) generateClass(CompilationUnitType.rolemapper,ctx,"Mapper"+entityName+"To"+roleName);
+        for(int i = 0;i< tokens.size() -1;i++){
+            entityName += tokens.get(i).getText();
+        }
+        SppRoleMapper sppRoleMapper = (SppRoleMapper) generateClass(CompilationUnitType.rolemapper,ctx,
+                "Mapper"+entityName+"To"+roleName);
         sppRoleMapper.setRole((SppClass) getSppDomain().getSppClass(CompilationUnitType.role,roleName));
-        sppRoleMapper.setEntity((SppClass) getSppDomain().getSppClass(CompilationUnitType.entity,entityName));
+        for(int i = 0;i< tokens.size() -1;i++) {
+            sppRoleMapper.addEntity((SppClass) getSppDomain().getSppClass(CompilationUnitType.entity,
+                    tokens.get(i).getText()));
+        }
     }
     @Override
     default void exitActas(SppParser.ActasContext ctx){

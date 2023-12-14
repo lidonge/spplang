@@ -132,11 +132,6 @@ public abstract class BaseHandler implements IHeaderHandler, IPrimaryHandler,
     }
 
     @Override
-    public void exitNotnull(AppParser.NotnullContext ctx) {
-
-    }
-
-    @Override
     public void exitHeader(AppParser.HeaderContext ctx) {
 
     }

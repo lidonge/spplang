@@ -7,9 +7,9 @@ import free.servpp.generator.general.IConstance;
  */
 public class SQlType {
     String type;
-    boolean notnull;
-    int precision;
-    int scale;
+    Boolean notnull;
+    Integer precision;
+    Integer scale;
 
     public String getType() {
         return type;
@@ -19,7 +19,7 @@ public class SQlType {
         this.type = type;
     }
 
-    public boolean isNotnull() {
+    public Boolean isNotnull() {
         return notnull;
     }
 
@@ -27,7 +27,7 @@ public class SQlType {
         this.notnull = notnull;
     }
 
-    public int getPrecision() {
+    public Integer getPrecision() {
         return precision;
     }
 
@@ -35,7 +35,7 @@ public class SQlType {
         this.precision = precision;
     }
 
-    public int getScale() {
+    public Integer getScale() {
         return scale;
     }
 

@@ -2,12 +2,15 @@ package free.servpp.generator.models;
 
 import free.servpp.generator.general.IConstance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author lidong@date 2023-11-03@version 1.0
  */
 public class SppRoleMapper extends SppService{
     SppClass role;
-    SppClass entity;
+    List<SppClass> entities;
     boolean isMapSame = true;
     boolean isTakeAll;
 
@@ -23,12 +26,14 @@ public class SppRoleMapper extends SppService{
         this.role = role;
     }
 
-    public SppClass getEntity() {
-        return entity;
+    public List<SppClass> getEntities() {
+        return entities;
     }
 
-    public void setEntity(SppClass entity) {
-        this.entity = entity;
+    public void addEntity(SppClass entity) {
+        if(entities == null)
+            entities = new ArrayList<>();
+        entities.add(entity);
     }
 
     public boolean isMapSame() {
@@ -51,7 +56,7 @@ public class SppRoleMapper extends SppService{
     public String toString() {
         return "SppRoleMapper{" +
                 "role=" + role +
-                ", entity=" + entity +
+                ", entity=" + entities +
                 ", isMapSame=" + isMapSame +
                 ", isTakeAll=" + isTakeAll +
                 ", serviceType=" + serviceType +

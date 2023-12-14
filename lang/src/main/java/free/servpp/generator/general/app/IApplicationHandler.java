@@ -17,6 +17,10 @@ import java.util.List;
  */
 public interface IApplicationHandler extends AppListener, IConstance, ISppErrorLogger, IQualifiedNameUtil {
 
+    void push(Object obj);
+    Object pop();
+
+    Object peek();
     RuleBlock getCurrentRuleBlock();
 
     SppDomain getSppDomian();

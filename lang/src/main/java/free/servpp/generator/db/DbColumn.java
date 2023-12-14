@@ -12,7 +12,6 @@ import java.sql.JDBCType;
 public class DbColumn<T extends IContainer> implements IComponent, INamedObject {
     private String name;
     private JDBCType jdbcType;
-
     private int precision;
     private int scale;
 

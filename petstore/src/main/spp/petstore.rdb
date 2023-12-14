@@ -5,12 +5,38 @@ domain petstore;
     type_boolean="INTEGER",type_String="VARCHAR")
 @insideEntity(namingType="snake_case")
 tables entities{
-    table CATEGORY (Category){
-        primarykey String(20) id;
+    @insideEntity(namingType="lowercase")
+    table SUPPLIER (Supplier){
+        primarykey int suppid;
+    }
+
+    table SIGNON(Signon){
+        primarykey(Signon.username);
+    }
+
+    @insideEntity(namingType="lowercase")
+    table ACCOUNT (Account){
+        primarykey String(20) userid;//default not null
     }
 
     table PROFILE(Profile){
         primarykey String(20) userid;
+    }
+
+    table BANNERDATA(BannerData){
+        primarykey(BannerData.favcategory);
+    }
+
+    @insideEntity(namingType="lowercase")
+    table ORDERSTATUS(OrderStatus){
+        primarykey(OrderStatus.order);
+        primarykey(OrderStatus.line);
+        foreignkey(OrderStatus.order);
+        foreignkey(OrderStatus.line);
+    }
+
+    table CATEGORY (Category){
+        primarykey String(20) id;
     }
 
     table PRODUCT (Product){
@@ -18,17 +44,15 @@ tables entities{
         foreignkey( Product.category );
     }
 
-    table ACCOUNT (Account){
-        primarykey String(20) userid;//default not null
-    }
-
-    table SUPPLIER (Supplier){
-        primarykey int suppid;
-    }
-
+    @insideEntity(namingType="pascallowercase")
     table ITEM (Item){
-        primarykey String(20) id;
+        primarykey String(20) itemid;
         foreignkey( Item.product );
+    }
+
+    table INVENTORY(Inventory){
+        primarykey(Inventory.item);
+        foreignkey( Inventory.item );
     }
 
     table ORDERLINES(OrderLines){
@@ -38,11 +62,24 @@ tables entities{
         foreignkey( OrderLines.order );
     }
 
+    @insideEntity(namingType="lowercase",dupNamingType="pascallowercase")
     table MYORDER(MyOrder){
         primarykey int orderid;
         foreignkey (MyOrder.account);
     }
 }
-map Supplier(snake_case){
-    suppname=notnull String(80) name;
+
+map INVENTORY{
+    item_itemid=notnull String(10) itemid;
+}
+
+map ORDERLINES{
+    order_orderid=int orderid;
+    item_itemid=notnull String(10) itemid;
+}
+map ITEM{
+    supplierId=int supplier;
+}
+map PRODUCT{
+    category_id=String(20) category;
 }

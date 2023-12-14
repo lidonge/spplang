@@ -2,7 +2,8 @@
 drop table {{appTable.name}};
 create table {{appTable.name}} (
 {{#columns.arrayList}}
-{{#-first}}    {{/-first}}{{name}} {{jdbcType}}{{#precisionScale}}{{precisionScale}}{{/precisionScale}} {{nullString}}{{^-last}},{{/-last}}{{/columns.arrayList}}{{#primaryKeys}},{{/primaryKeys}}{{^primaryKeys}}{{#dbForeigns}},{{/dbForeigns}}{{/primaryKeys}}
+
+    {{name}} {{jdbcType}}{{#precisionScale}}{{precisionScale}}{{/precisionScale}} {{nullString}}{{^-last}},{{/-last}}{{/columns.arrayList}}{{#primaryKeys}},{{/primaryKeys}}{{^primaryKeys}}{{#dbForeigns}},{{/dbForeigns}}{{/primaryKeys}}
 {{#primaryKeys}}
     constraint pk_{{appTable.name}} primary key ({{#arrayList}}{{^-first}},{{/-first}}{{name}}{{/arrayList}}){{#dbForeigns}}{{#-first}},{{/-first}}{{/dbForeigns}}
 {{/primaryKeys}}

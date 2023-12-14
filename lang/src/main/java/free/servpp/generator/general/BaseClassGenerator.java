@@ -26,13 +26,6 @@ public class BaseClassGenerator {
     }
 
     private void takeAll(SppRoleMapper sppRoleMapper, Map<String, String> entityToRole) {
-        if (sppRoleMapper.isTakeAll()) {
-            SppClass entity = sppRoleMapper.getEntity();
-            SppClass role = sppRoleMapper.getRole();
-            for (SppLocalVar var : entity.getSppFieldList()) {
-                if (entityToRole.get(var.getName()) == null)
-                    role.addField((SppField) var);
-            }
-        }
+        SppDomain.takeAll(sppRoleMapper,entityToRole);
     }
 }

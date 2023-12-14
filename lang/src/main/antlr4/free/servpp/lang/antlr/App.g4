@@ -25,8 +25,13 @@ annotatableRule
     | services
     | tables
     ;
+
 tables
-    : 'tables' Identifier '{' tableDefine* '}'
+    : 'tables' Identifier '{' annotateTableDefine* '}'
+    ;
+
+annotateTableDefine
+    : annotateDefine* tableDefine
     ;
 
 tableDefine
@@ -154,17 +159,18 @@ mapParameterIdentifier
     : Identifier
     ;
 mapItem
-    : qualifiedName '=' sqlType Identifier? ';'
+    : Identifier '=' sqlType Identifier? ';'
     ;
 
 sqlType
-    : notnull? sqlTypePrimitiveType sqlTypeLength?
+    : sqlTypeNotnull? sqlTypePrimitiveType sqlTypeLength?
     ;
 
 sqlTypePrimitiveType
     : primitiveType
     ;
-notnull
+
+sqlTypeNotnull
     : 'notnull'
     ;
 

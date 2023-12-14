@@ -1,13 +1,11 @@
 package free.servpp.generator.general.app;
 
 import free.servpp.generator.models.SppClass;
-import free.servpp.generator.models.SppCompilationUnit;
-import free.servpp.generator.models.SppField;
-import free.servpp.generator.models.app.AppMapper;
-import free.servpp.generator.models.app.MapperItem;
-import free.servpp.generator.models.app.RuleBlock;
-import free.servpp.generator.models.app.SppFieldDefine;
+import free.servpp.generator.models.app.*;
 import free.servpp.lang.antlr.AppParser;
+import org.antlr.v4.runtime.tree.TerminalNode;
+
+import java.util.List;
 
 /**
  * @author lidong@date 2023-11-22@version 1.0
@@ -15,10 +13,10 @@ import free.servpp.lang.antlr.AppParser;
 public interface IMapperHandler extends IApplicationHandler {
     @Override
     default void enterMap(AppParser.MapContext ctx){
-        String clsName = ctx.getChild(1).getText();
-        SppCompilationUnit sppClass = getSppDomian().getSppClass(clsName);
+        String tableName = ctx.getChild(1).getText();
+        AppTable sppClass = getCurrentRuleBlock().getAllTables().get(tableName);
         if(sppClass == null){
-            logSppError(ctx, "Identifier " + clsName + " not defined.");
+            logSppError(ctx, "Identifier " + tableName + " not defined.");
         }else {
             AppMapper appMapper = new AppMapper(sppClass);
             RuleBlock currentRuleBlock = getCurrentRuleBlock();
@@ -36,21 +34,28 @@ public interface IMapperHandler extends IApplicationHandler {
 
     @Override
     default void enterMapItem(AppParser.MapItemContext ctx){
-        String qualifiedName = ctx.getChild(0).getText();
+        String id = ctx.getChild(0).getText();
         RuleBlock ruleBlock = getCurrentRuleBlock();
         AppMapper appMapper = getLastElement(ruleBlock.getAppMappers());
-        SppFieldDefine sppField = getQualifiedField(ctx, (SppClass) appMapper.getSppClass(), qualifiedName);
-        if(sppField == null){
-            logSppError(ctx, "Field " + qualifiedName + " not defined");
-        }else{
-            appMapper.addMapperItem(new MapperItem(qualifiedName,sppField));
+        MapperItem mapperItem = new MapperItem(id, ctx);
+        appMapper.addMapperItem(mapperItem);
+
+        List<TerminalNode> tokens = ctx.getTokens(AppParser.Identifier);
+        if(tokens.size() ==2 ){
+            String mapName = tokens.get(1).getText();
+            mapperItem.setMapName(mapName);
         }
     }
 
     @Override
-    default void enterNotnull(AppParser.NotnullContext ctx){
+    default void enterSqlTypeNotnull(AppParser.SqlTypeNotnullContext ctx){
         MapperItem mapperItem = getMapperItem();
         mapperItem.getSqlType().setNotnull(true);
+    }
+
+    @Override
+    default void exitSqlTypeNotnull(AppParser.SqlTypeNotnullContext ctx) {
+
     }
 
     @Override

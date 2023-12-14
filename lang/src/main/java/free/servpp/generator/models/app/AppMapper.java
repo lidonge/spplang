@@ -3,7 +3,6 @@ package free.servpp.generator.models.app;
 import free.servpp.generator.models.Annotation;
 import free.servpp.generator.models.SppClass;
 import free.servpp.generator.models.SppCompilationUnit;
-import free.servpp.generator.models.SppField;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,25 +11,25 @@ import java.util.List;
  * @author lidong@date 2023-11-22@version 1.0
  */
 public class AppMapper extends Annotation implements INamedObject{
-    SppCompilationUnit sppClass;
+    AppTable appTable;
 
     List<String> mapParameters = new ArrayList<>();
     List<MapperItem> mapperItemList = new ArrayList<>();
 
-    public AppMapper(SppCompilationUnit sppClass) {
-        this.sppClass = sppClass;
+    public AppMapper(AppTable appTable) {
+        this.appTable = appTable;
     }
 
     public String getName() {
-        return sppClass.getName();
+        return appTable.getName();
     }
 
-    public SppCompilationUnit getSppClass() {
-        return sppClass;
+    public AppTable getAppTable() {
+        return appTable;
     }
 
-    public void setSppClass(SppClass sppClass) {
-        this.sppClass = sppClass;
+    public void setAppTable(AppTable appTable) {
+        this.appTable = appTable;
     }
 
     public String addParameter(String parameter){
@@ -50,7 +49,7 @@ public class AppMapper extends Annotation implements INamedObject{
     @Override
     public String toString() {
         return "AppMapper{" +
-                "sppClass=" + sppClass.getName() +
+                "sppClass=" + appTable.getName() +
                 ", mapParameters=" + mapParameters +
                 ", mapperItemList=" + mapperItemList +
                 '}';

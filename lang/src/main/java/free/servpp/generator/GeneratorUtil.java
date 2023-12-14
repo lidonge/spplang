@@ -7,6 +7,7 @@ import free.servpp.generator.general.SppGeneralHandler;
 import free.servpp.generator.general.app.AppGeneralHandler;
 import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppProject;
+import free.servpp.generator.openapi.CodeFormator;
 import free.servpp.generator.openapi.OpenApiGenerator;
 import io.swagger.v3.core.util.Yaml;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -38,6 +39,7 @@ public class GeneratorUtil {
         DDLGenerator ddlGenerator = new DDLGenerator(sppDomain);
         Template template = Mustache.compiler().compile(new InputStreamReader(mustache));
         String string  = template.execute(ddlGenerator);
+        string = CodeFormator.formatCode(string);
         PrintWriter out = null;
         try {
             File ddlFile = new File(yamlOutPath,"src/resources/sql/ddl.sql");

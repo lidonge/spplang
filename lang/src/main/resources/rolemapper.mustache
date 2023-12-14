@@ -1,19 +1,20 @@
 package {{packageName}};
+import java.util.Map;
 public class {{name}} {
-	public void roleToEntity({{role.name}} role, {{entity.name}} entity) {
+	public void roleToEntity({{role.name}} role, Map<String, Object> entities) {
 	{{#serviceBody.sppLocalVarList}}
-		entity.set{{upperName}} (role.get{{upperName}}());
+        (({{entityName}})entities.get("{{entityName}}")).set{{upperName}} (role.get{{upperName}}());
 	{{/serviceBody.sppLocalVarList}}
 	{{#sppFieldList}}
-	    entity.set{{upperEntityName}} (role.get{{upperName}}());
+        (({{entityName}})entities.get("{{entityName}}")).set{{upperEntityName}} (role.get{{upperName}}());
 	{{/sppFieldList}}
 	}
-	public void entityToRole({{entity.name}} entity, {{role.name}} role) {
+	public void entityToRole(Map<String, Object> entities, {{role.name}} role) {
 	{{#serviceBody.sppLocalVarList}}
-		role.set{{upperName}} (entity.get{{upperName}}());
+		role.set{{upperName}} ((({{entityName}})entities.get("{{entityName}}")).get{{upperName}}());
 	{{/serviceBody.sppLocalVarList}}
 	{{#sppFieldList}}
-		role.set{{upperName}} (entity.get{{upperEntityName}}());
+		role.set{{upperName}} ((({{entityName}})entities.get("{{entityName}}")).get{{upperEntityName}}());
 	{{/sppFieldList}}
-	}
+    }
 }
