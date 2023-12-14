@@ -1,0 +1,198 @@
+domain ConsumerLoan;
+
+Enum deviceidentificationtypevalues{
+    IMEI,Serialnumber,Secureelementidentification,Othernational,Otherprivate
+}
+Enum feetypevalues{
+    Accountingfee,Adrfee,Advisoryfee,Airwaybillfee,Backendload,Brokeragefee,Clearanceandhandlingatdestination,Clearanceandhandlingatorigin,Collectfreight,Commission,Contingencydeferredsalescharge,Correspondentbankcharge,Custodyfee,Dangerousgoodsfee,Dilutionlevy,Discount,Equalisation,Frontendload,Initial,Insurancepremium,Issuancecancellationfee,Issuancefee,Managementfee,Matchingfees,Miscellaneousfee,Other,Packaging,Partacquis,Penalty,Pickup,Postagecharge,Premium,Publicationfee,Regulatoryfee,Securitycharge,Serviceprovisionfee,Shippingcharge,Signatureservice,Specialconcessions,Speciallyagreedfrontendload,Storageatdestination,Storageatorigin,Switch,Transferfee,Transportcharges,Ucitscommission
+}
+Enum currencytypevalues{
+    BaseCurrency,ReportingCurrency,SecondaryCurrency,TransferCurrency
+}
+Enum plantypevalues{
+    AdministrativePlan,ManagementPlan,StratgyPlan,FinancialPlan
+}
+Enum servicetypevalues{
+    ITService,AdministrativeService,SystemService,FinancialService,InformationService,BusinessService
+}
+Enum arrangementtypevalues{
+    SweepArrangement,WithdrawalArrangement,DepositArrangement,InterestArrangement,FeeArrangement,LienArrangement,InformationArrangement,PaymentArrangement,EntitlementArrangement,PeriodArrangement,CollateralArrangement,LimitArrangement,AccessArrangement,CardPaymentArrangement,StandingOrderArrangement,OverdraftArrangement,RepaymentArrangement,StatementArrangement,CreditTransferArrangement,ProductAndServiceArrangement,FactoringArrangement,RolloverArrangement,RestructuringArrangement,InsuranceArrangement,CollectionArrangement,UnderwritingArrangement,TerminationArrangement,MaturityArrangement
+}
+Enum taxtypevalues{
+    Valueaddedtaxofzerorate,Provincial,Nationaltax,Statetax,Withholdingtax,Capitalgaintax,Interimprofittax,Stampduty,Wealthtax,Inheritancetax,Solidaritysurcharge,Taxcredit,Equalisation,Gifttax,Consumptiontax,Alternativeminimumtax,Localtax,Nationalfederaltax,Paymentlevytax,Stockexchangetax,Transactiontax,Transfertax,Valueaddedtax,Localbrokercommission,Executingbrokercommission,Eutaxretention,Aktiengewinn1,Aktiengewinn2,Zwischengewinn,Customstax,Other,Mietgewinn,Germanlocaltax3,Germanlocaltax4,Germanlocaltax2,Withholdingofforeigntax,Withholdingoflocaltax,Capitallosscredit
+}
+Enum financialdocumenttypevalues{
+    Meteredserviceinvoice,Creditnoterelatedtofinancialadjustment,Debitnoterelatedtofinancialadjustment,Commercialinvoice,Creditnote,Debitnote,Hireinvoice,Selfbilledinvoice,Remittanceadvicemessage,Relatedpaymentinstruction,Commercialcontract,Foreignexchangedealreference,Statementofaccount,Dispatchadvice,Purchaseorder,Structuredcommunicationreference,Billoflading,Voucher,Accountreceivableopenitem,Tradeservicesutilitytransaction,Cashierreceipt,Customerreceipt,Journal,Salereceipt
+}
+Enum geographicalareatypevalues{
+    Continent,Country,State,District,Province,Town,City,Region
+}
+Enum loanproducttypevalues{
+    ConsumerLoan,CorporateLoan,MerchandisingLoan,MortgageLoan,SyndicatedLoan
+}
+Enum paymenttransactionstatustypevalues{
+    Acceptedtechnicalvalidation,Received,Partiallyaccepted,Rejected,Pending,Acceptedcustomerprofile,Acceptedsettlementinprocess,Acceptedsettlementcompleted,Accepted,Acceptedcancellationrequest,Rejectedcancellationrequest,Acceptedwithchange,Partiallyacceptedcancellationrequest,Pendingcancellationrequest,Acceptedcreditsettlementcompleted,Paymentcancelled,Nocancellationprocess
+}
+Enum collateraltypevalues{
+    Letterofcredit,Cash,Securities,Physicalentities,Insurance,Stockcertificate,Bond,Bankguarantee,Other,Commodity,Automobile,Industrialvehicle,Commercialtruck,Railvehicle,Nauticalcommercialvehicle,Nauticalleisurevehicle,Aeroplane,Machinetool,Industrialequipment,Officeequipment,Itequipment,Medicalequipment,Energyrelatedequipment,Commercialbuilding
+}
+Enum accountinvolvementtypevalues{
+    PartyIsOwnerOfAccount,PartyIsServicerOfAccount
+}
+Enum authenticationmethodtypevalues{
+    Onlinepin,Offlinepin,Signaturecapture,Password,Biometry,Cscverification,Cryptogramverification,Unknownmethod,Bypass,Papersignature,Manualverification,Merchantauthentication,Securecertificate,Securenocertificate,Securedchannel,Billingaddressverification,Cardholderidentificationdata,Passiveauthentication,Secureelectroniccommerce,Shippingaddressverification,Tokenauthentication,Paymenttoken,Authenticationtoken,Mobile,Other,Addressdigits,Alienregistrationnumber,Arqcverification,Birthdate,Cardholdername,Cityofbirth,Customeridentification,Driveridentification,Driverlicensenumber,Email,Employeeidentificationnumber,Employeridentificationnumber,Identitycardnumber,Onetimepassword,Othercardholderidentification,Othercryptogram,Passportnumber,Postalcode,Shippingaddressfrom,Shippingaddressto,Cardholderaddress,Nonvisiblecsc,Othernational,Otherprivate,Placeofbirth,Socialsecuritynumber,Taxidentificationnumber,Accountdigitalsignature,Arpcverification,ATC,Offlinebiographics,Offlinebiometrics,Offlinedataauthentication,Offlinedigitisedsignatureanalysis,Offlinepinencrypted,Offlinepininclear,Onlinebiographics,Phonehome,Phonework,Pkisignature,Qualifiedcertificate,Threeds,Cardholdercertificateserialnumber,Acceptorcertificateserialnumber,Nationalidentifier
+}
+Enum rulesettypevalues{
+    Policy,Regulation,Law,Guideline,Criterion,Standard
+}
+Enum actiontypevalues{
+    Initiate,Execute,Create,Transfer,Pay,Deliver,Apply,Calculate
+}
+Enum partytypevalues{
+    Person,Organisation
+}
+Enum entrydatetypevalues{
+    EntryDate,ValueDate
+}
+Enum feecalculationmethodtypevalues{
+    Flat,Perunit,Percentage,Rateperbrackets,Ratewithminimumamount,Ratewithmaximumamount,Other,Grossamount,Netamount,Netassetvalueprice
+}
+Enum arrangementlifecyclestatustypevalues{
+    Requested,Proposed,Offered,Accepted,Cancelled,Fulfilled,Terminated
+}
+Enum paymenttypevalues{
+    Cashtransaction,Domesticpayment,Domestichighvaluepayment,Domesticprioritypayment,Crossborderpayment,Crossborderprioritypayment,Crossborderhighvaluepayment,Thirdcurrencypayment,Thirdcurrencyhighvaluepayment,Thirdcurrencyprioritypayment,Tradesettlementpayment,Foreignexchange,Equivalentamount,Loan,Loanrepayment,Securities,Lockbox,Dividend,Crossedcheque,Opencheque,Ordercheque,Circularcheque,Travellerscheques,Bankdraft,Cashletter,Documentarycredit,Billofexchange,Collection,Cashmanagementtransfer,Sweepaccount,Topaccount,Zerobalanceaccount,Standingfacilities,Swiftpayservicelevelcredit,Priorityservicelevelcredit,Standardservicelevelcredit,Liquiditytransfer,Advancepayment,Valuedateadjustment,Dvpgross,Dvpnet,Netting,Limitpayment,Backup,Expresspayment,Centralbankoperation,Clspayment,Eurodomesticpayment,Agriculturaltransfer,Alimonypayment,Balanceretail,Bonuspayment_("Bonuspayment."),Brokeragefee,Capitalbuilding,Charitypayment,Childbenefit,Commercialcredit,Commission,Commoditytransfer,Costs,Copyright,Governmentpayment,Instalmenthirepurchaseagreement,Insurancepremium,Intracompanypayment,Interest,Licensefee,Metals,Pensionpayment,Purchasesaleofgoods,Refund,Rent,Royalties,Purchasesaleofservices,Salarypayment,Socialsecuritybenefit,Standingorder,Subscription,Treasurystatepayment,Unemploymentdisabilitybenefit,Valueaddedtaxpayment,Withholdingtax,Taxpayment,Miscellaneous,Overnightdeposit,Marginallending,Other,Upfront,Unwind,Principalexchange
+}
+Enum financialstatementtypevalues{
+    IncomeStatement,BalanceSheet,CashFlowsStatement,DebtStatement,AssetStatement,AssetAndLiabilityStatement
+}
+Enum amounttypevalues{
+    Principal,Actual,Estimated,Maximum,Default,Replacement,Incremental,Decremental,Reserved,Available,Used
+}
+Enum partylegalstructuretypevalues{
+    Individual,CommunityInterestCompany,CharitableIncorporatedOrganisation,Co_Operative("Co-Operative"),Charity,GeneralPartnership,LimitedLiabilityPartnership,ScottishLimitedPartnership,LimitedPartnership,PrivateLimitedCompany,PublicLimitedCompany,Sole_SoleTrader_("Sole(SoleTrader)")
+}
+Enum producttypevalues{
+    BankingProduct,InsuranceProduct
+}
+Enum partyinvolvementtypevalues{
+    Agreementinvolvement,Partyinvolvement,Arrangementinvolvement,Designspecificationinvolvement,Relationshipinvolvement,Locationinvolvement,Bankguaranteeinvolvement
+}
+Enum pointofaccesstypevalues{
+    ChannelAccess,ProductAndServiceAccess,DeviceAccess,APIAccess
+}
+Enum paymentdatetimetypevalues{
+    Requestedexecutiondate,Acceptancedatetime,Creationdate,Valuedate,Duedate,Expirydate
+}
+Enum partyidentificationtypevalues{
+    Taxidentificationnumber,Nationalregistrationnumber,Registrationauthorityidentification,LEI_LegalEntityIdentifier_("LEI(LegalEntityIdentifier)"),Alienregistrationnumber,Passportnumber,Taxexemptidentificationnumber,Corporateidentification,Driverlicensenumber,Foreigninvestmentidentitynumber,Socialsecuritynumber,Identitycardnumber,Concat,Nationalregistrationidentificationnumber
+}
+Enum accountrestrictionstatustypevalues{
+    Active,Inactive
+}
+Enum interesttypevalues{
+    Fixed,Floatingratenote,Dualbasis,Index,Discounted,Zerocoupon,Exinterest,Cuminterest
+}
+Enum feeapplicationfrequencyvalues{
+    Onclosing,Onopening,Chargingperiod,Daily,Peritem,Monthly,Onanniversary,Other,Perhundredpounds,Perhour,Peroccurrence,Persheet,Pertransaction,Pertransactionamount,Pertransactionpercentage,Quarterly,Sixmonthly,Statementmonthly,Weekly,Yearly
+}
+Enum addresstypevalues{
+    PostalAddress,GeolocationAddress,LatitudeAddress,LongitudeAddress,ElectronicAddress
+}
+Enum accountdatetypevalues{
+    OpeningDate,ClosingDate,BlockingDate,MaturityDate,LiveDate
+}
+Enum ratetypevalues{
+    Fixed,Forfeit,Variable,Open,Unknown,Nilpayment,Additionaltax,Charges,Cashinlieuofsecurities,Gross,Cashincentive,Net,Sollication,Stampduty,Stockexchangetax,Withholdingtax,Transfertax,Transactiontax,Taxdeferred,Taxfeeamount,Withholdingofforeigntax,Withholdingoflocaltax,Imputed,Precompte,Onetiertax,Localtax,Scheduled,Unscheduled,Anyandall
+}
+Enum accountidentificationtypevalues{
+    BBAN,IBAN,UPIC,AccountNumber,PAN,Paym,Wallet
+}
+Enum deviceoperatingsystemtypevalues{
+    Android,Ios,Windows,Blackberry,Tizen,Othernational,Otherprivate
+}
+Enum correspondencemediumtypevalues{
+    Paper,Electronic,Paperelectronic,Biometric
+}
+Enum allocationstatusvalues{
+    Fullyallocated,Partiallyallocated,Earmarked
+}
+Enum feeplantypevalues{
+    StandardFeePlan,FinalFeePlan
+}
+Enum balancetypevalues{
+    Openingbalance,Closingbalance,Currentbalance,Availablebalance,Ledgerbalance,Reservebalance,Freebalance,Principalbalance
+}
+Enum frequencytypevalues{
+    Annual,Monthly,Quarterly,Semiannual,Weekly,Daily,Adhoc,Intraday,Overnight,Tendays,Fortnightly,Triggeredbymovement,Never,Rate,Oncreditevent,Upfront,Onexpiry,Hourly
+}
+Enum accounttypevalues{
+    DebitAccount,CreditAccount,VostroAcount,NostroAccount,PaymentAccount,SettlementAccount,SavingAccount,CurrentAccount,CashAccount,LoanAccount
+}
+Enum productidentificationtypevalues{
+    ISINCode,PackageCode,Buyersitemnumber,Commercialdescriptioncodename,EAN,Harmonizedtariffcodename,Manufacturersitemnumber,Modelnumber,Partnumber,Quotacategory,Stylenumber,Suppliersitemnumber,Universalproductcode
+}
+Enum devicecustomizationtypevalues{
+    CardDesign
+}
+Enum interesttransactiontypevalues{
+    InterestAllocationTransaction,InterestPaymentTransaction,InterestAdjustmentTransaction
+}
+Enum interestcalculationmethodtypevalues{
+    Simple,Compounding
+}
+Enum withdrawaltypevalues{
+    CashWithdrawal,SecurityWithdrawal
+}
+Enum feecalculationfrequencyvalues{
+    Onclosing,Onopening,Chargingperiod,Daily,Peritem,Monthly,Onanniversary,Other,Perhundredpounds,Perhour,Peroccurrence,Persheet,Pertransaction,Pertransactionamount,Pertransactionpercentage,Quarterly,Sixmonthly,Statementmonthly,Weekly,Yearly
+}
+Enum debitcreditindicatortvalues{
+    Debit,Credit
+}
+Enum modalitytypevalues{
+    AllocationModality,CalculationModality,DerivationModality,PaymentModality,ProcessingModality,ApplicationModality,DeliveryModality
+}
+Enum correspondencecommunicationmethodtypevalues{
+    Fax,Email,Proprietary,Online,Phone,Postalservice,File
+}
+Enum devicetypevalues{
+    Securecardreader,Nonsecurecardreader,Mobile,Tablet,Personalcomputer,Othernational,Otherprivate,Wearable,Vehicle,Embedded,Keyfob,Jewellery,Sticker,Gamingdevice,Watch,Unknown,BiometricDevice
+}
+Enum chargebearertypevalues{
+    Bornebydebtor,Bornebycreditor,Shared,Followingservicelevel
+}
+Enum reporttypevalues{
+    FinancialReport,BusinessReport,ManagementReport,Statement,MaintenanceReport,RegulatoryReport,TaxReport
+}
+Enum interestratetypevalues{
+    Fixed,Forfeit,Variable,Scheduled,Unscheduled,Discount,Fixedrateunderlyingexposureforlife,Fixedrateunderlyingexposurewithcompulsoryfutureswitchtofloating,Fixedwithfutureperiodicresets,Floatinglinkedtoindex,Floatingrateunderlyingexposureforlife,Floatingrateunderlyingexposurewithcap,Floatingrateunderlyingexposurewithfloor,Floatingrateunderlyingexposurewithfloorandcap,Modular,Obligorswapped,Other,Swicthoptionality
+}
+Enum feepaymentmethodtypevalues{
+    Cash,Unit
+}
+Enum assessmenttypevalues{
+    AssetValuation,ProductMatching,Authorization,Authentication,QualityAssurance,Audit,ComplianceCheck,FundingCheck,SuitabilityCheck,PerformanceCheck,ImpactAssessment,RiskAssessment,Rating,UnderwritingAssessment,Qualification,Verification,KYCAssessment,PEPAssessment,AMLAssessment
+}
+Enum documentdatetimetypevalues{
+    CreationDate,CapturingDate,VersionDate,ValueDate,IssueDate
+}
+Enum budgettypevalues{
+    OperatingBudget,FinancialBudget,ResourceBudget
+}
+Enum issueddevicestatustypevalues{
+    Issued,IssuedButNotActivated,Activated,Suspended,Retrieved
+}
+Enum adjustmentdirectiontypevalues{
+    Added,Substracted
+}
+Enum collateralassetstatusvalues{
+    Offered,UnderAssessment,Transferred,Allocated,FreeForAllocation,AllocatedToAnotherLoan,IssuedForExecution
+}
+Enum paymentpurposevalues{
+    Salarypayment,Treasurypayment,Advancepayment,Agriculturaltransfer,Alimonypayment,Childbenefit,Unemploymentdisabilitybenefit,Bonuspayment_("Bonuspayment."),Cashmanagementtransfer,Capitalbuilding,Charitypayment,Collectionpayment,Commoditytransfer,Commercialpayment,Commission,Costs,Copyright,Dividend,Foreignexchange,Purchasesaleofgoods,Governmentpayment,Instalmenthirepurchaseagreement,Intracompanypayment,Insurancepremium,Interest,Licensefee,Loan,Loanrepayment,Netting,Payroll,Pensionpayment,Refund,Rent,Royalties,Purchasesaleofservices,Securities,Socialsecuritybenefit,Subscription,Taxpayment,Valueaddedtaxpayment,Consumerthirdpartyconsolidatedpayment,Debitcollectionpayment,Supplierpayment,Hedging,Multipleservicetypes,Nototherwisespecified,Cardpayment,Creditcardbill,Ferry,Air,Bus,Railway,Convalescentcarefacility,Dentalservices,Anesthesiaservices,Homehealthcare,Hospitalcare,Intermediatecarefacility,Longtermcarefacility,Medicalservices,Visioncare,Durablemedicaleequipment,Cabletvbill,Electricitybill,Gasbill,Telephonebill,Othertelecomrelatedbill,Waterbill,Study,Pricepayment,Installment,Recurringinstallmentpayment,Openingfee,Cancellationfee,Governmentinsurance,Insurancepremiumcar,Laborinsurance,Lifeinsurance,Propertyinsurance,Healthinsurance,Carloanprincipalrepayment,Housingloanrepayment,Companysocialloanpaymenttobank,Estatetax,Housingtax,Incometax,Netincometax,Businessexpenses,Trustfund,Networkcharge,Networkcommunication,Receiptpayment,Paymentterms,Other,Withholding
+}
+Enum accountstatustypevalues{
+    Enabled,Disabled,Deleted,Proforma,Pending
+}
+

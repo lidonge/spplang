@@ -1,0 +1,1395 @@
+MarketTradeFundsandSecurityAvailabilityAssuranceWorkstepReference, [Reference], [TradeClearing], 1, 1
+Biometric, [BQ], [PartyAuthentication], 1, 1
+BranchLocationOperationsOutcome, [entity], [BranchLocationOperations], 1, 1
+ServicingIssueOutcome, [entity], [ServicingIssue], 1, 1
+EmployeePayrollDetailsMaintenanceFulfillment, [BQ], [CorporatePayrollServices], 1, 1
+BusinessUnitManagementPlan, [CR], [BusinessUnitManagement], 1, 1
+RelationshipReciprocityAssessmentDuty, [BQ], [CorrespondentBankRelationshipManagement], 1, 1
+CounterpartyDirectoryEntry, [CR], [CounterpartyAdministration], 1, 1
+ProductandServiceAgreement, [CR], [SalesProduct], 1, 1
+SpecialPricingConditionsDirectoryEntry, [CR], [SpecialPricingConditions], 1, 1
+PublicPlacementInstrumentRegistrationFulfillment, [BQ], [PublicOffering], 1, 1
+CreditCardAuthorizationAssessment, [CR], [CardAuthorization], 1, 1
+Precedents, [BQ], [PartyLifecycleManagement], 1, 1
+PaymentRailOperatingSessionReference, [Reference], [PaymentRailOperations], 1, 1
+CounterpartyPermittedTransactionproperty, [BQ], [CounterpartyAdministration], 1, 1
+AccountReconciliationProcedure, [CR], [AccountReconciliation], 1, 1
+CustomerPropositionAgreementCustomerReference, [Reference], [CustomerProposition], 1, 1
+DocumentServiceProcedureEmployeeReference, [Reference], [DocumentServices], 1, 1
+Occupancy, [BQ], [LocationDataManagement], 1, 1
+QuotationProcedureBusinessUnitReference, [Reference], [QuoteManagement], 1, 1
+PaymentInstructionOutcome, [entity], [PaymentInstruction], 1, 1
+CommissionsOutcome, [entity], [Commissions], 1, 1
+ServiceProviderAgreementAssociatedAgreementReference, [Reference], [ProductServiceAgency], 1, 1
+Status, [BQ], [PartyRoutingProfile], 1, 1
+ProductionIssueResolutionWorkstepReference, [Reference], [ServicingIssue], 1, 1
+Structuring, [BQ], [SyndicatedLoan], 1, 1
+GeneralMarketResearchAnalysis, [CR], [MarketAnalysis], 1, 1
+agreement, [entity], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; MerchantRelations; DocumentServices; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; TradeClearing; SubCustodianAgreement; CounterpartyAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 17
+PaymentInitiation, [BQ], [DirectDebit], 1, 1
+Restructuring, [BQ], [CreditFacility; ConsumerLoan; AccountRecovery; Loan; CorporateLoan], 1, 5
+Associations, [BQ], [LegalEntityDirectory; PartyReferenceDataDirectory], 1, 2
+analysis, [entity], [TradingBookOversight; CorporateFinance; ProductSalesSupport; HedgeFundAdministration; MergersandAcquisitionsAdvisory; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; MutualFundAdministration; UnitTrustAdministration], 1, 10
+MarketTradeReportingOperatingSessionServiceProviderReference, [Reference], [TradeandPriceReporting], 1, 1
+TransactionRouting, [BQ], [CardTransactionSwitch], 1, 1
+MarketAssetValuationProcedureFinancialFacilityReference, [Reference], [FinancialInstrumentValuation], 1, 1
+CreditRiskModelSpecification, [CR], [CreditRiskModels], 1, 1
+BusinessArchitecture, [BQ], [EnterpriseArchitecture], 1, 1
+CapacityPlanning, [BQ], [AdvancedVoiceServicesManagement; eBranchManagement], 1, 2
+Analysis, [BQ], [CustomerCase; CustomerTaxHandling], 1, 2
+AssetandLiabilityValuationTestReference, [Reference], [FinancialStatementAssessment], 1, 1
+SalesProductAgreement, [CR], [SalesProductAgreement], 1, 1
+SuitabilityAssessment, [CR], [SuitabilityChecking], 1, 1
+QuotationProcedureCustomerReference, [Reference], [QuoteManagement], 1, 1
+InformationFeedOperatingSessionAssociatedPartyReference, [Reference], [InformationProviderOperation], 1, 1
+Planning, [BQ], [AccountRecovery], 1, 1
+CorporateAction, [BQ], [Leasing; InvestmentAccount], 1, 2
+ProductInitialization, [BQ], [CustomerOffer], 1, 1
+AccountsReceivablePurchaseFulfillment, [BQ], [Factoring], 1, 1
+ServicingIssueProcedureBusinessUnitReference, [Reference], [ServicingIssue], 1, 1
+Selection, [BQ], [AssetSecuritization], 1, 1
+NotionalPoolingFacilityCustomerReference, [Reference], [NotionalPooling], 1, 1
+FundManagementRoutineReference, [Reference], [HedgeFundAdministration], 1, 1
+transactiontypevalues, [Enum], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; BankGuarantee; DocumentServices; LetterofCredit; PaymentInstruction; StockLendingandRepos; BankDrafts; ServicingIssue; TradeClearing; CorporateAction; SecuritiesFailsProcessing], 1, 15
+ProjectFinanceFacilityRegulationReference, [Reference], [ProjectFinance], 1, 1
+NotionalPoolingFacilityAccountReference, [Reference], [NotionalPooling], 1, 1
+ExternalReporting, [BQ], [CustomerCreditRating], 1, 1
+MarketOrderInitiationFunction, [BQ], [eTradingWorkbench], 1, 1
+MarketMakingOutcome, [entity], [MarketMaking], 1, 1
+FinancialDocumentHandling, [BQ], [ATMNetworkOperations], 1, 1
+Outbound, [BQ], [Correspondence; AdvancedVoiceServicesOperations; FinancialGateway; eBranchOperations], 1, 4
+TradeMatchingOperatingSessionReference, [Reference], [TradeConfirmationMatching], 1, 1
+ServiceLevelAgreementOversightDuty, [BQ], [BrokeredProduct], 1, 1
+OrderConfirmation, [BQ], [PaymentOrder], 1, 1
+PaperCheckProcessingFulfillment, [BQ], [ChequeLockBox], 1, 1
+ServicingIssueProcedureCustomerAgreementReference, [Reference], [ServicingIssue], 1, 1
+eBranchChannelManagementPlan, [CR], [eBranchManagement], 1, 1
+CustomerEligibilityAssessment, [CR], [CustomerProductAndServiceEligibility], 1, 1
+instructionidentification, [entity], [AccountReconciliation; IssuedDeviceAdministration; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; CorporateFinance; MerchantRelations; MergersandAcquisitionsAdvisory; DocumentServices; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; SyndicateManagement; TradeClearing; SubCustodianAgreement; FinancialStatementAssessment; CorporateAction; SecuritiesFailsProcessing], 1, 21
+ProductorServiceSpecification, [CR], [ProductDesign], 1, 1
+address, [entity], [LocationDataManagement], 1, 1
+TradeSettlementOutcome, [entity], [TradeSettlement], 1, 1
+sessiontype, [entity], [InformationProviderOperation; TraderPositionOperations; ProgramTrading; PaymentRailOperations; OperationalGateway; TradeConfirmationMatching; TradeandPriceReporting; ArchiveServices; DealerDesk; eTradingWorkbench], 1, 10
+TradeCaptureandReportingFunction, [BQ], [TraderPositionOperations], 1, 1
+InternalBankAccountLogReference, [Reference], [InternalBankAccount], 1, 1
+SecurityTradingFailsProcedureFinancialFacilityReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+ProductionRisk, [BQ], [ProductionRelease], 1, 1
+ProductServiceAgencyOutcome, [entity], [ProductServiceAgency], 1, 1
+QuotationProcedureAssociatedPartyReference, [Reference], [QuoteManagement], 1, 1
+SubCustodianAgreementOutcome, [entity], [SubCustodianAgreement], 1, 1
+AssetandLiabilityValuationTest, [BQ], [FinancialStatementAssessment], 1, 1
+Agreement, [BQ], [FiduciaryAgreement; CustomerOffer], 1, 2
+Audit, [BQ], [CustomerOffer; InternalAudit], 1, 2
+MarketAssetValuationProcedureEmployeeReference, [Reference], [FinancialInstrumentValuation], 1, 1
+CorrespondentBankDirectoryEntry, [CR], [CorrespondentBankDirectory], 1, 1
+Relationship, [BQ], [CustomerEventHistory], 1, 1
+Participation, [BQ], [PromotionalEvents], 1, 1
+CorporateTrustServicesFacilityCustomerReference, [Reference], [TrustServices; CorporateTrustServices], 1, 2
+SpecialPricingConditionsOutcome, [entity], [SpecialPricingConditions], 1, 1
+OperationalandProductionProceduresandGuidelines, [BQ], [ManagementManual], 1, 1
+CorporateActionOutcome, [entity], [CorporateAction], 1, 1
+BranchCurrencyDistributionOutcome, [entity], [BranchCurrencyDistribution], 1, 1
+PolicyTerms, [BQ], [SalesProductAgreement; ProductBrokerAgreement; CustomerAgreement], 1, 3
+ServiceEvaluation, [BQ], [ProductTraining], 1, 1
+PasswordAssignment, [BQ], [IssuedDeviceAdministration], 1, 1
+financialinstrument, [entity], [FinancialInstrumentReferenceDataManagement], 1, 1
+LeasingFacility, [CR], [Leasing], 1, 1
+FundEnrolmentCertificationRoutine, [BQ], [HedgeFundAdministration], 1, 1
+SecurityTradingFailsProcedureAssociatedPartyReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+assessment, [entity], [CardAuthorization; FinancialStatementAssessment], 1, 2
+FunctionalRequirements, [BQ], [ProductDesign; FraudModel; CustomerBehaviorModels; CreditRiskModels], 1, 4
+InternalBankAccountLog, [CR], [InternalBankAccount], 1, 1
+DirectDebitOutcome, [entity], [DirectDebit], 1, 1
+Placement, [BQ], [AssetSecuritization; ECMAndDCM], 1, 2
+CustomerServicingResourceAllocation, [CR], [ContactRouting], 1, 1
+DocumentUpdateHistoryProperties, [BQ], [DocumentDirectory], 1, 1
+DevelopmentToolingandEnvironment, [BQ], [ITStandardsAndGuidelines], 1, 1
+BankGuaranteeCollectionsTask, [BQ], [BankGuarantee], 1, 1
+IssuedDeviceAllocation, [CR], [IssuedDeviceAdministration], 1, 1
+directoryentry, [entity], [DocumentDirectory; ServiceDirectory; CustomerProductsandServices; SyndicateManagement; CounterpartyAdministration; FinancialInstrumentReferenceDataManagement], 1, 6
+FinancialStatementAssessmentRequesterReference, [Reference], [FinancialStatementAssessment], 1, 1
+DirectDebitMandateDirectoryEntry, [CR], [DirectDebitMandate], 1, 1
+BatchDebit, [entity], [DirectDebit], 1, 1
+guaranteetype, [entity], [BankGuarantee], 1, 1
+RequestorReference, [Reference], [IssuedDeviceAdministration], 1, 1
+TaxOptimizationTopic, [BQ], [CorporateFinance], 1, 1
+MarketTracking, [BQ], [Advertising; PromotionalEvents; ProspectCampaignManagement; CustomerCampaignManagement], 1, 4
+MaintenanceandAccessAdministration, [BQ], [KnowledgeExchange], 1, 1
+ProductTestingandDeploymentMechanisms, [BQ], [ITStandardsAndGuidelines], 1, 1
+ITOperations, [BQ], [ProductDeployment], 1, 1
+MerchantRelationshipAgreementAssociatedAgreementReference, [Reference], [MerchantRelations], 1, 1
+letterofcreditarrangement, [entity], [LetterofCredit], 1, 1
+ProspectCampaignPortfolioManagementPlan, [CR], [ProspectCampaignManagement], 1, 1
+ServiceProviderAgreementCustomerReference, [Reference], [ProductServiceAgency], 1, 1
+transactiondate, [entity], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; BankGuarantee; DocumentServices; LetterofCredit; PaymentInstruction; StockLendingandRepos; BankDrafts; ServicingIssue; TradeClearing; CorporateAction; SecuritiesFailsProcessing], 1, 15
+ServiceDirectoryEntry, [CR], [ServiceDirectory], 1, 1
+SecurityDividendPaymentWorkstep, [BQ], [CorporateAction], 1, 1
+ProductionIssueAnalysisWorkstep, [BQ], [ServicingIssue], 1, 1
+TradeCaptureandReportingFunctionReference, [Reference], [TraderPositionOperations], 1, 1
+HelpServiceSelection, [BQ], [InteractiveHelp], 1, 1
+MarketTradeCashSettlementWorkstepReference, [Reference], [TradeSettlement], 1, 1
+CardFinancialSettlementProcedure, [CR], [CardFinancialSettlement], 1, 1
+TradingBookOversightOutcome, [entity], [TradingBookOversight], 1, 1
+DocumentServiceProcedureServiceProviderReference, [Reference], [DocumentServices], 1, 1
+NotionalPoolingFacility, [CR], [NotionalPooling], 1, 1
+SecuritiesFailDeterminationWorkstep, [BQ], [SecuritiesFailsProcessing], 1, 1
+AccountBalanceSweepingFacilityRegulationReference, [Reference], [CashConcentration], 1, 1
+ContactCenterAdministrativePlan, [CR], [ContactCenterOperations], 1, 1
+BrokeredProductManagementPlanReference, [Reference], [BrokeredProduct], 1, 1
+Fulfill, [BQ], [CorporateLease], 1, 1
+CustomerWorkbenchOperatingSession, [CR], [CustomerWorkbench], 1, 1
+MarketTradeOutTradeResolutionWorkstep, [BQ], [TradeClearing], 1, 1
+CorporatePayrollPaymentsFulfillment, [BQ], [CorporatePayrollServices], 1, 1
+ImpactAssessment, [BQ], [PromotionalEvents], 1, 1
+CorporateActionProcedureCustomerAgreementReference, [Reference], [CorporateAction], 1, 1
+IndexingandPublication, [BQ], [KnowledgeExchange], 1, 1
+FraudDiagnosisAnalysis, [CR], [FraudDiagnosis], 1, 1
+Initiative, [BQ], [SegmentDirection; BusinessDevelopment], 1, 2
+service, [entity], [BankGuarantee; InternalBankAccount; CreditCardPositionKeeping; LetterofCredit; StockLendingandRepos; BankDrafts; SyndicateManagement; FinancialStatementAssessment], 1, 8
+BranchLocationAdministrativePlanReference, [Reference], [BranchLocationOperations], 1, 1
+Enquiries, [BQ], [RegulatoryReporting], 1, 1
+TradeSettlementProcedureCustomerAgreementReference, [Reference], [TradeSettlement], 1, 1
+TransactionCapture, [BQ], [CardTransactionSwitch; CardCapture], 1, 2
+EnterpriseArchitectureSpecification, [CR], [EnterpriseArchitecture], 1, 1
+DealerDeskOperatingSession, [CR], [DealerDesk], 1, 1
+CentralCashHandlingOutcome, [entity], [CentralCashHandling], 1, 1
+Archiving, [BQ], [KnowledgeExchange], 1, 1
+SupplierAgreementCustomerReference, [Reference], [ContractorandSupplierAgreement], 1, 1
+SecurityTradingFailsProcedureEmployeeReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+accountdate, [entity], [NotionalPooling; IssuedDeviceAdministration; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; CurrentAccount; MerchantRelations; ChequeLockBox; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CounterpartyAdministration; PrivatePlacement; CorporateTrustServices], 1, 20
+AssetSecuritizationTransaction, [CR], [AssetSecuritization], 1, 1
+repurchaseagreementtypevalues, [Enum], [StockLendingandRepos], 1, 1
+Review_RefinementandEditing, [BQ], [KnowledgeExchange], 1, 1
+AccountResolutionWorkstep, [BQ], [AccountReconciliation], 1, 1
+SecuritiesAllocationProcedureAssociatedPartyReference, [Reference], [OrderAllocation], 1, 1
+ArrangementServicingProperties, [BQ], [ServiceDirectory], 1, 1
+MaintenanceAndUpgrades, [BQ], [AdvancedVoiceServicesManagement; eBranchManagement], 1, 2
+ServiceProviderAgreement, [CR], [ProductServiceAgency], 1, 1
+Instruction, [BQ], [CardFinancialSettlement], 1, 1
+BankDefinedProductandServiceTerm, [BQ], [CustomerProposition], 1, 1
+MarketMakingFacilityReference, [Reference], [MarketMaking], 1, 1
+Assignment, [BQ], [IntellectualPropertyPortfolio; ProductExpertSalesSupport; ProductInventoryItemManagement; ServicingEventHistory; ContactCenterOperations; CardCollections], 1, 6
+LegalTermReference, [Reference], [MerchantRelations; ContractorandSupplierAgreement; ProductServiceAgency; SubCustodianAgreement], 1, 4
+Prospectus, [BQ], [ECMAndDCM], 1, 1
+actiontypevalues, [Enum], [AccountReconciliation; TradingBookOversight; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; ProductSalesSupport; MerchantRelations; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; DocumentServices; CorrespondentBankRelationshipManagement; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; MutualFundAdministration; SyndicateManagement; TradeClearing; SubCustodianAgreement; CreditRiskOperations; UnitTrustAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 26
+TradeClearingProcedureEmployeeReference, [Reference], [TradeClearing], 1, 1
+CustomerBillingProcedure, [CR], [CustomerBilling], 1, 1
+ContractorandSupplierAgreementOutcome, [entity], [ContractorandSupplierAgreement], 1, 1
+LetterofCreditPayoutTask, [BQ], [LetterofCredit], 1, 1
+ITStandardsAndGuidelinesOutcome, [entity], [ITStandardsAndGuidelines], 1, 1
+QuoteManagementOutcome, [entity], [QuoteManagement], 1, 1
+AccountBalanceSweepingFacilityReference, [Reference], [CashConcentration], 1, 1
+TradingCreditPositionMeasurementProductReference, [Reference], [CreditRiskOperations], 1, 1
+ProgramTradedPortfolioMaintenanceFunction, [BQ], [ProgramTrading], 1, 1
+letterofcreditarrangementtypevalues, [Enum], [LetterofCredit], 1, 1
+AccountBalanceSweepingFacility, [CR], [CashConcentration], 1, 1
+QuotationProcedureReference, [Reference], [QuoteManagement], 1, 1
+Authoring, [BQ], [RegulatoryReporting], 1, 1
+StaffandLocationPlanning, [BQ], [BranchLocationManagement], 1, 1
+TradeConfirmationMatchingOutcome, [entity], [TradeConfirmationMatching], 1, 1
+SubCustodianAgreementReference, [Reference], [SubCustodianAgreement], 1, 1
+InvestmentAccountFacility, [CR], [InvestmentAccount], 1, 1
+Distribution, [BQ], [MarketDataSwitchOperation; ProductInventoryDistribution], 1, 2
+SupplierAgreementAssociatedAgreementReference, [Reference], [ContractorandSupplierAgreement], 1, 1
+TradeQuoteandPricingFunction, [BQ], [TraderPositionOperations], 1, 1
+addresstypevalues, [Enum], [LocationDataManagement], 1, 1
+Assisted, [BQ], [PointofService], 1, 1
+DealerDeskTradingAssignmentandLimitsFunctionReference, [Reference], [DealerDesk], 1, 1
+ProductTrainingProcedure, [CR], [ProductTraining], 1, 1
+IssuedDevice, [BQ], [Leasing; SavingsAccount; CurrentAccount; CashManagementAndAccountServices; MerchandisingLoan; CorporateCurrentAccount; CreditCard; MortgageLoan; TermDeposit], 1, 9
+AnalysisAlgorithm, [entity], [MarketAnalysis; CompetitorAnalysis], 1, 2
+AccountReceivableProcessingFulfillment, [BQ], [Factoring], 1, 1
+Organization, [BQ], [EnterpriseArchitecture], 1, 1
+In, [BQ], [CustomerProductsandServices], 1, 1
+TradingBookRiskMitigationDutyReference, [Reference], [TradingBookOversight], 1, 1
+accounttype, [entity], [NotionalPooling; IssuedDeviceAdministration; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; CurrentAccount; MerchantRelations; ChequeLockBox; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CounterpartyAdministration; PrivatePlacement; CorporateTrustServices], 1, 20
+CustomerBehavior, [BQ], [FraudDiagnosis; ChannelActivityAnalysis], 1, 2
+TransferPricing, [BQ], [ProductCombination], 1, 1
+CustomerBehaviorModelSpecification, [CR], [CustomerBehaviorModels], 1, 1
+BankDraftsOutcome, [entity], [BankDrafts], 1, 1
+PricingTerms, [BQ], [SpecialPricingConditions], 1, 1
+EmbeddedProductControl, [BQ], [ProductCombination], 1, 1
+Profile, [BQ], [LegalEntityDirectory], 1, 1
+ProductTrainingOutcome, [entity], [ProductTraining], 1, 1
+CorrespondenceandDocuments, [BQ], [CustomerOffer], 1, 1
+limitstatus, [entity], [NotionalPooling; CorporatePayrollServices; PublicOffering; ChequeLockBox; InternalBankAccount; CreditCardPositionKeeping; Factoring; MarketMaking; CashConcentration; TrustServices; ProjectFinance; CreditRiskOperations; PrivatePlacement; CorporateTrustServices], 1, 14
+FundAccountingRoutine, [BQ], [HedgeFundAdministration; MutualFundAdministration; UnitTrustAdministration], 1, 3
+AssetAndLiabilityPortfolioStrategy, [CR], [AssetAndLiabilityManagement], 1, 1
+TradeDealBlotterFunction, [BQ], [TraderPositionOperations], 1, 1
+ChequesAssignment, [BQ], [IssuedDeviceAdministration], 1, 1
+GuidelineComplianceAssessment, [CR], [GuidelineCompliance], 1, 1
+OptionInstrumentproperty, [BQ], [FinancialInstrumentReferenceDataManagement], 1, 1
+CustomerCampaignSpecification, [CR], [CustomerCampaignDesign], 1, 1
+StandingOrderOutcome, [entity], [StandingOrder], 1, 1
+ProductionIssueDeterminationWorkstepReference, [Reference], [ServicingIssue], 1, 1
+PublicOfferingFacilityProductReference, [Reference], [PublicOffering], 1, 1
+TransactionBatch, [BQ], [CardeCommerceGateway], 1, 1
+BankRelationshipManagementPlan, [CR], [InterbankRelationshipManagement], 1, 1
+ChequeProcessingOutcome, [entity], [ChequeProcessing], 1, 1
+EmployeePaymentServicesFacility, [CR], [CorporatePayrollServices], 1, 1
+LockBoxFacilityProductReference, [Reference], [ChequeLockBox], 1, 1
+FinancialMarketAnalysis, [CR], [FinancialMarketAnalysis], 1, 1
+MerchandisingLoanOutcome, [entity], [MerchandisingLoan], 1, 1
+TradedPositionOperatingSessionAssociatedPartyReference, [Reference], [TraderPositionOperations], 1, 1
+ProductionServiceReportingFulfillment, [BQ], [CorporatePayrollServices], 1, 1
+RepoTransactionReference, [Reference], [StockLendingandRepos], 1, 1
+InformationFeedOperatingSession, [CR], [InformationProviderOperation], 1, 1
+DealerDeskConsolidatedPositionTrackingFunction, [BQ], [DealerDesk], 1, 1
+StaffAvailabilityTrackingRoutine, [BQ], [ProductSalesSupport], 1, 1
+MerchantBehavior, [BQ], [ChannelActivityAnalysis], 1, 1
+FundManagementFeeRoutineReference, [Reference], [MutualFundAdministration; UnitTrustAdministration], 1, 2
+ChannelActivityAnalysis, [CR], [ChannelActivityAnalysis], 1, 1
+SecurityRightsIssueActionWorkstepReference, [Reference], [CorporateAction], 1, 1
+BankGuaranteeTransactionReference, [Reference], [BankGuarantee], 1, 1
+DocumentRetrievalFunctionReference, [Reference], [ArchiveServices], 1, 1
+ParticipantService, [BQ], [CardNetworkParticipantFacility], 1, 1
+InventoryAllocation, [BQ], [BranchCurrencyManagement], 1, 1
+ProgramTradingOperatingSessionAssociatedPartyReference, [Reference], [ProgramTrading], 1, 1
+ChequeProcessingOperatingSession, [CR], [ChequeProcessing], 1, 1
+InternalPublication, [BQ], [MarketDataSwitchOperation], 1, 1
+ReviewerSelection, [BQ], [CustomerSurveys], 1, 1
+FundManagementRoutine, [BQ], [HedgeFundAdministration], 1, 1
+CreditCardPositionLogCustomerReference, [Reference], [CreditCardPositionKeeping], 1, 1
+FiduciaryAgreementOutcome, [entity], [FiduciaryAgreement], 1, 1
+TraderSecurityPositionManagementandAnalysisFunctionReference, [Reference], [TraderPositionOperations], 1, 1
+SalesServicingProperties, [BQ], [ServiceDirectory], 1, 1
+datetime, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+partytypevalues, [Enum], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+PaymentAccountReconciliationFunction, [BQ], [PaymentRailOperations], 1, 1
+AccountLien, [BQ], [SavingsAccount; CurrentAccount; CashManagementAndAccountServices; CorporateCurrentAccount; TermDeposit], 1, 5
+function, [entity], [TraderPositionOperations; ProgramTrading; PaymentRailOperations; OperationalGateway; TradeConfirmationMatching; TradeandPriceReporting; ArchiveServices; DealerDesk; eTradingWorkbench], 1, 9
+AnalystReview, [BQ], [FraudDiagnosis], 1, 1
+EligibilityCheck, [BQ], [CustomerProductAndServiceEligibility], 1, 1
+RewardPointsLog, [CR], [RewardPointsAccount], 1, 1
+PublicOfferingOutcome, [entity], [PublicOffering], 1, 1
+MarketAssetValuationProcedureReference, [Reference], [FinancialInstrumentValuation], 1, 1
+ComplianceCheckWorkstepReference, [Reference], [PaymentInstruction], 1, 1
+FundInvestor_MiddleandBackOfficeServiceRoutineReference, [Reference], [HedgeFundAdministration; MutualFundAdministration; UnitTrustAdministration], 1, 3
+CurrencyExchangeOutcome, [entity], [CurrencyExchange], 1, 1
+TradeSettlementProcedure, [CR], [TradeSettlement], 1, 1
+FundInflowsandOutflowRoutine, [BQ], [HedgeFundAdministration; MutualFundAdministration], 1, 2
+ChequeExtraction, [BQ], [ChequeProcessing], 1, 1
+TraderSecurityPositionManagementandAnalysisFunction, [BQ], [TraderPositionOperations], 1, 1
+TradeClearingProcedureCustomerReference, [Reference], [TradeClearing], 1, 1
+AccountBalanceSweepingFacilityAccountReference, [Reference], [CashConcentration], 1, 1
+CardTransaction, [BQ], [CreditCard; CardeCommerceGateway], 1, 2
+TradeSettlementProcedureBusinessUnitReference, [Reference], [TradeSettlement], 1, 1
+condition, [entity], [CardAuthorization; TraderPositionOperations; ProgramTrading; NotionalPooling; AccountReconciliation; DirectDebit; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; VirtualAccount; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 62
+MarketTradeReportingOperatingSession, [CR], [TradeandPriceReporting], 1, 1
+DealerDeskConsolidatedPositionTrackingFunctionReference, [Reference], [DealerDesk], 1, 1
+bankguaranteetransaction, [entity], [BankGuarantee], 1, 1
+CustomerCreditRatingState, [CR], [CustomerCreditRating], 1, 1
+CashDistribution, [BQ], [ATMNetworkOperations], 1, 1
+VoiceChannelOperatingSession, [CR], [AdvancedVoiceServicesOperations], 1, 1
+CorporateLeaseFacility, [CR], [CorporateLease], 1, 1
+financialmarket, [entity], [FinancialInstrumentReferenceDataManagement], 1, 1
+MarketTradeCashSettlementWorkstep, [BQ], [TradeSettlement], 1, 1
+ProductSalesSupportAdministrativePlan, [CR], [ProductSalesSupport], 1, 1
+CustodyFacility, [CR], [CustodyAdministration], 1, 1
+InboundMessageFunction, [BQ], [OperationalGateway], 1, 1
+MarketTradeTransaction, [CR], [MarketOrderExecution], 1, 1
+accountcurrency, [entity], [NotionalPooling; IssuedDeviceAdministration; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; CurrentAccount; MerchantRelations; ChequeLockBox; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CounterpartyAdministration; PrivatePlacement; CorporateTrustServices], 1, 20
+LetterofCreditOutcome, [entity], [LetterofCredit], 1, 1
+FXTransactionCapture, [BQ], [CurrencyExchange], 1, 1
+budgetarrangement, [entity], [TradingBookOversight; ProductSalesSupport; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; MutualFundAdministration; SyndicateManagement; UnitTrustAdministration], 1, 9
+AccountsReceivableProcedure, [CR], [AccountsReceivable], 1, 1
+transactionlifecyclestatus, [entity], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; BankGuarantee; DocumentServices; LetterofCredit; PaymentInstruction; StockLendingandRepos; BankDrafts; ServicingIssue; TradeClearing; CorporateAction; SecuritiesFailsProcessing], 1, 15
+Servicing, [BQ], [ProductDirectory; CustomerEventHistory; ProductDeployment], 1, 3
+Origination, [BQ], [SyndicatedLoan], 1, 1
+DeviceCheck, [BQ], [CardAuthorization], 1, 1
+BrandAdvice, [BQ], [BrandManagement], 1, 1
+DealerDeskTradingAssignmentandLimitsFunction, [BQ], [DealerDesk], 1, 1
+Allocation, [BQ], [ContactRouting; CollateralAllocationManagement; CardTerminalAdministration], 1, 3
+bankguaranteeagreement, [entity], [BankGuarantee], 1, 1
+AccountsReceivableOutcome, [entity], [AccountsReceivable], 1, 1
+ArchiveOperatingSessionServiceProviderReference, [Reference], [ArchiveServices], 1, 1
+Reconciliation, [BQ], [CorrespondentBankOperations; CardClearing; ACHOperations], 1, 3
+TradingBookAnalysisandReportingDuty, [BQ], [TradingBookOversight], 1, 1
+SecuritiesFailsProcessingOutcome, [entity], [SecuritiesFailsProcessing], 1, 1
+AssetValuationApproachSelectionWorkstep, [BQ], [FinancialInstrumentValuation], 1, 1
+FundFinancialReportingRoutineReference, [Reference], [HedgeFundAdministration; MutualFundAdministration; UnitTrustAdministration], 1, 3
+TradingPositionManagementPlanReference, [Reference], [TradingBookOversight], 1, 1
+SensitivityTestReference, [Reference], [FinancialStatementAssessment], 1, 1
+requirement, [entity], [CardAuthorization; FinancialStatementAssessment], 1, 2
+CorporateActionProcedure, [CR], [CorporateAction], 1, 1
+Fees, [BQ], [Leasing; FiduciaryAgreement; CreditCard; CustodyAdministration; MortgageLoan; CardClearing], 1, 6
+OperationalGatewayOperatingSession, [CR], [OperationalGateway], 1, 1
+ConsumerLoanFacility, [CR], [ConsumerLoan], 1, 1
+RelationshipServicingProperties, [BQ], [ServiceDirectory], 1, 1
+ProductSalesSupportOutcome, [entity], [ProductSalesSupport], 1, 1
+productlifecyclestatus, [entity], [NotionalPooling; AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; PublicOffering; MerchantRelations; ChequeLockBox; DocumentServices; PaymentInstruction; CardeCommerceGateway; Factoring; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CreditRiskOperations; PrivatePlacement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 31
+eTradingWorkbenchOperatingSessionAssociatedPartyReference, [Reference], [eTradingWorkbench], 1, 1
+workproduct, [entity], [NotionalPooling; AccountReconciliation; DocumentDirectory; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; CorporateFinance; PublicOffering; BankGuarantee; MerchantRelations; MergersandAcquisitionsAdvisory; ChequeLockBox; DocumentServices; LetterofCredit; PaymentInstruction; StockLendingandRepos; BankDrafts; ServiceDirectory; Factoring; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CounterpartyAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 40
+positiontype, [entity], [InternalBankAccount; CreditCardPositionKeeping], 1, 2
+FinancialMarketAnalysisOutcome, [entity], [FinancialMarketAnalysis], 1, 1
+Award, [BQ], [RewardPointsAwardsAndRedemption], 1, 1
+TransactionConfirmationAffirmationFunction, [BQ], [TradeConfirmationMatching], 1, 1
+SecuritySpin-OffActionWorkstepReference, [Reference], [CorporateAction], 1, 1
+VirtualAccountFacility, [CR], [VirtualAccount], 1, 1
+Incident, [BQ], [CustomerRelationshipManagement], 1, 1
+bankguarantee, [entity], [BankGuarantee], 1, 1
+TradingBookRiskMitigationDuty, [BQ], [TradingBookOversight], 1, 1
+CorporateFinanceOutcome, [entity], [CorporateFinance], 1, 1
+CreditCardPositionLogReference, [Reference], [CreditCardPositionKeeping], 1, 1
+TradeClearingProcedureReference, [Reference], [TradeClearing], 1, 1
+CustomerCollateralAllocationTask, [BQ], [BankGuarantee; LetterofCredit], 1, 2
+CorporateTrustServicesFacility, [CR], [TrustServices; CorporateTrustServices], 1, 2
+EconomicModel, [BQ], [FraudDiagnosis], 1, 1
+Sweep, [BQ], [Leasing; MerchandisingLoan; MortgageLoan], 1, 3
+InformationArchitecture, [BQ], [EnterpriseArchitecture], 1, 1
+DeviceTracking, [BQ], [ATMNetworkOperations], 1, 1
+SecurityMergersandAcquisitionActionWorkstepReference, [Reference], [CorporateAction], 1, 1
+LetterOfCreditInvolvedPartyReference, [Reference], [LetterofCredit], 1, 1
+Document, [BQ], [PartyAuthentication], 1, 1
+MarketMakingFacility, [CR], [MarketMaking], 1, 1
+ProductCombinationFacility, [CR], [ProductCombination], 1, 1
+SupplierAgreement, [CR], [ContractorandSupplierAgreement], 1, 1
+CustomerCaseProcedure, [CR], [CustomerCase], 1, 1
+SecurityTradingFailsProcedureServiceProviderReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+MarketMakingFacilityCustomerReference, [Reference], [MarketMaking], 1, 1
+CommissionTransaction, [CR], [Commissions], 1, 1
+partyidentification, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+OpenItemProcedure, [CR], [OpenItemManagement], 1, 1
+BankGuaranteeDocumentReference, [Reference], [BankGuarantee], 1, 1
+InventoryDistributionOversight, [BQ], [BranchCurrencyDistribution], 1, 1
+FundDevelopmentRoutine, [BQ], [HedgeFundAdministration; MutualFundAdministration], 1, 2
+SubCustodianAgreementAccountReference, [Reference], [SubCustodianAgreement], 1, 1
+interactiveHelpServiceOperatingSession, [entity], [InteractiveHelp], 1, 1
+FactoringFacilityCustomerReference, [Reference], [Factoring], 1, 1
+Negotiation, [BQ], [AccountRecovery], 1, 1
+UsabilityChecks, [BQ], [ProductQualityAssurance], 1, 1
+PrivatePlacementFulfillment, [BQ], [PrivatePlacement], 1, 1
+TraderTradingPermissionsandLimitsFunction, [BQ], [TraderPositionOperations], 1, 1
+SecuritiesTransactionCapture, [BQ], [SecuritiesPositionKeeping], 1, 1
+PaymentRailOperatingSessionAssociatedPartyReference, [Reference], [PaymentRailOperations], 1, 1
+CaseDetermination, [BQ], [FraudResolution], 1, 1
+Expiration, [BQ], [RewardPointsAccount], 1, 1
+LetterOfCreditDocumentReference, [Reference], [LetterofCredit], 1, 1
+FundManagementFeeRoutine, [BQ], [MutualFundAdministration; UnitTrustAdministration], 1, 2
+involvedparty, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+QuotationProcedureEmployeeReference, [Reference], [QuoteManagement], 1, 1
+TaxOptimization, [BQ], [ConsumerAdvisoryServices; CorporateTaxAdvisory], 1, 2
+CustomerReference, [Reference], [CardeCommerceGateway; CustomerProductsandServices], 1, 2
+BankGuaranteeInvolvedPartyReference, [Reference], [BankGuarantee], 1, 1
+PublicReferenceDataManagementOutcome, [entity], [PublicReferenceDataManagement], 1, 1
+systemconfigurationoption, [entity], [InformationProviderOperation; TraderPositionOperations; ProgramTrading; PaymentRailOperations; OperationalGateway; TradeConfirmationMatching; TradeandPriceReporting; ArchiveServices; DealerDesk; eTradingWorkbench], 1, 10
+MerchantRelationshipAgreementProductReference, [Reference], [MerchantRelations], 1, 1
+AccountReconciliationProcedureCustomerAgreementReference, [Reference], [AccountReconciliation], 1, 1
+PaymentInstructionProcedureEmployeeReference, [Reference], [PaymentInstruction], 1, 1
+UnitTrustAdministrativePlan, [CR], [UnitTrustAdministration], 1, 1
+EmployeePaymentServicesFacilityCustomerReference, [Reference], [CorporatePayrollServices], 1, 1
+CustomerDefinedProductandServiceTermReference, [Reference], [CustomerProposition], 1, 1
+FXConversion, [BQ], [CardClearing], 1, 1
+TestingSpecification, [BQ], [SystemDevelopment], 1, 1
+FunctionalRisk, [BQ], [ProductionRelease], 1, 1
+OutboundACH, [BQ], [ACHOperations], 1, 1
+document, [entity], [CardAuthorization; TradingBookOversight; CorporateFinance; ProductSalesSupport; BankGuarantee; HedgeFundAdministration; MergersandAcquisitionsAdvisory; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; LetterofCredit; BankDrafts; MutualFundAdministration; UnitTrustAdministration; FinancialStatementAssessment], 1, 15
+jurisdiction, [entity], [NotionalPooling; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; MerchantRelations; ChequeLockBox; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; PrivatePlacement; CorporateTrustServices], 1, 17
+InboundMessageFunctionReference, [Reference], [OperationalGateway], 1, 1
+ProductGuidance, [BQ], [ConsumerAdvisoryServices], 1, 1
+AccountBalanceSweepingFacilityProductReference, [Reference], [CashConcentration], 1, 1
+CustomerSurveyProcedure, [CR], [CustomerSurveys], 1, 1
+SecuritiesFailAnalysisWorkstep, [BQ], [SecuritiesFailsProcessing], 1, 1
+MarketMakingSecurityTradedPositionFulfillment, [BQ], [MarketMaking], 1, 1
+EscrowAccountFulfillment, [BQ], [CorporateTrustServices], 1, 1
+MarketAssetValuationProcedure, [CR], [FinancialInstrumentValuation], 1, 1
+Cashflow, [BQ], [CustomerPosition], 1, 1
+TradeClearingProcedureBusinessUnitReference, [Reference], [TradeClearing], 1, 1
+LiquidityandCashFlowTest, [BQ], [FinancialStatementAssessment], 1, 1
+CustomerPropositionAgreementProductReference, [Reference], [CustomerProposition], 1, 1
+StockSplitorReversalActionWorkstepReference, [Reference], [CorporateAction], 1, 1
+TradeClearingOutcome, [entity], [TradeClearing], 1, 1
+rulesettype, [entity], [NotionalPooling; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; MerchantRelations; ChequeLockBox; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; PrivatePlacement; CorporateTrustServices], 1, 17
+DocumentDirectoryOutcome, [entity], [DocumentDirectory], 1, 1
+SecuritiesAllocationProcedureFinancialFacilityReference, [Reference], [OrderAllocation], 1, 1
+CollateralAssetAllocation, [CR], [CollateralAllocationManagement], 1, 1
+CorporateActionProcedureCustomerReference, [Reference], [CorporateAction], 1, 1
+StandingOrderFacilityReference, [Reference], [StandingOrder], 1, 1
+DocumentServiceProcedureCustomerReference, [Reference], [DocumentServices], 1, 1
+DealerDeskOperatingSessionReference, [Reference], [DealerDesk], 1, 1
+ProductandServiceAccess, [BQ], [CustomerWorkbench], 1, 1
+PaymentMechanism, [BQ], [PaymentExecution], 1, 1
+Withdrawals, [BQ], [Leasing; MerchandisingLoan; MortgageLoan], 1, 3
+CompanyMissionandPolicies, [BQ], [ManagementManual], 1, 1
+Statement, [BQ], [VirtualAccount], 1, 1
+DocumentRetrievalFunction, [BQ], [ArchiveServices], 1, 1
+TechnologyStandardsSpecification, [CR], [ITStandardsAndGuidelines], 1, 1
+ServiceDirectoryEntryReference, [Reference], [ServiceDirectory], 1, 1
+ProjectFinanceFacilityCustomerReference, [Reference], [ProjectFinance], 1, 1
+IntellectualPropertyAdministrativePlan, [CR], [IntellectualPropertyPortfolio], 1, 1
+InternalReporting, [BQ], [CustomerCreditRating], 1, 1
+PaymentInstructionProcedureCustomerAgreementReference, [Reference], [PaymentInstruction], 1, 1
+SubCustodianAgreement, [CR], [SubCustodianAgreement], 1, 1
+repoarrangement, [entity], [StockLendingandRepos], 1, 1
+TradeClearingProcedureFinancialFacilityReference, [Reference], [TradeClearing], 1, 1
+DirectDebit, [BQ], [VirtualAccount], 1, 1
+MarketMakingQuoteFulfillment, [BQ], [MarketMaking], 1, 1
+KnowledgeExchangeOutcome, [entity], [KnowledgeExchange], 1, 1
+paymentinstructiondatetime, [entity], [BankDrafts], 1, 1
+AccountBalanceSweepingFacilityCustomerReference, [Reference], [CashConcentration], 1, 1
+SecuritiesReporting, [BQ], [CustodyAdministration], 1, 1
+CommissionTerms, [BQ], [CommissionAgreement], 1, 1
+EmployeePaymentServicesFacilityProductReference, [Reference], [CorporatePayrollServices], 1, 1
+CorrespondentBankOperatingSession, [CR], [CorrespondentBankOperations], 1, 1
+StaffAssignmentRoutine, [BQ], [ProductSalesSupport], 1, 1
+Compliance, [BQ], [MarketOrder; CustomerOffer; PaymentInitiation; ConsumerInvestments], 1, 4
+CollateralAssetAdministrativePlan, [CR], [CollateralAssetAdministration], 1, 1
+PublicOfferingFacilityReference, [Reference], [PublicOffering], 1, 1
+MarketOrderQuotationFunction, [BQ], [eTradingWorkbench], 1, 1
+EmploymentRelatedProceduresandGuidelines, [BQ], [ManagementManual], 1, 1
+RewardPointsAwardsAndRedemptionOutcome, [entity], [RewardPointsAwardsAndRedemption], 1, 1
+plantype, [entity], [TradingBookOversight; ProductSalesSupport; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; MutualFundAdministration; SyndicateManagement; UnitTrustAdministration], 1, 9
+Troubleshooting, [BQ], [BusinessUnitManagement; ContactCenterManagement; BrandManagement; RegulatoryAndLegalAuthority; AdvancedVoiceServicesManagement; ContactCenterOperations; eBranchManagement; BranchLocationManagement], 1, 8
+CorporateDebtIssueOversightFulfillment, [BQ], [CorporateTrustServices], 1, 1
+GlobalReferenceData, [BQ], [PublicReferenceDataManagement], 1, 1
+BankGuaranteeTransaction, [CR], [BankGuarantee], 1, 1
+bankingproducttypevalues, [Enum], [NotionalPooling; AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; PublicOffering; MerchantRelations; ChequeLockBox; DocumentServices; PaymentInstruction; CardeCommerceGateway; Factoring; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CreditRiskOperations; PrivatePlacement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 31
+AssessmentandReporting, [BQ], [FiduciaryAgreement], 1, 1
+FactoringFacilityReference, [Reference], [Factoring], 1, 1
+SecuritiesAllocationProcedureCustomerReference, [Reference], [OrderAllocation], 1, 1
+SubCustodianAgreementAssociatedAgreementReference, [Reference], [SubCustodianAgreement], 1, 1
+ProjectFinanceArrangementFulfillment, [BQ], [ProjectFinance], 1, 1
+bankguaranteearrangement, [entity], [BankGuarantee], 1, 1
+limitarrangement, [entity], [NotionalPooling; CorporatePayrollServices; PublicOffering; ChequeLockBox; InternalBankAccount; CreditCardPositionKeeping; Factoring; MarketMaking; CashConcentration; TrustServices; ProjectFinance; CreditRiskOperations; PrivatePlacement; CorporateTrustServices], 1, 14
+Automated, [BQ], [PointofService], 1, 1
+BranchLocationManagementPlan, [CR], [BranchLocationManagement], 1, 1
+CollateralLiquidation, [BQ], [Collections], 1, 1
+SalesandMarketing, [BQ], [ProductDirectory; ProductDeployment], 1, 2
+CreditCheck, [BQ], [CardAuthorization], 1, 1
+partyinvolvementtypevalues, [Enum], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+DocumentDirectoryEntry, [CR], [DocumentDirectory], 1, 1
+ServiceDirectoryOutcome, [entity], [ServiceDirectory], 1, 1
+RegulatoryAndLegalAuthorityRelationshipManagementPlan, [CR], [RegulatoryAndLegalAuthority], 1, 1
+StandingOrderFacilityCustomerReference, [Reference], [StandingOrder], 1, 1
+name, [entity], [CardAuthorization; InformationProviderOperation; ManagementManual; Collections; EnterpriseArchitecture; TraderPositionOperations; AssetSecuritization; Leasing; ProgramTrading; LocationDataManagement; NotionalPooling; SystemsAdministration; LegalEntityDirectory; AccountReconciliation; ComplianceReporting; IssuedDeviceAdministration; DirectDebit; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; RewardPointsAwardsAndRedemption; PaymentRailOperations; TradeSettlement; SpecialPricingConditions; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CurrencyExchange; CorporateFinance; ChequeProcessing; FiduciaryAgreement; PublicOffering; ProductSalesSupport; ProductMatching; ProductQualityAssurance; CorporateLease; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; ProductCombination; BranchCurrencyDistribution; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; MerchandisingLoan; DocumentServices; InternalBankAccount; RewardPointsAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; FinancialMarketAnalysis; AccountsReceivable; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CaseRootCauseAnalysis; VirtualAccount; CardeCommerceGateway; BankDrafts; PublicReferenceDataManagement; CustodyAdministration; MortgageLoan; ServiceDirectory; Commissions; BranchCurrencyManagement; InternalAudit; ProductTraining; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CentralCashHandling; CreditRiskModels; CustomerProductsandServices; LeasingItemAdministration; MarketMaking; ProductServiceAgency; SyndicatedLoan; TradeandPriceReporting; ITStandardsAndGuidelines; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; RegulatoryAndLegalAuthority; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CommissionAgreement; ATMNetworkOperations; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; CardCapture; BranchLocationManagement; KnowledgeExchange; ProductInventoryDistribution; SecuritiesFailsProcessing; CorporateTrustServices], 1, 112
+ClearingandSettlement, [BQ], [Leasing; CorrespondentBankOperations; ACHOperations], 1, 3
+FinancialPlanning, [BQ], [ConsumerAdvisoryServices], 1, 1
+AccountReconciliationProcedureFinancialFacilityReference, [Reference], [AccountReconciliation], 1, 1
+SecuritiesAllocationProcedure, [CR], [OrderAllocation], 1, 1
+PromotionalEventManagementPlan, [CR], [PromotionalEvents], 1, 1
+BankRates, [BQ], [CorporateTreasury], 1, 1
+FuturesInstrumentproperty, [BQ], [FinancialInstrumentReferenceDataManagement], 1, 1
+ATMNetworkOperatingSession, [CR], [ATMNetworkOperations], 1, 1
+DebtInstrumentproperty, [BQ], [FinancialInstrumentReferenceDataManagement], 1, 1
+directoryentrydatetypevalues, [Enum], [LocationDataManagement; LegalEntityDirectory; DocumentDirectory; PartyReferenceDataDirectory; ServiceDirectory; CustomerProductsandServices; SyndicateManagement; CounterpartyAdministration; FinancialInstrumentReferenceDataManagement], 1, 9
+CentralCashAllocation, [CR], [CentralCashHandling], 1, 1
+MergersAndAcquisitionAdvice, [CR], [MergersandAcquisitionsAdvisory], 1, 1
+TrustAssetMaintenanceandManagementFulfillment, [BQ], [TrustServices; CorporateTrustServices], 1, 2
+TokenAssignment, [BQ], [IssuedDeviceAdministration], 1, 1
+StandingOrder, [BQ], [VirtualAccount], 1, 1
+ComplianceAssessment, [BQ], [ComplianceReporting], 1, 1
+TransactionConsolidation, [BQ], [CardCapture], 1, 1
+FundTaxAdministrationRoutine, [BQ], [HedgeFundAdministration; MutualFundAdministration; UnitTrustAdministration], 1, 3
+PaymentRailOperationsOutcome, [entity], [PaymentRailOperations], 1, 1
+LegalTerm, [BQ], [MerchantRelations; ContractorandSupplierAgreement; ProductServiceAgency; SubCustodianAgreement], 1, 4
+paymentinstructiontypevalues, [Enum], [BankDrafts], 1, 1
+SecuritiesAllocationProcedureCustomerAgreementReference, [Reference], [OrderAllocation], 1, 1
+UnmatchedMarketTradeEscalationFunctionReference, [Reference], [TradeConfirmationMatching], 1, 1
+ExternalReport, [BQ], [IssuedDeviceTracking], 1, 1
+PartyReferenceDataDirectoryEntry, [CR], [PartyReferenceDataDirectory], 1, 1
+ProductionPerformanceAssessmentDutyReference, [Reference], [BrokeredProduct], 1, 1
+TradeandPriceReportingOutcome, [entity], [TradeandPriceReporting], 1, 1
+Password, [BQ], [PartyAuthentication], 1, 1
+HROperations, [BQ], [ProductDeployment], 1, 1
+CustomerProductsandServicesOutcome, [entity], [CustomerProductsandServices], 1, 1
+StandingOrderFacilityRegulationReference, [Reference], [StandingOrder], 1, 1
+ProductionIssueDeterminationWorkstep, [BQ], [ServicingIssue], 1, 1
+Chargeback, [BQ], [CardCase; MerchantAcquiringFacility], 1, 2
+Underwriting, [BQ], [CustomerOffer], 1, 1
+ProspectCampaignSpecification, [CR], [ProspectCampaignDesign], 1, 1
+ProcessingErrorandIntegrityChecks, [BQ], [ProductQualityAssurance], 1, 1
+RegulatoryTermReference, [Reference], [MerchantRelations; ContractorandSupplierAgreement; ProductServiceAgency; SubCustodianAgreement], 1, 4
+BearerDocumentInvolvedPartyReference, [Reference], [BankDrafts], 1, 1
+AssetValuationWorkstepReference, [Reference], [FinancialInstrumentValuation], 1, 1
+MortgageLoanOutcome, [entity], [MortgageLoan], 1, 1
+MarketTradeSecuritiesSettlementWorkstep, [BQ], [TradeSettlement], 1, 1
+OutboundTransactionFunction, [BQ], [PaymentRailOperations], 1, 1
+LeasingItemAdministrationOutcome, [entity], [LeasingItemAdministration], 1, 1
+Quote, [BQ], [ConsumerInvestments; MarketOrderExecution], 1, 2
+ProjectFinanceOutcome, [entity], [ProjectFinance], 1, 1
+TradingCounterpartyCreditLimitIndicator, [BQ], [CreditRiskOperations], 1, 1
+PaymentInstructionProcedureServiceProviderReference, [Reference], [PaymentInstruction], 1, 1
+CustomerMandate, [BQ], [ServicingMandate], 1, 1
+RiskTest, [BQ], [FinancialStatementAssessment], 1, 1
+PublicOfferingFacilityRegulationReference, [Reference], [PublicOffering], 1, 1
+FinancialStatementAssessment, [CR], [FinancialStatementAssessment], 1, 1
+SyndicateComplianceClauses, [BQ], [SyndicateManagement], 1, 1
+StrategicFunding, [BQ], [CorporateTreasury], 1, 1
+Alert, [BQ], [PartyRoutingProfile], 1, 1
+SyndicatedLoanOutcome, [entity], [SyndicatedLoan], 1, 1
+PaymentExecutionWorkstep, [BQ], [PaymentExecution], 1, 1
+AnalysisFeedback, [BQ], [CustomerCampaignExecution; ProspectCampaignExecution], 1, 2
+ProgramTradingOperatingSessionServiceProviderReference, [Reference], [ProgramTrading], 1, 1
+arrangementtypevalues, [Enum], [AccountReconciliation; TradingBookOversight; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; ProductSalesSupport; MerchantRelations; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; DocumentServices; CorrespondentBankRelationshipManagement; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; MutualFundAdministration; SyndicateManagement; TradeClearing; SubCustodianAgreement; CreditRiskOperations; UnitTrustAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 26
+LockBoxFacilityRegulationReference, [Reference], [ChequeLockBox], 1, 1
+AuthorizationReference, [Reference], [CardAuthorization], 1, 1
+Capture, [BQ], [RewardPointsAccount; CardTerminalOperation; CardClearing], 1, 3
+DocumentVerificationProperties, [BQ], [DocumentDirectory], 1, 1
+CustomerCampaignPortfolioManagementPlan, [CR], [CustomerCampaignManagement], 1, 1
+Improvement, [BQ], [MarketInformationManagement], 1, 1
+LockBoxFacilityCustomerReference, [Reference], [ChequeLockBox], 1, 1
+ServicingOrderProcedure, [CR], [ServicingOrder], 1, 1
+ArchiveOperatingSessionReference, [Reference], [ArchiveServices], 1, 1
+InformationFeedAdministrationFunction, [BQ], [DealerDesk], 1, 1
+ProductandServiceDeploymentDevelopment, [CR], [ProductDeployment], 1, 1
+Development, [BQ], [LeadandOpportunityManagement; CustomerRelationshipManagement], 1, 2
+AccountReceivableFactoringFulfillment, [BQ], [Factoring], 1, 1
+repurchaseagreement, [entity], [StockLendingandRepos], 1, 1
+CorporateFinanceServicesAdvice, [CR], [CorporateFinance], 1, 1
+repotransaction, [entity], [StockLendingandRepos], 1, 1
+agreementlifecyclestatus, [entity], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; MerchantRelations; DocumentServices; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; TradeClearing; SubCustodianAgreement; CounterpartyAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 17
+plan, [entity], [TradingBookOversight; ProductSalesSupport; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; MutualFundAdministration; SyndicateManagement; UnitTrustAdministration], 1, 9
+Operations, [BQ], [ProductDirectory], 1, 1
+InformationFeedAdministrationFunctionReference, [Reference], [DealerDesk], 1, 1
+bankguaranteetransactiontypevalues, [Enum], [BankGuarantee], 1, 1
+identifier, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+TrustCourtAdministrationFulfillment, [BQ], [TrustServices; CorporateTrustServices], 1, 2
+Lien, [BQ], [Leasing; MerchandisingLoan; MortgageLoan], 1, 3
+WorkforceAdministration, [entity], [BranchLocationOperations], 1, 1
+TrustTaxandExpenseFulfillment, [BQ], [TrustServices; CorporateTrustServices], 1, 2
+TrialTransaction, [BQ], [PositionManagement], 1, 1
+FundAccountingRoutineReference, [Reference], [HedgeFundAdministration; MutualFundAdministration; UnitTrustAdministration], 1, 3
+financialtransactiontypevalues, [Enum], [CounterpartyAdministration], 1, 1
+Definition, [BQ], [CustomerSurveys], 1, 1
+RuleSetsandDecisionTrees, [BQ], [FraudEvaluation], 1, 1
+eTradingWorkbenchOperatingSessionReference, [Reference], [eTradingWorkbench], 1, 1
+ManagementManualOutcome, [entity], [ManagementManual], 1, 1
+FinancialPositionState, [CR], [PositionManagement], 1, 1
+letterofcreditagreement, [entity], [LetterofCredit], 1, 1
+SubCustodianAgreementRegulationReference, [Reference], [SubCustodianAgreement], 1, 1
+ProductionTroubleshootingDuty, [BQ], [BrokeredProduct], 1, 1
+HedgeFundAdministrationOutcome, [entity], [HedgeFundAdministration], 1, 1
+interesttransaction, [entity], [BankGuarantee; LetterofCredit; StockLendingandRepos; BankDrafts], 1, 4
+DocumentServiceProcedure, [CR], [DocumentServices], 1, 1
+PublicOfferingFacility, [CR], [PublicOffering], 1, 1
+FinancialMarketInformationAdministrativePlan, [CR], [MarketInformationManagement], 1, 1
+CreditCardFacility, [CR], [CreditCard], 1, 1
+Liquidity, [BQ], [CorporateTreasury], 1, 1
+Life, [BQ], [CustomerEventHistory], 1, 1
+CustomerContactOperatingSession, [CR], [ContactHandler], 1, 1
+Performance, [BQ], [BusinessUnitManagement; ContactCenterManagement; CustomerCaseManagement], 1, 3
+MergersandAcquisitionsAdvisoryOutcome, [entity], [MergersandAcquisitionsAdvisory], 1, 1
+CustomerCaseRootCauseAnalysis, [CR], [CaseRootCauseAnalysis], 1, 1
+ACHFulfillmentOperatingSession, [CR], [ACHOperations], 1, 1
+BankGuaranteeArrangementReference, [Reference], [BankGuarantee], 1, 1
+log, [entity], [InformationProviderOperation; TraderPositionOperations; ProgramTrading; AccountReconciliation; IssuedDeviceAdministration; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; CorporateFinance; MerchantRelations; MergersandAcquisitionsAdvisory; DocumentServices; InternalBankAccount; CreditCardPositionKeeping; PaymentInstruction; OperationalGateway; ServiceDirectory; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; SyndicateManagement; TradeClearing; SubCustodianAgreement; DealerDesk; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing], 1, 38
+CreditCardPositionLogBusinessUnitReference, [Reference], [CreditCardPositionKeeping], 1, 1
+MerchantRelationsOutcome, [entity], [MerchantRelations], 1, 1
+SecurityDividendPaymentWorkstepReference, [Reference], [CorporateAction], 1, 1
+TransactionReportingFunction, [BQ], [TradeConfirmationMatching; TradeandPriceReporting], 1, 2
+SafeCustodyOperationsReference, [Reference], [BranchLocationOperations], 1, 1
+FundDevelopmentRoutineReference, [Reference], [HedgeFundAdministration; MutualFundAdministration], 1, 2
+MerchantRelationshipAgreementRegulationReference, [Reference], [MerchantRelations], 1, 1
+accountbalance, [entity], [NotionalPooling; IssuedDeviceAdministration; TradingBookOversight; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; ProductSalesSupport; CurrentAccount; MerchantRelations; HedgeFundAdministration; ChequeLockBox; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; MutualFundAdministration; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; CorporateTrustServices], 1, 28
+RegulatoryComplianceAdministrativePlan, [CR], [RegulatoryReporting], 1, 1
+BankGuaranteeIssuanceandBookingTask, [BQ], [BankGuarantee], 1, 1
+eTradingWorkbenchOperatingSessionServiceProviderReference, [Reference], [eTradingWorkbench], 1, 1
+OrderInitiation, [BQ], [PaymentInitiation; ConsumerInvestments], 1, 2
+StandingOrderFacilityProductReference, [Reference], [StandingOrder], 1, 1
+eTradingWorkbenchOutcome, [entity], [eTradingWorkbench], 1, 1
+CashDistributionProcedure, [CR], [BranchCurrencyDistribution], 1, 1
+MarketMakingFacilityAccountReference, [Reference], [MarketMaking], 1, 1
+DocumentAmendmentProperties, [BQ], [DocumentDirectory], 1, 1
+FinancialTransactionInitiation, [BQ], [ChequeProcessing], 1, 1
+Authentication, [BQ], [CardAuthorization; PartyLifecycleManagement; ContactHandler; SessionDialogue], 1, 4
+FactoringFacilityProductReference, [Reference], [Factoring], 1, 1
+ProjectFinanceFacilityReference, [Reference], [ProjectFinance], 1, 1
+PaymentInstructionProcedureAssociatedPartyReference, [Reference], [PaymentInstruction], 1, 1
+TrustEstate_InheritanceandIncomeTaxFulfillment, [BQ], [TrustServices; CorporateTrustServices], 1, 2
+CustomerFraud, [BQ], [ChannelActivityAnalysis], 1, 1
+BusinessRisk, [BQ], [ProductionRelease], 1, 1
+LocationSecurityAdministration, [entity], [BranchLocationOperations], 1, 1
+repurchaseagreementinvolvementtypevalues, [Enum], [StockLendingandRepos], 1, 1
+Intelligence, [BQ], [SessionDialogue], 1, 1
+StandingOrderPayment, [BQ], [StandingOrder], 1, 1
+InboundPayments, [BQ], [CorrespondentBankOperations], 1, 1
+CardTransactionSwitchOperatingSession, [CR], [CardTransactionSwitch], 1, 1
+ProductionSupport, [BQ], [ProductDeployment], 1, 1
+CreditCardPositionKeepingOutcome, [entity], [CreditCardPositionKeeping], 1, 1
+MutualFundAdministrationOutcome, [entity], [MutualFundAdministration], 1, 1
+PartyReference, [Reference], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+PrivatePlacementFacilityProductReference, [Reference], [PrivatePlacement], 1, 1
+CounterpartyDirectoryEntryReference, [Reference], [CounterpartyAdministration], 1, 1
+Production, [BQ], [ProductDesign; ProductDirectory; ProductDeployment; FraudModel; CustomerBehaviorModels; CreditRiskModels], 1, 6
+ServiceProviderAgreementProductReference, [Reference], [ProductServiceAgency], 1, 1
+Behavior, [BQ], [PartyAuthentication], 1, 1
+PublicPlacementIPOandUnderwritingFulfillment, [BQ], [PublicOffering], 1, 1
+CashPositionMonitoringandTransferFulfillment, [BQ], [CashConcentration], 1, 1
+bankguaranteearrangementtypevalues, [Enum], [BankGuarantee], 1, 1
+Order, [BQ], [SessionDialogue], 1, 1
+PartyRelationshipProcedure, [CR], [PartyLifecycleManagement], 1, 1
+DocumentCaptureFunction, [BQ], [ArchiveServices], 1, 1
+FiduciaryRelationshipFacility, [CR], [FiduciaryAgreement], 1, 1
+ComplianceCheckWorkstep, [BQ], [PaymentInstruction], 1, 1
+Device, [BQ], [PartyAuthentication], 1, 1
+OperationalGatewayOperatingSessionServiceProviderReference, [Reference], [OperationalGateway], 1, 1
+PaymentRailOperatingSessionServiceProviderReference, [Reference], [PaymentRailOperations], 1, 1
+FundEnrolmentRoutineReference, [Reference], [MutualFundAdministration; UnitTrustAdministration], 1, 2
+AssetValuationWorkstep, [BQ], [FinancialInstrumentValuation], 1, 1
+CorrespondentBankOperationsOutcome, [entity], [CorrespondentBankOperations], 1, 1
+CustomerAccessProfileAgreement, [CR], [CustomerAccessEntitlement], 1, 1
+AdvertisingCampaignManagementPlan, [CR], [Advertising], 1, 1
+FunctionalConsistencyChecks, [BQ], [ProductQualityAssurance], 1, 1
+In-forceProductproperty, [entity], [CustomerProductsandServices], 1, 1
+AgreementConfirmationWorkstep, [BQ], [PaymentInstruction], 1, 1
+CapitalStructuringTopic, [BQ], [CorporateFinance], 1, 1
+letterofcreditinvolvementtypevalues, [Enum], [LetterofCredit], 1, 1
+MarketAssetValuationProcedureServiceProviderReference, [Reference], [FinancialInstrumentValuation], 1, 1
+TransactionAlignment, [BQ], [AssetAndLiabilityManagement], 1, 1
+ProductMatchingOutcome, [entity], [ProductMatching], 1, 1
+ProductionTroubleshootingDutyReference, [Reference], [BrokeredProduct], 1, 1
+Alerts, [BQ], [CustomerCreditRating], 1, 1
+PaymentAccountReconciliationFunctionReference, [Reference], [PaymentRailOperations], 1, 1
+PrivatePlacementInstrumentMaintenanceFulfillment, [BQ], [PrivatePlacement], 1, 1
+Resolution, [BQ], [DelinquentAccountHandling; AccountsReceivable; CustomerCase; CardCase; CardCollections], 1, 5
+Securitization, [BQ], [AssetSecuritization; CorporateTreasury], 1, 2
+AccountReconciliationProcedureBusinessUnitReference, [Reference], [AccountReconciliation], 1, 1
+AccountsReceivableEvaluationFulfillment, [BQ], [Factoring], 1, 1
+FacilityApplication, [BQ], [CustomerOffer], 1, 1
+TraderPositionOperationsOutcome, [entity], [TraderPositionOperations], 1, 1
+SellerObligationConfirmationTask, [BQ], [LetterofCredit], 1, 1
+CustomerLiaison, [BQ], [BranchLocationManagement], 1, 1
+AccountReconciliationProcedureCustomerReference, [Reference], [AccountReconciliation], 1, 1
+DirectDebitFacility, [CR], [DirectDebit], 1, 1
+ProgramTradeExecutionFunction, [BQ], [ProgramTrading], 1, 1
+DeviceAssignment, [BQ], [IssuedDeviceAdministration], 1, 1
+CashInventoryHandlingReference, [Reference], [BranchLocationOperations], 1, 1
+MarketQuoteSelectionWorkstepReference, [Reference], [QuoteManagement], 1, 1
+Disbursement, [BQ], [ConsumerLoan; Loan; CorporateLoan], 1, 3
+PaymentExecutionProcedure, [CR], [PaymentExecution], 1, 1
+FinancialInstrumentValuationOutcome, [entity], [FinancialInstrumentValuation], 1, 1
+businessservicetypevalues, [entity], [CardAuthorization; ManagementManual; Collections; EnterpriseArchitecture; TraderPositionOperations; AssetSecuritization; Leasing; ProgramTrading; NotionalPooling; SystemsAdministration; AccountReconciliation; ComplianceReporting; DirectDebit; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; RewardPointsAwardsAndRedemption; PaymentRailOperations; TradeSettlement; SpecialPricingConditions; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; CurrencyExchange; CorporateFinance; ChequeProcessing; FiduciaryAgreement; PublicOffering; ProductSalesSupport; ProductMatching; ProductQualityAssurance; CorporateLease; BankGuarantee; MerchantRelations; HedgeFundAdministration; ProductCombination; BranchCurrencyDistribution; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; MerchandisingLoan; RewardPointsAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; FinancialMarketAnalysis; AccountsReceivable; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CaseRootCauseAnalysis; VirtualAccount; BankDrafts; PublicReferenceDataManagement; CustodyAdministration; MortgageLoan; ServiceDirectory; Commissions; BranchCurrencyManagement; InternalAudit; ProductTraining; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CentralCashHandling; CreditRiskModels; CustomerProductsandServices; LeasingItemAdministration; MarketMaking; ProductServiceAgency; SyndicatedLoan; TradeandPriceReporting; ITStandardsAndGuidelines; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; RegulatoryAndLegalAuthority; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CommissionAgreement; ATMNetworkOperations; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; CardCapture; BranchLocationManagement; KnowledgeExchange; ProductInventoryDistribution; SecuritiesFailsProcessing; CorporateTrustServices], 1, 103
+CustomerSegmentAnalysis, [CR], [CustomerPortfolio], 1, 1
+amount, [entity], [CardAuthorization; PositionManagement; NotionalPooling; InvestmentAccount; FinancialAccounting; IssuedDeviceAdministration; SecuritiesPositionKeeping; TradingBookOversight; CorporatePayrollServices; StandingOrder; AssetAndLiabilityManagement; Underwriting; CustomerProposition; PublicOffering; ProductSalesSupport; BankGuarantee; SavingsAccount; CurrentAccount; MerchantRelations; HedgeFundAdministration; CashManagementAndAccountServices; CreditFacility; ChequeLockBox; BranchLocationOperations; BrokeredProduct; InternalBankAccount; TransactionEngine; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; CardTransactionSwitch; CorporateCurrentAccount; CustomerBilling; ConsumerLoan; LetterofCredit; CollateralAllocationManagement; CardNetworkParticipantFacility; CreditCard; StockLendingandRepos; CardeCommerceGateway; CardTerminalOperation; CardClearing; Factoring; CardCase; Loan; ContractorandSupplierAgreement; MarketMaking; TermDeposit; ProductServiceAgency; MutualFundAdministration; SyndicateManagement; CardFinancialSettlement; CashConcentration; SubCustodianAgreement; MerchantAcquiringFacility; OpenItemManagement; TrustServices; CorporateLoan; ProjectFinance; CreditManagement; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; CorporateTrustServices], 1, 64
+AccountReconciliationProcedureEmployeeReference, [Reference], [AccountReconciliation], 1, 1
+TrackingandReminders, [BQ], [CustomerBilling], 1, 1
+ProductionPlatformsandInfrastructure, [BQ], [ITStandardsAndGuidelines], 1, 1
+Oversight, [BQ], [ProductInventoryDistribution], 1, 1
+MerchantAccount, [BQ], [MerchantAcquiringFacility], 1, 1
+SecuritiesPositionLog, [CR], [SecuritiesPositionKeeping], 1, 1
+CustomerNegotiation, [BQ], [AccountsReceivable], 1, 1
+SWUpdate, [BQ], [CustomerWorkbench], 1, 1
+FinancialAccounting, [BQ], [Leasing; MerchandisingLoan; MortgageLoan], 1, 3
+SalesSpecialistSupportAdministrativePlan, [CR], [ProductExpertSalesSupport], 1, 1
+FundPerformanceFeeRoutine, [BQ], [HedgeFundAdministration], 1, 1
+LetterOfCreditArrangementReference, [Reference], [LetterofCredit], 1, 1
+AssetValuationInformationConsolidationWorkstep, [BQ], [FinancialInstrumentValuation], 1, 1
+SupplierAgreementProductReference, [Reference], [ContractorandSupplierAgreement], 1, 1
+CommissionAgreementOutcome, [entity], [CommissionAgreement], 1, 1
+ITSystemAdministrativePlan, [CR], [SystemsAdministration], 1, 1
+TradeClearingProcedureCustomerAgreementReference, [Reference], [TradeClearing], 1, 1
+account, [entity], [NotionalPooling; IssuedDeviceAdministration; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; CurrentAccount; MerchantRelations; ChequeLockBox; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CounterpartyAdministration; PrivatePlacement; CorporateTrustServices], 1, 20
+Session, [BQ], [ContactHandler; ServicingEventHistory], 1, 2
+BearerDocumentReference, [Reference], [BankDrafts], 1, 1
+TradeSettlementProcedureReference, [Reference], [TradeSettlement], 1, 1
+FXTransactionPricing, [BQ], [CurrencyExchange], 1, 1
+ProductInstanceReference, [Reference], [CardeCommerceGateway], 1, 1
+Query, [BQ], [SessionDialogue], 1, 1
+CardCollectionsProcedure, [CR], [CardCollections], 1, 1
+SyndicateManagementOutcome, [entity], [SyndicateManagement], 1, 1
+DirectDebitFacilityReference, [Reference], [DirectDebit], 1, 1
+VirtualAccountFacilityReference, [Reference], [VirtualAccount], 1, 1
+CaptureandClassification, [BQ], [KnowledgeExchange], 1, 1
+datetimeperiod, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+PaymentRailOperatingSession, [CR], [PaymentRailOperations], 1, 1
+MarketAssetValuationProcedureAssociatedPartyReference, [Reference], [FinancialInstrumentValuation], 1, 1
+BrokeredProductOutcome, [entity], [BrokeredProduct], 1, 1
+MarketMakingFacilityProductReference, [Reference], [MarketMaking], 1, 1
+DocumentCaptureFunctionReference, [Reference], [ArchiveServices], 1, 1
+ExecutionInitiation, [BQ], [PaymentOrder], 1, 1
+FinancialStatementAssessmentServiceProviderReference, [Reference], [FinancialStatementAssessment], 1, 1
+MarketOrderTransaction, [CR], [MarketOrder], 1, 1
+ContentDevelopment, [BQ], [ProductTraining], 1, 1
+FundPerformanceFeeRoutineReference, [Reference], [HedgeFundAdministration], 1, 1
+LetterOfCreditAgreementReference, [Reference], [LetterofCredit], 1, 1
+AccountRecoveryProcedure, [CR], [AccountRecovery], 1, 1
+FundFinancialReportingRoutine, [BQ], [HedgeFundAdministration; MutualFundAdministration; UnitTrustAdministration], 1, 3
+PolicyTermReference, [Reference], [ContractorandSupplierAgreement; ProductServiceAgency; SubCustodianAgreement], 1, 3
+UnderwritingAssessment, [CR], [Underwriting], 1, 1
+PointofServiceOperatingSession, [CR], [PointofService], 1, 1
+AccountAssessmentWorkstep, [BQ], [AccountReconciliation], 1, 1
+ProjectFinanceFacilityProductReference, [Reference], [ProjectFinance], 1, 1
+CorporateTrustServicesFacilityAccountReference, [Reference], [TrustServices; CorporateTrustServices], 1, 2
+plannedaction, [entity], [TradingBookOversight; ProductSalesSupport; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; MutualFundAdministration; SyndicateManagement; UnitTrustAdministration], 1, 9
+ProductPortfolioAnalysis, [CR], [ProductPortfolio], 1, 1
+RootCauseAlgorithm, [BQ], [ServicingActivityAnalysis], 1, 1
+Fulfillment, [BQ], [FiduciaryAgreement; ProductCombination; SyndicatedLoan], 1, 3
+priorityvaluetypes, [Enum], [BankDrafts], 1, 1
+InstrumentDefinition, [BQ], [ECMAndDCM], 1, 1
+Qualification, [BQ], [PartyLifecycleManagement], 1, 1
+CorporateTreasuryManagementPlan, [CR], [CorporateTreasury], 1, 1
+SecuritiesFailAnalysisWorkstepReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+TransactionReportingFunctionReference, [Reference], [TradeConfirmationMatching; TradeandPriceReporting], 1, 2
+TradingCreditPositionMeasurementCustomerReference, [Reference], [CreditRiskOperations], 1, 1
+eBranchChannelOperatingSession, [CR], [eBranchOperations], 1, 1
+ProgramTradedPortfolioAlgorithmFunction, [BQ], [ProgramTrading], 1, 1
+BranchLocationAdministrativePlan, [CR], [BranchLocationOperations], 1, 1
+TransactionConfirmationorAffirmationFunctionReference, [Reference], [TradeConfirmationMatching], 1, 1
+MarketTradeSettlementInitiationWorkstep, [BQ], [TradeClearing], 1, 1
+PaymentInitiationTransaction, [CR], [PaymentInitiation], 1, 1
+CurrencyExchangeTransaction, [CR], [CurrencyExchange], 1, 1
+ServiceLevelAgreementOversightDutyReference, [Reference], [BrokeredProduct], 1, 1
+ServicingRootCauseAnalysis, [CR], [ServicingActivityAnalysis], 1, 1
+PublicOfferingFacilityAccountReference, [Reference], [PublicOffering], 1, 1
+Valuation, [BQ], [CollateralAssetAdministration; LeasingItemAdministration], 1, 2
+MarketPriceAnalysisFunctionReference, [Reference], [eTradingWorkbench], 1, 1
+ManagedInvestmentPortfolioFacility, [CR], [InvestmentPortfolioManagement], 1, 1
+eCommerceGatewayOperatingSession, [entity], [CardeCommerceGateway], 1, 1
+CreditLineFacility, [CR], [CreditFacility], 1, 1
+CustodyAdministrationOutcome, [entity], [CustodyAdministration], 1, 1
+SensitivityTest, [BQ], [FinancialStatementAssessment], 1, 1
+CardNetworkParticipantFacility, [CR], [CardNetworkParticipantFacility], 1, 1
+Sales, [BQ], [CustomerEventHistory; SessionDialogue], 1, 2
+CollateralAssetLiquidationProcedure, [CR], [Collections], 1, 1
+ProductionIssueResolutionWorkstep, [BQ], [ServicingIssue], 1, 1
+CustomerCampaignProcedure, [CR], [CustomerCampaignExecution], 1, 1
+CorporateActionProcedureEmployeeReference, [Reference], [CorporateAction], 1, 1
+QuotationProcedure, [CR], [QuoteManagement], 1, 1
+PositivePay, [BQ], [CashManagementAndAccountServices], 1, 1
+Clearing, [BQ], [MerchantAcquiringFacility], 1, 1
+VirtualAccountOutcome, [entity], [VirtualAccount], 1, 1
+DocumentArchivingProperties, [BQ], [DocumentDirectory], 1, 1
+MarketQuoteRequestWorkstep, [BQ], [QuoteManagement], 1, 1
+PaymentAccountReference, [Reference], [IssuedDeviceAdministration], 1, 1
+ProductQualityAssuranceOutcome, [entity], [ProductQualityAssurance], 1, 1
+TradedPositionOperatingSessionReference, [Reference], [TraderPositionOperations], 1, 1
+procedure, [entity], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; DocumentServices; PaymentInstruction; ServicingIssue; TradeClearing; CorporateAction; SecuritiesFailsProcessing], 1, 11
+PaymentInstructionProcedure, [CR], [PaymentInstruction], 1, 1
+Reporting, [BQ], [DirectDebit; MarketInformationManagement; CustomerTaxHandling], 1, 3
+Rules, [BQ], [CustomerCaseManagement], 1, 1
+NotionalAccountConsolidatedPositionFulfillment, [BQ], [NotionalPooling], 1, 1
+ProjectionandAllocation, [BQ], [CentralCashHandling], 1, 1
+DealerDeskOperatingSessionAssociatedPartyReference, [Reference], [DealerDesk], 1, 1
+TradedPositionOperatingSession, [CR], [TraderPositionOperations], 1, 1
+BankGuaranteePayoutTask, [BQ], [BankGuarantee], 1, 1
+ArchiveOperatingSessionAssociatedPartyReference, [Reference], [ArchiveServices], 1, 1
+CreditChargeCardFinancialCaptureTransaction, [CR], [CardCapture], 1, 1
+MarketTradeSettlementConfirmationWorkstep, [BQ], [TradeSettlement], 1, 1
+ProductAccessServicingProperties, [BQ], [ServiceDirectory], 1, 1
+NetworkOperation, [BQ], [ATMNetworkOperations], 1, 1
+TradeMatchingOperatingSession, [CR], [TradeConfirmationMatching], 1, 1
+DocumentServiceProcedureReference, [Reference], [DocumentServices], 1, 1
+CardPOSNetworkOperatingSession, [CR], [CardTerminalOperation], 1, 1
+PrivatePlacementFacilityCustomerReference, [Reference], [PrivatePlacement], 1, 1
+VoiceChannelManagementPlan, [CR], [AdvancedVoiceServicesManagement], 1, 1
+Issue, [BQ], [ServicingEventHistory], 1, 1
+ProgramTradingOutcome, [entity], [ProgramTrading], 1, 1
+DocumentVersionProperties, [BQ], [DocumentDirectory], 1, 1
+OperationalTerm, [BQ], [MerchantRelations; SalesProduct], 1, 2
+financialdocumenttypevalues, [Enum], [CardAuthorization; TradingBookOversight; CorporateFinance; ProductSalesSupport; BankGuarantee; HedgeFundAdministration; MergersandAcquisitionsAdvisory; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; LetterofCredit; BankDrafts; MutualFundAdministration; UnitTrustAdministration; FinancialStatementAssessment], 1, 15
+Administer, [BQ], [CorporateLease], 1, 1
+CustomerDefinedProductandServiceTerm, [BQ], [CustomerProposition], 1, 1
+TradeSettlementProcedureEmployeeReference, [Reference], [TradeSettlement], 1, 1
+CardClearingProcedure, [CR], [CardClearing], 1, 1
+SegmentStrategy, [CR], [SegmentDirection], 1, 1
+ServiceDeliveryServicingProperties, [BQ], [ServiceDirectory], 1, 1
+Execution, [BQ], [CustomerSurveys; CustomerCampaignExecution; ProspectCampaignExecution], 1, 3
+CardReference, [Reference], [IssuedDeviceAdministration], 1, 1
+PublicOfferingFacilityCustomerReference, [Reference], [PublicOffering], 1, 1
+PrivatePlacementFacilityRegulationReference, [Reference], [PrivatePlacement], 1, 1
+MerchantFraud, [BQ], [ChannelActivityAnalysis], 1, 1
+LetterOfCreditTransactionReference, [Reference], [LetterofCredit], 1, 1
+CounterpartyEntityReferenceproperty, [BQ], [CounterpartyAdministration], 1, 1
+Insight, [BQ], [CustomerBehaviorInsights], 1, 1
+agreementtypevalues, [Enum], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; MerchantRelations; DocumentServices; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; TradeClearing; SubCustodianAgreement; CounterpartyAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 17
+RegulatoryTerm, [BQ], [MerchantRelations; ContractorandSupplierAgreement; ProductServiceAgency; SubCustodianAgreement], 1, 4
+ServicingIssueProcedure, [CR], [ServicingIssue], 1, 1
+test, [entity], [CardAuthorization; FinancialStatementAssessment], 1, 2
+Interaction, [BQ], [PointofService], 1, 1
+Documentation, [BQ], [PartyLifecycleManagement], 1, 1
+Maintenance, [BQ], [IntellectualPropertyPortfolio; CollateralAssetAdministration; CreditFacility; ConsumerLoan; Loan; CorporateLoan], 1, 6
+TransactionAuthorization, [BQ], [CardeCommerceGateway; CardCapture], 1, 2
+AccountReconciliationProcedureAssociatedPartyReference, [Reference], [AccountReconciliation], 1, 1
+FundTaxAdministrationRoutineReference, [Reference], [HedgeFundAdministration; MutualFundAdministration; UnitTrustAdministration], 1, 3
+CreditCardPositionLog, [CR], [CreditCardPositionKeeping], 1, 1
+ProductInventoryDistributionAdministrativePlan, [CR], [ProductInventoryDistribution], 1, 1
+LeasingItemAdministrativePlan, [CR], [LeasingItemAdministration], 1, 1
+ProjectFinanceSPVFulfillment, [BQ], [ProjectFinance], 1, 1
+PaymentInstructionProcedureCustomerReference, [Reference], [PaymentInstruction], 1, 1
+LetterofCreditDefinitionandPricingTask, [BQ], [LetterofCredit], 1, 1
+ECMAndDCMFacility, [CR], [ECMAndDCM], 1, 1
+RegulatoryAndLegalAuthorityOutcome, [entity], [RegulatoryAndLegalAuthority], 1, 1
+InvestmentPortfolioValuationFunction, [BQ], [eTradingWorkbench], 1, 1
+EmployeeCommissionAgreement, [CR], [CommissionAgreement], 1, 1
+FinancialInstrumentReferenceDataManagementOutcome, [entity], [FinancialInstrumentReferenceDataManagement], 1, 1
+party, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+BiometricAssignment, [BQ], [IssuedDeviceAdministration], 1, 1
+LegalComplianceAssessment, [CR], [LegalCompliance], 1, 1
+RepoTransaction, [CR], [StockLendingandRepos], 1, 1
+PaymentClearingandSettlementFunction, [BQ], [PaymentRailOperations], 1, 1
+session, [entity], [InformationProviderOperation; TraderPositionOperations; ProgramTrading; PaymentRailOperations; OperationalGateway; TradeConfirmationMatching; TradeandPriceReporting; ArchiveServices; DealerDesk; eTradingWorkbench], 1, 10
+productsalesagreement, [entity], [CustomerProductsandServices], 1, 1
+TradingCreditPositionMeasurement, [CR], [CreditRiskOperations], 1, 1
+Rating, [BQ], [PartyRoutingProfile], 1, 1
+BankDefinedProductandServiceTermReference, [Reference], [CustomerProposition], 1, 1
+SyndicateMembership, [CR], [SyndicateManagement], 1, 1
+PaymentTerms, [BQ], [CardCollections], 1, 1
+RiskTestReference, [Reference], [FinancialStatementAssessment], 1, 1
+MarketAssetValuationProcedureBusinessUnitReference, [Reference], [FinancialInstrumentValuation], 1, 1
+TradingBookAnalysisandReportingDutyReference, [Reference], [TradingBookOversight], 1, 1
+RepurchaseArrangementReference, [Reference], [StockLendingandRepos], 1, 1
+CustomerContactSessionProcedure, [CR], [SessionDialogue], 1, 1
+SecurityTradingFailsProcedureBusinessUnitReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+TechnicalSpecification, [BQ], [SystemDevelopment], 1, 1
+CreditPlan, [BQ], [CreditCard], 1, 1
+Processing, [BQ], [CardFinancialSettlement], 1, 1
+duration, [entity], [InformationProviderOperation; TraderPositionOperations; ProgramTrading; PaymentRailOperations; OperationalGateway; TradeConfirmationMatching; TradeandPriceReporting; ArchiveServices; DealerDesk; eTradingWorkbench], 1, 10
+ServicingIssueProcedureFinancialFacilityReference, [Reference], [ServicingIssue], 1, 1
+rate, [entity], [AssetSecuritization; NotionalPooling; LegalEntityDirectory; RewardPointsAwardsAndRedemption; CorporatePayrollServices; CurrencyExchange; PublicOffering; BankGuarantee; CorporateTreasury; SavingsAccount; CurrentAccount; CashManagementAndAccountServices; CreditFacility; ChequeLockBox; InternalBankAccount; CreditCardPositionKeeping; CorporateCurrentAccount; ConsumerLoan; LetterofCredit; CreditCard; StockLendingandRepos; BankDrafts; CardClearing; Commissions; Factoring; Loan; MarketMaking; TermDeposit; CashConcentration; TrustServices; CorporateLoan; ProjectFinance; CreditRiskOperations; PrivatePlacement; CardCapture; CorporateTrustServices], 1, 36
+GlobalStandardSpecification, [CR], [PublicReferenceDataManagement], 1, 1
+Batch, [BQ], [CardTerminalOperation], 1, 1
+ITPoliciesandGuidelines, [BQ], [ITStandardsAndGuidelines], 1, 1
+TradeMatchingOperatingSessionServiceProviderReference, [Reference], [TradeConfirmationMatching], 1, 1
+TradeClearingProcedureAssociatedPartyReference, [Reference], [TradeClearing], 1, 1
+ProspectCampaignProcedure, [CR], [ProspectCampaignExecution], 1, 1
+ProductTypeSelection, [BQ], [ProductMatching], 1, 1
+Preferences, [BQ], [CustomerAccessEntitlement], 1, 1
+letterofcredittypevalues, [Enum], [LetterofCredit], 1, 1
+IntellectualPropertyExchangeOperatingSession, [CR], [KnowledgeExchange], 1, 1
+ManagedInvestmentPortfolioAgreement, [CR], [InvestmentPortfolioPlanning], 1, 1
+ServicingIssueProcedureAssociatedPartyReference, [Reference], [ServicingIssue], 1, 1
+CardAuthentication, [BQ], [CardeCommerceGateway], 1, 1
+MarketTradeFundsandSecurityAvailabilityAssuranceWorkstep, [BQ], [TradeClearing], 1, 1
+ContactCenterManagementPlan, [CR], [ContactCenterManagement], 1, 1
+schedule, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; NotionalPooling; AccountReconciliation; DirectDebit; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; VirtualAccount; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 65
+EquityInstrumentproperty, [BQ], [FinancialInstrumentReferenceDataManagement], 1, 1
+analysistypevalues, [Enum], [TradingBookOversight; CorporateFinance; ProductSalesSupport; HedgeFundAdministration; MergersandAcquisitionsAdvisory; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; MutualFundAdministration; UnitTrustAdministration], 1, 10
+SecuritiesAllocationProcedureServiceProviderReference, [Reference], [OrderAllocation], 1, 1
+CreditTransfer, [entity], [VirtualAccount], 1, 1
+EmployeePaymentServicesFacilityAccountReference, [Reference], [CorporatePayrollServices], 1, 1
+ReceivablesEvaluation, [BQ], [AccountsReceivable], 1, 1
+CashConcentrationServiceConfigurationFulfillment, [BQ], [CashConcentration], 1, 1
+Payments, [BQ], [Leasing; SavingsAccount; CurrentAccount; CashManagementAndAccountServices; MerchandisingLoan; CorporateCurrentAccount; CustomerBilling; MortgageLoan; TermDeposit], 1, 9
+LoanFacility, [CR], [Loan], 1, 1
+PerformanceAnalysis, [BQ], [InvestmentPortfolioAnalysis; ProductPortfolio; CustomerPortfolio], 1, 3
+SecurityTradingFailsProcedureReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+ComplianceReportingOutcome, [entity], [ComplianceReporting], 1, 1
+CorporateCurrentAccountFacility, [CR], [CorporateCurrentAccount], 1, 1
+ServiceScheduling, [BQ], [ProductTraining], 1, 1
+budgettype, [entity], [TradingBookOversight; ProductSalesSupport; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; MutualFundAdministration; SyndicateManagement; UnitTrustAdministration], 1, 9
+SupplierAgreementRegulationReference, [Reference], [ContractorandSupplierAgreement], 1, 1
+CreditandFraudRelatedIssueAnalysis, [BQ], [CaseRootCauseAnalysis], 1, 1
+PolicyTerm, [BQ], [ContractorandSupplierAgreement; ProductServiceAgency; SubCustodianAgreement], 1, 3
+action, [entity], [AccountReconciliation; TradingBookOversight; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; ProductSalesSupport; MerchantRelations; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; DocumentServices; CorrespondentBankRelationshipManagement; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; MutualFundAdministration; SyndicateManagement; TradeClearing; SubCustodianAgreement; CreditRiskOperations; UnitTrustAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 26
+model, [entity], [CardAuthorization; FinancialStatementAssessment], 1, 2
+BranchLocationAdministrationPlanReference, [Reference], [BranchLocationOperations], 1, 1
+Calculation, [BQ], [Commissions], 1, 1
+text, [entity], [CardAuthorization; InformationProviderOperation; ManagementManual; Collections; EnterpriseArchitecture; TraderPositionOperations; AssetSecuritization; Leasing; ProgramTrading; LocationDataManagement; NotionalPooling; SystemsAdministration; LegalEntityDirectory; AccountReconciliation; ComplianceReporting; IssuedDeviceAdministration; DirectDebit; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; RewardPointsAwardsAndRedemption; PaymentRailOperations; TradeSettlement; SpecialPricingConditions; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CurrencyExchange; CorporateFinance; ChequeProcessing; FiduciaryAgreement; PublicOffering; ProductSalesSupport; ProductMatching; ProductQualityAssurance; CorporateLease; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; ProductCombination; BranchCurrencyDistribution; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; MerchandisingLoan; DocumentServices; InternalBankAccount; RewardPointsAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; CorrespondentBankOperations; FinancialMarketAnalysis; AccountsReceivable; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CaseRootCauseAnalysis; VirtualAccount; CardeCommerceGateway; BankDrafts; PublicReferenceDataManagement; CustodyAdministration; MortgageLoan; ServiceDirectory; Commissions; BranchCurrencyManagement; InternalAudit; ProductTraining; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CentralCashHandling; CreditRiskModels; CustomerProductsandServices; LeasingItemAdministration; MarketMaking; ProductServiceAgency; SyndicatedLoan; TradeandPriceReporting; ITStandardsAndGuidelines; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; RegulatoryAndLegalAuthority; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CommissionAgreement; ATMNetworkOperations; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; CardCapture; BranchLocationManagement; KnowledgeExchange; ProductInventoryDistribution; SecuritiesFailsProcessing; CorporateTrustServices], 1, 113
+MarketOpportunities, [BQ], [InvestmentPortfolioManagement], 1, 1
+paymentinstruction, [entity], [BankDrafts], 1, 1
+FeedUpload, [BQ], [MarketDataSwitchOperation], 1, 1
+SoftwareandDataSpecification, [BQ], [SystemDevelopment], 1, 1
+PrivatePlacementOutcome, [entity], [PrivatePlacement], 1, 1
+SecuritiesAllocationProcedureEmployeeReference, [Reference], [OrderAllocation], 1, 1
+repurchasetypevalues, [Enum], [StockLendingandRepos], 1, 1
+MaintainRelations, [BQ], [RegulatoryAndLegalAuthority], 1, 1
+ProjectFinanceRepaymentFulfillment, [BQ], [ProjectFinance], 1, 1
+Position, [BQ], [MarketOrderExecution], 1, 1
+UnmatchedMarketTradeEscalationFunction, [BQ], [TradeConfirmationMatching], 1, 1
+LocationReference, [Reference], [LocationDataManagement], 1, 1
+ProductionIssueAnalysisWorkstepReference, [Reference], [ServicingIssue], 1, 1
+MarketTradeReportingOperatingSessionReference, [Reference], [TradeandPriceReporting], 1, 1
+FinancialTransactionCapture, [BQ], [PositionKeeping; ATMNetworkOperations], 1, 2
+FundInflowsandOutflowRoutineReference, [Reference], [HedgeFundAdministration; MutualFundAdministration], 1, 2
+UnitTrustAdministrativePlanReference, [Reference], [UnitTrustAdministration], 1, 1
+CurrentAccountFacility, [CR], [CurrentAccount], 1, 1
+letterofcredit, [entity], [LetterofCredit], 1, 1
+BankGuaranteedPaymentRemittanceTask, [BQ], [BankDrafts], 1, 1
+DocumentServiceProcedureAssociatedPartyReference, [Reference], [DocumentServices], 1, 1
+AssetSecuritizationOutcome, [entity], [AssetSecuritization], 1, 1
+BranchCurrencyManagementOutcome, [entity], [BranchCurrencyManagement], 1, 1
+OperationalGatewayOperatingSessionAssociatedPartyReference, [Reference], [OperationalGateway], 1, 1
+HedgeFundAdministrativePlanReference, [Reference], [HedgeFundAdministration], 1, 1
+status, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 67
+MarketMakingFacilityRegulationReference, [Reference], [MarketMaking], 1, 1
+TransactionScheduleFacility, [CR], [TransactionEngine], 1, 1
+CreditRiskModelsOutcome, [entity], [CreditRiskModels], 1, 1
+SavingsAccountFacility, [CR], [SavingsAccount], 1, 1
+BearerDocumentTransactionReference, [Reference], [BankDrafts], 1, 1
+DebtTrusteeFulfillment, [BQ], [CorporateTrustServices], 1, 1
+ProductProcessing, [BQ], [CustomerEventHistory], 1, 1
+Tracking, [BQ], [OpenItemManagement], 1, 1
+MarketTradeSettlementInitiationWorkstepReference, [Reference], [TradeClearing], 1, 1
+Addressing, [BQ], [CardClearing], 1, 1
+Authorization, [BQ], [CardAuthorization; CardTerminalOperation], 1, 2
+OutboundPayments, [BQ], [CorrespondentBankOperations], 1, 1
+StaffAssignmentReference, [Reference], [BranchLocationOperations], 1, 1
+CorporateActionProcedureFinancialFacilityReference, [Reference], [CorporateAction], 1, 1
+CorporateActionProcedureServiceProviderReference, [Reference], [CorporateAction], 1, 1
+StandIn, [BQ], [CardAuthorization], 1, 1
+TradeSettlementProcedureCustomerReference, [Reference], [TradeSettlement], 1, 1
+OperationalGatewayOutcome, [entity], [OperationalGateway], 1, 1
+StaffAvailabilityTrackingRoutineReference, [Reference], [ProductSalesSupport], 1, 1
+Non-cashInventoryHandlingReference, [Reference], [BranchLocationOperations], 1, 1
+InboundTransactionFunctionReference, [Reference], [PaymentRailOperations], 1, 1
+Withdrawal, [BQ], [ConsumerLoan; Loan; CorporateLoan], 1, 3
+StaffManagementProceduresandGuidelines, [BQ], [ManagementManual], 1, 1
+Use, [BQ], [LocationDataManagement], 1, 1
+ConsumerSecuritiesOrderTransaction, [CR], [ConsumerInvestments], 1, 1
+CollectionsAccountUpdate, [BQ], [Collections], 1, 1
+OperationalSecurityProceduresandGuidelines, [BQ], [ManagementManual], 1, 1
+Routing, [BQ], [ContactHandler; CardClearing], 1, 2
+TradeDealBlotterFunctionReference, [Reference], [TraderPositionOperations], 1, 1
+BusinessUnitEmployeeReference, [Reference], [AccountReconciliation; TradingBookOversight; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CorporateFinance; ProductSalesSupport; HedgeFundAdministration; MergersandAcquisitionsAdvisory; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; PaymentInstruction; ServicingIssue; MutualFundAdministration; SyndicateManagement; TradeClearing; CreditRiskOperations; UnitTrustAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 22
+CustomerPaymentTask, [BQ], [BankGuarantee; LetterofCredit; BankDrafts], 1, 3
+CollectionsAssessment, [BQ], [Collections], 1, 1
+limittype, [entity], [NotionalPooling; CorporatePayrollServices; PublicOffering; ChequeLockBox; InternalBankAccount; CreditCardPositionKeeping; Factoring; MarketMaking; CashConcentration; TrustServices; ProjectFinance; CreditRiskOperations; PrivatePlacement; CorporateTrustServices], 1, 14
+LedgerPosting, [BQ], [FinancialAccounting], 1, 1
+TradeSettlementProcedureFinancialFacilityReference, [Reference], [TradeSettlement], 1, 1
+instruction, [entity], [AccountReconciliation; IssuedDeviceAdministration; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; CorporateFinance; MerchantRelations; MergersandAcquisitionsAdvisory; DocumentServices; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; SyndicateManagement; TradeClearing; SubCustodianAgreement; FinancialStatementAssessment; CorporateAction; SecuritiesFailsProcessing], 1, 21
+TraderTradingPermissionsandLimitsFunctionReference, [Reference], [TraderPositionOperations], 1, 1
+CashManagementAndAccountServicesFacility, [CR], [CashManagementAndAccountServices], 1, 1
+CampaignDirection, [BQ], [Advertising; ProspectCampaignManagement; CustomerCampaignManagement], 1, 3
+ResiliencyandPerformanceChecks, [BQ], [ProductQualityAssurance], 1, 1
+CustomerBehaviorAnalysis, [CR], [CustomerBehaviorInsights], 1, 1
+DepositsandWithdrawals, [BQ], [InvestmentAccount; SavingsAccount; CurrentAccount; CashManagementAndAccountServices; CorporateCurrentAccount; TermDeposit], 1, 6
+transaction, [entity], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; BankGuarantee; DocumentServices; LetterofCredit; PaymentInstruction; StockLendingandRepos; BankDrafts; ServicingIssue; TradeClearing; CorporateAction; SecuritiesFailsProcessing], 1, 15
+FinancialTransactionReference, [Reference], [CounterpartyAdministration], 1, 1
+PaymentOrderProcedure, [CR], [PaymentOrder], 1, 1
+ProductCombinationOutcome, [entity], [ProductCombination], 1, 1
+DocumentMaintenanceFunction, [BQ], [ArchiveServices], 1, 1
+subject, [entity], [AccountReconciliation; TradingBookOversight; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; ProductSalesSupport; MerchantRelations; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; DocumentServices; CorrespondentBankRelationshipManagement; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; MutualFundAdministration; SyndicateManagement; TradeClearing; SubCustodianAgreement; CreditRiskOperations; UnitTrustAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 26
+ProductDirectoryEntry, [CR], [ProductDirectory], 1, 1
+OutboundWithResponseFunction, [BQ], [OperationalGateway], 1, 1
+businessservice, [entity], [CardAuthorization; ManagementManual; Collections; EnterpriseArchitecture; TraderPositionOperations; AssetSecuritization; Leasing; ProgramTrading; NotionalPooling; SystemsAdministration; AccountReconciliation; ComplianceReporting; DirectDebit; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; RewardPointsAwardsAndRedemption; PaymentRailOperations; TradeSettlement; SpecialPricingConditions; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; CurrencyExchange; CorporateFinance; ChequeProcessing; FiduciaryAgreement; PublicOffering; ProductSalesSupport; ProductMatching; ProductQualityAssurance; CorporateLease; BankGuarantee; MerchantRelations; HedgeFundAdministration; ProductCombination; BranchCurrencyDistribution; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; MerchandisingLoan; RewardPointsAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; FinancialMarketAnalysis; AccountsReceivable; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CaseRootCauseAnalysis; VirtualAccount; BankDrafts; PublicReferenceDataManagement; CustodyAdministration; MortgageLoan; ServiceDirectory; Commissions; BranchCurrencyManagement; InternalAudit; ProductTraining; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CentralCashHandling; CreditRiskModels; CustomerProductsandServices; LeasingItemAdministration; MarketMaking; ProductServiceAgency; SyndicatedLoan; TradeandPriceReporting; ITStandardsAndGuidelines; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; RegulatoryAndLegalAuthority; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CommissionAgreement; ATMNetworkOperations; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; CardCapture; BranchLocationManagement; KnowledgeExchange; ProductInventoryDistribution; SecuritiesFailsProcessing; CorporateTrustServices], 1, 103
+arrangement, [entity], [AccountReconciliation; TradingBookOversight; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; ProductSalesSupport; MerchantRelations; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; DocumentServices; CorrespondentBankRelationshipManagement; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; MutualFundAdministration; SyndicateManagement; TradeClearing; SubCustodianAgreement; CreditRiskOperations; UnitTrustAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 26
+ServiceFees, [BQ], [InvestmentAccount; SavingsAccount; CurrentAccount; CashManagementAndAccountServices; CreditFacility; MerchandisingLoan; CorporateCurrentAccount; ConsumerLoan; VirtualAccount; ConsumerAdvisoryServices; Loan; TermDeposit; MerchantAcquiringFacility; CorporateLoan; CorporateTaxAdvisory], 1, 15
+Matching, [BQ], [CardClearing], 1, 1
+financialtransaction, [entity], [CounterpartyAdministration], 1, 1
+Registration, [BQ], [LeasingItemAdministration], 1, 1
+ProductorService, [BQ], [SessionDialogue], 1, 1
+ProductionSystemAssessment, [CR], [ProductionRelease], 1, 1
+PublicPlacementFinancialAssessmentandAuditFulfillment, [BQ], [PublicOffering], 1, 1
+NotionalPoolingFacilityProductReference, [Reference], [NotionalPooling], 1, 1
+SecuritiesAllocationProcedureBusinessUnitReference, [Reference], [OrderAllocation], 1, 1
+Deposits, [BQ], [Leasing; MerchandisingLoan; MortgageLoan], 1, 3
+SystemsAdministrationOutcome, [entity], [SystemsAdministration], 1, 1
+CustomerPropositionAgreementRegulationReference, [Reference], [CustomerProposition], 1, 1
+LockBoxFacilityReference, [Reference], [ChequeLockBox], 1, 1
+paymentcardtype, [entity], [IssuedDeviceAdministration], 1, 1
+Bot, [BQ], [ChannelActivityAnalysis], 1, 1
+RewardPointsTransaction, [CR], [RewardPointsAwardsAndRedemption], 1, 1
+FinancialMarketInsight, [BQ], [FinancialMarketAnalysis], 1, 1
+ManagementManualSpecification, [CR], [ManagementManual], 1, 1
+NotionalPoolingFacilityRegulationReference, [Reference], [NotionalPooling], 1, 1
+Inbound, [BQ], [Correspondence; AdvancedVoiceServicesOperations; FinancialGateway; eBranchOperations], 1, 4
+InvestmentPortfolioValuationFunctionReference, [Reference], [eTradingWorkbench], 1, 1
+InformationFeedOperatingSessionServiceProviderReference, [Reference], [InformationProviderOperation], 1, 1
+ProductandServiceAssessment, [CR], [ProductQualityAssurance], 1, 1
+IncidentTroubleshootingOversightDuty, [BQ], [CorrespondentBankRelationshipManagement], 1, 1
+DocumentHandling, [BQ], [CurrencyExchange], 1, 1
+Payment, [BQ], [DelinquentAccountHandling; AccountsReceivable; Commissions; CardFinancialSettlement; CardCollections], 1, 5
+MarketTradeReportingOperatingSessionAssociatedPartyReference, [Reference], [TradeandPriceReporting], 1, 1
+ProgramTradingOperatingSession, [CR], [ProgramTrading], 1, 1
+ProjectFinancePlacementFulfillment, [BQ], [ProjectFinance], 1, 1
+ProductandServicePlanning, [BQ], [BranchLocationManagement], 1, 1
+InteractiveTransactionAssessment, [CR], [TransactionAuthorization], 1, 1
+position, [entity], [NotionalPooling; CorporatePayrollServices; PublicOffering; ChequeLockBox; InternalBankAccount; CreditCardPositionKeeping; Factoring; MarketMaking; CashConcentration; TrustServices; ProjectFinance; PrivatePlacement; CorporateTrustServices], 1, 13
+EmployeePaymentServicesFacilityRegulationReference, [Reference], [CorporatePayrollServices], 1, 1
+bankguaranteeinvolvementtypevalues, [Enum], [BankGuarantee], 1, 1
+LockBoxFacilityAccountReference, [Reference], [ChequeLockBox], 1, 1
+CreditCardAuthorizationAssessmentReference, [Reference], [CardAuthorization], 1, 1
+CardTransactionEventReference, [Reference], [CreditCardPositionKeeping], 1, 1
+LetterofCreditFInancialInstrumentReference, [Reference], [LetterofCredit], 1, 1
+DelinquentAccountProcedure, [CR], [DelinquentAccountHandling], 1, 1
+CustomerTaxObligationFacility, [CR], [CustomerTaxHandling], 1, 1
+partyrole, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+DebtFactoring, [BQ], [Collections], 1, 1
+PublicPlacementProspectusFulfillment, [BQ], [PublicOffering], 1, 1
+TradeClearingProcedure, [CR], [TradeClearing], 1, 1
+PublicPlacementInstrumentSpecificationFulfillment, [BQ], [PublicOffering], 1, 1
+HedgeFundAdministrativePlan, [CR], [HedgeFundAdministration], 1, 1
+VirtualAccountConfigurationFulfillment, [entity], [VirtualAccount], 1, 1
+Demographics, [BQ], [PartyReferenceDataDirectory], 1, 1
+interesttransactiontypevalues, [Enum], [BankGuarantee; LetterofCredit; StockLendingandRepos; BankDrafts], 1, 4
+FactoringOutcome, [entity], [Factoring], 1, 1
+Remediation, [BQ], [ComplianceReporting], 1, 1
+ProductInventoryAllocation, [CR], [ProductInventoryItemManagement], 1, 1
+MandateRegistration, [BQ], [DirectDebitMandate], 1, 1
+PaymentInstructionProcedureFinancialFacilityReference, [Reference], [PaymentInstruction], 1, 1
+LetterOfCreditTransaction, [CR], [LetterofCredit], 1, 1
+AccountAssessmentWorkstepReference, [Reference], [AccountReconciliation], 1, 1
+BearerDocumentInstructionReference, [Reference], [BankDrafts], 1, 1
+SyndicateAssembly, [BQ], [SyndicatedLoan], 1, 1
+arrangementlifecyclestatus, [entity], [AccountReconciliation; TradingBookOversight; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; ProductSalesSupport; MerchantRelations; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; DocumentServices; CorrespondentBankRelationshipManagement; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; MutualFundAdministration; SyndicateManagement; TradeClearing; SubCustodianAgreement; CreditRiskOperations; UnitTrustAdministration; CorporateAction; SecuritiesFailsProcessing], 1, 26
+SecurityTradingFailsProcedureCustomerAgreementReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+ManagedInvestmentPortfolioAnalysis, [CR], [InvestmentPortfolioAnalysis], 1, 1
+LiquidityandCashFlowTestReference, [Reference], [FinancialStatementAssessment], 1, 1
+BranchLocationManagementOutcome, [entity], [BranchLocationManagement], 1, 1
+ChequeExceptionHandling, [BQ], [ChequeProcessing], 1, 1
+BearerDocumentTransaction, [CR], [BankDrafts], 1, 1
+QuotationProcedureServiceProviderReference, [Reference], [QuoteManagement], 1, 1
+CustomerPropositionOutcome, [entity], [CustomerProposition], 1, 1
+Track, [BQ], [InvestmentPortfolioManagement], 1, 1
+MarketOrderInitiationFunctionReference, [Reference], [eTradingWorkbench], 1, 1
+Assurance, [BQ], [SystemsAdministration; LeasingItemAdministration], 1, 2
+MarketTradeSettlementConfirmationWorkstepReference, [Reference], [TradeSettlement], 1, 1
+Configuration, [BQ], [SystemsAdministration], 1, 1
+StandingOrderFacilityAccountReference, [Reference], [StandingOrder], 1, 1
+SecuritiesAllocationProcedureReference, [Reference], [OrderAllocation], 1, 1
+CorporateLeaseOutcome, [entity], [CorporateLease], 1, 1
+RepresentBankInterests, [BQ], [RegulatoryAndLegalAuthority], 1, 1
+History, [BQ], [ContactHandler; SessionDialogue], 1, 2
+CollectionsOutcome, [entity], [Collections], 1, 1
+Provisioning, [BQ], [ProductInventoryDistribution], 1, 1
+CustomerProcessing, [BQ], [MarketOrder], 1, 1
+MarketOrderQuotationFunctionReference, [Reference], [eTradingWorkbench], 1, 1
+InformationFeedOperatingSessionReference, [Reference], [InformationProviderOperation], 1, 1
+TrackingandAllocation, [BQ], [CentralCashHandling], 1, 1
+TacticalFundingTopic, [BQ], [CorporateFinance], 1, 1
+RepoTransactionInitiationTask, [BQ], [StockLendingandRepos], 1, 1
+PrivatePlacementFacilityReference, [Reference], [PrivatePlacement], 1, 1
+CardCaptureOutcome, [entity], [CardCapture], 1, 1
+MutualFundAdministrativePlanReference, [Reference], [MutualFundAdministration], 1, 1
+OperationalRisk, [BQ], [ProductionRelease], 1, 1
+SecuritiesFailDeterminationWorkstepReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+TradedPositionOperatingSessionServiceProviderReference, [Reference], [TraderPositionOperations], 1, 1
+RepurchaseAgreementInvolvedPartyReference, [Reference], [StockLendingandRepos], 1, 1
+financialfacility, [entity], [NotionalPooling; AccountReconciliation; DirectDebit; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PublicOffering; ChequeLockBox; DocumentServices; PaymentInstruction; VirtualAccount; Factoring; ServicingIssue; MarketMaking; TradeClearing; CashConcentration; TrustServices; ProjectFinance; PrivatePlacement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 25
+paymentcard, [entity], [IssuedDeviceAdministration], 1, 1
+DocumentReferenceProperties, [BQ], [DocumentDirectory], 1, 1
+LeasingOutcome, [entity], [Leasing], 1, 1
+InternalNotification, [BQ], [IssuedDeviceTracking], 1, 1
+Browsing, [BQ], [CustomerWorkbench], 1, 1
+AccessControlServicingProperties, [BQ], [ServiceDirectory], 1, 1
+CorporateLoanFacility, [CR], [CorporateLoan], 1, 1
+letterofcredittransactiontypevalues, [Enum], [LetterofCredit], 1, 1
+BankGuaranteeDefinitionandPricingTask, [BQ], [BankGuarantee], 1, 1
+IncidentTroubleshootingOversightDutyReference, [Reference], [CorrespondentBankRelationshipManagement], 1, 1
+ServicingEventLog, [CR], [ServicingEventHistory], 1, 1
+InboundACH, [BQ], [ACHOperations], 1, 1
+PartyAuthenticationAssessment, [CR], [PartyAuthentication], 1, 1
+TrustServicesOutcome, [entity], [TrustServices], 1, 1
+PaymentTracking, [BQ], [DirectDebit], 1, 1
+accountidentification, [entity], [NotionalPooling; IssuedDeviceAdministration; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; CurrentAccount; MerchantRelations; ChequeLockBox; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CounterpartyAdministration; PrivatePlacement; CorporateTrustServices], 1, 20
+DividendsandInterest, [BQ], [CustodyAdministration], 1, 1
+SecuritySpin, [BQ], [CorporateAction], 1, 1
+MerchantRelationshipAgreement, [CR], [MerchantRelations], 1, 1
+SyndicatedLoanFacility, [CR], [SyndicatedLoan], 1, 1
+CorrepondentBankRelationshipManagementPlan, [CR], [CorrespondentBankRelationshipManagement], 1, 1
+Inventory, [BQ], [PointofService; SystemsAdministration], 1, 2
+MerchantAcquiringFacility, [CR], [MerchantAcquiringFacility], 1, 1
+StockLendingandReposOutcome, [entity], [StockLendingandRepos], 1, 1
+CounterpartyAdministrationOutcome, [entity], [CounterpartyAdministration], 1, 1
+PeakLoad, [BQ], [ContactCenterOperations], 1, 1
+M&ACandidateSelectionandEvaluationTopic, [BQ], [MergersandAcquisitionsAdvisory], 1, 1
+Fraud, [BQ], [CustomerEventHistory], 1, 1
+Determination, [BQ], [CustomerCase], 1, 1
+PaymentClearingandSettlementFunctionReference, [Reference], [PaymentRailOperations], 1, 1
+FactoringFacility, [CR], [Factoring], 1, 1
+CorporateTrustServicesFacilityReference, [Reference], [TrustServices; CorporateTrustServices], 1, 2
+ContextCriteria, [BQ], [ProductMatching], 1, 1
+Broadcast, [BQ], [CustomerWorkbench], 1, 1
+StrategicFundingTopic, [BQ], [CorporateFinance], 1, 1
+SecurityRightsIssueActionWorkstep, [BQ], [CorporateAction], 1, 1
+OrderAllocationOutcome, [entity], [OrderAllocation], 1, 1
+CustomerOfferProcedure, [CR], [CustomerOffer], 1, 1
+SafeCustodyOperations, [entity], [BranchLocationOperations], 1, 1
+Question, [BQ], [PartyAuthentication], 1, 1
+OperationalTermReference, [Reference], [MerchantRelations], 1, 1
+PaymentInstructionProcedureReference, [Reference], [PaymentInstruction], 1, 1
+CorporateTaxAdvisoryFacility, [CR], [CorporateTaxAdvisory], 1, 1
+WarrantInstrumentproperty, [BQ], [FinancialInstrumentReferenceDataManagement], 1, 1
+TechnologyInfrastructure, [BQ], [EnterpriseArchitecture], 1, 1
+InventoryProvisioning, [BQ], [BranchCurrencyDistribution], 1, 1
+FinancialInstrumentDirectoryEntryReference, [Reference], [FinancialInstrumentReferenceDataManagement], 1, 1
+Update(PartiallyCompleted)MarketOrderWorkstep, [BQ], [OrderAllocation], 1, 1
+ServicingIssueProcedureServiceProviderReference, [Reference], [ServicingIssue], 1, 1
+AssetValuationApproachSelectionWorkstepReference, [Reference], [FinancialInstrumentValuation], 1, 1
+TradeMatchingOperatingSessionAssociatedPartyReference, [Reference], [TradeConfirmationMatching], 1, 1
+assessmenttypevalues, [Enum], [CardAuthorization; FinancialStatementAssessment], 1, 2
+Mailing, [BQ], [ProductInventoryDistribution], 1, 1
+MarketAssetValuationProcedureCustomerReference, [Reference], [FinancialInstrumentValuation], 1, 1
+Settlement, [BQ], [CustodyAdministration; MerchantAcquiringFacility], 1, 2
+servicetype, [entity], [InformationProviderOperation; TraderPositionOperations; ProgramTrading; AccountReconciliation; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; OrderAllocation; BankGuarantee; DocumentServices; InternalBankAccount; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; BankDrafts; TradeConfirmationMatching; ServicingIssue; TradeandPriceReporting; ArchiveServices; SyndicateManagement; TradeClearing; DealerDesk; eTradingWorkbench; FinancialStatementAssessment; CorporateAction; SecuritiesFailsProcessing], 1, 29
+FinancialInstrument, [BQ], [Leasing; MerchandisingLoan; MortgageLoan], 1, 3
+PublicPlacementRoadshowandMarketingFulfillment, [BQ], [PublicOffering], 1, 1
+Non-cashInventoryHandling, [entity], [BranchLocationOperations], 1, 1
+OutboundMessageFunction, [BQ], [OperationalGateway], 1, 1
+InboundTransactionFunction, [BQ], [PaymentRailOperations], 1, 1
+Event, [BQ], [ChannelActivityHistory], 1, 1
+StaffAssignmentRoutineReference, [Reference], [ProductSalesSupport], 1, 1
+FraudModelSpecification, [CR], [FraudModel], 1, 1
+ChequeLockBoxOutcome, [entity], [ChequeLockBox], 1, 1
+FinancialInstrumentReference, [Reference], [FinancialInstrumentReferenceDataManagement], 1, 1
+OutboundMessageFunctionReference, [Reference], [OperationalGateway], 1, 1
+project, [entity], [TradingBookOversight; CorporateFinance; MergersandAcquisitionsAdvisory; BrokeredProduct; CorrespondentBankRelationshipManagement], 1, 5
+ProjectFinanceFacility, [CR], [ProjectFinance], 1, 1
+currencycode, [entity], [CardAuthorization; PointofService; Leasing; PositionManagement; NotionalPooling; InvestmentAccount; FinancialAccounting; IssuedDeviceAdministration; DirectDebit; SecuritiesPositionKeeping; TradingBookOversight; CorporatePayrollServices; StandingOrder; AssetAndLiabilityManagement; Underwriting; CustomerProposition; FiduciaryAgreement; PublicOffering; ProductSalesSupport; DelinquentAccountHandling; CorporateLease; BankGuarantee; SavingsAccount; CurrentAccount; MerchantRelations; HedgeFundAdministration; ProductCombination; BranchCurrencyDistribution; CashManagementAndAccountServices; CreditFacility; ChequeLockBox; BranchLocationOperations; BrokeredProduct; MerchandisingLoan; InternalBankAccount; TransactionEngine; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; CardTransactionSwitch; CorporateCurrentAccount; CustomerBilling; ConsumerLoan; LetterofCredit; CollateralAllocationManagement; CardNetworkParticipantFacility; AccountRecovery; CreditCard; StockLendingandRepos; VirtualAccount; CardeCommerceGateway; CustodyAdministration; CardTerminalOperation; MortgageLoan; CardClearing; BranchCurrencyManagement; Factoring; CardCase; Loan; ContractorandSupplierAgreement; PositionKeeping; CentralCashHandling; MarketMaking; TermDeposit; ProductServiceAgency; SyndicatedLoan; MutualFundAdministration; SyndicateManagement; CardFinancialSettlement; CashConcentration; SubCustodianAgreement; MerchantAcquiringFacility; OpenItemManagement; TrustServices; CorporateLoan; ProjectFinance; CreditManagement; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; CorporateTrustServices], 1, 81
+RepoTransactionCashTransferTask, [BQ], [StockLendingandRepos], 1, 1
+Repayment, [BQ], [CreditFacility; ConsumerLoan; CreditCard; Loan; OpenItemManagement; CorporateLoan], 1, 6
+ApplyOrderAllocationRulesWorkstepReference, [Reference], [OrderAllocation], 1, 1
+frequency, [entity], [NotionalPooling; CorporatePayrollServices; PublicOffering; ChequeLockBox; InternalBankAccount; CreditCardPositionKeeping; Factoring; MarketMaking; CashConcentration; TrustServices; ProjectFinance; CreditRiskOperations; PrivatePlacement; CorporateTrustServices], 1, 14
+LegalEntityDirectoryEntry, [CR], [LegalEntityDirectory], 1, 1
+Interest, [BQ], [Leasing; SavingsAccount; CurrentAccount; CashManagementAndAccountServices; CreditFacility; MerchandisingLoan; CorporateCurrentAccount; ConsumerLoan; CreditCard; VirtualAccount; MortgageLoan; Loan; TermDeposit; CorporateLoan], 1, 14
+PaymentInstructionWorkstep, [BQ], [PaymentInstruction], 1, 1
+instructiontypevalues, [Enum], [AccountReconciliation; IssuedDeviceAdministration; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; CorporateFinance; MerchantRelations; MergersandAcquisitionsAdvisory; DocumentServices; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; SyndicateManagement; TradeClearing; SubCustodianAgreement; FinancialStatementAssessment; CorporateAction; SecuritiesFailsProcessing], 1, 21
+CustomerPropositionAgreementAccountReference, [Reference], [CustomerProposition], 1, 1
+OutboundWithResponse, [BQ], [Correspondence], 1, 1
+MarketTradeOutTradeResolutionWorkstepReference, [Reference], [TradeClearing], 1, 1
+accountstatus, [entity], [NotionalPooling; IssuedDeviceAdministration; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; CurrentAccount; MerchantRelations; ChequeLockBox; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CounterpartyAdministration; PrivatePlacement; CorporateTrustServices], 1, 20
+AccountReconciliationOutcome, [entity], [AccountReconciliation], 1, 1
+MarketTradeMatchingWorkstepReference, [Reference], [TradeClearing], 1, 1
+FundsAvailableCheck, [BQ], [DirectDebit], 1, 1
+ServiceProviderAgreementReference, [Reference], [ProductServiceAgency], 1, 1
+instructiondate, [entity], [AccountReconciliation; IssuedDeviceAdministration; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; CorporateFinance; MerchantRelations; MergersandAcquisitionsAdvisory; DocumentServices; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; SyndicateManagement; TradeClearing; SubCustodianAgreement; FinancialStatementAssessment; CorporateAction; SecuritiesFailsProcessing], 1, 21
+RewardPointsAccountOutcome, [entity], [RewardPointsAccount], 1, 1
+DocumentDirectoryEntryReference, [Reference], [DocumentDirectory], 1, 1
+FraudEvaluationAssessment, [CR], [FraudEvaluation], 1, 1
+CaseAnalysis, [BQ], [FraudResolution], 1, 1
+LeadandOpportunityProcedure, [CR], [LeadandOpportunityManagement], 1, 1
+RelationshipDevelopmentDuty, [BQ], [CorrespondentBankRelationshipManagement], 1, 1
+FundEnrolmentRoutine, [BQ], [MutualFundAdministration; UnitTrustAdministration], 1, 2
+ParticipantAccount, [BQ], [CardNetworkParticipantFacility], 1, 1
+GeneralMarketResearchDirectoryEntry, [CR], [MarketResearch], 1, 1
+FraudResolutionProcedure, [CR], [FraudResolution], 1, 1
+ServiceDelivery, [BQ], [ProductTraining], 1, 1
+DocumentServicesOutcome, [entity], [DocumentServices], 1, 1
+businessunit, [entity], [NotionalPooling; CorporatePayrollServices; StandingOrder; PublicOffering; ChequeLockBox; InternalBankAccount; CreditCardPositionKeeping; Factoring; MarketMaking; CashConcentration; TrustServices; ProjectFinance; PrivatePlacement; CorporateTrustServices], 1, 14
+CustomerPropositionAgreementAssociatedAgreementReference, [Reference], [CustomerProposition], 1, 1
+PaymentInstructionWorkstepReference, [Reference], [PaymentInstruction], 1, 1
+CreditRiskOperationsOutcome, [entity], [CreditRiskOperations], 1, 1
+Offer, [BQ], [SessionDialogue], 1, 1
+CorporatePayrollServicesOutcome, [entity], [CorporatePayrollServices], 1, 1
+BankGuaranteeAgreementReference, [Reference], [BankGuarantee], 1, 1
+MarketTradeConfirmationWorkstep, [BQ], [TradeClearing], 1, 1
+FactoringFacilityRegulationReference, [Reference], [Factoring], 1, 1
+ChannelActivityLog, [CR], [ChannelActivityHistory], 1, 1
+LocationSecurityAdministrationReference, [Reference], [BranchLocationOperations], 1, 1
+AssetValuationInformationConsolidationWorkstepReference, [Reference], [FinancialInstrumentValuation], 1, 1
+FundInvestor_MiddleandBackOfficeServiceRoutine, [BQ], [HedgeFundAdministration; MutualFundAdministration; UnitTrustAdministration], 1, 3
+MutualFundAdministrativePlan, [CR], [MutualFundAdministration], 1, 1
+SubCustodianAgreementCustomerReference, [Reference], [SubCustodianAgreement], 1, 1
+PrivatePlacementInstrumentSpecificationFulfillment, [BQ], [PrivatePlacement], 1, 1
+CashPosition, [BQ], [PointofService], 1, 1
+Disclosures, [BQ], [CustomerOffer], 1, 1
+ServicingIssueProcedureReference, [Reference], [ServicingIssue], 1, 1
+SubCustodianAgreementProductReference, [Reference], [SubCustodianAgreement], 1, 1
+MarketQuoteSelectionWorkstep, [BQ], [QuoteManagement], 1, 1
+ProductSalesSupportAdministrativePlanReference, [Reference], [ProductSalesSupport], 1, 1
+BankandCampaignAlignment, [BQ], [ProductMatching], 1, 1
+QuotationProcedureCustomerAgreementReference, [Reference], [QuoteManagement], 1, 1
+SecurityMergersandAcquisitionActionWorkstep, [BQ], [CorporateAction], 1, 1
+NotionalPoolingOutcome, [entity], [NotionalPooling], 1, 1
+FinancialMarketResearchDirectoryEntry, [CR], [FinancialMarketResearch], 1, 1
+productidentification, [entity], [NotionalPooling; AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; PublicOffering; MerchantRelations; ChequeLockBox; DocumentServices; PaymentInstruction; CardeCommerceGateway; Factoring; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CreditRiskOperations; PrivatePlacement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 31
+Consolidation, [BQ], [ComplianceReporting; MarketInformationManagement; CardCase; CardFinancialSettlement; CustomerTaxHandling; RegulatoryReporting], 1, 6
+LegalTerms, [BQ], [SalesProductAgreement; ProductBrokerAgreement; CustomerAgreement], 1, 3
+IssuedDeviceState, [CR], [IssuedDeviceTracking], 1, 1
+AccountReconciliationProcedureServiceProviderReference, [Reference], [AccountReconciliation], 1, 1
+TradeSettlementProcedureServiceProviderReference, [Reference], [TradeSettlement], 1, 1
+ConterpartyReference, [Reference], [CounterpartyAdministration], 1, 1
+TransactionApplication, [BQ], [PositionManagement], 1, 1
+MerchandisingLoanFacility, [CR], [MerchandisingLoan], 1, 1
+DocumentTemplate, [entity], [DocumentServices], 1, 1
+RelationshipDevelopmentDutyReference, [Reference], [CorrespondentBankRelationshipManagement], 1, 1
+TermDepositFacility, [CR], [TermDeposit], 1, 1
+RegulatoryTerms, [BQ], [SalesProductAgreement; ProductBrokerAgreement; CustomerAgreement], 1, 3
+ProductionEnvironmentandSupportServices, [BQ], [ITStandardsAndGuidelines], 1, 1
+CorporateActionProcedureReference, [Reference], [CorporateAction], 1, 1
+ProgramTradingOperatingSessionReference, [Reference], [ProgramTrading], 1, 1
+financialinstrumenttypevalues, [Enum], [FinancialInstrumentReferenceDataManagement], 1, 1
+FinancialInstrumentDirectoryEntry, [CR], [FinancialInstrumentReferenceDataManagement], 1, 1
+PerformanceAssessment, [BQ], [Advertising; ProspectCampaignManagement; CustomerCampaignManagement], 1, 3
+FinancialGatewayOperatingSession, [CR], [FinancialGateway], 1, 1
+ProductReference, [Reference], [CustomerProductsandServices], 1, 1
+SecurityTradingFailsProcedureCustomerReference, [Reference], [SecuritiesFailsProcessing], 1, 1
+MerchantRelationshipAgreementCustomerReference, [Reference], [MerchantRelations], 1, 1
+ProductSalesAgreementReference, [Reference], [CustomerProductsandServices], 1, 1
+PrivatePlacementFacility, [CR], [PrivatePlacement], 1, 1
+TokenServiceProviderReference, [Reference], [IssuedDeviceAdministration], 1, 1
+MerchantRelationshipAgreementReference, [Reference], [MerchantRelations], 1, 1
+FinancialStatementAssessmentOutcome, [entity], [FinancialStatementAssessment], 1, 1
+AccountSweep, [BQ], [SavingsAccount; CurrentAccount; CashManagementAndAccountServices; CorporateCurrentAccount; TermDeposit], 1, 5
+BankRelations, [BQ], [PartyReferenceDataDirectory], 1, 1
+OperationalGatewayOperatingSessionReference, [Reference], [OperationalGateway], 1, 1
+proceduretype, [entity], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; DocumentServices; PaymentInstruction; ServicingIssue; TradeClearing; CorporateAction; SecuritiesFailsProcessing], 1, 11
+Billing, [BQ], [MerchandisingLoan; CreditCard; MortgageLoan], 1, 3
+ApplicationArchitecture, [BQ], [EnterpriseArchitecture], 1, 1
+DisbursementTransaction, [CR], [Disbursement], 1, 1
+location, [entity], [LocationDataManagement], 1, 1
+DealerDeskOperatingSessionServiceProviderReference, [Reference], [DealerDesk], 1, 1
+TransactionReversal, [BQ], [CardCapture], 1, 1
+Location, [BQ], [LocationDataManagement], 1, 1
+NotionalAccountInterestAllocationFulfillment, [BQ], [NotionalPooling], 1, 1
+instructionlifecyclestatus, [entity], [AccountReconciliation; IssuedDeviceAdministration; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CustomerProposition; CorporateFinance; MerchantRelations; MergersandAcquisitionsAdvisory; DocumentServices; PaymentInstruction; ContractorandSupplierAgreement; ServicingIssue; ProductServiceAgency; SyndicateManagement; TradeClearing; SubCustodianAgreement; FinancialStatementAssessment; CorporateAction; SecuritiesFailsProcessing], 1, 21
+CompetitorAnalysis, [CR], [CompetitorAnalysis], 1, 1
+MarketTradeConfirmationWorkstepReference, [Reference], [TradeClearing], 1, 1
+AccountResolutionWorkstepReference, [Reference], [AccountReconciliation], 1, 1
+InformationFeedSwitchOperatingSession, [CR], [MarketDataSwitchOperation], 1, 1
+StandingOrderFulfillment, [entity], [StandingOrder], 1, 1
+CorporateTrustServicesFacilityProductReference, [Reference], [TrustServices; CorporateTrustServices], 1, 2
+Check, [BQ], [Commissions], 1, 1
+StockSplitorReversalActionWorkstep, [BQ], [CorporateAction], 1, 1
+CorporateActionProcedureBusinessUnitReference, [Reference], [CorporateAction], 1, 1
+InternalBankAccountLogBusinessUnitReference, [Reference], [InternalBankAccount], 1, 1
+FinancialMarketReference, [Reference], [FinancialInstrumentReferenceDataManagement], 1, 1
+ProgramTradeExecutionFunctionReference, [Reference], [ProgramTrading], 1, 1
+LockBoxReportingandIssueResolutionFulfillment, [BQ], [ChequeLockBox], 1, 1
+CreditPricingAssessment, [CR], [CreditManagement], 1, 1
+FinancialStatementAssessmentReference, [Reference], [FinancialStatementAssessment], 1, 1
+NotionalAccountArrangementFulfillment, [BQ], [NotionalPooling], 1, 1
+ProjectFinanceFacilityAccountReference, [Reference], [ProjectFinance], 1, 1
+ProductandServiceIssueAnalysis, [BQ], [CaseRootCauseAnalysis], 1, 1
+SurveyAnalysis, [BQ], [CustomerSurveys], 1, 1
+MarketTradeMatchingWorkstep, [BQ], [TradeClearing], 1, 1
+QuestionAssignment, [BQ], [IssuedDeviceAdministration], 1, 1
+Restrictions, [BQ], [CustomerAccessEntitlement], 1, 1
+ArchiveServicesOutcome, [entity], [ArchiveServices], 1, 1
+CorrespondenceOperatingSession, [CR], [Correspondence], 1, 1
+BrokeredProductManagementPlan, [CR], [BrokeredProduct], 1, 1
+goal, [entity], [TradingBookOversight; ProductSalesSupport; HedgeFundAdministration; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; MutualFundAdministration; SyndicateManagement; UnitTrustAdministration], 1, 9
+DistributionVehicleAdministration, [BQ], [BranchCurrencyDistribution], 1, 1
+CorporateTrustServicesOutcome, [entity], [CorporateTrustServices], 1, 1
+AccountBalanceStatement, [entity], [SavingsAccount; CurrentAccount; MerchandisingLoan; CorporateCurrentAccount; ConsumerLoan; CreditCard; VirtualAccount; MortgageLoan; Loan; TermDeposit; CorporateLoan], 1, 11
+SecurityTradingFailsProcedure, [CR], [SecuritiesFailsProcessing], 1, 1
+BrandManagementPlan, [CR], [BrandManagement], 1, 1
+TradeClearingProcedureServiceProviderReference, [Reference], [TradeClearing], 1, 1
+CorporateActionProcedureAssociatedPartyReference, [Reference], [CorporateAction], 1, 1
+BankGuaranteeOutcome, [entity], [BankGuarantee], 1, 1
+Booking, [BQ], [CustomerOffer], 1, 1
+ProductionPerformanceAssessmentDuty, [BQ], [BrokeredProduct], 1, 1
+AgreementConfirmationWorkstepReference, [Reference], [PaymentInstruction], 1, 1
+bankingproduct, [entity], [NotionalPooling; AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; PublicOffering; MerchantRelations; ChequeLockBox; DocumentServices; PaymentInstruction; CardeCommerceGateway; Factoring; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; CreditRiskOperations; PrivatePlacement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 31
+NextBest, [BQ], [CustomerProductAndServiceEligibility], 1, 1
+CaseResolution, [BQ], [FraudResolution], 1, 1
+DeviceError, [BQ], [ChannelActivityAnalysis], 1, 1
+NotionalPoolingFacilityReference, [Reference], [NotionalPooling], 1, 1
+CorrepondentBankRelationshipManagementPlanReference, [Reference], [CorrespondentBankRelationshipManagement], 1, 1
+ComplianceReportingAdministrativePlan, [CR], [ComplianceReporting], 1, 1
+DocumentServiceProcedureFinancialFacilityReference, [Reference], [DocumentServices], 1, 1
+FunctionalSpecification, [BQ], [SystemDevelopment], 1, 1
+Models, [BQ], [FraudEvaluation], 1, 1
+WorkforceAdministrationReference, [Reference], [BranchLocationOperations], 1, 1
+CandidateSelection, [BQ], [CustomerCampaignExecution; ProspectCampaignExecution], 1, 2
+ITSystemDevelopment, [CR], [SystemDevelopment], 1, 1
+CustomerProductsAndServicesDirectoryEntry, [CR], [CustomerProductsandServices], 1, 1
+ServiceProviderAgreementAccountReference, [Reference], [ProductServiceAgency], 1, 1
+DocumentServiceProcedureBusinessUnitReference, [Reference], [DocumentServices], 1, 1
+CardTransactionEvent, [BQ], [CreditCardPositionKeeping], 1, 1
+ServicingIssueProcedureCustomerReference, [Reference], [ServicingIssue], 1, 1
+Writedown, [BQ], [AccountRecovery], 1, 1
+ServicingFacility, [BQ], [ServicingEventHistory], 1, 1
+In-forceServiceproperty, [entity], [CustomerProductsandServices], 1, 1
+Collateral, [BQ], [Leasing; CustomerOffer; MerchandisingLoan; CustomerPosition; MortgageLoan], 1, 5
+VirtualAccountMaintenanceFulfillment, [entity], [VirtualAccount], 1, 1
+MarketTradeSecuritiesSettlementWorkstepReference, [Reference], [TradeSettlement], 1, 1
+Invoicing, [BQ], [CustomerBilling], 1, 1
+Case, [BQ], [SessionDialogue], 1, 1
+FinancialPositionLog, [CR], [PositionKeeping], 1, 1
+CapacityPlanningandResilience, [BQ], [SystemsAdministration], 1, 1
+ProductCustomerCombinationAssessment, [CR], [ProductMatching], 1, 1
+InvestmentTerms, [BQ], [InvestmentPortfolioPlanning], 1, 1
+HTTPError, [entity], [CardAuthorization; InformationProviderOperation; ManagementManual; ServicingOrder; Collections; EnterpriseArchitecture; TraderPositionOperations; AssetSecuritization; PointofService; Leasing; PositionManagement; PaymentExecution; MarketOrder; ProductDesign; ProgramTrading; FinancialMarketResearch; Correspondence; LocationDataManagement; IntellectualPropertyPortfolio; NotionalPooling; SystemsAdministration; LegalEntityDirectory; AccountReconciliation; InvestmentAccount; ComplianceReporting; FinancialAccounting; SalesProductAgreement; CustomerSurveys; IssuedDeviceAdministration; PartyLifecycleManagement; DirectDebit; SecuritiesPositionKeeping; DocumentDirectory; TradingBookOversight; FraudDiagnosis; FinancialInstrumentValuation; ProductDirectory; RewardPointsAwardsAndRedemption; CustomerCampaignDesign; PaymentRailOperations; TradeSettlement; SpecialPricingConditions; QuoteManagement; BusinessUnitManagement; IssuedDeviceTracking; CorporatePayrollServices; OrderAllocation; StandingOrder; AssetAndLiabilityManagement; AdvancedVoiceServicesOperations; CollateralAssetAdministration; PartyReferenceDataDirectory; Underwriting; CustomerProposition; SegmentDirection; CurrencyExchange; PartyRoutingProfile; LegalCompliance; Disbursement; CorporateFinance; ContactRouting; ChequeProcessing; FinancialGateway; PartyAuthentication; Advertising; ProductExpertSalesSupport; FiduciaryAgreement; PromotionalEvents; PublicOffering; ProductSalesSupport; FraudResolution; DelinquentAccountHandling; ProductMatching; ProductQualityAssurance; CorporateLease; CustomerCreditRating; BankGuarantee; CorporateTreasury; SavingsAccount; CustomerOffer; CurrentAccount; MerchantRelations; DirectDebitMandate; HedgeFundAdministration; ChannelActivityAnalysis; ProductCombination; BranchCurrencyDistribution; MarketInformationManagement; MergersandAcquisitionsAdvisory; CashManagementAndAccountServices; CreditFacility; CustomerProductAndServiceEligibility; ChequeLockBox; BranchLocationOperations; ECMAndDCM; CustomerCampaignExecution; SalesProduct; eBranchOperations; CustomerEventHistory; SystemDevelopment; ContactHandler; BrokeredProduct; InteractiveHelp; MerchandisingLoan; DocumentServices; InternalBankAccount; RewardPointsAccount; InvestmentPortfolioPlanning; TransactionEngine; CorrespondentBankRelationshipManagement; ProspectCampaignManagement; CreditCardPositionKeeping; ContactCenterManagement; CardTransactionSwitch; CorrespondentBankOperations; FinancialMarketAnalysis; AccountsReceivable; InvestmentPortfolioAnalysis; GuidelineCompliance; CorporateCurrentAccount; CustomerBilling; ConsumerLoan; LetterofCredit; ProductBrokerAgreement; CollateralAllocationManagement; ProductPortfolio; PaymentInstruction; BrandManagement; CardNetworkParticipantFacility; AccountRecovery; CreditCard; StockLendingandRepos; ProductDeployment; CustomerCampaignManagement; FraudModel; InvestmentPortfolioManagement; CustomerPosition; OperationalGateway; CaseRootCauseAnalysis; CustomerBehaviorInsights; VirtualAccount; CardeCommerceGateway; BankDrafts; PublicReferenceDataManagement; CustodyAdministration; CardTerminalOperation; MortgageLoan; MarketResearch; CustomerWorkbench; ConsumerAdvisoryServices; SessionDialogue; PaymentOrder; ProductionRelease; CardClearing; ServiceDirectory; Commissions; BranchCurrencyManagement; CustomerBehaviorModels; InternalAudit; CustomerCase; ProductTraining; LeadandOpportunityManagement; SuitabilityChecking; BusinessDevelopment; Factoring; MarketDataSwitchOperation; CardCase; TradeConfirmationMatching; InterbankRelationshipManagement; CustomerAccessEntitlement; Loan; ContractorandSupplierAgreement; ServicingMandate; PositionKeeping; ServicingIssue; CentralCashHandling; CreditRiskModels; CustomerProductsandServices; LeasingItemAdministration; PaymentInitiation; CustomerCaseManagement; MarketMaking; ProspectCampaignDesign; RegulatoryCompliance; TermDeposit; ProductServiceAgency; SyndicatedLoan; TradeandPriceReporting; ITStandardsAndGuidelines; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; ProductInventoryItemManagement; CardFinancialSettlement; TransactionAuthorization; ServicingEventHistory; CashConcentration; RegulatoryAndLegalAuthority; AdvancedVoiceServicesManagement; FraudEvaluation; SubCustodianAgreement; CustomerAgreement; MerchantAcquiringFacility; ACHOperations; OpenItemManagement; ChannelActivityHistory; ProspectCampaignExecution; TrustServices; CorrespondentBankDirectory; DealerDesk; ContactCenterOperations; CorporateLoan; CustomerTaxHandling; ProjectFinance; eTradingWorkbench; CreditManagement; CommissionAgreement; ATMNetworkOperations; CardCollections; CreditRiskOperations; CounterpartyAdministration; CorporateTaxAdvisory; UnitTrustAdministration; CustomerRelationshipManagement; PrivatePlacement; FinancialStatementAssessment; eBranchManagement; FinancialInstrumentReferenceDataManagement; ConsumerInvestments; CorporateAction; CardCapture; BranchLocationManagement; KnowledgeExchange; RegulatoryReporting; ProductInventoryDistribution; MarketAnalysis; CardTerminalAdministration; ServicingActivityAnalysis; CustomerPortfolio; SecuritiesFailsProcessing; CompetitorAnalysis; CorporateTrustServices; MarketOrderExecution], 1, 244
+QuotationProcedureFinancialFacilityReference, [Reference], [QuoteManagement], 1, 1
+FinancialBookingLog, [CR], [FinancialAccounting], 1, 1
+clearingchanneltypevalues, [Enum], [BankDrafts], 1, 1
+feature, [entity], [NotionalPooling; AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; CustomerProposition; CorporateFinance; PublicOffering; MerchantRelations; MergersandAcquisitionsAdvisory; ChequeLockBox; DocumentServices; PaymentInstruction; Factoring; ContractorandSupplierAgreement; ServicingIssue; MarketMaking; ProductServiceAgency; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; PrivatePlacement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 30
+ServicingMandateAgreement, [CR], [ServicingMandate], 1, 1
+BusinessDevelopmentStrategy, [CR], [BusinessDevelopment], 1, 1
+worksteptype, [entity], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; PaymentInstruction; ServicingIssue; TradeClearing; CorporateAction; SecuritiesFailsProcessing], 1, 10
+UsageSpecification, [BQ], [SystemDevelopment], 1, 1
+letterofcredittransaction, [entity], [LetterofCredit], 1, 1
+DocumentMaintenanceFunctionReference, [Reference], [ArchiveServices], 1, 1
+event, [entity], [InformationProviderOperation; TraderPositionOperations; ProgramTrading; PaymentRailOperations; CreditCardPositionKeeping; CorrespondentBankOperations; OperationalGateway; TradeConfirmationMatching; TradeandPriceReporting; ArchiveServices; DealerDesk; eTradingWorkbench], 1, 12
+feetransaction, [entity], [BankGuarantee; LetterofCredit; StockLendingandRepos; BankDrafts], 1, 4
+MarketMakingBuyandSellOrderFulfillment, [BQ], [MarketMaking], 1, 1
+Arbitration, [BQ], [CardCase], 1, 1
+FundingCheck, [BQ], [MarketOrder; PaymentInitiation; ConsumerInvestments], 1, 3
+Reference, [BQ], [LegalEntityDirectory; PartyReferenceDataDirectory], 1, 2
+EnterpriseArchitectureOutcome, [entity], [EnterpriseArchitecture], 1, 1
+TradeInitiation, [BQ], [MarketOrder; InvestmentPortfolioManagement; MarketOrderExecution], 1, 3
+RelationshipReciprocityAssessmentDutyReference, [Reference], [CorrespondentBankRelationshipManagement], 1, 1
+CashConcentrationOutcome, [entity], [CashConcentration], 1, 1
+InternalBankAccountLogCustomerReference, [Reference], [InternalBankAccount], 1, 1
+CorporateTrustServicesFacilityRegulationReference, [Reference], [TrustServices; CorporateTrustServices], 1, 2
+BranchCashAllocation, [CR], [BranchCurrencyManagement], 1, 1
+ArchiveOperatingSession, [CR], [ArchiveServices], 1, 1
+TradeSettlementProcedureAssociatedPartyReference, [Reference], [TradeSettlement], 1, 1
+SafeKeeping, [BQ], [CustodyAdministration], 1, 1
+workstep, [entity], [AccountReconciliation; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; PaymentInstruction; ServicingIssue; TradeClearing; CorporateAction; SecuritiesFailsProcessing], 1, 10
+ReaderAssignment, [BQ], [IssuedDeviceAdministration], 1, 1
+InternalAuditAssessment, [CR], [InternalAudit], 1, 1
+date, [entity], [CardAuthorization; PositionManagement; Correspondence; AccountReconciliation; InvestmentAccount; FinancialAccounting; SalesProductAgreement; CustomerSurveys; IssuedDeviceAdministration; PartyLifecycleManagement; SecuritiesPositionKeeping; DocumentDirectory; FinancialInstrumentValuation; TradeSettlement; QuoteManagement; OrderAllocation; CollateralAssetAdministration; PartyReferenceDataDirectory; CustomerProposition; PartyRoutingProfile; Disbursement; CorporateFinance; FinancialGateway; PartyAuthentication; Advertising; PromotionalEvents; DelinquentAccountHandling; CustomerCreditRating; BankGuarantee; CorporateTreasury; SavingsAccount; CurrentAccount; MerchantRelations; DirectDebitMandate; MergersandAcquisitionsAdvisory; CashManagementAndAccountServices; CreditFacility; CustomerCampaignExecution; DocumentServices; InvestmentPortfolioPlanning; ProspectCampaignManagement; CardTransactionSwitch; InvestmentPortfolioAnalysis; CorporateCurrentAccount; CustomerBilling; ConsumerLoan; ProductBrokerAgreement; CollateralAllocationManagement; ProductPortfolio; PaymentInstruction; BrandManagement; CardNetworkParticipantFacility; CreditCard; CustomerCampaignManagement; CustomerPosition; CustomerBehaviorInsights; CardeCommerceGateway; CardTerminalOperation; CustomerWorkbench; CardClearing; ServiceDirectory; CardCase; InterbankRelationshipManagement; CustomerAccessEntitlement; Loan; ContractorandSupplierAgreement; ServicingMandate; PositionKeeping; ServicingIssue; CustomerProductsandServices; TermDeposit; ProductServiceAgency; SyndicateManagement; TradeClearing; CardFinancialSettlement; AdvancedVoiceServicesManagement; SubCustodianAgreement; CustomerAgreement; MerchantAcquiringFacility; ACHOperations; OpenItemManagement; ProspectCampaignExecution; CorporateLoan; ProjectFinance; CreditManagement; CardCollections; CounterpartyAdministration; CustomerRelationshipManagement; FinancialStatementAssessment; eBranchManagement; FinancialInstrumentReferenceDataManagement; CorporateAction; CardTerminalAdministration; ServicingActivityAnalysis; CustomerPortfolio; SecuritiesFailsProcessing], 1, 96
+SupplierAgreementReference, [Reference], [ContractorandSupplierAgreement], 1, 1
+StaffAssignment, [entity], [BranchLocationOperations], 1, 1
+CustomerAgreement, [CR], [CustomerAgreement], 1, 1
+ConsumerAdviceFacility, [CR], [ConsumerAdvisoryServices], 1, 1
+RepoTransactionSecurityTransferTask, [BQ], [StockLendingandRepos], 1, 1
+DealerDeskOutcome, [entity], [DealerDesk], 1, 1
+geographicalareatypevalues, [Enum], [LocationDataManagement], 1, 1
+LegalandRegulatoryObligationsandGuidelines, [BQ], [ManagementManual], 1, 1
+eTradingWorkbenchOperatingSession, [CR], [eTradingWorkbench], 1, 1
+CustomerCaseManagementPlan, [CR], [CustomerCaseManagement], 1, 1
+SecuritySpin-OffActionWorkstep, [entity], [CorporateAction], 1, 1
+CustomerRelationshipManagementPlan, [CR], [CustomerRelationshipManagement], 1, 1
+CheckClearingandSettlementFulfillment, [BQ], [ChequeLockBox], 1, 1
+ATMNetworkOperationsOutcome, [entity], [ATMNetworkOperations], 1, 1
+FundEnrolmentCertificationRoutineReference, [Reference], [HedgeFundAdministration], 1, 1
+CustomerProductsAndServicesDirectoryEntryReference, [Reference], [CustomerProductsandServices], 1, 1
+UnitTrustAdministrationOutcome, [entity], [UnitTrustAdministration], 1, 1
+LetterofCreditIssuanceandBookingTask, [BQ], [LetterofCredit], 1, 1
+ServicingIssueProcedureEmployeeReference, [Reference], [ServicingIssue], 1, 1
+MortgageLoanFacility, [CR], [MortgageLoan], 1, 1
+LockBoxFacility, [CR], [ChequeLockBox], 1, 1
+CaseRootCauseAnalysisOutcome, [entity], [CaseRootCauseAnalysis], 1, 1
+OperationsandServicingIssueAnalysis, [BQ], [CaseRootCauseAnalysis], 1, 1
+FactoringFacilityAccountReference, [Reference], [Factoring], 1, 1
+SyndicateEligibilityClauses, [BQ], [SyndicateManagement], 1, 1
+ProductEligibility, [BQ], [ProductMatching], 1, 1
+RepurchaseAgreementReference, [Reference], [StockLendingandRepos], 1, 1
+Testing, [BQ], [ProductDesign; FraudModel; CustomerBehaviorModels; CreditRiskModels], 1, 4
+ProductInventoryDistributionOutcome, [entity], [ProductInventoryDistribution], 1, 1
+AgreementReference, [Reference], [CounterpartyAdministration], 1, 1
+InformationProviderOperationOutcome, [entity], [InformationProviderOperation], 1, 1
+CorrespondentBankRelationshipManagementOutcome, [entity], [CorrespondentBankRelationshipManagement], 1, 1
+CardPOSDeviceAllocation, [CR], [CardTerminalAdministration], 1, 1
+ruleset, [entity], [NotionalPooling; CorporatePayrollServices; StandingOrder; CustomerProposition; PublicOffering; MerchantRelations; ChequeLockBox; Factoring; ContractorandSupplierAgreement; MarketMaking; ProductServiceAgency; CashConcentration; SubCustodianAgreement; TrustServices; ProjectFinance; PrivatePlacement; CorporateTrustServices], 1, 17
+EstablishRelations, [BQ], [RegulatoryAndLegalAuthority], 1, 1
+CollateralValuation, [BQ], [Collections], 1, 1
+OutboundTransactionFunctionReference, [Reference], [PaymentRailOperations], 1, 1
+BearerDocumentCreationandRegistrationTask, [BQ], [BankDrafts], 1, 1
+CashInventoryHandling, [entity], [BranchLocationOperations], 1, 1
+Systems, [BQ], [ProductDeployment], 1, 1
+RegulatoryComplianceAssessment, [CR], [RegulatoryCompliance], 1, 1
+MarketAssetValuationProcedureCustomerAgreementReference, [Reference], [FinancialInstrumentValuation], 1, 1
+EmployeePaymentServicesFacilityReference, [Reference], [CorporatePayrollServices], 1, 1
+CustomerPositionState, [CR], [CustomerPosition], 1, 1
+PrivatePlacementFacilityAccountReference, [Reference], [PrivatePlacement], 1, 1
+CustomerPropositionAgreement, [CR], [CustomerProposition], 1, 1
+FraudCheck, [BQ], [CardAuthorization], 1, 1
+LocationDirectoryEntry, [CR], [LocationDataManagement], 1, 1
+ApplyOrderAllocationRulesWorkstep, [BQ], [OrderAllocation], 1, 1
+CardCaseProcedure, [CR], [CardCase], 1, 1
+DocumentServiceProcedureCustomerAgreementReference, [Reference], [DocumentServices], 1, 1
+TradeQuoteandPricingFunctionReference, [Reference], [TraderPositionOperations], 1, 1
+InternalAuditOutcome, [entity], [InternalAudit], 1, 1
+Assessment, [BQ], [DelinquentAccountHandling; AccountRecovery], 1, 2
+SupplierAgreementAccountReference, [Reference], [ContractorandSupplierAgreement], 1, 1
+financialinstrumentidentification, [entity], [FinancialInstrumentReferenceDataManagement], 1, 1
+DistributionPlanning, [BQ], [BranchCurrencyDistribution], 1, 1
+ServiceProviderAgreementRegulationReference, [Reference], [ProductServiceAgency], 1, 1
+Credit, [BQ], [CustomerOffer; CustomerPosition], 1, 2
+CustomerEventLog, [CR], [CustomerEventHistory], 1, 1
+Warehousing, [BQ], [ACHOperations], 1, 1
+TacticalFunding, [BQ], [CorporateTreasury], 1, 1
+ProgramTradedPortfolioMaintenanceFunctionReference, [Reference], [ProgramTrading], 1, 1
+PartyState, [CR], [PartyRoutingProfile], 1, 1
+TradingPositionManagementPlan, [CR], [TradingBookOversight], 1, 1
+MarketPriceAnalysisFunction, [BQ], [eTradingWorkbench], 1, 1
+value, [entity], [CardAuthorization; InformationProviderOperation; TraderPositionOperations; ProgramTrading; LocationDataManagement; NotionalPooling; LegalEntityDirectory; AccountReconciliation; IssuedDeviceAdministration; DocumentDirectory; TradingBookOversight; FinancialInstrumentValuation; PaymentRailOperations; TradeSettlement; QuoteManagement; CorporatePayrollServices; OrderAllocation; StandingOrder; PartyReferenceDataDirectory; CustomerProposition; CorporateFinance; PublicOffering; ProductSalesSupport; BankGuarantee; CurrentAccount; MerchantRelations; HedgeFundAdministration; MergersandAcquisitionsAdvisory; ChequeLockBox; BranchLocationOperations; BrokeredProduct; DocumentServices; InternalBankAccount; CorrespondentBankRelationshipManagement; CreditCardPositionKeeping; LetterofCredit; PaymentInstruction; StockLendingandRepos; OperationalGateway; CardeCommerceGateway; BankDrafts; ServiceDirectory; Factoring; TradeConfirmationMatching; ContractorandSupplierAgreement; ServicingIssue; CustomerProductsandServices; MarketMaking; ProductServiceAgency; TradeandPriceReporting; ArchiveServices; MutualFundAdministration; SyndicateManagement; TradeClearing; CashConcentration; SubCustodianAgreement; TrustServices; DealerDesk; ProjectFinance; eTradingWorkbench; CreditRiskOperations; CounterpartyAdministration; UnitTrustAdministration; PrivatePlacement; FinancialStatementAssessment; FinancialInstrumentReferenceDataManagement; CorporateAction; SecuritiesFailsProcessing; CorporateTrustServices], 1, 69
+ProgramTradedPortfolioAlgorithmFunctionReference, [Reference], [ProgramTrading], 1, 1
+RequestReference, [Reference], [IssuedDeviceAdministration], 1, 1
+VerifyMandate, [BQ], [DirectDebit], 1, 1
+BlockMailing, [BQ], [Correspondence], 1, 1
+StandingOrderFacility, [CR], [StandingOrder], 1, 1
+documentdatetimetypevalues, [Enum], [CardAuthorization; TradingBookOversight; CorporateFinance; ProductSalesSupport; BankGuarantee; HedgeFundAdministration; MergersandAcquisitionsAdvisory; BranchLocationOperations; BrokeredProduct; CorrespondentBankRelationshipManagement; LetterofCredit; BankDrafts; MutualFundAdministration; UnitTrustAdministration; FinancialStatementAssessment], 1, 15
+Update(PartiallyCompleted)MarketOrderWorkstepReference, [Reference], [OrderAllocation], 1, 1
+MerchantRelationshipAgreementAccountReference, [Reference], [MerchantRelations], 1, 1
+Contact, [BQ], [DelinquentAccountHandling; CustomerWorkbench; InterbankRelationshipManagement; CustomerRelationshipManagement], 1, 4
+BankGuaranteedPaymentSpecificationTask, [BQ], [BankDrafts], 1, 1
+Redemption, [BQ], [RewardPointsAwardsAndRedemption], 1, 1
+CustomerPropositionAgreementReference, [Reference], [CustomerProposition], 1, 1
+PaymentInstructionProcedureBusinessUnitReference, [Reference], [PaymentInstruction], 1, 1
+AccountReconciliationProcedureReference, [Reference], [AccountReconciliation], 1, 1
+BrokerAgreement, [CR], [ProductBrokerAgreement], 1, 1

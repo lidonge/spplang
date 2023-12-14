@@ -1,0 +1,674 @@
+domain ConsumerLoan;
+
+Entity HTTPError{
+    String status_code;
+    String status;
+    String message;
+}
+Entity value{
+    String Value;
+}
+Entity name{
+    String Name;
+}
+Entity datetime{
+    String DateTimeContent;
+    String TimeZoneCode;
+    String DaylightSavingIndicator;
+}
+Entity partyidentification{
+    partyidentificationtypevalues PartyIdentificationType;
+    identifier PartyIdentification;
+}
+Entity party{
+    name PartyName;
+    partytypevalues PartyType;
+    datetime PartyDateTime;
+    partyidentification PartyIdentification;
+    partylegalstructuretypevalues PartyLegalStructureType;
+}
+Entity text{
+    String Text;
+}
+Entity datetimeperiod{
+    datetime FromDateTime;
+    datetime ToDateTime;
+}
+Entity partyrole{
+    text PartyRoleType;
+    name PartyRoleName;
+    datetimeperiod PartyRoleValidityPeriod;
+    partyinvolvementtypevalues PartyInvolvementType;
+}
+Entity involvedparty{
+    party PartyReference;
+    partyrole PartyInvolvement;
+}
+Entity identifier{
+    value IdentifierValue;
+    involvedparty IdentifierIssuingAuthority;
+    datetime IdentifierStartDate;
+    datetime IdentifierEndDate;
+}
+Entity currencycode{
+    String Currencycode;
+}
+Entity amount{
+    value AmountValue;
+    currencycode AmountCurrency;
+    String DecimalPointPosition;
+    amounttypevalues AmountType;
+}
+Entity status{
+    text StatusReason;
+    datetime StatusDateTime;
+    datetimeperiod StatusValidityPeriod;
+    involvedparty StatusInvolvedParty;
+}
+Entity AmountBlock{
+    identifier ConsumerLoanIdentifier;
+    identifier ConsumerLoanExternalAccountNumber;
+    involvedparty CustomerReference;
+    identifier AmountBlockIdentifier;
+    text AmountBlockType;
+    String AmountBlockPriorityNumber;
+    text AmountBlockReason;
+    involvedparty AmountBlockOriginatorReference;
+    amount AmountBlockAmount;
+    datetime AmountBlockStartDate;
+    datetime AmountBlockExpiryDate;
+    status AmountBlockStatus;
+    datetime AmountBlockEndDate;
+}
+Entity frequency{
+    frequencytypevalues FrequencyCode;
+    name FrequencyName;
+    text FrequencyDefinition;
+}
+Entity rate{
+    value RateValue;
+    text RateUnit;
+    datetimeperiod RatePeriod;
+    text RateCapitalUnit;
+}
+Entity goal{
+    String GoalType;
+    String GoalDefinition;
+    String GoalOrganisation;
+    String GoalResult;
+}
+Entity budgettype{
+    name BudgetTypeName;
+    budgettypevalues BudgetType;
+}
+Entity budgetarrangement{
+    budgettype BudgetType;
+    amount BudgetAmount;
+}
+Entity plannedaction{
+    String PlannedAction;
+}
+Entity plantype{
+    name PlanTypeName;
+    plantypevalues PlanType;
+}
+Entity plan{
+    goal PlanGoal;
+    budgetarrangement PlanBudget;
+    plannedaction PlannedAction;
+    plantype PlanType;
+    String PlanOrganisation;
+    datetimeperiod PlanValidityPeriod;
+    text PlanDescription;
+}
+Entity feeplan{
+    name FeePlanName;
+    feeplantypevalues FeePlanType;
+    plan FeePlan;
+}
+Entity feearrangement{
+    feetypevalues FeeType;
+    amount FeeAmount;
+    rate FeeRate;
+    datetimeperiod FeeEffectivePeriod;
+    datetime FeeDueDate;
+    feeplan FeePlan;
+    debitcreditindicatortvalues FeeCreditDebitIndicator;
+    text FeeReason;
+    adjustmentdirectiontypevalues FeeDirection;
+    chargebearertypevalues FeeBearerType;
+}
+Entity interesttransaction{
+    amount InterestTransactionAmount;
+    text InterestTransactionDescription;
+    interesttransactiontypevalues InterestTransactionType;
+    rate AppliedInterestRate;
+    interesttypevalues AppliedInteretType;
+    debitcreditindicatortvalues InterestCreditDebitIndicator;
+}
+Entity schedule{
+    String ScheduleType;
+}
+Entity address{
+    addresstypevalues AddressType;
+    location LocationReference;
+}
+Entity location{
+    text LocationDescription;
+    datetime LocationDateTime;
+    status LocationStatus;
+    geographicalareatypevalues LocationType;
+    text LocationZoningType;
+    text LocationNeighborhoodType;
+    text LocationConstructionType;
+    text LocationOccupancyType;
+    value LocationValue;
+    text LocationCapacity;
+    identifier LocationIdentification;
+    address LocationAddress;
+    name LocationName;
+    text LocationTimeZone;
+}
+Entity accountstatus{
+    status AccountStatus;
+    accountstatustypevalues AccountStatusType;
+}
+Entity accountidentification{
+    accountidentificationtypevalues AccountIdentificationType;
+    identifier AccountIdentification;
+}
+Entity accountdate{
+    accountdatetypevalues AccountDateType;
+    datetime AccountDate;
+}
+Entity accounttype{
+    accounttypevalues AccountType;
+    name AccountTypeName;
+}
+Entity accountbalance{
+    amount BalanceAmount;
+    balancetypevalues BalanceType;
+    datetime BalanceDate;
+    debitcreditindicatortvalues BalanceIndicator;
+}
+Entity accountcurrency{
+    currencytypevalues AccountCurrencyType;
+    currencycode AccountCurrency;
+}
+Entity account{
+    accountstatus AccountStatus;
+    accountidentification AccountIdentification;
+    accountdate AccountDate;
+    accounttype AccountType;
+    text AccountPurpose;
+    accountbalance AccountBalance;
+    accountcurrency AccountCurrency;
+    text AccountDescription;
+    name AccountName;
+}
+Entity condition{
+    String Condition;
+}
+Entity taxarrangement{
+    taxtypevalues TaxType;
+    amount TaxAmount;
+    rate TaxRate;
+    ratetypevalues TaxRateType;
+    location PlaceOfTaxation;
+    involvedparty TaxableParty;
+    account TaxAccount;
+    condition TaxationCondition;
+    currencycode TaxCurrency;
+    datetime TaxDueDate;
+    datetime TaxCalculationDate;
+    involvedparty TaxPayer;
+    involvedparty TaxRecipient;
+}
+Entity Interest{
+    frequency InterestPaymentFrequency;
+    datetime InterestAccrualDate;
+    rate InterestRate;
+    frequency InterestCalculationFrequency;
+    feearrangement InterestFee;
+    interesttypevalues InterestType;
+    interestcalculationmethodtypevalues InterestCalculationMethod;
+    datetime InterestCalculationDate;
+    amount InterestAccrualAmount;
+    datetimeperiod InterestPeriod;
+    amount InterestAmount;
+    interestratetypevalues InterestRateType;
+    debitcreditindicatortvalues InterestCreditDebitIndicator;
+    interesttransaction InterestTransaction;
+    interesttypevalues InterestAccrualType;
+    schedule InterestRateApplicationSchedule;
+    taxarrangement InterestTax;
+    datetime InterestDate;
+}
+Entity date{
+    String DateContent;
+}
+Entity paymenttransactionstatus{
+    status PaymentTransactionStatus;
+    paymenttransactionstatustypevalues PaymentTransactionStatusType;
+}
+Entity paymenttransactioncurrency{
+    currencycode PaymentTransactionCurrency;
+    currencytypevalues PaymentTransactionCurrencyType;
+}
+Entity paymenttransaction{
+    paymenttypevalues PaymentTransactionType;
+    amount PaymentTransactionAmount;
+    identifier PaymentTransactionIdentification;
+    text PaymentTransactionUsedMechanism;
+    datetime PaymentTransactionDatetime;
+    paymentpurposevalues PaymentTransactionPurpose;
+    paymenttransactionstatus PaymentTransactionStatus;
+    amount PaymentTransactionAppliedFeeAmount;
+    paymenttransactioncurrency PaymentTransactionCurrency;
+    debitcreditindicatortvalues PaymentCreditDebitIndicator;
+    amounttypevalues PaymentTransactionAmountType;
+    paymentdatetimetypevalues PaymentTransactionDatetimeType;
+}
+Entity Withdrawal{
+    String WithdrawalTransactionSourceReference;
+    text WithdrawalTransactionDescription;
+    amount WithdrawalTransactionAmount;
+    withdrawaltypevalues WithdrawalType;
+    withdrawaltypevalues WithdrawalTransactionWithdrawalType;
+    date WithdrawalTransactionDate;
+    paymenttransaction WithdrawalTransaction;
+}
+Entity task{
+    String Task;
+}
+Entity model{
+    String ModelType;
+    String ModelPurpose;
+    String ModelVersion;
+}
+Entity document{
+    identifier DocumentIdentification;
+    String DocumentVersion;
+    financialdocumenttypevalues DocumentType;
+    status DocumentStatus;
+    datetime DocumentDateTime;
+    name DocumentName;
+    documentdatetimetypevalues DocumentDateTimeType;
+    text DocumentPurpose;
+    text DocumentFormat;
+    text DocumentSubject;
+    text DocumentDescription;
+    datetimeperiod DocumentValidityPeriod;
+}
+Entity requirement{
+    String RequirementType;
+}
+Entity assessment{
+    assessmenttypevalues AssessmentType;
+    text AssessmentMethod;
+    schedule AssessmentSchedule;
+    text AssessmentDescription;
+    model AssessmentModel;
+    datetime AssessmentDateTime;
+    text AssessmentResult;
+    document AssessmentSupportingDocument;
+    document AssessmentRepresentingDocument;
+    text AssessmentRequiredAdjustment;
+    requirement AssessmentRequirement;
+    date AssessmentExpiryDate;
+    status AssessmentStatus;
+}
+Entity Restructuring{
+    task RestructuringTask;
+    assessment RestructuringEvaluation;
+    assessment RestructuringWriteDown;
+}
+Entity servicemodality{
+    modalitytypevalues ServiceModalityType;
+}
+Entity ServiceFees{
+    account FeeCreditAccount;
+    rate FeeRate;
+    servicemodality FeeCalculationMethod;
+    feepaymentmethodtypevalues FeePaymentMethodType;
+    chargebearertypevalues ChargeBearerType;
+    feecalculationmethodtypevalues FeeCalculationMethodType;
+    feetypevalues FeeType;
+    involvedparty ChargeBearerReference;
+    servicemodality FeePaymentMethod;
+    datetime FeeApplicationDate;
+    debitcreditindicatortvalues FeeApplicationCreditDebitIndicator;
+    debitcreditindicatortvalues AccruedCreditDebitIndicator;
+    feecalculationfrequencyvalues FeeCalculationFrequency;
+    amount FeeAmount;
+    feeapplicationfrequencyvalues FeeApplicationFrequency;
+    amount FeeApplicationAmount;
+    account FeeDebitAccount;
+    amount AccrualFeeAmount;
+}
+Entity report{
+    reporttypevalues ReportType;
+    datetimeperiod ReportValidityPeriod;
+    String ReportVersion;
+    datetime ReportDateTime;
+    text ReportFormat;
+}
+Entity feetype{
+    feetypevalues FeeType;
+    name FeeTypeName;
+}
+Entity collateralassetvaluation{
+    String CollateralAssetValuationStatus;
+    String CollateralAssetValuationDate;
+    String CollateralAssetValuationAmount;
+    String CollateralAssetValuationCurrency;
+}
+Entity Maintenance{
+    reporttypevalues MaintenanceReportType;
+    report LoanTaxReport;
+    feetype LoanFeeType;
+    feearrangement LoanFees;
+    feearrangement Penalties;
+    collateralassetvaluation CollateralValuation;
+}
+Entity AccountStatement{
+}
+Entity branch{
+    identifier BranchIdentification;
+    identifier BranchLegalEntityIdentification;
+    address BranchAddress;
+    name BranchName;
+}
+Entity feature{
+    text FeatureType;
+    identifier FeatureIdentification;
+    name FeatureName;
+    status FeatureLifecycleStatus;
+    text FeatureDescription;
+}
+Entity action{
+    actiontypevalues ActionType;
+}
+Entity arrangementlifecyclestatus{
+    status ArrangementLifecycleStatus;
+    arrangementlifecyclestatustypevalues ArrangementLifecycleStatusType;
+}
+Entity subject{
+    String Subject;
+}
+Entity arrangement{
+    action ArrangementAction;
+    datetime ArrangementStartDate;
+    datetime ArrangementEndDate;
+    arrangementlifecyclestatus ArrangementStatus;
+    subject ArrangementSubjectMatter;
+    arrangementtypevalues Arrangementtype;
+}
+Entity country{
+    involvedparty NationalRegulatoryAuthority;
+}
+Entity device{
+    identifier DeviceIdentification;
+    devicetypevalues DeviceType;
+    text DeviceProperty;
+    text DeviceElement;
+    status DeviceStatus;
+    String DeviceVersion;
+    datetime DeviceDateTime;
+    text DeviceDescription;
+    name DeviceName;
+    text DeviceLanguage;
+    text DevicePhoneNumber;
+    location DeviceLocation;
+    text DeviceManufacturer;
+    country DeviceCountry;
+    address DeviceAddress;
+    addresstypevalues DeviceAddressType;
+    deviceoperatingsystemtypevalues DeviceOperatingSystem;
+    deviceidentificationtypevalues DeviceIdentificationType;
+}
+Entity rulesettype{
+    name RuleSetTypeName;
+    rulesettypevalues RuleSetType;
+}
+Entity ruleset{
+    text RuleSetDefinition;
+    text RuleSetInterpretation;
+    rulesettype RuleSetType;
+    name RuleSetName;
+    identifier RuleSetIdentification;
+    status RuleSetLifecycleStatus;
+}
+Entity IssuedDevice{
+    identifier AccountExternalAccountNumber;
+    datetime DeviceIssueDate;
+    devicetypevalues DeviceType;
+    datetime DeviceValidfromDate;
+    datetime DeviceValidtoDate;
+    branch DeviceCollectLocation;
+    feature DeviceOptionDefinition;
+    involvedparty CustomerReference;
+    arrangement DeviceAssociatedPermissions;
+    devicecustomizationtypevalues DeviceCustomerCustomizationReference;
+    text DeviceDeliveryMethod;
+    arrangement DeviceOptionSetting;
+    involvedparty DevicePartyReference;
+    feature DevicePropertyType;
+    arrangement DevicePropertySeting;
+    issueddevicestatustypevalues DeviceStatus;
+    device IssuedDeviceAdministrationReference;
+    accountidentification AccountIdentifier;
+    ruleset DeviceProcessingGuidelinesandRules;
+}
+Entity entrytypevalues{
+    String Entrytypevalues;
+}
+Entity accountentry{
+    amount AccountEntryAmount;
+    accountcurrency AccountEntryCurrency;
+    text AccountEntryPurpose;
+    datetime AccountEntryDate;
+    status AccountEntryStatus;
+    entrydatetypevalues AccountEntryDateType;
+    entrytypevalues AccountEntryType;
+}
+Entity BookingAuthorization{
+    account AccountReference;
+    amount BookingAmount;
+    datetime BookingDate;
+    accountentry PositionKeepingReference;
+    String TransactionPriorityNumber;
+    datetime ValueDate;
+    text AuthorizationResult;
+    text AuthorizationRejectionReason;
+}
+Entity Disbursement{
+    involvedparty DisbursementPayeeReference;
+    account DisbursementPayeeProductInstanceReference;
+    involvedparty DisbursementPayeeBankReference;
+    amount DisbursementAmount;
+    currencycode DisbursementCurrency;
+    date DisbursementValueDate;
+}
+Entity Repayment{
+    paymenttypevalues RepaymentTransactionType;
+    involvedparty RepaymentTransactionPayerReference;
+    account RepaymentTransactionPayerProductInstanceReference;
+    involvedparty RepaymentTransactionPayerBankReference;
+    amount RepaymentTransactionAmount;
+    currencycode RepaymentTransactionCurrency;
+    date RepaymentTransactionValueDate;
+}
+Entity loanproduct{
+    amount LoanAmount;
+    text LoanPurpose;
+    identifier LoanProductIdentifier;
+    loanproducttypevalues LoanProductType;
+}
+Entity customeragreement{
+    String CustomerAgreement;
+}
+Entity customercreditratingassessment{
+    String CreditRatingAssessmentType;
+}
+Entity branchlocation{
+    branch BranchReference;
+    location LocationReference;
+}
+Entity interestcalculationarrangementmodality{
+    text InterestCalculationMethod;
+    frequency InterestCalculationFrequency;
+    datetime InterestCalculationDate;
+    text InterestCalculationParameter;
+    interestcalculationmethodtypevalues InterestCalculationMethodType;
+}
+Entity service{
+    name ServiceName;
+    text ServiceDescription;
+    servicetypevalues ServiceType;
+    identifier ServiceIdentification;
+    status ServiceLifecycleStatus;
+    feature ServiceFeature;
+}
+Entity assetvaluation{
+    value AssetValue;
+    text AssetValueType;
+    text AssetValuationType;
+    datetime AssetValuationDate;
+    service AssetValuationServiceReference;
+    rate AssetValuationRate;
+    status AssetValuationStatus;
+    datetimeperiod AssetValuationValidityPeriod;
+}
+Entity collateralasset{
+    identifier CollateralAssetIdentification;
+    collateraltypevalues CollateralAssetType;
+    assetvaluation CollateralAssetValuation;
+    collateralassetstatusvalues CollateralAssetStatus;
+}
+Entity collateralassetallocation{
+    allocationstatusvalues CollateralAssetAllocationStatus;
+}
+Entity accessarrangement{
+    document AssociatedDocument;
+    pointofaccesstypevalues PointOfAccessType;
+    authenticationmethodtypevalues AccessCredentialMethod;
+}
+Entity servicearrangementmodality{
+    modalitytypevalues ServiceArrangementModalityType;
+}
+Entity partyobligationorentitlement{
+    subject ObligationOrEntitlementSubject;
+    arrangementtypevalues ObligationOrEntitlementType;
+    servicearrangementmodality ObligationOrEntitlementModality;
+    text ObligationOrEntitlementDefinition;
+}
+Entity accountrestrictionstatus{
+    status AccountRestrictionStatus;
+    accountrestrictionstatustypevalues AccountRestrictionStatusType;
+}
+Entity accountrestiction{
+    identifier AccountRestrictionIdentifier;
+    text AccountRestrictionType;
+    text AccountRestrictionDescription;
+    datetimeperiod AccountRestrictionValidityPeriod;
+    accountrestrictionstatus AccountRestrictionStatus;
+    involvedparty AccountRestrictionRegulator;
+}
+Entity accountinvolvement{
+    accountinvolvementtypevalues AccountInvolvementType;
+    account AccountReference;
+    party PartyReference;
+}
+Entity statement{
+    financialstatementtypevalues StatementType;
+}
+Entity correspondence{
+    text CorrespondenceType;
+    address CorrespondenceAddress;
+    datetime CorrespondenceDateTime;
+    text CorrespondenceContent;
+    text CorrespondenceTemplate;
+    correspondencecommunicationmethodtypevalues CorrespondenceCommunicationMethod;
+    addresstypevalues CorrespondenceAddressType;
+    correspondencemediumtypevalues CorrespondenceMedium;
+}
+Contract ConsumerLoanFacility{
+    loanproduct ProductInstanceReference;
+    accountidentification ConsumerLoanNumber;
+    involvedparty CustomerReference;
+    involvedparty PartyReference;
+    customeragreement CustomerAgreementReference;
+    customercreditratingassessment CustomerCreditAssessmentReference;
+    String InsuranceReference;
+    String DelinquencyCollectionReference;
+    branchlocation BankBranchLocationReference;
+    String BankAccountingUnitReference;
+    loanproducttypevalues LoanType;
+    amount LoanAmount;
+    currencycode LoanCurrency;
+    ratetypevalues LoanRateType;
+    rate LoanApplicableRate;
+    paymenttypevalues RepaymentType;
+    interesttypevalues InterestType;
+    interestcalculationarrangementmodality InterestAccrualMethod;
+    date LoanOriginationDate;
+    date LoanMaturityDate;
+    collateralasset CollateralReference;
+    collateralassetallocation CollateralAllocation;
+    involvedparty TaxReference;
+    accessarrangement LoanAccessTerms;
+    partyobligationorentitlement EntitlementOptionDefinition;
+    partyobligationorentitlement EntitlementOptionSetting;
+    accountrestiction RestrictionOptionDefinition;
+    accountrestiction RestrictionOptionSetting;
+    accountinvolvement Associations;
+    accountinvolvementtypevalues AssociationType;
+    partyobligationorentitlement AssociationObligationEntitlement;
+    party AssociationReference;
+    schedule LoanRepaymentSchedule;
+    statement StagedRepaymentStatement;
+    correspondence CustomerCommentary;
+    accountbalance LoanOutstandingBalance;
+    accountdatetypevalues AccountDateType;
+    datetime AccountDate;
+    identifier ConsumerLoanProductMarketingStateID;
+    identifier ConsumerLoanProductID;
+    name ConsumerLoanProductName;
+    producttypevalues ConsumerLoanProductType;
+    productidentificationtypevalues ConsumerLoanProductIDType;
+}
+
+
+atomic update Initiate(ConsumerLoanFacility paramConsumerLoanFacility);
+atomic update Update(ConsumerLoanFacility paramConsumerLoanFacility);
+atomic update Control(ConsumerLoanFacility paramConsumerLoanFacility);
+atomic query Retrieve(ConsumerLoanFacility paramConsumerLoanFacility);
+atomic query RetrieveInterest(Interest paramInterest);
+atomic update ExecuteServiceFees(ServiceFees paramServiceFees);
+atomic query RetrieveServiceFees(ServiceFees paramServiceFees);
+atomic query RetrieveDisbursement(Disbursement paramDisbursement);
+atomic update RequestMaintenance(Maintenance paramMaintenance);
+atomic query RetrieveMaintenance(Maintenance paramMaintenance);
+atomic update UpdateWithdrawal(Withdrawal paramWithdrawal);
+atomic update ExecuteWithdrawal(Withdrawal paramWithdrawal);
+atomic update RequestWithdrawal(Withdrawal paramWithdrawal);
+atomic query RetrieveWithdrawal(Withdrawal paramWithdrawal);
+atomic update UpdateRepayment(Repayment paramRepayment);
+atomic update ExecuteRepayment(Repayment paramRepayment);
+atomic update RequestRepayment(Repayment paramRepayment);
+atomic query RetrieveRepayment(Repayment paramRepayment);
+atomic update InitiateRestructuring(Restructuring paramRestructuring);
+atomic update UpdateRestructuring(Restructuring paramRestructuring);
+atomic update ExchangeRestructuring(Restructuring paramRestructuring);
+atomic update RequestRestructuring(Restructuring paramRestructuring);
+atomic query RetrieveRestructuring(Restructuring paramRestructuring);
+atomic update UpdateServiceFees(ServiceFees paramServiceFees);
+atomic update InitiateAmountBlock(AmountBlock paramAmountBlock);
+atomic query RetrieveAmountBlock(AmountBlock paramAmountBlock);
+atomic update UpdateAmountBlock(AmountBlock paramAmountBlock);
+atomic update ExecuteBookingAuthorization(BookingAuthorization paramBookingAuthorization);
+atomic update InitiateIssuedDevice(IssuedDevice paramIssuedDevice);
+atomic query RetrieveIssuedDevice(IssuedDevice paramIssuedDevice);
+atomic update UpdateIssuedDevice(IssuedDevice paramIssuedDevice);
+

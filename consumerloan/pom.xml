@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>free.servpp</groupId>
+        <artifactId>spplang</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.example</groupId>
+    <artifactId>consumerloan</artifactId>
+
+    <properties>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <springdoc.version>1.7.0</springdoc.version>
+        <default.package>free.servpp.openapi.ConsumerLoan</default.package>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.7.14</version>
+        </dependency>
+        <!--SpringDoc dependencies -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+        <!-- @Nullable annotation -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>free.servpp</groupId>
+            <artifactId>lang</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>free.servpp</groupId>
+                <artifactId>lang</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <configuration>
+                    <sppSourceDirectory>
+                        ${basedir}/src/main/spp
+                    </sppSourceDirectory>
+                    <yamlOutputDirectory>
+                        ${basedir}/target/spp/src/main/resources
+                    </yamlOutputDirectory>
+                    <javaOutputDirectory>${basedir}/target/generated-sources/openapi/src/main/java</javaOutputDirectory>
+                    <basePackage>free.servpp.openapi</basePackage>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>lang</id>
+                        <goals>
+                            <goal>sppcompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>7.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+<!--                            <inputSpec>${basedir}/target/spp/src/main/resources/invoice.spp.yaml</inputSpec>-->
+                            <inputSpec>${basedir}/target/spp/src/main/resources/ConsumerLoan.spp.yaml</inputSpec>
+                            <generatorName>spring</generatorName>
+                            <packageName>free.servpp.openapi</packageName>
+                            <apiPackage>${default.package}.handler</apiPackage>
+                            <modelPackage>${default.package}.model</modelPackage>
+                            <invokerPackage>${default.package}.handler</invokerPackage>
+                            <templateDirectory>${basedir}/target/spp/src/main/resources/JavaSpring</templateDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
