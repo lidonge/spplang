@@ -8,6 +8,7 @@ import free.servpp.generator.general.app.AppGeneralHandler;
 import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppProject;
 import free.servpp.generator.openapi.CodeFormator;
+import free.servpp.generator.openapi.MustacheClassWriter;
 import free.servpp.generator.openapi.OpenApiGenerator;
 import io.swagger.v3.core.util.Yaml;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -19,7 +20,6 @@ import java.io.*;
  */
 public class GeneratorUtil {
     public static void main(String[] args) throws IOException {
-        InputStream mustache = GeneratorUtil.class.getResourceAsStream("/ddl.mustache");
         SppProject sppProject = new SppProject();
         File sppFile = new File("/Users/lidong/gitspace/spplang/lang/src/main/spp/petstore.spp");
         File appFile = new File("/Users/lidong/gitspace/spplang/lang/src/main/spp/petstore.rdb");
@@ -37,20 +37,16 @@ public class GeneratorUtil {
         sppDomain.dealAnnotations(sppDomain.getRuleBlock().getAppAnnotationList());
         sppDomain.checkSemanticFinally(sppGeneralHandler);
         DDLGenerator ddlGenerator = new DDLGenerator(sppDomain);
-        Template template = Mustache.compiler().compile(new InputStreamReader(mustache));
-        String string  = template.execute(ddlGenerator);
-        string = CodeFormator.formatCode(string);
-        PrintWriter out = null;
-        try {
-            File ddlFile = new File(yamlOutPath,"src/resources/sql/ddl.sql");
-            ddlFile.getParentFile().mkdirs();
-            out = new PrintWriter(new FileOutputStream(ddlFile));
-            out.println(string);
-        }finally {
-            out.close();
-        }
+        InputStream mustache = GeneratorUtil.class.getResourceAsStream("/ddl.mustache");
+        MustacheClassWriter.generateFile(mustache, ddlGenerator, yamlOutPath,"src/resources/sql/ddl.sql");
+        MybatisGenerator mybatisGenerator = new MybatisGenerator(sppDomain,ddlGenerator);
+        mustache = GeneratorUtil.class.getResourceAsStream("/mustache/mybatis/manager.mustache");
+        mybatisGenerator.generateManager(mustache, genRoot,basePackage);
+        mustache = GeneratorUtil.class.getResourceAsStream("/mustache/mybatis/mapper.mustache");
+        mybatisGenerator.generateMapper(mustache,yamlOutPath,basePackage);
         openApi(sppDomain,sppFile,yamlOutPath, genRoot, basePackage);
     }
+
     public static void openApi(SppDomain sppDomain, File sppFile, File yamlOutPath,
                                 File javaGenRoot, String basePackage) throws IOException {
         String domainName = sppDomain.getName();

@@ -5,32 +5,45 @@ import {{basePackage}}.{{domainName}}.handler.{{name}};
 {{#responseSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{responseSuffix}};{{/responseSuffix}}
 {{#serviceBody.sppLocalVarList}}
 import {{basePackage}}.{{domainName}}.model.{{type.name}};
+import {{basePackage}}.{{domainName}}.mapper.{{type.name}}Mapper;
 {{/serviceBody.sppLocalVarList}}
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class Simple{{name}} implements {{name}} {
-    {{#requestSuffix}}private {{name}}{{requestSuffix}} arg;{{/requestSuffix}}
+    {{#requestSuffix}}//private {{name}}{{requestSuffix}} arg;{{/requestSuffix}}
     {{^requestSuffix}}{{#serviceBody.sppLocalVarList}}private {{type.name}}{{toArrayString}} arg;{{/serviceBody.sppLocalVarList}}{{/requestSuffix}}
-    {{#responseSuffix}}private {{name}}{{responseSuffix}} ret;{{/responseSuffix}}
+    {{#responseSuffix}}//private {{name}}{{responseSuffix}} ret;{{/responseSuffix}}
     {{^responseSuffix}}{{#returns.sppLocalVarList}}private {{type.name}}{{toArrayString}} ret;{{/returns.sppLocalVarList}}{{/responseSuffix}}
+{{#serviceBody.sppLocalVarList}}
+    @Autowired
+    private {{type.name}}Mapper {{name}}Mapper;
+{{/serviceBody.sppLocalVarList}}
     @Override
-	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}}){
+    public String getName() {
+        return "{{funcName}}";
+    }
+
+    @Override
+	public {{name}}{{responseSuffix}} {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}}){
         {{#expressions}}
         {{expr}};
         {{/expressions}}
+        {{name}}{{responseSuffix}} ret = new {{name}}{{responseSuffix}}();
+{{#serviceBody.sppLocalVarList}}
+        {{#returns.sppLocalVarList}}ret.set{{type.name}}( {{name}}Mapper.{{funcName}}({{name}}) );{{/returns.sppLocalVarList}}
+        {{^returns.sppLocalVarList}}{{name}}Mapper.{{funcName}}({{name}});{{/returns.sppLocalVarList}}
+        return ret;
+{{/serviceBody.sppLocalVarList}}
 	}
 
     @Override
     public Object execute(Object... params) {
-        {{#requestSuffix}}arg = ({{name}}{{requestSuffix}}) params[params.length - 1];
-        {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
+        {{#requestSuffix}}{{name}}{{requestSuffix}} arg = ({{name}}{{requestSuffix}}) params[params.length - 1];
+        return {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
         {{^requestSuffix}}{{#serviceBody.sppLocalVarList}}arg = ({{type.name}}{{toArrayString}}) params[params.length - 1];
-        {{funcName}}(arg);{{/serviceBody.sppLocalVarList}}{{/requestSuffix}}
-        return ret;
+        {{/serviceBody.sppLocalVarList}}{{/requestSuffix}}
     }
 
-    @Override
-    public void copyFrom(Object role) {
-        {{#requestSuffix}}arg = ({{name}}{{requestSuffix}})role;{{/requestSuffix}}
-        {{^requestSuffix}}{{#serviceBody.sppLocalVarList}}arg = ({{type.name}}{{toArrayString}})role;{{/serviceBody.sppLocalVarList}}{{/requestSuffix}}
-    }
 }

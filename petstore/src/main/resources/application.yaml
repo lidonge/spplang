@@ -1,0 +1,10 @@
+mybatis:
+  mapper-locations: classpath:free/servpp/openapi/petstore/mapper/*.xml
+  type-aliases-package: free.servpp.openapi.petstore.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:identifier.sqlite

@@ -47,6 +47,7 @@ Role Amount{
     int quantity;
     double amount;
 }
+
 Contract Invoice{
     String id;
     Account buyer;
@@ -57,7 +58,7 @@ Contract Invoice{
 
 
 
-atomic query <Account>queryAccount();
+atomic query <Account>queryAccount(Account account);
 atomic calculate calculateAmount(Goods goods, Amount amount);
 atomic update decAccount(Account account, Amount amount);
 atomic update incAccount(Account account, Amount amount);
@@ -66,11 +67,11 @@ atomic check checkStock(GoodsStock stock);
 atomic update updateStocks(GoodsStock[] stock);
 
 Scenario parallel makeInvoice(Invoice invoice){
-    queryAccount();
-    queryAccount();
+    queryAccount(invoice.buyer);
+    queryAccount(invoice.seller);
     serial{
-        checkStock(invoice.goods.stock);
         calculateAmount(invoice.goods, invoice.amount);
+        checkStock(invoice.goods.stock);
     }
     transaction{
         decAccount(invoice.buyer, invoice.amount);

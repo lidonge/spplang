@@ -6,5 +6,4 @@ package free.servpp.service;
  */
 public interface AtomicService extends Service {
 
-    void copyFrom(Object role);
 }

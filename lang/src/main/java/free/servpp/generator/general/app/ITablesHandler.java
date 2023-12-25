@@ -7,7 +7,6 @@ import free.servpp.generator.models.app.*;
 import free.servpp.lang.antlr.AppParser;
 import org.antlr.v4.runtime.ParserRuleContext;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -88,22 +87,22 @@ public interface ITablesHandler extends IApplicationHandler {
 
         ParserRuleContext parent = ctx.getParent().getParent();
         AppTable appTable = getLastAppTable();
-        for (SppClass sppClass : appTable.getEntities().getArrayList()) {
-            SppFieldDefine sppFieldDefine = getQualifiedField(ctx, null, name);
-            if (sppFieldDefine == null) {
-                logSppError(ctx, "Field " + name + " not found.");
-            } else {
-                if (parent instanceof AppParser.PrimaryKeyDefineContext) {
-                    appTable.getPrimaryKeys().add(sppFieldDefine);
-                } else if (parent instanceof AppParser.ForeignKeyDefineContext) {
-                    if(!appTable.containsEntity(sppFieldDefine.getSppClass().getName()))
-                        logSppError(ctx, "Foreign key:" + sppFieldDefine.getSppField().getName() +" not defined in table entities.");
-                    else
-                        getLastElement(appTable.getForeignKeys()).getKeys().add(sppFieldDefine);
-                }
+        SppClass sppClass = appTable.getEntity();
+        SppFieldDefine sppFieldDefine = getQualifiedField(ctx, null, name);
+        if (sppFieldDefine == null) {
+            logSppError(ctx, "Field " + name + " not found.");
+        } else {
+            if (parent instanceof AppParser.PrimaryKeyDefineContext) {
+                appTable.getPrimaryKeys().add(sppFieldDefine);
+            } else if (parent instanceof AppParser.ForeignKeyDefineContext) {
+                if(!appTable.containsEntity(sppFieldDefine.getSppClass().getName()))
+                    logSppError(ctx, "Foreign key:" + sppFieldDefine.getSppField().getName() +" not defined in table entities.");
+                else
+                    getLastElement(appTable.getForeignKeys()).getKeys().add(sppFieldDefine);
             }
         }
     }
+
 
     @Override
     default void exitQualifiedItem(AppParser.QualifiedItemContext ctx) {
@@ -121,7 +120,7 @@ public interface ITablesHandler extends IApplicationHandler {
             logSppError(ctx, "Entity " + name + " not found.");
             return;
         }
-        appTable.getEntities().add(sppClass);
+        appTable.setEntity(sppClass);
 //        }
     }
 

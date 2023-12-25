@@ -15,8 +15,11 @@ import java.util.List;
 public class DbTable implements IContainer, INamedObject {
     private AppTable appTable;
 
+    private MybatisClass mybatisClass;
+
     public DbTable(AppTable appTable) {
         this.appTable = appTable;
+        mybatisClass = new MybatisClass(appTable.getName(), appTable.getEntity().getName());
     }
 
     private NamedArray<DbColumn> columns = new NamedArray<>();
@@ -24,6 +27,10 @@ public class DbTable implements IContainer, INamedObject {
     private NamedArray<DbColumn> primaryKeys;
 
     private List<DbForeign> dbForeigns;
+
+    public MybatisClass getMybatisClass() {
+        return mybatisClass;
+    }
 
     public NamedArray<DbColumn> getColumns() {
         return columns;

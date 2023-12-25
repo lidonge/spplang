@@ -1,0 +1,16 @@
+<resultMap id="get{{mybatisClass.type}}" type="{{modelPackage}}.{{mybatisClass.type}}">
+    {{#table.primaryKeys.arrayList}}
+        <id property="{{field.name}}" column="{{name}}"/>
+    {{/table.primaryKeys.arrayList}}
+    {{#mybatisClass}}{{#fields}}
+        {{#column}}<result property="{{property}}" column="{{column}}"/>{{/column}}
+        {{^column}}
+            {{#refName}}<association property="{{property}}" column="{ {{#foreignKeys}}{{^-first}},{{/-first}}{{key}}={{value}}{{/foreignKeys}} }" javaType="{{modelPackage}}.{{refName}}"
+                select="{{packageName}}.{{refName}}Mapper.get{{refName}}">
+                </association>{{/refName}}
+            {{^refName}}<association property="{{property}}">
+                {{#fields}}{{/fields}}
+                </association>{{/refName}}
+        {{/column}}
+    {{/fields}}{{/mybatisClass}}
+</resultMap>

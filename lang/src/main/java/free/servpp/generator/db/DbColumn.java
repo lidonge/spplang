@@ -2,6 +2,8 @@ package free.servpp.generator.db;
 
 import free.servpp.generator.models.IComponent;
 import free.servpp.generator.models.IContainer;
+import free.servpp.generator.models.SppLocalVar;
+import free.servpp.generator.models.app.AppColumn;
 import free.servpp.generator.models.app.INamedObject;
 
 import java.sql.JDBCType;
@@ -19,18 +21,33 @@ public class DbColumn<T extends IContainer> implements IComponent, INamedObject 
 
     DbTable parent;
 
+    SppLocalVar field;
+
     public DbColumn() {
     }
 
     public DbColumn clone(){
-        return new DbColumn(name,jdbcType,precision,scale,nullable);
+        return new DbColumn(name,jdbcType,precision,scale,nullable,field);
     }
-    protected DbColumn(String name, JDBCType jdbcType, int precision, int scale, boolean nullable) {
+    protected DbColumn(String name, JDBCType jdbcType, int precision, int scale, boolean nullable, SppLocalVar field) {
         this.name = name;
         this.jdbcType = jdbcType;
         this.precision = precision;
         this.scale = scale;
         this.nullable = nullable;
+        this.field = field;
+    }
+
+    public DbTable getTable(){
+        return parent;
+    }
+    public SppLocalVar getField() {
+        return field;
+    }
+
+    public DbColumn<T> setField(SppLocalVar field) {
+        this.field = field;
+        return this;
     }
 
     //for mustache

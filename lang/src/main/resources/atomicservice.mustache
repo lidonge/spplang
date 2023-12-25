@@ -1,8 +1,10 @@
 package {{packageName}};
 import free.servpp.service.AtomicService;
+{{#responseSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{responseSuffix}};{{/responseSuffix}}
+
 {{#serviceBody.sppLocalVarList}}
 import {{type.packageName}}.{{type.name}};
 {{/serviceBody.sppLocalVarList}}
 public interface {{name}} extends AtomicService {
-	public void {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}});
+	public {{name}}{{responseSuffix}} {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}});
 }

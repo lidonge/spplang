@@ -2,18 +2,18 @@ package free.servpp.generator.models.app;
 
 import free.servpp.generator.models.Annotation;
 import free.servpp.generator.models.SppClass;
-import free.servpp.generator.models.SppCompilationUnit;
 import free.servpp.generator.util.NamedArray;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author lidong@date 2023-12-05@version 1.0
  */
 public class AppTable extends Annotation implements INamedObject{
     private String name;
-    private NamedArray<SppClass> entities = new NamedArray<SppClass>();
+    private SppClass entity;
     private List<AppColumn> appColumns = new ArrayList<>();
     private  List<SppFieldDefine> primaryKeys = new ArrayList<>();
     private  List<AppForeign> foreignKeys = new ArrayList<>();
@@ -29,8 +29,12 @@ public class AppTable extends Annotation implements INamedObject{
         this.name = name;
     }
 
-    public NamedArray<SppClass> getEntities() {
-        return entities;
+    public SppClass getEntity() {
+        return entity;
+    }
+
+    public void setEntity(SppClass entity) {
+        this.entity = entity;
     }
 
     public List<AppColumn> getAppColumns() {
@@ -38,7 +42,7 @@ public class AppTable extends Annotation implements INamedObject{
     }
 
     public boolean containsEntity(String name){
-        return entities.containsKey(name);
+        return entity.getName().equals(name);
     }
 
     public List<SppFieldDefine> getPrimaryKeys() {

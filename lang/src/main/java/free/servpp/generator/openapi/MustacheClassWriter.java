@@ -16,6 +16,34 @@ public class MustacheClassWriter extends ClassWriterConfig {
     public MustacheClassWriter(File domainPath, SppClass sppClass, String basePackage, String domainName) {
         super(domainPath, sppClass, basePackage, domainName);
     }
+    public static void generateFile(InputStream mustache,Object obj, File genRoot, String name ) {
+        generateFile(mustache,obj,genRoot,name,null);
+    }
+    public static void generateFile(InputStream mustache,Object obj, File genRoot, String name , String subPath) {
+        Template template = Mustache.compiler().withLoader(new Mustache.TemplateLoader() {
+            @Override
+            public Reader getTemplate(String name) throws Exception {//for import mustache
+                String path = subPath == null ? "" :subPath;
+                path +=File.separator + name + ".mustache";
+                InputStreamReader ret = new InputStreamReader(MustacheClassWriter.class.getResourceAsStream(path));
+                return ret;
+            }
+        }).compile(new InputStreamReader(mustache));
+        String string  = template.execute(obj);
+        string = CodeFormator.formatCode(string);
+        PrintWriter out = null;
+        try {
+            File file = new File(genRoot, name);
+            file.getParentFile().mkdirs();
+            out = new PrintWriter(new FileOutputStream(file));
+            out.println(string);
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            out.close();
+        }
+    }
+
 
     public void generate() {
         try {

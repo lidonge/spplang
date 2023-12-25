@@ -934,12 +934,12 @@ public class Mustache {
         }
         @Override public void execute (Template tmpl, Template.Context ctx, Writer out) {
             sections.add(this);
-            Object value = tmpl.getSectionValue(ctx, _name, _line); // won't return null
+            SectionSegment recursion = checkRecursion();
+            Object value = tmpl.getSectionValue(ctx, _name, _line, recursion != null); // won't return null
             Iterator<?> iter = _comp.collector.toIterator(value);
             if (iter != null) {
                 int index = 0;
                 if(iter.hasNext()){
-                    SectionSegment recursion = checkRecursion();
                     Template.Segment[] segs = _segs;
                     if(recursion != null) {
                         int deepth = getDeepth();
@@ -968,6 +968,7 @@ public class Mustache {
                 try {
                     ((Lambda)value).execute(tmpl.createFragment(_segs, ctx), out);
                 } catch (IOException ioe) {
+                    sections.remove(sections.size() -1);
                     throw new MustacheException(ioe);
                 }
             } else if (_comp.isFalsey(value)) {

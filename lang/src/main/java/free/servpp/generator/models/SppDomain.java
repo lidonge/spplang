@@ -17,6 +17,7 @@ public class SppDomain {
     List<ErrorContent> unFoundClass = new ArrayList<>();
     List<Object[]> unknownServiceCall = new ArrayList<>();
     private SppCompilationUnit currentClass = null;
+    private List<SppDefaultService> sppDefaultServices = new ArrayList<>();
 
     private String name;
     private RuleBlock ruleBlock = new RuleBlock();
@@ -25,6 +26,10 @@ public class SppDomain {
         for(String primary: IConstance.primaryTypes)
             addClass(new SppClass(primary));
         this.name = name;
+    }
+
+    public List<SppDefaultService> getSppDefaultServices() {
+        return sppDefaultServices;
     }
 
     public List<Object[]> getUnknownServiceCall() {
@@ -170,16 +175,31 @@ public class SppDomain {
     public void generateDefaultServices(ILogable logger){
         Map<String, SppCompilationUnit> sppClassMap = getMapsOfClass();
         for (SppCompilationUnit sppClass : sppClassMap.values().toArray(new SppCompilationUnit[sppClassMap.size()])) {
-            if (sppClass.getType() == IConstance.CompilationUnitType.entity) {
+            if (sppClass.getType() == IConstance.CompilationUnitType.entity
+                || sppClass.getType() == IConstance.CompilationUnitType.contract) {
+                SppDefaultService sppDefaultService = new SppDefaultService();
+                sppDefaultService.setRealm(sppClass);
+                //Create
                 SppService sppService = genDefaultService(logger, sppClass, sppClassMap,"Create", IConstance.ServiceType.update);
+                sppDefaultService.getServiceList().add(sppService);
 
+                //Update
+                sppService = genDefaultService(logger, sppClass, sppClassMap,"Update", IConstance.ServiceType.update);
+                sppDefaultService.getServiceList().add(sppService);
+
+                //Get
                 sppService =genDefaultService(logger, sppClass, sppClassMap,"Get", IConstance.ServiceType.query);
+                sppDefaultService.getServiceList().add(sppService);
                 sppService.getReturns().addLocalVar(new SppLocalVar(sppClass,NameUtil.firstToLowerCase(sppClass.getName(),true)));
 
+                //Search
                 sppService =genDefaultService(logger, sppClass, sppClassMap,"Search", IConstance.ServiceType.query);
+                sppDefaultService.getServiceList().add(sppService);
                 SppLocalVar sppLocalVar = new SppLocalVar(sppClass, NameUtil.firstToLowerCase(sppClass.getName(), true));
                 sppLocalVar.setArrayDimension(1);
                 sppService.getReturns().addLocalVar(sppLocalVar);
+
+                sppDefaultServices.add(sppDefaultService);
             }
         }
     }

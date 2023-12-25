@@ -19,6 +19,11 @@ public class Simple{{name}} extends {{name}}{
     }
 
     @Override
+    public String getName() {
+        return "{{funcName}}";
+    }
+
+    @Override
     public Object execute(Object... params) {
         {{#requestSuffix}}{{name}}{{requestSuffix}} arg = ({{name}}{{requestSuffix}}) params[params.length -1];
         {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}arg.get{{upperName}}(){{toArrayString}}{{/serviceBody.sppLocalVarList}});{{/requestSuffix}}
@@ -36,4 +41,5 @@ public class Simple{{name}} extends {{name}}{
     @Override
     public void endTransaction(String id) {
     }
+
 }

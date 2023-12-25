@@ -7,6 +7,7 @@ import free.servpp.generator.general.SppGeneralHandler;
 import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppProject;
 import free.servpp.generator.openapi.CodeFormator;
+import free.servpp.generator.openapi.MustacheClassWriter;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -41,11 +42,13 @@ public class SppPlugin extends AbstractMojo {
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         SppProject project = new SppProject();
+        //parse enum file first
         List<ParseTreeListener> sppTreeListeners = compileAntlr(project, ".enum", (sppFile, sppProject) -> {
             SppGeneralHandler sppGeneralHandler = (SppGeneralHandler) new SppCompiler(sppFile, sppProject).compile();
             return sppGeneralHandler;
         });
 
+        //parse spp file
         sppTreeListeners = compileAntlr(project, ".spp", (sppFile, sppProject) -> {
             SppGeneralHandler sppGeneralHandler = (SppGeneralHandler) new SppCompiler(sppFile, sppProject).compile();
             sppGeneralHandler.getSppDomain().dealEntityToRoleMaps();
@@ -67,20 +70,13 @@ public class SppPlugin extends AbstractMojo {
             sppDomain.dealAnnotations(sppDomain.getRuleBlock().getAppAnnotationList());
             sppDomain.checkSemanticFinally(sppGeneralHandler);
             DDLGenerator ddlGenerator = new DDLGenerator(sppDomain);
-            Template template = Mustache.compiler().compile(new InputStreamReader(ddlMustache));
-            String string  = template.execute(ddlGenerator);
-            PrintWriter out = null;
-            try {
-                File ddlFile = new File(yamlOutputDirectory,"sql/ddl.sql");
-                ddlFile.getParentFile().mkdirs();
-                out = new PrintWriter(new FileOutputStream(ddlFile));
-                string = CodeFormator.formatCode(string);
-                out.println(string);
-            }catch (IOException e) {
-                e.printStackTrace();
-            }finally {
-                out.close();
-            }
+            MustacheClassWriter.generateFile(ddlMustache,ddlGenerator,yamlOutputDirectory,"sql/ddl.sql");
+
+            MybatisGenerator mybatisGenerator = new MybatisGenerator(sppDomain,ddlGenerator);
+            mybatisGenerator.generateManager(GeneratorUtil.class.getResourceAsStream("/mustache/mybatis/manager.mustache")
+                    , javaOutputDirectory,basePackage);
+            mybatisGenerator.generateMapper(GeneratorUtil.class.getResourceAsStream("/mustache/mybatis/mapper.mustache")
+                    ,javaOutputDirectory.getParentFile(),basePackage);
 
             try {
                 GeneratorUtil.openApi(sppDomain,sppGeneralHandler.getAntlrFile(),yamlOutputDirectory,javaOutputDirectory,basePackage);

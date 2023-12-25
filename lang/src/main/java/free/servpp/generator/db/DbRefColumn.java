@@ -7,9 +7,10 @@ import java.sql.JDBCType;
  */
 public class DbRefColumn extends DbColumn{
     private String refName;
+    private String origName;
 
     public DbRefColumn(DbColumn dbColumn) {
-        super(dbColumn.getName(), dbColumn.getJdbcType(), dbColumn.getPrecision(), dbColumn.getScale(), dbColumn.isNullable());
+        super(dbColumn.getName(), dbColumn.getJdbcType(), dbColumn.getPrecision(), dbColumn.getScale(), dbColumn.isNullable(),dbColumn.getField());
     }
 
     public String getRefName() {
@@ -19,5 +20,9 @@ public class DbRefColumn extends DbColumn{
     public DbRefColumn setRefName(String refName) {
         this.refName = refName;
         return this;
+    }
+
+    public void setOrigName(String name) {
+        this.origName = name;
     }
 }

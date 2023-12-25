@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="{{packageName}}.{{mybatisClass.type}}Mapper">
+    {{>resultmap}}
+    <select id="get{{mybatisClass.type}}" resultMap="get{{mybatisClass.type}}">
+        SELECT {{#table.columns.arrayList}}{{^-first}},{{/-first}}{{name}}{{/table.columns.arrayList}}
+        FROM {{table.appTable.name}}
+        WHERE {{#table.primaryKeys.arrayList}}{{^-first}} and {{/-first}}{{name}} = #{ {{field.name}} }{{/table.primaryKeys.arrayList}}
+    </select>
+
+    <select id="search{{mybatisClass.type}}" resultMap="get{{mybatisClass.type}}" parameterType="{{modelPackage}}.{{mybatisClass.type}}">
+        SELECT {{#table.columns.arrayList}}{{^-first}},{{/-first}}{{name}}{{/table.columns.arrayList}}
+        FROM {{table.appTable.name}}
+        WHERE
+        <trim suffixOverrides="and ">
+        {{#mybatisClass}}{{#fields}}
+            {{#foreignKeys}}<if test="{{property}}.{{key}} != null">{{value}} =#{ {{property}}.{{key}} }{{^-last}} and {{/-last}}</if>{{/foreignKeys}}
+            {{^foreignKeys}}{{#column}}<if test="{{property}} != null">{{column}} =#{ {{property}} }{{^-last}} and {{/-last}}</if>{{/column}}{{/foreignKeys}}
+            {{^foreignKeys}}{{^column}}{{#fields}}{{/fields}}{{/column}}{{/foreignKeys}}
+            {{/fields}}{{/mybatisClass}}
+        </trim>
+    </select>
+    <update id="update{{mybatisClass.type}}" parameterType="{{modelPackage}}.{{mybatisClass.type}}">
+        UPDATE {{table.appTable.name}} SET
+        <trim suffixOverrides=",">
+        {{#table.primaryKeys.arrayList}}{{name}} = #{ {{field.name}} }{{^-last}},{{/-last}}{{#-last}}{{#mybatisClass}},{{/mybatisClass}}{{/-last}}{{/table.primaryKeys.arrayList}}
+        {{#mybatisClass}}{{#fields}}
+            {{#foreignKeys}}<if test="{{property}}.{{key}} != null">{{value}}=#{ {{property}}.{{key}} }{{^-last}},</if>{{/-last}}{{/foreignKeys}}{{#refName}}{{^-last}},</if>{{/-last}}{{#-last}}</if>{{/-last}}{{/refName}}
+            {{^foreignKeys}}{{#column}}{{^parent.property}}<if test="{{property}} != null">{{column}}=#{ {{property}} }{{^-last}},{{/-last}}</if>{{/parent.property}}{{/column}}{{/foreignKeys}}
+            {{^foreignKeys}}{{#column}}{{#parent.property}}<if test="{{parent.property}}.{{property}} != null">{{column}}=#{ {{parent.property}}.{{property}} }{{^-last}},</if>{{/-last}}{{/parent.property}}{{/column}}{{/foreignKeys}}
+            {{^foreignKeys}}{{^column}}{{#fields}}{{/fields}}{{^-last}},</if>{{/-last}}{{#-last}}</if>{{/-last}}{{/column}}{{/foreignKeys}}
+        {{/fields}}{{/mybatisClass}}
+        </trim>
+        WHERE {{#table.primaryKeys.arrayList}}{{^-first}} and {{/-first}}{{name}} = #{ {{field.name}} }{{/table.primaryKeys.arrayList}}
+    </update>
+
+    <insert id="create{{mybatisClass.type}}" parameterType="{{modelPackage}}.{{mybatisClass.type}}">
+        INSERT INTO {{table.appTable.name}} (
+        <trim suffixOverrides=",">
+            {{#table.primaryKeys.arrayList}}{{name}}{{^-last}},{{/-last}}{{#-last}}{{#mybatisClass}},{{/mybatisClass}}{{/-last}}{{/table.primaryKeys.arrayList}}
+        {{#mybatisClass}}{{#fields}}
+            {{#foreignKeys}}<if test="{{property}}.{{key}} != null">{{value}}{{^-last}},</if>{{/-last}}{{/foreignKeys}}{{#refName}}{{^-last}},</if>{{/-last}}{{#-last}}</if>{{/-last}}{{/refName}}
+            {{^foreignKeys}}{{#column}}{{^parent.property}}<if test="{{property}} != null">{{column}}{{^-last}},{{/-last}}</if>{{/parent.property}}{{/column}}{{/foreignKeys}}
+            {{^foreignKeys}}{{#column}}{{#parent.property}}<if test="{{parent.property}}.{{property}} != null">{{column}}{{^-last}},</if>{{/-last}}{{/parent.property}}{{/column}}{{/foreignKeys}}
+            {{^foreignKeys}}{{^column}}{{#fields}}{{/fields}}{{^-last}},</if>{{/-last}}{{#-last}}</if>{{/-last}}{{/column}}{{/foreignKeys}}
+        {{/fields}}{{/mybatisClass}}
+        ) VALUES (
+            {{#table.primaryKeys.arrayList}}#{ {{field.name}} }{{^-last}},{{/-last}}{{#-last}}{{#mybatisClass}},{{/mybatisClass}}{{/-last}}{{/table.primaryKeys.arrayList}}
+        {{#mybatisClass}}{{#fields}}
+            {{#foreignKeys}}<if test="{{property}}.{{key}} != null">#{ {{property}}.{{key}} }{{^-last}},</if>{{/-last}}{{/foreignKeys}}{{#refName}}{{^-last}},</if>{{/-last}}{{#-last}}</if>{{/-last}}{{/refName}}
+            {{^foreignKeys}}{{#column}}{{^parent.property}}<if test="{{property}} != null">#{ {{property}} }{{^-last}},{{/-last}}</if>{{/parent.property}}{{/column}}{{/foreignKeys}}
+            {{^foreignKeys}}{{#column}}{{#parent.property}}<if test="{{parent.property}}.{{property}} != null">#{ {{parent.property}}.{{property}} }{{^-last}},</if>{{/-last}}{{/parent.property}}{{/column}}{{/foreignKeys}}
+            {{^foreignKeys}}{{^column}}{{#fields}}{{/fields}}{{^-last}},</if>{{/-last}}{{#-last}}</if>{{/-last}}{{/column}}{{/foreignKeys}}
+        {{/fields}}{{/mybatisClass}}
+        </trim>
+    )</insert>
+</mapper>

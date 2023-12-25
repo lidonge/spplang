@@ -5,4 +5,5 @@ package free.servpp.service;
  */
 public interface Service {
     Object execute(Object... role);
+    String getName();
 }
