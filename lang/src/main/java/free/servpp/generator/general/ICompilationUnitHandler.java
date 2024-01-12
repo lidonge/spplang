@@ -29,8 +29,12 @@ public interface ICompilationUnitHandler extends SppListener, IConstance, ISppEr
         return _generateField(ptype,dimension, name,maker);
     }
     default String generateField(String ptype, int dimension, String name) {
+        return generateField(ptype,dimension,name,false);
+    }
+    default String generateField(String ptype, int dimension, String name,boolean isQuantum) {
         SppVarMaker<SppClass, String> maker = (cls, s1) ->{return new SppField(cls,s1);};
         SppLocalVar sppLocalVar=  _generateField(ptype,dimension,name,maker);
+        sppLocalVar.setQuantum(isQuantum);
         return ((SppClass)getSppDomain().getCurrentClass()).addField((SppField) sppLocalVar);
     }
     default String generateField(String ptype, String name, SppVarMaker<SppClass, String> maker) {

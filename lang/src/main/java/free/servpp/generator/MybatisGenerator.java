@@ -1,16 +1,15 @@
 package free.servpp.generator;
 
 import free.servpp.generator.db.DDLGenerator;
+import free.servpp.generator.db.DbColumn;
 import free.servpp.generator.db.DbTable;
 import free.servpp.generator.db.MybatisClass;
 import free.servpp.generator.general.NameUtil;
-import free.servpp.generator.models.SppClass;
-import free.servpp.generator.models.SppDefaultService;
-import free.servpp.generator.models.SppDomain;
-import free.servpp.generator.models.SppService;
+import free.servpp.generator.models.*;
 import free.servpp.generator.openapi.MustacheClassWriter;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,15 +64,25 @@ public class MybatisGenerator {
             if(sppClass != null){
 //                if(!sppClass.getName().equals("MyOrder"))
 //                    continue;
-                SppDefaultService sppDefaultService = defaultServiceMap.get(sppClass.getName());
+//                SppDefaultService sppDefaultService = defaultServiceMap.get(sppClass.getName());
+                List<DbColumn> quantumFields = null;
+                for(DbColumn dbColumn : dbTable.getColumns().getArrayList()){
+                    if(dbColumn.getField().isQuantum()){
+                        if(quantumFields == null)
+                            quantumFields = new ArrayList<>();
+                        quantumFields.add(dbColumn);
+                    }
+                }
                 String managerClassName = sppClass.getName()+"Mapper";
                 String fileName = (packName+"."+managerClassName).replace('.',File.separatorChar)+".xml";
 
+                final List<DbColumn> q = quantumFields;
                 Object obj = new Object(){
                     String packageName = packName;
                     String modelPackage = domainPackage + ".model";
                     String lowerClsName = NameUtil.firstToLowerCase(sppClass.getName(),true);
                     DbTable table = dbTable;
+                    List<DbColumn> quantum = q;
                     MybatisClass mybatisClass = dbTable.getMybatisClass();
                 };
                 mustache.reset();

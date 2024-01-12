@@ -1,0 +1,6 @@
+        {{#mybatisClass}}{{#fields}}
+            {{#foreignKeys}}<if test="{{key}} != null">{{value}}{{^-last}},</if>{{/-last}}{{/foreignKeys}}{{#refName}}{{^-last}},</if>{{/-last}}{{#-last}}</if>{{/-last}}{{/refName}}
+            {{^foreignKeys}}{{#column}}{{^parent.property}}<if test="{{qualifiedName}} != null">{{column}}{{^-last}},{{/-last}}</if>{{/parent.property}}{{/column}}{{/foreignKeys}}
+            {{^foreignKeys}}{{#column}}{{#parent.property}}<if test="{{qualifiedName}} != null">{{column}}{{^-last}},</if>{{/-last}}{{/parent.property}}{{/column}}{{/foreignKeys}}
+            {{^foreignKeys}}{{^column}}{{#fields}}{{/fields}}{{^-last}},</if>{{/-last}}{{#-last}}</if>{{/-last}}{{/column}}{{/foreignKeys}}
+        {{/fields}}{{/mybatisClass}}

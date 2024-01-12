@@ -21,21 +21,31 @@ public class DbColumn<T extends IContainer> implements IComponent, INamedObject 
 
     DbTable parent;
 
-    SppLocalVar field;
+    private SppLocalVar parentField;
+    private SppLocalVar field;
 
     public DbColumn() {
     }
 
     public DbColumn clone(){
-        return new DbColumn(name,jdbcType,precision,scale,nullable,field);
+        return new DbColumn(name,jdbcType,precision,scale,nullable,field,parentField);
     }
-    protected DbColumn(String name, JDBCType jdbcType, int precision, int scale, boolean nullable, SppLocalVar field) {
+    protected DbColumn(String name, JDBCType jdbcType, int precision, int scale, boolean nullable, SppLocalVar field, SppLocalVar parentField) {
         this.name = name;
         this.jdbcType = jdbcType;
         this.precision = precision;
         this.scale = scale;
         this.nullable = nullable;
         this.field = field;
+        this.parentField = parentField;
+    }
+
+    public SppLocalVar getParentField() {
+        return parentField;
+    }
+
+    public void setParentField(SppLocalVar parentField) {
+        this.parentField = parentField;
     }
 
     public DbTable getTable(){

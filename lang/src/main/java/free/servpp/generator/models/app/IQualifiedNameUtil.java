@@ -1,13 +1,10 @@
 package free.servpp.generator.models.app;
 
-import free.servpp.generator.general.ISppErrorLogger;
 import free.servpp.generator.general.app.SemanticException;
 import free.servpp.generator.models.SppClass;
 import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppField;
 import free.servpp.generator.models.SppLocalVar;
-import free.servpp.generator.models.app.SppFieldDefine;
-import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -35,16 +32,16 @@ public interface IQualifiedNameUtil {
 
     }
 
-    default SppFieldDefine getQualifiedField(SppDomain sppDomain, SppClass mapEntity, String qualifiedName) throws SemanticException {
+    default SppFieldReference getQualifiedField(SppDomain sppDomain, SppClass mapEntity, String qualifiedName) throws SemanticException {
         SppField sppField = null;
-        SppFieldDefine fieldDefine = null;
+        SppFieldReference fieldDefine = null;
         String[] path = qualifiedName.split("\\.");
         if(path.length == 1){
             if(mapEntity == null){
                 throw new SemanticException(qualifiedName + " is not a qualified name.");
             }else {
                 sppField = mapEntity.getField(path[0]);
-                fieldDefine = new SppFieldDefine(mapEntity,sppField);
+                fieldDefine = new SppFieldReference(sppField);
             }
         }else {
             Iterator<String> iterator = Arrays.stream(path).iterator();
@@ -58,11 +55,12 @@ public interface IQualifiedNameUtil {
                         fieldDefine = null;
                         break;
                     }
-                    fieldDefine = new SppFieldDefine(sppClass,sppField);
+                    fieldDefine = new SppFieldReference(sppField);
                     sppClass = (SppClass) sppField.getType();
                 }
             }
         }
+        fieldDefine = sppDomain.addSppFieldReference(fieldDefine.getSppField());
         return fieldDefine;
     }
 

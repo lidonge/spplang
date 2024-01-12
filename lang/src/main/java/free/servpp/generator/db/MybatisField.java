@@ -6,20 +6,21 @@ package free.servpp.generator.db;
 public class MybatisField {
     private String property;
     private String column;
+    private String qualifiedName;
 
     private IMybatisClass parent;
 
-    public MybatisField(String property, String column) {
+    public MybatisField(String qualifiedName, String property, String column) {
+        this.qualifiedName = qualifiedName;
         this.property = property;
         this.column = column;
     }
 
+    public String getQualifiedName(){
+        return qualifiedName;
+    }
     public String getProperty() {
         return property;
-    }
-
-    public void setProperty(String property) {
-        this.property = property;
     }
 
     public String getColumn() {

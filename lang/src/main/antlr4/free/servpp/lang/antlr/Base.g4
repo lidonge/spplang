@@ -12,15 +12,18 @@ primitiveType
     :   'boolean'
     |   'char'
     |   'String'
-    |   'short'
+    |   'DateTime'
+    |   numberType
+    ;
+
+numberType
+    : 'short'
     |   'int'
     |   'long'
     |   'float'
     |   'double'
     |   'decimal'
-    |   'DateTime'
     ;
-
 // §3.10.1 Integer Literals
 
 IntegerLiteral

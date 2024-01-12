@@ -9,17 +9,17 @@ import java.util.List;
  * @author lidong@date 2023-11-21@version 1.0
  */
 public class AppPrimaryKeys extends Annotation {
-    List<SppFieldDefine> keys = new ArrayList<>();
+    List<SppFieldReference> keys = new ArrayList<>();
 
-    public List<SppFieldDefine> getKeys() {
+    public List<SppFieldReference> getKeys() {
         return keys;
     }
 
-    public String addKey(String qualifiedName, SppFieldDefine sppFieldDefine){
-        if(keys.indexOf(sppFieldDefine) != -1){
+    public String addKey(String qualifiedName, SppFieldReference sppFieldReference){
+        if(keys.indexOf(sppFieldReference) != -1){
             return "Duplicate primary key " + qualifiedName;
         }
-        keys.add(sppFieldDefine);
+        keys.add(sppFieldReference);
         return null;
     }
 

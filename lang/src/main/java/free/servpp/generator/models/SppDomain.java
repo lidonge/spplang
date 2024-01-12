@@ -19,6 +19,8 @@ public class SppDomain {
     private SppCompilationUnit currentClass = null;
     private List<SppDefaultService> sppDefaultServices = new ArrayList<>();
 
+    private Map<SppField, SppFieldReference> sppFieldReference = new HashMap<>();
+
     private String name;
     private RuleBlock ruleBlock = new RuleBlock();
 
@@ -26,6 +28,19 @@ public class SppDomain {
         for(String primary: IConstance.primaryTypes)
             addClass(new SppClass(primary));
         this.name = name;
+    }
+
+    public SppFieldReference getSppFieldReference(SppField sppField){
+        return sppFieldReference.get(sppField);
+    }
+
+    public SppFieldReference addSppFieldReference(SppField sppField){
+        SppFieldReference ret = getSppFieldReference(sppField);
+        if (ret == null){
+            ret = new SppFieldReference(sppField);
+            sppFieldReference.put(sppField,ret);
+        }
+        return ret;
     }
 
     public List<SppDefaultService> getSppDefaultServices() {
@@ -174,31 +189,50 @@ public class SppDomain {
 
     public void generateDefaultServices(ILogable logger){
         Map<String, SppCompilationUnit> sppClassMap = getMapsOfClass();
-        for (SppCompilationUnit sppClass : sppClassMap.values().toArray(new SppCompilationUnit[sppClassMap.size()])) {
-            if (sppClass.getType() == IConstance.CompilationUnitType.entity
-                || sppClass.getType() == IConstance.CompilationUnitType.contract) {
+        for (SppCompilationUnit sppCompilationUnit : sppClassMap.values().toArray(new SppCompilationUnit[sppClassMap.size()])) {
+            if (sppCompilationUnit.getType() == IConstance.CompilationUnitType.entity
+                || sppCompilationUnit.getType() == IConstance.CompilationUnitType.contract) {
+                SppClass sppClass = (SppClass) sppCompilationUnit;
                 SppDefaultService sppDefaultService = new SppDefaultService();
                 sppDefaultService.setRealm(sppClass);
                 //Create
                 SppService sppService = genDefaultService(logger, sppClass, sppClassMap,"Create", IConstance.ServiceType.update);
-                sppDefaultService.getServiceList().add(sppService);
+                sppDefaultService.addService(sppService);
 
                 //Update
                 sppService = genDefaultService(logger, sppClass, sppClassMap,"Update", IConstance.ServiceType.update);
-                sppDefaultService.getServiceList().add(sppService);
+                sppDefaultService.addService(sppService);
 
                 //Get
                 sppService =genDefaultService(logger, sppClass, sppClassMap,"Get", IConstance.ServiceType.query);
-                sppDefaultService.getServiceList().add(sppService);
+                sppDefaultService.addService(sppService);
                 sppService.getReturns().addLocalVar(new SppLocalVar(sppClass,NameUtil.firstToLowerCase(sppClass.getName(),true)));
 
                 //Search
                 sppService =genDefaultService(logger, sppClass, sppClassMap,"Search", IConstance.ServiceType.query);
-                sppDefaultService.getServiceList().add(sppService);
+                sppDefaultService.addService(sppService);
                 SppLocalVar sppLocalVar = new SppLocalVar(sppClass, NameUtil.firstToLowerCase(sppClass.getName(), true));
                 sppLocalVar.setArrayDimension(1);
                 sppService.getReturns().addLocalVar(sppLocalVar);
 
+                //Quantum
+                for(SppField sppField : sppClass.getSppFieldList()){
+                    if(sppField.isQuantum()){
+                        sppService = genDefaultService(logger, sppClass, sppClassMap,"Increase", IConstance.ServiceType.update);
+                        sppDefaultService.addService(sppService);
+                        SppField field = new SppField(sppField.getType(), sppField.getName());
+                        sppService.getServiceBody().addLocalVar(field);
+                        field = new SppField(sppField.getType(), sppField.getName()+"Max");
+                        sppService.getServiceBody().addLocalVar(field);
+
+                        sppService = genDefaultService(logger, sppClass, sppClassMap,"Decrease", IConstance.ServiceType.update);
+                        sppDefaultService.addService(sppService);
+                        field = new SppField(sppField.getType(), sppField.getName());
+                        sppService.getServiceBody().addLocalVar(field);
+                        field = new SppField(sppField.getType(), sppField.getName()+"Min");
+                        sppService.getServiceBody().addLocalVar(field);
+                    }
+                }
                 sppDefaultServices.add(sppDefaultService);
             }
         }

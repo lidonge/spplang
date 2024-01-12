@@ -78,6 +78,7 @@ public class SppCompilationUnit extends Annotation {
         name = cls.name;
         type = cls.type;
         isReal = cls.isReal;
+        annotations = cls.annotations;
     }
 
 }

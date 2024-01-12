@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class SppDefaultService {
     private SppCompilationUnit realm;
-    List<SppService> serviceList = new ArrayList<>();
+    private List<SppService> serviceList = new ArrayList<>();
 
     public SppCompilationUnit getRealm() {
         return realm;
@@ -22,6 +22,10 @@ public class SppDefaultService {
         return serviceList;
     }
 
+    public void addService(SppService sppService){
+        serviceList.add(sppService);
+        sppService.setDefaultClass(realm);
+    }
     public void setServiceList(List<SppService> serviceList) {
         this.serviceList = serviceList;
     }

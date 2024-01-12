@@ -9,10 +9,10 @@ import java.util.List;
  * @author lidong@date 2023-12-05@version 1.0
  */
 public class AppForeign {
-    List<SppFieldDefine> keys = new ArrayList<>();
+    List<SppFieldReference> keys = new ArrayList<>();
     private SppCompilationUnit foreignReference;
 
-    public List<SppFieldDefine> getKeys() {
+    public List<SppFieldReference> getKeys() {
         return keys;
     }
 

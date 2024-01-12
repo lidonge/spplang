@@ -26,4 +26,14 @@ public interface BaseListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPrimitiveType(BaseParser.PrimitiveTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BaseParser#numberType}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumberType(BaseParser.NumberTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BaseParser#numberType}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumberType(BaseParser.NumberTypeContext ctx);
 }

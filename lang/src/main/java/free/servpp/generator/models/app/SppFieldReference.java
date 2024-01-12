@@ -1,27 +1,26 @@
 package free.servpp.generator.models.app;
 
-import free.servpp.generator.models.SppClass;
 import free.servpp.generator.models.SppField;
 
 /**
  * @author lidong@date 2023-11-22@version 1.0
  */
-public class SppFieldDefine {
-    SppClass sppClass;
-    SppField sppField;
+public class SppFieldReference {
+//    private SppClass sppClass;
+    private SppField sppField;
 
-    public SppFieldDefine(SppClass sppClass, SppField sppField) {
-        this.sppClass = sppClass;
+    public SppFieldReference(SppField sppField) {
+//        this.sppClass = sppClass;
         this.sppField = sppField;
     }
 
-    public SppClass getSppClass() {
-        return sppClass;
-    }
-
-    public void setSppClass(SppClass sppClass) {
-        this.sppClass = sppClass;
-    }
+//    public SppClass getSppClass() {
+//        return sppClass;
+//    }
+//
+//    public void setSppClass(SppClass sppClass) {
+//        this.sppClass = sppClass;
+//    }
 
     public SppField getSppField() {
         return sppField;
@@ -35,14 +34,14 @@ public class SppFieldDefine {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SppFieldDefine that = (SppFieldDefine) o;
-        return sppClass.equals(that.sppClass) && sppField.equals(that.sppField);
+        SppFieldReference that = (SppFieldReference) o;
+        return sppField.getParent().equals(that.getSppField().getParent()) && sppField.equals(that.sppField);
     }
 
     @Override
     public String toString() {
         return "SppFieldDefine{" +
-                "sppClass=" + sppClass.getName() +
+                "sppClass=" + sppField.getParent().getName() +
                 ", sppField=" + sppField +
                 '}';
     }

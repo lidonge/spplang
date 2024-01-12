@@ -1,6 +1,5 @@
 package free.servpp.generator.db;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +14,8 @@ public interface IMybatisClass {
         field.setParent(this);
 
     }
+
+    String getQualifiedName();
 
     void createFields();
 

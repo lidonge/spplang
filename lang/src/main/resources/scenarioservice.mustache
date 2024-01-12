@@ -6,7 +6,7 @@ import {{basePackage}}.{{domainName}}.handler.{{name}};
 {{#responseSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{responseSuffix}};{{/responseSuffix}}
 {{^requestSuffix}}{{#serviceBody.sppLocalVarList}}import {{basePackage}}.{{domainName}}.model.{{type.name}}{{/serviceBody.sppLocalVarList}}{{/requestSuffix}};
 {{#sppFieldList}}
-import {{basePackage}}.{{domainName}}.handler.{{type.name}};
+{{#type.type}}import {{basePackage}}.{{domainName}}.handler.{{type.name}};{{/type.type}}
 {{/sppFieldList}}
 
 public class Simple{{name}} extends {{name}}{

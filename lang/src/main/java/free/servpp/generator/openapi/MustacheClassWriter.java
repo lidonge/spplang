@@ -25,10 +25,11 @@ public class MustacheClassWriter extends ClassWriterConfig {
             public Reader getTemplate(String name) throws Exception {//for import mustache
                 String path = subPath == null ? "" :subPath;
                 path +=File.separator + name + ".mustache";
+//                System.out.println(path);
                 InputStreamReader ret = new InputStreamReader(MustacheClassWriter.class.getResourceAsStream(path));
                 return ret;
             }
-        }).compile(new InputStreamReader(mustache));
+        }).escapeHTML(false).compile(new InputStreamReader(mustache));
         String string  = template.execute(obj);
         string = CodeFormator.formatCode(string);
         PrintWriter out = null;

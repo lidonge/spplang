@@ -1,5 +1,7 @@
 package free.servpp.generator.db;
 
+import free.servpp.generator.general.NameUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +12,22 @@ public class MybatisClass implements IMybatisClass{
     String table;
     String type;
     List<MybatisField> fields;
+
+    List<MybatisField> primaryKeys;
+
     public MybatisClass(String table, String type) {
         this.table = table;
         this.type = type;
+    }
+
+    public void addPrimaryKey(MybatisField pk){
+        if(primaryKeys == null)
+            primaryKeys = new ArrayList<>();
+        primaryKeys.add(pk);
+    }
+    @Override
+    public String getQualifiedName() {
+        return NameUtil.firstToLowerCase(type,true);
     }
 
     @Override

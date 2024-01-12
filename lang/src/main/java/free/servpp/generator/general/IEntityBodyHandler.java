@@ -17,7 +17,12 @@ public interface IEntityBodyHandler extends ICompilationUnitHandler {
 
     @Override
     default void enterFieldDeclaration(SppParser.FieldDeclarationContext ctx) {
+        boolean isQuantum = false;
         String type = ctx.getChild(0).getText();
+        if(type.startsWith("quantum")) {
+            isQuantum = true;
+            type =  type.substring("quantum".length());
+        }
         String name = ctx.getChild(1).getText();
         String[] sdims = type.split("\\[");
 
@@ -28,6 +33,16 @@ public interface IEntityBodyHandler extends ICompilationUnitHandler {
 //        if( (clstype == CompilationUnitType.entity || clstype == CompilationUnitType.reference) &&
 //                (sppType.getType() != null && sppType.getType() != CompilationUnitType.Enum) )
 //            logSppError(ctx, "The field "+name+" of entity should be primary type!" );
-        logSppError(ctx,generateField(sdims[0],dim,name));
+        logSppError(ctx,generateField(sdims[0],dim,name,isQuantum));
+    }
+
+    @Override
+    default void enterQuantumNumber(SppParser.QuantumNumberContext ctx){
+
+    }
+
+    @Override
+    default void exitQuantumNumber(SppParser.QuantumNumberContext ctx){
+
     }
 }

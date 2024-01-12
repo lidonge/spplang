@@ -1,6 +1,7 @@
 package free.servpp.generator.models.app;
 
 import free.servpp.generator.models.SppClass;
+import free.servpp.generator.models.SppCompilationUnit;
 import free.servpp.generator.models.SppField;
 
 /**
@@ -12,6 +13,36 @@ public class SppExtendField extends SppField implements INamedObject {
     String overrideSuper;
 
     String defaultValue;
+
+    protected SppExtendField(SppCompilationUnit type, String name, int arrayDimension, int index, boolean isQuantum,
+                          boolean isNotNull, boolean isUnique, String overrideSuper, String defaultValue) {
+        super(type, name, arrayDimension, index, isQuantum);
+        this.isNotNull = isNotNull;
+        this.isUnique = isUnique;
+        this.overrideSuper = overrideSuper;
+        this.defaultValue = defaultValue;
+    }
+
+    public SppExtendField(SppCompilationUnit type, String name, int index, boolean isQuantum, boolean isNotNull, boolean isUnique, String overrideSuper, String defaultValue) {
+        super(type, name, index, isQuantum);
+        this.isNotNull = isNotNull;
+        this.isUnique = isUnique;
+        this.overrideSuper = overrideSuper;
+        this.defaultValue = defaultValue;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new SppExtendField(getType(),getName(),getArrayDimension(),getIndex(),isQuantum(),isNotNull,isUnique,overrideSuper,defaultValue);
+    }
+
+    public SppExtendField(SppCompilationUnit cls, String name, boolean isNotNull, boolean isUnique, String overrideSuper, String defaultValue) {
+        super(cls, name);
+        this.isNotNull = isNotNull;
+        this.isUnique = isUnique;
+        this.overrideSuper = overrideSuper;
+        this.defaultValue = defaultValue;
+    }
 
     public SppExtendField(SppClass cls, String name) {
         super(cls, name);

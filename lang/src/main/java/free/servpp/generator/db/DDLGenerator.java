@@ -23,11 +23,28 @@ import static free.servpp.generator.db.DbTableConfig.*;
 public class DDLGenerator implements ISppErrorLogger {
     private SppDomain sppDomain;
     private NamedArray<DbTable> tableList = new NamedArray<>();
+    private File rdbFile;
 
-    public DDLGenerator(SppDomain sppDomain) {
+    public DDLGenerator(SppDomain sppDomain,File rdbFile) {
         this.sppDomain = sppDomain;
+        this.rdbFile = rdbFile;
+        instanceEntity();
         createTables();
         mapping(sppDomain);
+    }
+
+    private void instanceEntity() {
+        for (AppTables appTables : sppDomain.getRuleBlock().getAppTables()) {
+            for (AppTable appTable : appTables.getAppTableList()) {
+                SppClass sppClass = appTable.getEntity();
+                for (AppColumn appColumn : appTable.getAppColumns()) {
+                    SppField field = new SppField(appColumn.getType(), appColumn.getName());
+                    sppClass.addField(field);
+                }
+                sppClass = sppClass.instance(new SppField(sppClass,NameUtil.firstToLowerCase(sppClass.getName(),true)),sppDomain);
+                appTable.setEntity(sppClass);
+            }
+        }
     }
 
     public NamedArray<DbTable> getTableList() {
@@ -41,9 +58,9 @@ public class DDLGenerator implements ISppErrorLogger {
                 String name = mapperItem.getName();
                 mapColumn(mapperItem, dbTable.getColumns().get(name), dbTable, true);
                 mapColumn(mapperItem, dbTable.getPrimaryKeys().get(name), dbTable, false);
-                for(MybatisField mybatisField:dbTable.getMybatisClass().getFields()){
-                    if(name.equals(mybatisField.getColumn())){
-                        mybatisField.setColumn( name);
+                for (MybatisField mybatisField : dbTable.getMybatisClass().getFields()) {
+                    if (name.equals(mybatisField.getColumn())) {
+                        mybatisField.setColumn(mapperItem.getMapName());
                     }
                 }
                 for (DbForeign dbForeign : dbTable.getDbForeigns()) {
@@ -54,19 +71,19 @@ public class DDLGenerator implements ISppErrorLogger {
         }
     }
 
-    private static void mappingMybatis(AppMapper appMapper, List<MybatisField> mybatisFields) {
-        for(MybatisField mybatisField: mybatisFields) {
+    private void mappingMybatis(AppMapper appMapper, List<MybatisField> mybatisFields) {
+        for (MybatisField mybatisField : mybatisFields) {
             for (MapperItem mapperItem : appMapper.getMapperItemList()) {
                 String name = mapperItem.getName();
-                if(mybatisField instanceof IMybatisClass){
-                    mappingMybatis(appMapper,((IMybatisClass) mybatisField).getFields());
+                if (mybatisField instanceof IMybatisClass) {
+                    mappingMybatis(appMapper, ((IMybatisClass) mybatisField).getFields());
                 } else if (mybatisField instanceof MybatisRef) {
-                    for(Map.Entry entry:((MybatisRef) mybatisField).foreignKeys){
-                        if(name.equals(entry.getValue()))
+                    for (Map.Entry entry : ((MybatisRef) mybatisField).foreignKeys) {
+                        if (name.equals(entry.getValue()))
                             entry.setValue(mapperItem.getMapName());
                     }
-                } else if(name.equals(mybatisField.getColumn())){
-                    mybatisField.setColumn( name);
+                } else if (name.equals(mybatisField.getColumn())) {
+                    mybatisField.setColumn(mapperItem.getMapName());
                 }
             }
         }
@@ -116,7 +133,7 @@ public class DDLGenerator implements ISppErrorLogger {
      * @param dbTable
      */
     private void genPrimaryKeyWhichIsTable(AppTable appTable, DbTableConfig configs, DbTable dbTable) {
-        for (SppFieldDefine pk : appTable.getPrimaryKeys()) {
+        for (SppFieldReference pk : appTable.getPrimaryKeys()) {
             SppField sppField = pk.getSppField();
             if (sppField.getType().getType() != null) {
                 DbTable outerTable = getDbTableByRoleName(sppField.getType().getName());
@@ -126,6 +143,7 @@ public class DDLGenerator implements ISppErrorLogger {
                     dbColumn = dbColumn.clone();
                     dbColumn.setName(genColumnName(configs, sppField.getName(), dbColumn.getName(),
                             hasSame ? configs.getDupNamingType() : configs.getNamingType()));
+                    dbColumn.setParentField(sppField);
                     dbTable.addPrimaryKey(dbColumn);
                 }
             }
@@ -133,11 +151,15 @@ public class DDLGenerator implements ISppErrorLogger {
     }
 
     private void addPrimaryKeys(AppTable appTable, DbTableConfig configs, DbTable dbTable) {
-        for (SppFieldDefine pk : appTable.getPrimaryKeys()) {
+        for (SppFieldReference pk : appTable.getPrimaryKeys()) {
             SppField sppField = pk.getSppField();
             if (sppField.getType().getType() == null) {
                 DbColumn dbColumn = createDbColumn(configs, sppField);
                 dbTable.addPrimaryKey(dbColumn);
+                MybatisField mpk = new MybatisField(sppField.getQualifiedInstName(), sppField.getName(), dbColumn.getName());
+                mpk.setParent(dbTable.getMybatisClass());
+                dbTable.getMybatisClass().addPrimaryKey(mpk);
+
             }
         }
     }
@@ -145,16 +167,15 @@ public class DDLGenerator implements ISppErrorLogger {
     private void genForeignKeys(DbTableConfig configs, AppForeign appForeign, DbTable dbTable) {
         DbForeign dbForeign = new DbForeign();
         dbTable.addForeign(dbForeign);
-        for (SppFieldDefine sppFieldDefine : appForeign.getKeys()) {
-            createForeignDbColumns(configs, dbTable, dbForeign, sppFieldDefine.getSppField());
+        for (SppFieldReference sppFieldReference : appForeign.getKeys()) {
+            createForeignDbColumns(configs, dbTable, dbForeign, sppFieldReference.getSppField());
         }
     }
 
     private void addAppColumns(AppTable appTable, DbTable dbTable) {
         SppClass sppClass = appTable.getEntity();
         for (AppColumn appColumn : appTable.getAppColumns()) {
-            SppField field = new SppField(appColumn.getType(), appColumn.getName());
-            sppClass.addField(field);
+            SppField field = sppClass.getField(appColumn.getName());
             DbColumn dbColumn = new DbColumn();
             dbColumn.setName(appColumn.getName()).setJdbcType(mapToJDBCType(appColumn.getType()))
                     .setPrecision(appColumn.getPrecision()).setScale(appColumn.getScale())
@@ -162,10 +183,14 @@ public class DDLGenerator implements ISppErrorLogger {
                     .setField(field);
             dbTable.remove(dbColumn);
             dbTable.addComponent(dbColumn);
+            MybatisField pk = new MybatisField(field.getQualifiedInstName(), field.getName(), dbColumn.getName());
             if (appColumn.isPrimaryKey()) {
                 dbTable.addPrimaryKey(dbColumn);
-            } else
-                dbTable.getMybatisClass().addField(new MybatisField(field.getName(), dbColumn.getName()));
+                pk.setParent(dbTable.getMybatisClass());
+                dbTable.getMybatisClass().addPrimaryKey(pk);
+            } else {
+                dbTable.getMybatisClass().addField(pk);
+            }
         }
     }
 
@@ -201,14 +226,14 @@ public class DDLGenerator implements ISppErrorLogger {
                 dbTable.addComponent(dbColumn);
                 boolean inPrimaryKeys = false;
                 inPrimaryKeys = isInPrimaryKeys(dbTable, sppLocalVar, inPrimaryKeys);
-                if(!inPrimaryKeys)
-                    dbTable.getMybatisClass().addField(new MybatisField(sppLocalVar.getName(), dbColumn.getName()));
+                if (!inPrimaryKeys)
+                    dbTable.getMybatisClass().addField(new MybatisField(((SppField) sppLocalVar).getQualifiedInstName(), sppLocalVar.getName(),dbColumn.getName()));
             } else {//Entity type field
                 DbTable ref = getColumnReferredForeignTable(dbTable, sppLocalVar);
                 boolean hasSame = containsSameType(appTable.getEntity(), sppLocalVar);
                 if (ref == null) {//foreign key not exists, expand the entity
                     SppClass refClass = (SppClass) sppLocalVar.getType();
-                    MybatisAssociation mybatisAssociation = getMybatisAssociation(dbTable.getMybatisClass(),sppLocalVar.getName(),refClass);
+                    MybatisAssociation mybatisAssociation = getMybatisAssociation(dbTable.getMybatisClass(), (SppField) sppLocalVar, refClass);
                     expandRefEntity(configs, dbTable, mybatisAssociation, sppLocalVar.getName(), refClass, hasSame);
                 } else {
                     genRefEntityWithItsPrimaryKeys(configs, dbTable, sppLocalVar, ref, hasSame);
@@ -217,10 +242,10 @@ public class DDLGenerator implements ISppErrorLogger {
         }
         //move ref to the end of children, for recursion of mustache
         List<MybatisField> fields = dbTable.getMybatisClass().getFields();
-        for(Object obj: fields.toArray()){
+        for (Object obj : fields.toArray()) {
             MybatisField field = (MybatisField) obj;
-            if(field instanceof MybatisRef
-                || field instanceof MybatisAssociation){
+            if (field instanceof MybatisRef
+                    || field instanceof MybatisAssociation) {
                 fields.remove(field);
                 fields.add(field);
             }
@@ -228,8 +253,8 @@ public class DDLGenerator implements ISppErrorLogger {
     }
 
     private static boolean isInPrimaryKeys(DbTable dbTable, SppLocalVar sppLocalVar, boolean inPrimaryKeys) {
-        for(DbColumn pk: dbTable.getPrimaryKeys().getArrayList()){
-            if(pk.getField().getName().equals(sppLocalVar.getName())){
+        for (DbColumn pk : dbTable.getPrimaryKeys().getArrayList()) {
+            if (pk.getField().getName().equals(sppLocalVar.getName())) {
                 inPrimaryKeys = true;
                 break;
             }
@@ -251,7 +276,8 @@ public class DDLGenerator implements ISppErrorLogger {
     }
 
     private void genRefEntityWithItsPrimaryKeys(DbTableConfig configs, DbTable dbTable, SppLocalVar sppLocalVar, DbTable ref, boolean hasSame) {
-        MybatisRef mybatisRef = new MybatisRef(sppLocalVar.getName(), null);
+        String qualifiedInstName = ((SppField) sppLocalVar).getQualifiedInstName();
+        MybatisRef mybatisRef = new MybatisRef(qualifiedInstName, sppLocalVar.getName(), null);
         mybatisRef.setRefName(sppLocalVar.getType().getName());
         dbTable.getMybatisClass().addField(mybatisRef);
 //        if(dbTable.getAppTable().getName().equals("PRODUCT"))
@@ -261,7 +287,7 @@ public class DDLGenerator implements ISppErrorLogger {
             col.setName(genColumnName(configs, sppLocalVar.getName(), col.getName(),
                     hasSame ? configs.getDupNamingType() : configs.getNamingType()));
             dbTable.addComponent(col);
-            mybatisRef.addKeyPair(col.getField().getName(), col.getName());
+            mybatisRef.addKeyPair(qualifiedInstName+"." +col.getField().getName(), col.getName());
         }
     }
 
@@ -273,17 +299,17 @@ public class DDLGenerator implements ISppErrorLogger {
                 DbColumn dbColumn = createDbColumn(configs, field);
                 dbColumn.setName(colName);
                 dbTable.addComponent(dbColumn);
-                mybatisClass.addField(new MybatisField(field.getName(), dbColumn.getName()));
+                mybatisClass.addField(new MybatisField(((SppField) field).getQualifiedInstName(), field.getName(), dbColumn.getName()));
             } else {
                 SppClass sppClass = (SppClass) field.getType();
-                MybatisAssociation mybatisAssociation = getMybatisAssociation(mybatisClass, field.getName(), sppClass);
+                MybatisAssociation mybatisAssociation = getMybatisAssociation(mybatisClass, (SppField) field, sppClass);
                 expandRefEntity(configs, dbTable, mybatisAssociation, colName, sppClass, containsSameType(refClass, field));
             }
         }
     }
 
-    private MybatisAssociation getMybatisAssociation(IMybatisClass mybatisClass, String fieldName, SppClass sppClass) {
-        MybatisAssociation mybatisAssociation = new MybatisAssociation(fieldName, null);
+    private MybatisAssociation getMybatisAssociation(IMybatisClass mybatisClass, SppField sppField, SppClass sppClass) {
+        MybatisAssociation mybatisAssociation = new MybatisAssociation(sppField.getQualifiedInstName(), sppField.getName(), null);
         mybatisAssociation.setEntityName(sppClass.getName());
         mybatisClass.addField(mybatisAssociation);
         return mybatisAssociation;
@@ -428,7 +454,7 @@ public class DDLGenerator implements ISppErrorLogger {
 
     @Override
     public File getAntlrFile() {
-        return null;
+        return rdbFile;
     }
 }
 

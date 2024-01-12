@@ -11,8 +11,8 @@ import java.util.Map;
 public class MybatisRef extends MybatisField{
     String refName;
     List<Map.Entry> foreignKeys = new ArrayList<>();
-    public MybatisRef(String property, String column) {
-        super(property, column);
+    public MybatisRef(String qualifiedName,String property, String column) {
+        super(qualifiedName,property, column);
     }
 
     public void setRefName(String refName) {

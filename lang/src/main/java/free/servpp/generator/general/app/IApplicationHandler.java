@@ -6,7 +6,7 @@ import free.servpp.generator.models.SppDomain;
 import free.servpp.generator.models.SppClass;
 import free.servpp.generator.models.app.IQualifiedNameUtil;
 import free.servpp.generator.models.app.RuleBlock;
-import free.servpp.generator.models.app.SppFieldDefine;
+import free.servpp.generator.models.app.SppFieldReference;
 import free.servpp.lang.antlr.AppListener;
 import org.antlr.v4.runtime.ParserRuleContext;
 
@@ -31,7 +31,7 @@ public interface IApplicationHandler extends AppListener, IConstance, ISppErrorL
     default <T> T removeLastElement(List<T> elements){
         return elements.remove(elements.size()-1);
     }
-    default SppFieldDefine getQualifiedField(ParserRuleContext ctx, SppClass mapEntity, String qualifiedName) {
+    default SppFieldReference getQualifiedField(ParserRuleContext ctx, SppClass mapEntity, String qualifiedName) {
         try {
             return getQualifiedField(getSppDomian(),mapEntity,qualifiedName);
         } catch (SemanticException e) {

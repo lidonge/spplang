@@ -11,6 +11,17 @@ public class SppParameter {
 
     private int arrayDimension;
 
+    protected SppParameter(SppCompilationUnit type, String name, int arrayDimension) {
+        this.type = type;
+        this.name = name;
+        this.arrayDimension = arrayDimension;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new SppParameter(type,name,arrayDimension);
+    }
+
     public SppParameter(SppCompilationUnit type, String name) {
         this.type = type;
         this.name = name;

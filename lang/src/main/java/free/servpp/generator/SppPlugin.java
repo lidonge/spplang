@@ -69,7 +69,7 @@ public class SppPlugin extends AbstractMojo {
             SppDomain sppDomain = sppGeneralHandler.getSppDomain();
             sppDomain.dealAnnotations(sppDomain.getRuleBlock().getAppAnnotationList());
             sppDomain.checkSemanticFinally(sppGeneralHandler);
-            DDLGenerator ddlGenerator = new DDLGenerator(sppDomain);
+            DDLGenerator ddlGenerator = new DDLGenerator(sppDomain,null);
             MustacheClassWriter.generateFile(ddlMustache,ddlGenerator,yamlOutputDirectory,"sql/ddl.sql");
 
             MybatisGenerator mybatisGenerator = new MybatisGenerator(sppDomain,ddlGenerator);

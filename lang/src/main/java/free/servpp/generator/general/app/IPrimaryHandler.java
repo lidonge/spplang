@@ -1,8 +1,7 @@
 package free.servpp.generator.general.app;
 
-import free.servpp.generator.models.SppField;
 import free.servpp.generator.models.app.RuleBlock;
-import free.servpp.generator.models.app.SppFieldDefine;
+import free.servpp.generator.models.app.SppFieldReference;
 import free.servpp.lang.antlr.AppParser;
 
 /**
@@ -14,7 +13,7 @@ public interface IPrimaryHandler extends IApplicationHandler {
     default void enterPrimaryQualified(AppParser.PrimaryQualifiedContext ctx){
         RuleBlock ruleBlock = getCurrentRuleBlock();
         String qualifiedName = ctx.getChild(0).getText();
-        SppFieldDefine sppField = getQualifiedField(ctx, null, qualifiedName);
+        SppFieldReference sppField = getQualifiedField(ctx, null, qualifiedName);
         if(sppField == null)
             logSppError(ctx, "File " + qualifiedName+" not defined");
         else

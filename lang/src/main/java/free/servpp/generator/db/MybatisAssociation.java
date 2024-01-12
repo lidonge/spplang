@@ -10,8 +10,8 @@ public class MybatisAssociation extends MybatisField implements IMybatisClass{
     List<MybatisField> fields;
     String entityName;
 
-    public MybatisAssociation(String property, String column) {
-        super(property, column);
+    public MybatisAssociation(String qualifiedName,String property, String column) {
+        super(qualifiedName,property, column);
     }
 
     public void setEntityName(String entityName) {

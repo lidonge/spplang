@@ -72,6 +72,16 @@ public abstract class BaseHandler implements
     }
 
     @Override
+    public void enterNumberType(SppParser.NumberTypeContext ctx) {
+
+    }
+
+    @Override
+    public void exitNumberType(SppParser.NumberTypeContext ctx) {
+
+    }
+
+    @Override
     public void enterDomainname(SppParser.DomainnameContext ctx) {
 
     }

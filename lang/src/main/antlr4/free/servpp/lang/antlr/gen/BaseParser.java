@@ -17,31 +17,32 @@ public class BaseParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
-		T__9=10, Identifier=11, IntegerLiteral=12, FloatingPointLiteral=13, BooleanLiteral=14, 
-		CharacterLiteral=15, StringLiteral=16, NullLiteral=17, COMMENT=18, WS=19, 
-		LINE_COMMENT=20;
+		T__9=10, T__10=11, Identifier=12, IntegerLiteral=13, FloatingPointLiteral=14, 
+		BooleanLiteral=15, CharacterLiteral=16, StringLiteral=17, NullLiteral=18, 
+		COMMENT=19, WS=20, LINE_COMMENT=21;
 	public static final int
-		RULE_qualifiedName = 0, RULE_primitiveType = 1;
+		RULE_qualifiedName = 0, RULE_primitiveType = 1, RULE_numberType = 2;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"qualifiedName", "primitiveType"
+			"qualifiedName", "primitiveType", "numberType"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'.'", "'boolean'", "'char'", "'String'", "'short'", "'int'", "'long'", 
-			"'float'", "'double'", "'DateTime'", null, null, null, null, null, null, 
-			"'null'"
+			null, "'.'", "'boolean'", "'char'", "'String'", "'DateTime'", "'short'", 
+			"'int'", "'long'", "'float'", "'double'", "'decimal'", null, null, null, 
+			null, null, null, "'null'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, null, null, "Identifier", 
-			"IntegerLiteral", "FloatingPointLiteral", "BooleanLiteral", "CharacterLiteral", 
-			"StringLiteral", "NullLiteral", "COMMENT", "WS", "LINE_COMMENT"
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			"Identifier", "IntegerLiteral", "FloatingPointLiteral", "BooleanLiteral", 
+			"CharacterLiteral", "StringLiteral", "NullLiteral", "COMMENT", "WS", 
+			"LINE_COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -127,21 +128,21 @@ public class BaseParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(4);
+			setState(6);
 			match(Identifier);
-			setState(9);
+			setState(11);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__0) {
 				{
 				{
-				setState(5);
+				setState(7);
 				match(T__0);
-				setState(6);
+				setState(8);
 				match(Identifier);
 				}
 				}
-				setState(11);
+				setState(13);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -160,6 +161,9 @@ public class BaseParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PrimitiveTypeContext extends ParserRuleContext {
+		public NumberTypeContext numberType() {
+			return getRuleContext(NumberTypeContext.class,0);
+		}
 		public PrimitiveTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -182,13 +186,96 @@ public class BaseParser extends Parser {
 	public final PrimitiveTypeContext primitiveType() throws RecognitionException {
 		PrimitiveTypeContext _localctx = new PrimitiveTypeContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_primitiveType);
+		try {
+			setState(19);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case T__1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(14);
+				match(T__1);
+				}
+				break;
+			case T__2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(15);
+				match(T__2);
+				}
+				break;
+			case T__3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(16);
+				match(T__3);
+				}
+				break;
+			case T__4:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(17);
+				match(T__4);
+				}
+				break;
+			case T__5:
+			case T__6:
+			case T__7:
+			case T__8:
+			case T__9:
+			case T__10:
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(18);
+				numberType();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class NumberTypeContext extends ParserRuleContext {
+		public NumberTypeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_numberType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BaseListener ) ((BaseListener)listener).enterNumberType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BaseListener ) ((BaseListener)listener).exitNumberType(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof BaseVisitor ) return ((BaseVisitor<? extends T>)visitor).visitNumberType(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final NumberTypeContext numberType() throws RecognitionException {
+		NumberTypeContext _localctx = new NumberTypeContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_numberType);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(12);
+			setState(21);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 2044L) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 4032L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -210,16 +297,24 @@ public class BaseParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0014\u000f\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
-		"\u0001\u0000\u0001\u0000\u0001\u0000\u0005\u0000\b\b\u0000\n\u0000\f\u0000"+
-		"\u000b\t\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0000\u0000\u0002\u0000"+
-		"\u0002\u0000\u0001\u0001\u0000\u0002\n\r\u0000\u0004\u0001\u0000\u0000"+
-		"\u0000\u0002\f\u0001\u0000\u0000\u0000\u0004\t\u0005\u000b\u0000\u0000"+
-		"\u0005\u0006\u0005\u0001\u0000\u0000\u0006\b\u0005\u000b\u0000\u0000\u0007"+
-		"\u0005\u0001\u0000\u0000\u0000\b\u000b\u0001\u0000\u0000\u0000\t\u0007"+
-		"\u0001\u0000\u0000\u0000\t\n\u0001\u0000\u0000\u0000\n\u0001\u0001\u0000"+
-		"\u0000\u0000\u000b\t\u0001\u0000\u0000\u0000\f\r\u0007\u0000\u0000\u0000"+
-		"\r\u0003\u0001\u0000\u0000\u0000\u0001\t";
+		"\u0004\u0001\u0015\u0018\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0002\u0002\u0007\u0002\u0001\u0000\u0001\u0000\u0001\u0000\u0005\u0000"+
+		"\n\b\u0000\n\u0000\f\u0000\r\t\u0000\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0003\u0001\u0014\b\u0001\u0001\u0002\u0001\u0002"+
+		"\u0001\u0002\u0000\u0000\u0003\u0000\u0002\u0004\u0000\u0001\u0001\u0000"+
+		"\u0006\u000b\u0019\u0000\u0006\u0001\u0000\u0000\u0000\u0002\u0013\u0001"+
+		"\u0000\u0000\u0000\u0004\u0015\u0001\u0000\u0000\u0000\u0006\u000b\u0005"+
+		"\f\u0000\u0000\u0007\b\u0005\u0001\u0000\u0000\b\n\u0005\f\u0000\u0000"+
+		"\t\u0007\u0001\u0000\u0000\u0000\n\r\u0001\u0000\u0000\u0000\u000b\t\u0001"+
+		"\u0000\u0000\u0000\u000b\f\u0001\u0000\u0000\u0000\f\u0001\u0001\u0000"+
+		"\u0000\u0000\r\u000b\u0001\u0000\u0000\u0000\u000e\u0014\u0005\u0002\u0000"+
+		"\u0000\u000f\u0014\u0005\u0003\u0000\u0000\u0010\u0014\u0005\u0004\u0000"+
+		"\u0000\u0011\u0014\u0005\u0005\u0000\u0000\u0012\u0014\u0003\u0004\u0002"+
+		"\u0000\u0013\u000e\u0001\u0000\u0000\u0000\u0013\u000f\u0001\u0000\u0000"+
+		"\u0000\u0013\u0010\u0001\u0000\u0000\u0000\u0013\u0011\u0001\u0000\u0000"+
+		"\u0000\u0013\u0012\u0001\u0000\u0000\u0000\u0014\u0003\u0001\u0000\u0000"+
+		"\u0000\u0015\u0016\u0007\u0000\u0000\u0000\u0016\u0005\u0001\u0000\u0000"+
+		"\u0000\u0002\u000b\u0013";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -5,11 +5,11 @@ import java.util.Map;
 
 import {{modelPackage}}.{{cls.name}};
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface {{cls.name}}Mapper {
-    void create{{cls.name}}({{cls.name}} {{lowerClsName}});
-    void update{{cls.name}}({{cls.name}} {{lowerClsName}});
-    {{cls.name}} get{{cls.name}}({{cls.name}} {{lowerClsName}});
-    List<{{cls.name}}> search{{cls.name}}({{cls.name}} {{lowerClsName}});
+{{#methods}}
+    {{returnType}} {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}@Param("{{name}}") {{type.name}} {{name}}{{/serviceBody.sppLocalVarList}});
+{{/methods}}
 }

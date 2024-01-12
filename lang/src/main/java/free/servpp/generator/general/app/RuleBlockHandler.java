@@ -2,9 +2,7 @@ package free.servpp.generator.general.app;
 
 import free.servpp.generator.models.IContainer;
 import free.servpp.generator.models.SppDomain;
-import free.servpp.generator.models.app.AppService;
 import free.servpp.generator.models.app.RuleBlock;
-import free.servpp.generator.models.app.expr.IOperationExpression;
 
 import java.io.File;
 import java.util.Stack;

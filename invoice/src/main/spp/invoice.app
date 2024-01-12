@@ -15,17 +15,23 @@ header stockHeaderIn extends baseIn{
     notnull String channelId = caller;
 }
 
-primary{
-    Customer.id;
-    Product.id;
-    BaseAccount.id;
-    Stock.id;
-    Invoice.id;
+@column(varchar_precision="80",nullable="true",
+    decimal_precision="19",decimal_scale="2",
+    type_boolean="INTEGER",type_String="VARCHAR")
+@insideEntity(namingType="snake_case")
+tables entities{
+    @insideEntity(namingType="lowercase")
+    table BaseAccount (Supplier){
+        primarykey String(20) AcctId;
+    }
+    @insideEntity(namingType="lowercase",dupNamingType="pascallowercase")
+    table INVOICE(Invoice){
+        primarykey int id;
+    }
 }
 
-map Invoice(snake_case, storerole){
-    id=String(20) invoiceid;
-    Amount.amount=double(12,6);
+map Invoice{
+    id=notnull String(20) invoiceid;
 }
 
 scope{
@@ -33,7 +39,6 @@ scope{
         queryAccount;
         decAccount;
         incAccount;
-        updateStocks;
         makeInvoice;
     }
     remote (in baseIn, out baseOut){
@@ -42,6 +47,7 @@ scope{
     remote (in stockHeaderIn, out baseOut){
         asycn tcc decStock;
         checkStock;
+        updateStocks;
     }
 }
 

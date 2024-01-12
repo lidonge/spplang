@@ -35,6 +35,18 @@ public class BaseBaseListener implements BaseListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPrimitiveType(BaseParser.PrimitiveTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNumberType(BaseParser.NumberTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNumberType(BaseParser.NumberTypeContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

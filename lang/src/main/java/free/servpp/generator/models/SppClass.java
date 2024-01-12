@@ -3,6 +3,7 @@ package free.servpp.generator.models;
 import free.servpp.generator.general.IConstance;
 import free.servpp.generator.general.IScenarioHandler;
 import free.servpp.generator.models.app.INamedObject;
+import free.servpp.generator.models.app.SppFieldReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,10 +19,41 @@ public class SppClass extends SppCompilationUnit implements INamedObject {
     List<SppField> sppFieldList = new ArrayList<>();
 
     private IScenarioHandler.CurrentCall currentCall;
+    private SppField instance;
+
     public SppClass(String name) {
         super(name);
     }
 
+    public String getQualifiedInstName() {
+        return instance.getQualifiedInstName();
+    }
+
+    public SppClass instance(SppField inst, SppDomain sppDomain){
+        SppClass ret = new SppClass(getName());
+        ret.copyFrom(this);
+        ret.instance = inst;
+        ret.sppFieldMap = new HashMap<>();
+        ret.sppFieldList = new ArrayList<>();
+        for(SppField field:sppFieldList){
+            try {
+                SppField newField = (SppField) field.clone();
+                ret.addField(newField);
+
+                SppFieldReference sppFieldReference = sppDomain.getSppFieldReference(field);
+                if(sppFieldReference != null){
+                    sppFieldReference.setSppField(newField);
+                }
+                if(newField.getType().getType() != null){
+                    SppClass cls = (SppClass) newField.getType();
+                    newField.setType(cls.instance(newField, sppDomain));
+                }
+            } catch (CloneNotSupportedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return ret;
+    }
     public SppClass(String name, IConstance.CompilationUnitType type) {
         super(name);
         this.type = type;
@@ -57,6 +89,7 @@ public class SppClass extends SppCompilationUnit implements INamedObject {
         field.setIndex(sppFieldMap.size());
         sppFieldMap.put(fieldName,field);
         sppFieldList.add(field);
+        field.setParent(this);
         return null;
     }
 

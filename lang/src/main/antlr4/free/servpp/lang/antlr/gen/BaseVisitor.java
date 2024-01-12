@@ -21,4 +21,10 @@ public interface BaseVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPrimitiveType(BaseParser.PrimitiveTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link BaseParser#numberType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumberType(BaseParser.NumberTypeContext ctx);
 }

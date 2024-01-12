@@ -57,9 +57,10 @@ tables entities{
 
     table ORDERLINES(OrderLines){
         notnull primarykey int linenum;
-        primarykey( OrderLines.order );
+        //primarykey( OrderLines.order );
+        primarykey int orderid;
         foreignkey( OrderLines.item );
-        foreignkey( OrderLines.order );
+        //foreignkey( OrderLines.order );
     }
 
     @insideEntity(namingType="lowercase",dupNamingType="pascallowercase")
@@ -74,7 +75,7 @@ map INVENTORY{
 }
 
 map ORDERLINES{
-    order_orderid=int orderid;
+    //order_orderid=int orderid;
     item_itemid=notnull String(10) itemid;
 }
 map ITEM{

@@ -131,7 +131,7 @@ public class RuleBlock {
         return (AppHeader) appHeader.searchAppHeader(headers, appHeader);
     }
 
-    public String addPrimaryKey(String qualifiedName, SppFieldDefine key){
+    public String addPrimaryKey(String qualifiedName, SppFieldReference key){
         return appPrimaryKeys.addKey(qualifiedName,key);
     }
     public List<AppHeader> getHeaders() {

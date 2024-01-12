@@ -62,6 +62,11 @@ variableDeclaratorId
 
 type
     :   primitiveType ('[' ']')*
+    |   quantumNumber
+    ;
+
+quantumNumber
+    :   'quantum' numberType
     ;
 
 role

@@ -36,7 +36,7 @@ public class GeneratorUtil {
         appGeneralHandler = (AppGeneralHandler) new AppCompiler(appFile1,sppProject).compile();
         sppDomain.dealAnnotations(sppDomain.getRuleBlock().getAppAnnotationList());
         sppDomain.checkSemanticFinally(sppGeneralHandler);
-        DDLGenerator ddlGenerator = new DDLGenerator(sppDomain);
+        DDLGenerator ddlGenerator = new DDLGenerator(sppDomain,appFile);
         InputStream mustache = GeneratorUtil.class.getResourceAsStream("/ddl.mustache");
         MustacheClassWriter.generateFile(mustache, ddlGenerator, yamlOutPath,"src/resources/sql/ddl.sql");
         MybatisGenerator mybatisGenerator = new MybatisGenerator(sppDomain,ddlGenerator);

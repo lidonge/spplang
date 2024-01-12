@@ -3,33 +3,28 @@ Enum Sex{
     Male,Female
 }
 Reference Customer{
-    String id;
     String name;
     int age;
     Sex sex;
 }
 
 Reference Product{
-    String id;
     String name;
 }
 
 Entity BaseAccount{
-    String id;
     double balance;
     double max;
     double min;
     Stock[] stocks;
 }
 Reference Stock{
-    String id;
     int quantity;
     int max;
     int min;
 }
 
 Role Goods{
-    String goodsId;
     GoodsStock stock;
     double price;
 }
@@ -39,7 +34,6 @@ take BaseAccount as Account{takeall;}
 take Stock as GoodsStock{takeall;}
 take Product as Goods{
     mapsame;
-    String goodsId = id;
     takeall;
 }
 Role Amount{
@@ -47,7 +41,6 @@ Role Amount{
     double amount;
 }
 Contract Invoice{
-    String id;
     Account buyer;
     Account seller;
     Goods goods;
@@ -56,7 +49,7 @@ Contract Invoice{
 
 
 
-atomic query <Account>queryAccount();
+atomic query <Account>queryAccount(Account account);
 atomic calculate calculateAmount(Goods goods, Amount amount);
 atomic update decAccount(Account account, Amount amount);
 atomic update incAccount(Account account, Amount amount);
@@ -65,8 +58,8 @@ atomic check checkStock(GoodsStock stock);
 atomic update updateStocks(GoodsStock[] stock);
 
 Scenario parallel makeInvoice(Invoice invoice){
-    queryAccount();
-    queryAccount();
+    queryAccount(invoice.buyer);
+    queryAccount(invoice.seller);
     serial{
         calculateAmount(invoice.goods, invoice.amount);
         checkStock(invoice.goods.stock);

@@ -88,17 +88,17 @@ public interface ITablesHandler extends IApplicationHandler {
         ParserRuleContext parent = ctx.getParent().getParent();
         AppTable appTable = getLastAppTable();
         SppClass sppClass = appTable.getEntity();
-        SppFieldDefine sppFieldDefine = getQualifiedField(ctx, null, name);
-        if (sppFieldDefine == null) {
+        SppFieldReference sppFieldReference = getQualifiedField(ctx, null, name);
+        if (sppFieldReference == null) {
             logSppError(ctx, "Field " + name + " not found.");
         } else {
             if (parent instanceof AppParser.PrimaryKeyDefineContext) {
-                appTable.getPrimaryKeys().add(sppFieldDefine);
+                appTable.getPrimaryKeys().add(sppFieldReference);
             } else if (parent instanceof AppParser.ForeignKeyDefineContext) {
-                if(!appTable.containsEntity(sppFieldDefine.getSppClass().getName()))
-                    logSppError(ctx, "Foreign key:" + sppFieldDefine.getSppField().getName() +" not defined in table entities.");
+                if(!appTable.containsEntity(sppFieldReference.getSppField().getParent().getName()))
+                    logSppError(ctx, "Foreign key:" + sppFieldReference.getSppField().getName() +" not defined in table entities.");
                 else
-                    getLastElement(appTable.getForeignKeys()).getKeys().add(sppFieldDefine);
+                    getLastElement(appTable.getForeignKeys()).getKeys().add(sppFieldReference);
             }
         }
     }

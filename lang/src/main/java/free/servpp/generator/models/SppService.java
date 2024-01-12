@@ -26,6 +26,30 @@ public class SppService extends SppClass{
 
     private ServiceBody returns = new ServiceBody(this);
 
+    private SppCompilationUnit defaultClass;
+
+    public SppCompilationUnit getDefaultClass() {
+        return defaultClass;
+    }
+
+    public void setDefaultClass(SppCompilationUnit defaultClass) {
+        this.defaultClass = defaultClass;
+    }
+
+    public String getReturnType(){
+        String ret = "void";
+        List<SppLocalVar> sppLocalVarList = returns.getSppLocalVarList();
+        if(sppLocalVarList.size() == 1){
+            SppLocalVar sppLocalVar = sppLocalVarList.get(0);
+            ret = sppLocalVar.getType().getName();
+            if(sppLocalVar.getArrayDimension() != 0){
+                ret = "List<"+ret+">";
+            }
+        }else if(sppLocalVarList.size() > 1){
+            ret = "List";
+        }
+        return ret;
+    }
     public SppService(String name) {
         super(name);
         this.serviceBody = new ServiceBody(this);

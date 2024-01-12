@@ -3,7 +3,7 @@ import free.servpp.service.AtomicService;
 {{#responseSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{responseSuffix}};{{/responseSuffix}}
 
 {{#serviceBody.sppLocalVarList}}
-import {{type.packageName}}.{{type.name}};
+{{#type.type}}import {{type.packageName}}.{{type.name}};{{/type.type}}
 {{/serviceBody.sppLocalVarList}}
 public interface {{name}} extends AtomicService {
 	public {{name}}{{responseSuffix}} {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}});

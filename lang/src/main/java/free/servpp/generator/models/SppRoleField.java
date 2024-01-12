@@ -7,6 +7,27 @@ import free.servpp.generator.general.NameUtil;
  */
 public class SppRoleField extends SppField{
     String entityName;
+
+    protected SppRoleField(SppCompilationUnit type, String name, int arrayDimension, int index, boolean isQuantum, String entityName) {
+        super(type, name, arrayDimension, index, isQuantum);
+        this.entityName = entityName;
+    }
+
+    public SppRoleField(SppCompilationUnit type, String name, int index, boolean isQuantum, String entityName) {
+        super(type, name, index, isQuantum);
+        this.entityName = entityName;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new SppRoleField(type,name,getArrayDimension(),index,isQuantum,entityName);
+    }
+
+    public SppRoleField(SppCompilationUnit cls, String name, String entityName) {
+        super(cls, name);
+        this.entityName = entityName;
+    }
+
     public SppRoleField(SppCompilationUnit cls, String name) {
         super(cls, name);
     }

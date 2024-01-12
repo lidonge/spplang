@@ -3,9 +3,9 @@ package {{basePackage}}.{{domainName}}.service;
 import {{basePackage}}.{{domainName}}.handler.{{name}};
 {{#requestSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{requestSuffix}};{{/requestSuffix}}
 {{#responseSuffix}}import {{basePackage}}.{{domainName}}.model.{{name}}{{responseSuffix}};{{/responseSuffix}}
-{{#serviceBody.sppLocalVarList}}
+{{#serviceBody.sppLocalVarList}}{{#type.type}}
 import {{basePackage}}.{{domainName}}.model.{{type.name}};
-import {{basePackage}}.{{domainName}}.mapper.{{type.name}}Mapper;
+import {{basePackage}}.{{domainName}}.mapper.{{type.name}}Mapper;{{/type.type}}
 {{/serviceBody.sppLocalVarList}}
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +16,10 @@ public class Simple{{name}} implements {{name}} {
     {{^requestSuffix}}{{#serviceBody.sppLocalVarList}}private {{type.name}}{{toArrayString}} arg;{{/serviceBody.sppLocalVarList}}{{/requestSuffix}}
     {{#responseSuffix}}//private {{name}}{{responseSuffix}} ret;{{/responseSuffix}}
     {{^responseSuffix}}{{#returns.sppLocalVarList}}private {{type.name}}{{toArrayString}} ret;{{/returns.sppLocalVarList}}{{/responseSuffix}}
-{{#serviceBody.sppLocalVarList}}
+
     @Autowired
-    private {{type.name}}Mapper {{name}}Mapper;
-{{/serviceBody.sppLocalVarList}}
+    private {{defaultClass.name}}Mapper mapper{{defaultClass.name}};
+
     @Override
     public String getName() {
         return "{{funcName}}";
@@ -27,15 +27,13 @@ public class Simple{{name}} implements {{name}} {
 
     @Override
 	public {{name}}{{responseSuffix}} {{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{type.name}}{{arrayString}} {{name}}{{/serviceBody.sppLocalVarList}}){
+        {{name}}{{responseSuffix}} ret = new {{name}}{{responseSuffix}}();
         {{#expressions}}
         {{expr}};
         {{/expressions}}
-        {{name}}{{responseSuffix}} ret = new {{name}}{{responseSuffix}}();
-{{#serviceBody.sppLocalVarList}}
-        {{#returns.sppLocalVarList}}ret.set{{type.name}}( {{name}}Mapper.{{funcName}}({{name}}) );{{/returns.sppLocalVarList}}
-        {{^returns.sppLocalVarList}}{{name}}Mapper.{{funcName}}({{name}});{{/returns.sppLocalVarList}}
+        {{#returns.sppLocalVarList}}ret.set{{type.name}}(  mapper{{defaultClass.name}}.{{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{name}}{{/serviceBody.sppLocalVarList}}) );{{/returns.sppLocalVarList}}
+        {{^returns.sppLocalVarList}} mapper{{defaultClass.name}}.{{funcName}}({{#serviceBody.sppLocalVarList}}{{^-first}},{{/-first}}{{name}}{{/serviceBody.sppLocalVarList}});{{/returns.sppLocalVarList}}
         return ret;
-{{/serviceBody.sppLocalVarList}}
 	}
 
     @Override

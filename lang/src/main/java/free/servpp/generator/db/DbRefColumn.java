@@ -10,7 +10,7 @@ public class DbRefColumn extends DbColumn{
     private String origName;
 
     public DbRefColumn(DbColumn dbColumn) {
-        super(dbColumn.getName(), dbColumn.getJdbcType(), dbColumn.getPrecision(), dbColumn.getScale(), dbColumn.isNullable(),dbColumn.getField());
+        super(dbColumn.getName(), dbColumn.getJdbcType(), dbColumn.getPrecision(), dbColumn.getScale(), dbColumn.isNullable(),dbColumn.getField(),dbColumn.getParentField());
     }
 
     public String getRefName() {

@@ -79,11 +79,11 @@ Entity Item {
 
 Entity Inventory{
     Item item;
-    int qty;
+    quantum int qty;
 }
 
 Entity OrderLines{
-    MyOrder order;
+//    MyOrder order;
     Item item;
     int quantity;
     double unitPrice;
@@ -126,15 +126,6 @@ Contract MyOrder {
 	OrderInfo info;
 	OrderLines[] lines;
 }
-//atomic update createAccount(Account account);
-//atomic update updateAccount(Account account, String newPassword);
-//atomic query <Category> getCategory();
-//atomic query <Product> getProduct();
-//atomic query <Product[]> searchProductList(Product product);
-//atomic query <Item[]> getItemListByProduct(Product product);
-//atomic query <Item> getItem();
-//atomic query <Order> getOrder();
-//atomic query <Order[]> getOrdersByAccount(Account account);
 
 Scenario parallel makeOrder(MyOrder order){
     createAccount(order.account);

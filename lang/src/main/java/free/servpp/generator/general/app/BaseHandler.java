@@ -242,6 +242,16 @@ public abstract class BaseHandler implements IHeaderHandler, IPrimaryHandler,
     }
 
     @Override
+    public void enterNumberType(AppParser.NumberTypeContext ctx) {
+
+    }
+
+    @Override
+    public void exitNumberType(AppParser.NumberTypeContext ctx) {
+
+    }
+
+    @Override
     public void enterScopeDefine(AppParser.ScopeDefineContext ctx) {
 
     }
